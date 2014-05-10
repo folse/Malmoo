@@ -17,7 +17,7 @@
 #import <MapKit/MapKit.h>
 #import "SearchController.h"
 
-@interface MainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate>
+@interface MainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate>
 {
     MBProgressHUD *HUD;
     NSMutableArray *shopArray;
@@ -26,6 +26,12 @@
     BOOL isSearching;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
+    NSArray *clearArray;
+    int clearId;
+    int pageId;
+    UIWebView *webView;
+    NSString *apiKey;
+    PFObject *currentObject;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -60,9 +66,155 @@
     
     HUD_SHOW
     
-    [self getShopData:nil];
+    apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
-    [[self locationManager] startUpdatingLocation];
+    //[self getShopData:nil];
+    
+    //[[self locationManager] startUpdatingLocation];
+    
+    [self clearData];
+    
+    webView = [[UIWebView alloc] init];
+    [webView setDelegate:self];
+    
+}
+
+-(void)clearData
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    query.skip = pageId * 100;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+//            for (PFObject *object in objects) {
+//                
+//                s(object[@"name"])
+//            }
+            
+            clearArray = objects;
+                        
+            //[self findDuplicateData:clearArray[clearId]];
+            
+            NSString *photo = objects[clearId][@"photo"];
+            if (!photo) {
+                [self copyPhotoData:clearArray[clearId]];
+            }
+            
+        } else {
+            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)copyPhotoData:(PFObject *)eachObject
+{
+    NSArray *photoArray = eachObject[@"photos"];
+    
+    if (photoArray.count > 0) {
+        
+        s(@"hasPhoto")
+        
+        NSString *photoReference = eachObject[@"photos"][0][@"photo_reference"];
+        
+        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
+        
+        currentObject = eachObject;
+        
+    }else {
+        
+        clearId += 1;
+        
+        if(clearId != 100){
+            NSLog(@"arrayId:%d",clearId);
+            [self copyPhotoData:clearArray[clearId]];
+        }else{
+            clearId = 0;
+            pageId += 1;
+            i(pageId)
+            [self clearData];
+        }
+    }
+}
+
+-(void)getRealImageUrl:(NSString *)url
+{
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    s(@"load")
+    s(request.URL.absoluteString)
+    
+    if ([request.URL.absoluteString rangeOfString:@"googleusercontent.com"].length > 0) {
+        s(request.URL.absoluteString)
+        
+        [self savePhotoUrl:currentObject withUrl:request.URL.absoluteString];
+    }
+    
+    return YES;
+}
+
+-(void)savePhotoUrl:(PFObject *)object withUrl:(NSString *)photoUrl
+{
+    object[@"photo"] = photoUrl;
+    
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    
+        clearId += 1;
+        
+        if(clearId != 100){
+            NSLog(@"arrayId:%d",clearId);
+            [self copyPhotoData:clearArray[clearId]];
+        }else{
+            clearId = 0;
+            pageId += 1;
+            i(pageId)
+            [self clearData];
+        }
+    }];
+}
+
+-(void)findDuplicateData:(PFObject *)eachObject
+{
+    NSString *name = eachObject[@"name"];
+    NSString *address = eachObject[@"formatted_address"];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    [query whereKey:@"name" equalTo:name];
+    [query whereKey:@"formatted_address" equalTo:address];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            
+            for (int i = 0; i < objects.count - 1; i++) {
+                
+                [objects[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        s(@"Delete Successful")
+                    }
+                }];
+            }
+            
+            clearId += 1;
+            
+            if(clearId != 100){
+                [self findDuplicateData:clearArray[clearId]];
+            }else{
+                clearId = 0;
+                pageId += 1;
+                i(pageId)
+                [self clearData];
+            }
+            
+        } else {
+            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    i(clearId)
 }
 
 -(void)getShopData:(NSString *)keyWords
