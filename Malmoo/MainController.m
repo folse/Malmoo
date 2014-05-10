@@ -68,14 +68,16 @@
     
     apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
-    //[self getShopData:nil];
+    sleep(5);
+    
+    [self getShopData:nil];
     
     //[[self locationManager] startUpdatingLocation];
     
-    [self clearData];
-    
-    webView = [[UIWebView alloc] init];
-    [webView setDelegate:self];
+//    webView = [[UIWebView alloc] init];
+//    [webView setDelegate:self];
+//    
+    //[self clearData];
     
 }
 
@@ -86,19 +88,13 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-//            for (PFObject *object in objects) {
-//                
-//                s(object[@"name"])
-//            }
-            
             clearArray = objects;
                         
             //[self findDuplicateData:clearArray[clearId]];
             
-            NSString *photo = objects[clearId][@"photo"];
-            if (!photo) {
-                [self copyPhotoData:clearArray[clearId]];
-            }
+            //[self copyPhotoData:clearArray[clearId]];
+            
+            [self replaceLocationData:clearArray[clearId]];
             
         } else {
             
@@ -109,24 +105,25 @@
 
 -(void)copyPhotoData:(PFObject *)eachObject
 {
+    NSString *photoUrl = eachObject[@"photo"];
     NSArray *photoArray = eachObject[@"photos"];
     
-    if (photoArray.count > 0) {
+    if (photoArray.count > 0 && !photoUrl.length > 0) {
         
         s(@"hasPhoto")
         
         NSString *photoReference = eachObject[@"photos"][0][@"photo_reference"];
         
-        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
-        
         currentObject = eachObject;
+        
+        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
         
     }else {
         
         clearId += 1;
         
         if(clearId != 100){
-            NSLog(@"arrayId:%d",clearId);
+            NSLog(@"cIearArrayId:%d",clearId);
             [self copyPhotoData:clearArray[clearId]];
         }else{
             clearId = 0;
@@ -165,7 +162,7 @@
         clearId += 1;
         
         if(clearId != 100){
-            NSLog(@"arrayId:%d",clearId);
+            NSLog(@"cIearArrayId:%d",clearId);
             [self copyPhotoData:clearArray[clearId]];
         }else{
             clearId = 0;
@@ -217,14 +214,92 @@
     i(clearId)
 }
 
+-(void)replaceLocationData:(PFObject *)eachObject
+{
+    PFGeoPoint *location = eachObject[@"location"];
+    
+    if (!location) {
+        
+        NSString *lat = eachObject[@"geometry"][@"location"][@"lat"];
+        NSString *lng = eachObject[@"geometry"][@"location"][@"lng"];
+        
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+        
+        eachObject[@"location"] = geoPoint;
+        
+        [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            clearId += 1;
+            
+            if(clearId != 100){
+                
+                NSLog(@"cIearArrayId:%d",clearId);
+                
+                /* by folse
+                 Change this method name
+                */
+                
+                //[self copyPhotoData:clearArray[clearId]];
+                [self replaceLocationData:clearArray[clearId]];
+                
+            }else{
+                
+                clearId = 0;
+                pageId += 1;
+                i(pageId)
+                [self clearData];
+                
+            }
+        }];
+        
+    }else {
+        
+        clearId += 1;
+        
+        if(clearId != 100){
+            NSLog(@"cIearArrayId:%d",clearId);
+            [self copyPhotoData:clearArray[clearId]];
+        }else{
+            clearId = 0;
+            pageId += 1;
+            i(pageId)
+            [self clearData];
+        }
+    }
+}
+
 -(void)getShopData:(NSString *)keyWords
 {
     shopArray = [NSMutableArray new];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Shop"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    query.limit = 20;
+    
     if (keyWords) {
+        
         [query whereKey:@"metatag" containsString:keyWords];
+        
+        [self findObjects:query];
+        
+    }else{
+        
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+            if (!error) {
+                
+                [query whereKey:@"location" nearGeoPoint:geoPoint];
+                
+                f(geoPoint.latitude)
+                f(geoPoint.longitude)
+                
+                [self findObjects:query];
+                
+            }
+        }];
     }
+}
+
+-(void)findObjects:(PFQuery *)query
+{
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -233,21 +308,32 @@
                 
                 Shop *shop = [Shop new];
                 shop.name = object[@"name"];
-                shop.address = object[@"address"];
                 shop.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
                 shop.openHours = object[@"openHours"];
                 shop.tags = object[@"metatag"];
-                shop.avatarUrl = object[@"avatar"];
-                shop.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
-                shop.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
+                shop.avatarUrl = object[@"photo"];
+                //shop.address = object[@"address"];
+                //shop.avatarUrl = object[@"avatar"];
+                //shop.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
+                //shop.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
+                
+                PFGeoPoint *location = object[@"location"];
+                
+                shop.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+                shop.longitude = [NSString stringWithFormat:@"%f",location.longitude];
+                shop.address = object[@"formatted_address"];
+                
+                
                 shop.starterDishes = object[@"starters"];
                 shop.mainDishes = object[@"maindishes"];
                 shop.dessertDishes = object[@"desserts"];
                 
                 [shopArray addObject:shop];
                 
-                NSIndexPath *index = [NSIndexPath indexPathForRow:shopArray.count-1 inSection:0];
-                [self startImageDownload:shop.avatarUrl forIndexPath:index];
+                if (shop.avatarUrl.length > 0) {
+                    NSIndexPath *index = [NSIndexPath indexPathForRow:shopArray.count-1 inSection:0];
+                    [self startImageDownload:shop.avatarUrl forIndexPath:index];
+                }
             }
             
             [HUD hide:YES];
@@ -301,27 +387,30 @@
     static NSString *identifier = @"MainCell";
     MainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    if (cell == nil) {
-        
-        cell = [[MainCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-    }
-    
     Shop *cellShop = shopArray[row];
     [cell.titleLabel setText:cellShop.name];
     [cell.addressLabel setText:cellShop.address];
     
-    NSString *imagePath = [[F alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:imagePath]){
-        
-        cell.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
-        
-    }else{
-        
-        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
-        {
-            [self startImageDownload:cellShop.avatarUrl forIndexPath:indexPath];
+    s(cellShop.avatarUrl)
+    
+    if (cellShop.avatarUrl.length > 0) {
+        NSString *imagePath = [[F alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:imagePath]){
+            
+            cell.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+            
+        }else{
+            
+            cell.avatarImageView.image = [UIImage imageNamed:@"default_shop_photo"];
+            
+            if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
+            {
+                [self startImageDownload:cellShop.avatarUrl forIndexPath:indexPath];
+            }
         }
+    }else{
+        cell.avatarImageView.image = [UIImage imageNamed:@"default_shop_photo"];
     }
     
     return cell;
@@ -400,7 +489,6 @@
         Shop *selectedShop = shopArray[selectedId];
         DetailController *detailController = segue.destinationViewController;
         detailController.shop = selectedShop;
-        
     }
 }
 
