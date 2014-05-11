@@ -24,6 +24,7 @@
 		A10BC27A18D0713B002999F6 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27918D0713B002999F6 /* Shop.m */; };
 		A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */; };
 		A10EDCA618D07F940048EA02 /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* MainCell.m */; };
+		A11316F1191E81E800EC96B6 /* PromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* PromotionController.m */; };
 		A1165CB218F69D8300213808 /* ShopCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* ShopCategory.m */; };
 		A140346B18F3CB6E00EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A140346A18F3CB6E00EA05F9 /* MenuController.m */; };
 		A171E16D18C6D186003113ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16C18C6D186003113ED /* Foundation.framework */; };
@@ -63,6 +64,11 @@
 		A18DA11C18F7AD7F007E14D1 /* MObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A18DA11B18F7AD7F007E14D1 /* MObject.m */; };
 		A1E838E418CEAD05008E6F57 /* AccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E318CEAD05008E6F57 /* AccountController.m */; };
 		A1E838E718CEAD1C008E6F57 /* F.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* F.m */; };
+		A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */; };
+		A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3B191F1DD6009BE585 /* MJRefreshBaseView.m */; };
+		A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3D191F1DD6009BE585 /* MJRefreshConst.m */; };
+		A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3F191F1DD6009BE585 /* MJRefreshFooterView.m */; };
+		A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +103,8 @@
 		A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A10EDCA418D07F940048EA02 /* MainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCell.h; sourceTree = "<group>"; };
 		A10EDCA518D07F940048EA02 /* MainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCell.m; sourceTree = "<group>"; };
+		A11316EF191E81E800EC96B6 /* PromotionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionController.h; sourceTree = "<group>"; };
+		A11316F0191E81E800EC96B6 /* PromotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionController.m; sourceTree = "<group>"; };
 		A1165CB018F69D8300213808 /* ShopCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCategory.h; sourceTree = "<group>"; };
 		A1165CB118F69D8300213808 /* ShopCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCategory.m; sourceTree = "<group>"; };
 		A140346918F3CB6E00EA05F9 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
@@ -162,6 +170,16 @@
 		A1E838E318CEAD05008E6F57 /* AccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountController.m; sourceTree = "<group>"; };
 		A1E838E518CEAD1C008E6F57 /* F.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = F.h; path = MalmooTests/F.h; sourceTree = SOURCE_ROOT; };
 		A1E838E618CEAD1C008E6F57 /* F.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = F.m; path = MalmooTests/F.m; sourceTree = SOURCE_ROOT; };
+		A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		A1E95B39191F1DD6009BE585 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		A1E95B3A191F1DD6009BE585 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		A1E95B3B191F1DD6009BE585 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		A1E95B3C191F1DD6009BE585 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		A1E95B3D191F1DD6009BE585 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		A1E95B3E191F1DD6009BE585 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		A1E95B3F191F1DD6009BE585 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		A1E95B40191F1DD6009BE585 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		DEF10630F6F44AF5A989FCF5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,6 +315,8 @@
 				A1830B6918DB5C460053DE81 /* MoreController.m */,
 				A1E838E218CEAD05008E6F57 /* AccountController.h */,
 				A1E838E318CEAD05008E6F57 /* AccountController.m */,
+				A11316EF191E81E800EC96B6 /* PromotionController.h */,
+				A11316F0191E81E800EC96B6 /* PromotionController.m */,
 				A178488218F148D7005B05F1 /* SearchController.h */,
 				A178488318F148D7005B05F1 /* SearchController.m */,
 				A1830BA118DBF5340053DE81 /* PlaceMark.h */,
@@ -403,6 +423,7 @@
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A1E95B47191F1DDC009BE585 /* MJRefresh */,
 				A178487C18F139AF005B05F1 /* ExpandTableViewCell */,
 				A1830B5E18DB4E580053DE81 /* JDSideMenu */,
 				A1738D7918D695E500FBFDFC /* FSImageDownloader */,
@@ -420,6 +441,23 @@
 				A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		A1E95B47191F1DDC009BE585 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */,
+				A1E95B39191F1DD6009BE585 /* MJRefresh.h */,
+				A1E95B3A191F1DD6009BE585 /* MJRefreshBaseView.h */,
+				A1E95B3B191F1DD6009BE585 /* MJRefreshBaseView.m */,
+				A1E95B3C191F1DD6009BE585 /* MJRefreshConst.h */,
+				A1E95B3D191F1DD6009BE585 /* MJRefreshConst.m */,
+				A1E95B3E191F1DD6009BE585 /* MJRefreshFooterView.h */,
+				A1E95B3F191F1DD6009BE585 /* MJRefreshFooterView.m */,
+				A1E95B40191F1DD6009BE585 /* MJRefreshHeaderView.h */,
+				A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */,
+			);
+			name = MJRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +543,7 @@
 			files = (
 				A171E18518C6D186003113ED /* Images.xcassets in Resources */,
 				A178487818F13995005B05F1 /* Cell.xib in Resources */,
+				A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */,
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
 				A171E18018C6D186003113ED /* Main.storyboard in Resources */,
@@ -564,8 +603,11 @@
 				A10BC27A18D0713B002999F6 /* Shop.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
+				A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */,
 				A1830B5518DB4D540053DE81 /* MapController.m in Sources */,
+				A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */,
 				A178488718F16DDA005B05F1 /* DirectionController.m in Sources */,
+				A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */,
 				A1738D7518D6927F00FBFDFC /* DetailController.m in Sources */,
 				A1830BA318DBF5340053DE81 /* PlaceMark.m in Sources */,
 				A140346B18F3CB6E00EA05F9 /* MenuController.m in Sources */,
@@ -583,8 +625,10 @@
 				A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */,
 				A1830B6A18DB5C460053DE81 /* MoreController.m in Sources */,
 				A1E838E418CEAD05008E6F57 /* AccountController.m in Sources */,
+				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
 				A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */,
 				A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */,
+				A11316F1191E81E800EC96B6 /* PromotionController.m in Sources */,
 				A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */,
 				A18DA11918F6A203007E14D1 /* CategoryTableController.m in Sources */,
 				A18DA11C18F7AD7F007E14D1 /* MObject.m in Sources */,

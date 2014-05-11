@@ -16,8 +16,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import "SearchController.h"
+#import "MJRefresh.h"
 
-@interface MainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate>
+@interface MainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 {
     MBProgressHUD *HUD;
     NSMutableArray *shopArray;
@@ -32,6 +33,8 @@
     UIWebView *webView;
     NSString *apiKey;
     PFObject *currentObject;
+    int PAGE_NUM;
+    MJRefreshFooterView *_footer;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -66,19 +69,26 @@
     
     HUD_SHOW
     
-    apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
+    //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
-    sleep(5);
+    shopArray = [NSMutableArray new];
     
-    [self getShopData:nil];
+    //[self addFooter];
     
-    //[[self locationManager] startUpdatingLocation];
+    //sleep(3);
+    
+    //[self refreshView];
     
 //    webView = [[UIWebView alloc] init];
 //    [webView setDelegate:self];
 //    
-    //[self clearData];
+    [self clearData];
     
+}
+
+-(void)refreshView
+{
+    [self getShopData:nil];
 }
 
 -(void)clearData
@@ -90,11 +100,11 @@
             
             clearArray = objects;
                         
-            //[self findDuplicateData:clearArray[clearId]];
+            [self findDuplicateData:clearArray[clearId]];
             
             //[self copyPhotoData:clearArray[clearId]];
             
-            [self replaceLocationData:clearArray[clearId]];
+            //[self replaceLocationData:clearArray[clearId]];
             
         } else {
             
@@ -270,10 +280,9 @@
 
 -(void)getShopData:(NSString *)keyWords
 {
-    shopArray = [NSMutableArray new];
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    query.limit = 20;
+    query.limit = 30;
+    query.skip = PAGE_NUM*30;
     
     if (keyWords) {
         
@@ -292,7 +301,6 @@
                 f(geoPoint.longitude)
                 
                 [self findObjects:query];
-                
             }
         }];
     }
@@ -340,7 +348,11 @@
             [self.tableView reloadData];
             [self.tableView setHidden:NO];
             
-            [self markPlace];
+            if (PAGE_NUM > 0) {
+                [self doneLoadMore];
+            }else{
+                [self markPlace];
+            }
             
         } else {
             
@@ -609,6 +621,8 @@
     [_mapView setRegion:region animated:YES];
 }
 
+/*
+
 #pragma mark -
 #pragma mark Location manager
 - (CLLocationManager *)locationManager
@@ -645,10 +659,6 @@
         
         [[self locationManager] stopUpdatingLocation];
         
-        
-        
-        
-        //
         //            //            V1 get English City Name from Location
         //            //            CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
         //            //            [geoCoder  reverseGeocodeLocation:currentLocation completionHandler:
@@ -695,6 +705,30 @@
         //            [xmlOperation start];
         //        }
     }
+}
+*/
+
+- (void)addFooter
+{
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.tableView;
+    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+        
+        PAGE_NUM += 1;
+
+        [self refreshView];
+        
+        [refreshView endRefreshing];
+
+    };
+    _footer = footer;
+}
+
+-(void)doneLoadMore
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:shopArray.count-29 inSection:0];
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
 }
 
 @end

@@ -42,4 +42,9 @@
     [self.sideMenuController setContentController:navController animated:YES];
 }
 
+- (IBAction)rewardBtnAction:(id)sender
+{
+    UINavigationController *navController = [STORY_BOARD instantiateViewControllerWithIdentifier:@"rewardNav"];
+    [self.sideMenuController setContentController:navController animated:YES];
+}
 @end
