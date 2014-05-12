@@ -461,7 +461,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mi-YY-YSC">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mi-YY-YSC">
                                                     <rect key="frame" x="20" y="11" width="154" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -471,7 +471,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Daf-48-WQp" kind="push" id="a3K-qP-Rwd"/>
+                                            <segue destination="C69-21-CHE" kind="push" id="rlf-B1-Xet"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -494,33 +494,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wv1-rY-XM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="1224"/>
-        </scene>
-        <!--View Controller - About-->
-        <scene sceneID="tsO-rm-Ay7">
-            <objects>
-                <viewController id="Daf-48-WQp" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="htM-OO-gng"/>
-                        <viewControllerLayoutGuide type="bottom" id="RRu-L3-wO5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="T3d-Bh-had">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Infomation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-Zf-UXc">
-                                <rect key="frame" x="60" y="160" width="200" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="About" id="6qf-aE-ObF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6rm-36-zgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1575" y="1224"/>
         </scene>
         <!--Category Controller - Category-->
         <scene sceneID="W7j-eY-rVb">
@@ -651,7 +624,7 @@
             </objects>
             <point key="canvasLocation" x="674" y="1224"/>
         </scene>
-        <!--Promotion Controller - Reward-->
+        <!--Promotion Controller - Prize-->
         <scene sceneID="Xah-c8-fWG">
             <objects>
                 <tableViewController id="xoQ-5j-m6Z" customClass="PromotionController" sceneMemberID="viewController">
@@ -660,40 +633,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <scrollView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="6ku-nD-A2g">
-                            <rect key="frame" x="0.0" y="64" width="320" height="380"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="508"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWr-iJ-TTu">
-                                    <rect key="frame" x="20" y="20" width="280" height="360"/>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWr-iJ-TTu">
+                                    <rect key="frame" x="10" y="110" width="300" height="340"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                    <mutableString key="text">Our current services are all free to both users and companies. If you need more updated information about the company you like, we would like to make the company to pay extra service to and for you. The only thing you need to do is introduce us the company. Once they’ve made the payment, you will discover extra information on their pages. To show our grateful and reward of your help, we will pay you 150 SEK per place you recruit.
+
+If you find your company’s information is missing or not right,
+please feel free to contact us at  xxxxx@xxx.se </mutableString>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                 </textView>
+                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="prize_bannar" translatesAutoresizingMaskIntoConstraints="NO" id="jHU-D3-xFT">
+                                    <rect key="frame" x="10" y="12" width="300" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </imageView>
                             </subviews>
                         </scrollView>
-                        <sections>
-                            <tableViewSection id="ngl-ad-lbh">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vgw-3z-GV5">
-                                        <rect key="frame" x="0.0" y="444" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vgw-3z-GV5" id="UMF-lB-hma">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="xoQ-5j-m6Z" id="Ef2-kl-uxA"/>
                             <outlet property="delegate" destination="xoQ-5j-m6Z" id="ZYa-1v-hYF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Reward" id="dHZ-3m-kOw">
+                    <navigationItem key="navigationItem" title="Prize" id="dHZ-3m-kOw">
                         <barButtonItem key="leftBarButtonItem" image="btn_menu" id="hK5-7i-es0">
                             <connections>
                                 <action selector="mentBtnAction:" destination="xoQ-5j-m6Z" id="igu-eN-12k"/>
@@ -704,6 +673,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAl-4j-5ZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="1973"/>
+        </scene>
+        <!--Promotion Controller - About Us-->
+        <scene sceneID="Rui-kg-5f6">
+            <objects>
+                <tableViewController id="C69-21-CHE" customClass="PromotionController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HRa-pE-QcT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <scrollView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="0hr-b6-NHx">
+                            <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFm-7I-5oB">
+                                    <rect key="frame" x="10" y="64" width="300" height="430"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                    <mutableString key="text">We are making things simple for store owners and also for consumers and tourists. 
+
+Free service:
+
+ Contact
+
+ Opening hours
+
+ Address
+
+ Save as favorite
+
+
+Paying service:
+
+ Booking
+
+ Menu list
+
+ Campaigns
+
+ Parking places around
+
+Our price is 150 SEK / month for unlimited times of customizing your page. </mutableString>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                                </textView>
+                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="default_shop_photo" translatesAutoresizingMaskIntoConstraints="NO" id="D43-hM-pLK">
+                                    <rect key="frame" x="127" y="7" width="66" height="66"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </imageView>
+                            </subviews>
+                        </scrollView>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="C69-21-CHE" id="oH0-i2-Hi3"/>
+                            <outlet property="delegate" destination="C69-21-CHE" id="rJc-HV-gWO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="About Us" id="NCa-Zo-vFy"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVM-EC-Lw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1575" y="1224"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gHF-yT-vep">
@@ -743,6 +776,8 @@
     <resources>
         <image name="DownAccessory" width="18" height="10"/>
         <image name="btn_menu" width="36" height="31"/>
+        <image name="default_shop_photo" width="66" height="66"/>
+        <image name="prize_bannar" width="300" height="90"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

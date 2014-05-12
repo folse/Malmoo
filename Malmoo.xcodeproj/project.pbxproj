@@ -27,6 +27,7 @@
 		A11316F1191E81E800EC96B6 /* PromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* PromotionController.m */; };
 		A1165CB218F69D8300213808 /* ShopCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* ShopCategory.m */; };
 		A140346B18F3CB6E00EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A140346A18F3CB6E00EA05F9 /* MenuController.m */; };
+		A1594CAE191F4697006255AC /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1594CAC191F4697006255AC /* libMobClickLibrary.a */; };
 		A171E16D18C6D186003113ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16C18C6D186003113ED /* Foundation.framework */; };
 		A171E16F18C6D186003113ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16E18C6D186003113ED /* CoreGraphics.framework */; };
 		A171E17118C6D186003113ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E17018C6D186003113ED /* UIKit.framework */; };
@@ -109,6 +110,8 @@
 		A1165CB118F69D8300213808 /* ShopCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCategory.m; sourceTree = "<group>"; };
 		A140346918F3CB6E00EA05F9 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
 		A140346A18F3CB6E00EA05F9 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
+		A1594CAC191F4697006255AC /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		A1594CAD191F4697006255AC /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		A171E16918C6D186003113ED /* Malmoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malmoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A171E16C18C6D186003113ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A171E16E18C6D186003113ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,14 +191,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10BC26918D04935002999F6 /* libz.dylib in Frameworks */,
 				A1830B5718DB4DF40053DE81 /* MapKit.framework in Frameworks */,
 				A10BC27318D04DE8002999F6 /* SystemConfiguration.framework in Frameworks */,
 				A10BC27118D04DE1002999F6 /* StoreKit.framework in Frameworks */,
 				A10BC26F18D049D4002999F6 /* Security.framework in Frameworks */,
 				A10BC26D18D04942002999F6 /* QuartzCore.framework in Frameworks */,
 				A10BC26B18D0493D002999F6 /* MobileCoreServices.framework in Frameworks */,
-				A10BC26918D04935002999F6 /* libz.dylib in Frameworks */,
 				A10BC26718D0492E002999F6 /* CoreLocation.framework in Frameworks */,
+				A1594CAE191F4697006255AC /* libMobClickLibrary.a in Frameworks */,
 				A171E16F18C6D186003113ED /* CoreGraphics.framework in Frameworks */,
 				A10BC26518D0491F002999F6 /* CFNetwork.framework in Frameworks */,
 				A10BC26318D04919002999F6 /* AudioToolbox.framework in Frameworks */,
@@ -248,6 +252,15 @@
 				A10EDCA518D07F940048EA02 /* MainCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		A1594CAF191F469B006255AC /* Umeng */ = {
+			isa = PBXGroup;
+			children = (
+				A1594CAC191F4697006255AC /* libMobClickLibrary.a */,
+				A1594CAD191F4697006255AC /* MobClick.h */,
+			);
+			name = Umeng;
 			sourceTree = "<group>";
 		};
 		A171E16018C6D186003113ED = {
@@ -423,6 +436,7 @@
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A1594CAF191F469B006255AC /* Umeng */,
 				A1E95B47191F1DDC009BE585 /* MJRefresh */,
 				A178487C18F139AF005B05F1 /* ExpandTableViewCell */,
 				A1830B5E18DB4E580053DE81 /* JDSideMenu */,
@@ -770,6 +784,10 @@
 				GCC_PREFIX_HEADER = "Malmoo/Malmoo-Prefix.pch";
 				INFOPLIST_FILE = "Malmoo/Malmoo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Malmoo",
+				);
 				OTHER_LDFLAGS = (
 					"-Wl,-no_compact_unwind",
 					"-framework",
@@ -807,6 +825,10 @@
 				GCC_PREFIX_HEADER = "Malmoo/Malmoo-Prefix.pch";
 				INFOPLIST_FILE = "Malmoo/Malmoo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Malmoo",
+				);
 				OTHER_LDFLAGS = (
 					"-Wl,-no_compact_unwind",
 					"-framework",

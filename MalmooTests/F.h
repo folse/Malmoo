@@ -8,6 +8,7 @@
 #import "MBProgressHUD.h"
 #import <AFNetworking.h>
 #import "JDSideMenu.h"
+#import "MobClick.h"
 
 #define s(content) NSLog(@"%@", content);
 #define i(content) NSLog(@"%d", content);

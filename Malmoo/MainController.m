@@ -61,6 +61,14 @@
 {
     [super viewWillAppear:animated];
     
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -73,20 +81,20 @@
     
     shopArray = [NSMutableArray new];
     
-    //[self addFooter];
+    [self addFooter];
     
     //sleep(3);
     
-    //[self refreshView];
+    [self refresh];
     
 //    webView = [[UIWebView alloc] init];
 //    [webView setDelegate:self];
 //    
-    [self clearData];
+    //[self clearData];
     
 }
 
--(void)refreshView
+-(void)refresh
 {
     [self getShopData:nil];
 }
@@ -716,19 +724,19 @@
         
         PAGE_NUM += 1;
 
-        [self refreshView];
+        [self refresh];
         
-        [refreshView endRefreshing];
-
     };
     _footer = footer;
 }
 
 -(void)doneLoadMore
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:shopArray.count-29 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:shopArray.count-31 inSection:0];
     
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    
+    [_footer endRefreshing];
 }
 
 @end

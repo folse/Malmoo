@@ -41,6 +41,17 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self displayDishMenu];
+    
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -252,7 +263,7 @@
         [mapController setShop:_shop];
         
     }else if ([segue.identifier isEqualToString:@"MenuController"]) {
-    
+        
         MenuController *menuController = segue.destinationViewController;
         [menuController setShop:_shop];
         [menuController setMenuType:selectedMenuType];
