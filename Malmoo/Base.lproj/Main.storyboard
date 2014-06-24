@@ -641,10 +641,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                    <mutableString key="text">Our current services are all free to both users and companies. If you need more updated information about the company you like, we would like to make the company to pay extra service to and for you. The only thing you need to do is introduce us the company. Once they’ve made the payment, you will discover extra information on their pages. To show our grateful and reward of your help, we will pay you 150 SEK per place you recruit.
+                                    <string key="text">Our current services are all free to both users and companies. If you need more updated information about the company you like, we would like to make the company to pay extra service to and for you. The only thing you need to do is introduce us the company. Once they’ve made the payment, you will discover extra information on their pages. To show our grateful and reward of your help, we will pay you 150 SEK per place you recruit.
 
 If you find your company’s information is missing or not right,
-please feel free to contact us at  xxxxx@xxx.se </mutableString>
+please feel free to contact us at  xxxxx@xxx.se </string>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -691,7 +691,7 @@ please feel free to contact us at  xxxxx@xxx.se </mutableString>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                    <mutableString key="text">We are making things simple for store owners and also for consumers and tourists. 
+                                    <string key="text">We are making things simple for store owners and also for consumers and tourists. 
 
 Free service:
 
@@ -714,7 +714,7 @@ Paying service:
 
  Parking places around
 
-Our price is 150 SEK / month for unlimited times of customizing your page. </mutableString>
+Our price is 150 SEK / month for unlimited times of customizing your page. </string>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

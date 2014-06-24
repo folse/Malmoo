@@ -11,7 +11,6 @@
 @property (nonatomic) BOOL needCustomSize;
 @property (nonatomic, copy) void (^completionHandler)(UIImage *image);
 
-
 -(void)downloadImageFrom:(NSString *)url;
 
 @end
