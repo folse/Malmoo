@@ -29,7 +29,7 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    [MobClick startWithAppkey:@"536ef5ee56240b0a790f4074" reportPolicy:SEND_INTERVAL   channelId:@"AppStore"];
+    [MobClick startWithAppkey:UMENG_APP_KEY reportPolicy:SEND_INTERVAL   channelId:@"AppStore"];
         
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];

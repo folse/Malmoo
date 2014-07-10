@@ -53,9 +53,11 @@ HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce col
 #define API_BASE_URL @"http://mldrapi.duapp.com"
 #endif
 
+#define UMENG_APP_KEY @"536ef5ee56240b0a790f4074"
+
 //#define API_BASE_URL [NSString stringWithFormat:@"http://%@",[USER valueForKey:@"test"]]
 
-@interface F : NSObject
+@interface ProjectSettings : NSObject
 
 -(NSString *)MD5:(NSString *)text;
 

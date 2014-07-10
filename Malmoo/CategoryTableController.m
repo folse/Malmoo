@@ -164,7 +164,7 @@
     [cell.titleLabel setText:cellShop.name];
     [cell.addressLabel setText:cellShop.address];
     
-    NSString *imagePath = [[F alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
+    NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:imagePath]){
         

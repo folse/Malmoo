@@ -11,8 +11,9 @@
 #import "SubCateViewController.h"
 #import "MenuController.h"
 #import "Cell.h"
+#import "UMFeedbackViewController.h"
 
-@interface DetailController ()<UIFolderTableViewDelegate>
+@interface DetailController ()<UIFolderTableViewDelegate,UIActionSheetDelegate>
 {
     NSString *selectedMenuType;
 }
@@ -66,12 +67,13 @@
     [_mainDishesLabel setText:_shop.mainDishes];
     [_dessertsLabel setText:_shop.dessertDishes];
     
-    NSString *imagePath = [[F alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
+    NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:imagePath]){
         
         _avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -251,6 +253,33 @@
     UIButton *actionBtn = (UIButton *)sender;
     selectedMenuType = [[actionBtn titleLabel] text];
     [self performSegueWithIdentifier:@"MenuController" sender:self];
+}
+
+- (IBAction)moreBtnAction:(id)sender
+{
+    UIActionSheet *actionSheet = [UIActionSheet bk_actionSheetWithTitle:@"a"];
+    [actionSheet bk_addButtonWithTitle:@"Share this" handler:^{
+       
+        
+    }];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [actionSheet bk_addButtonWithTitle:@"Report error" handler:^{
+            
+            [self showNativeFeedbackWithAppkey:UMENG_APP_KEY];
+            
+        }];
+    }
+    [actionSheet bk_setCancelButtonWithTitle:@"Cancel" handler:nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)showNativeFeedbackWithAppkey:(NSString *)appkey {
+    UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
+    feedbackViewController.appkey = appkey;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+    navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    navigationController.navigationBar.translucent = NO;
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 #pragma mark - Navigation

@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 folse. All rights reserved.
 //
 
-#import "F.h"
+#import "ProjectSettings.h"
 #import "CommonCrypto/CommonDigest.h"
 
-@interface F ()
+@interface ProjectSettings ()
 
 @end
 
-@implementation F
+@implementation ProjectSettings
 
 -(NSString *)MD5:(NSString *)text
 {

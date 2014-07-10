@@ -87,9 +87,9 @@
     
     [self refresh];
     
-//    webView = [[UIWebView alloc] init];
-//    [webView setDelegate:self];
-//    
+    //    webView = [[UIWebView alloc] init];
+    //    [webView setDelegate:self];
+    //
     //[self clearData];
     
 }
@@ -107,7 +107,7 @@
         if (!error) {
             
             clearArray = objects;
-                        
+            
             [self findDuplicateData:clearArray[clearId]];
             
             //[self copyPhotoData:clearArray[clearId]];
@@ -176,7 +176,7 @@
     object[@"photo"] = photoUrl;
     
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    
+        
         clearId += 1;
         
         if(clearId != 100){
@@ -255,7 +255,7 @@
                 
                 /* by folse
                  Change this method name
-                */
+                 */
                 
                 //[self copyPhotoData:clearArray[clearId]];
                 [self replaceLocationData:clearArray[clearId]];
@@ -300,17 +300,19 @@
         
     }else{
         
-        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-            if (!error) {
-                
-                [query whereKey:@"location" nearGeoPoint:geoPoint];
-                
-                f(geoPoint.latitude)
-                f(geoPoint.longitude)
-                
-                [self findObjects:query];
-            }
-        }];
+        //        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        //            if (!error) {
+        
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:55.596149 longitude:13.004419];
+        
+        [query whereKey:@"location" nearGeoPoint:geoPoint];
+        
+        f(geoPoint.latitude)
+        f(geoPoint.longitude)
+        
+        [self findObjects:query];
+        //            }
+        //        }];
     }
 }
 
@@ -414,7 +416,7 @@
     s(cellShop.avatarUrl)
     
     if (cellShop.avatarUrl.length > 0) {
-        NSString *imagePath = [[F alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
+        NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:imagePath]){
             
@@ -444,53 +446,53 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 #pragma mark - Navigation
@@ -630,91 +632,91 @@
 }
 
 /*
-
-#pragma mark -
-#pragma mark Location manager
-- (CLLocationManager *)locationManager
-{
-    if (_locationManager != nil)
-    {
-        return _locationManager;
-    }
-    _locationManager = [[CLLocationManager alloc] init];
-    [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
-    [_locationManager setDistanceFilter:kCLDistanceFilterNone];
-    
-    [_locationManager setDelegate:self];
-    return _locationManager;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法获取当前位置" message:@"请检查是否开启定位服务" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
-    //[alert show];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    CLLocation *currentLocation = [_locationManager location];
-    if (currentLocation){
-        
-        //        if(!isExcuted){
-        //
-        //            isExcuted = YES;
-        //
-        
-        [self displayLocation:currentLocation];
-        
-        [[self locationManager] stopUpdatingLocation];
-        
-        //            //            V1 get English City Name from Location
-        //            //            CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-        //            //            [geoCoder  reverseGeocodeLocation:currentLocation completionHandler:
-        //            //             ^(NSArray *placemarks, NSError *error) {
-        //            //
-        //            //                 for (CLPlacemark *placemark in placemarks)
-        //            //                 {
-        //            //                     NSString *city = placemark.locality;
-        //            //
-        //            //                     if (city.length > 0 ) {
-        //            //                         stateString = city;
-        //            //                     }else{
-        //            //                         stateString = [placemark.addressDictionary objectForKey:@"State"];
-        //            //                     }
-        //            //
-        //            //                     s(stateString);
-        //
-        //            [USER setFloat:currentLocation.coordinate.latitude forKey:@"latitude"];
-        //            [USER setFloat:currentLocation.coordinate.longitude forKey:@"longitude"];
-        //
-        //            [self displayMyLocation:currentLocation];
-        //
-        //            //                 }
-        //            //
-        //            //             }];
-        //
-        //            //V2
-        //            NSString *urlString = [NSString stringWithFormat:@"http://api.map.baidu.com/geocoder/v2/?ak=81a0285053693ac3d5302ad4a58153a0&callback=renderReverse&location=%f,%f&output=xml&pois=0", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
-        //
-        //            s(urlString)
-        //            NSURL *url = [NSURL URLWithString:urlString];
-        //            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        //
-        //            xmlOperation = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser) {
-        //
-        //                XMLParser.delegate = self;
-        //                [XMLParser parse];
-        //
-        //            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
-        //
-        //                s(error)
-        //            }];
-        //
-        //            [xmlOperation start];
-        //        }
-    }
-}
-*/
+ 
+ #pragma mark -
+ #pragma mark Location manager
+ - (CLLocationManager *)locationManager
+ {
+ if (_locationManager != nil)
+ {
+ return _locationManager;
+ }
+ _locationManager = [[CLLocationManager alloc] init];
+ [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+ [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+ 
+ [_locationManager setDelegate:self];
+ return _locationManager;
+ }
+ 
+ - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+ {
+ //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法获取当前位置" message:@"请检查是否开启定位服务" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+ //[alert show];
+ }
+ 
+ - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+ {
+ CLLocation *currentLocation = [_locationManager location];
+ if (currentLocation){
+ 
+ //        if(!isExcuted){
+ //
+ //            isExcuted = YES;
+ //
+ 
+ [self displayLocation:currentLocation];
+ 
+ [[self locationManager] stopUpdatingLocation];
+ 
+ //            //            V1 get English City Name from Location
+ //            //            CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+ //            //            [geoCoder  reverseGeocodeLocation:currentLocation completionHandler:
+ //            //             ^(NSArray *placemarks, NSError *error) {
+ //            //
+ //            //                 for (CLPlacemark *placemark in placemarks)
+ //            //                 {
+ //            //                     NSString *city = placemark.locality;
+ //            //
+ //            //                     if (city.length > 0 ) {
+ //            //                         stateString = city;
+ //            //                     }else{
+ //            //                         stateString = [placemark.addressDictionary objectForKey:@"State"];
+ //            //                     }
+ //            //
+ //            //                     s(stateString);
+ //
+ //            [USER setFloat:currentLocation.coordinate.latitude forKey:@"latitude"];
+ //            [USER setFloat:currentLocation.coordinate.longitude forKey:@"longitude"];
+ //
+ //            [self displayMyLocation:currentLocation];
+ //
+ //            //                 }
+ //            //
+ //            //             }];
+ //
+ //            //V2
+ //            NSString *urlString = [NSString stringWithFormat:@"http://api.map.baidu.com/geocoder/v2/?ak=81a0285053693ac3d5302ad4a58153a0&callback=renderReverse&location=%f,%f&output=xml&pois=0", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
+ //
+ //            s(urlString)
+ //            NSURL *url = [NSURL URLWithString:urlString];
+ //            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+ //
+ //            xmlOperation = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser) {
+ //
+ //                XMLParser.delegate = self;
+ //                [XMLParser parse];
+ //
+ //            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
+ //
+ //                s(error)
+ //            }];
+ //
+ //            [xmlOperation start];
+ //        }
+ }
+ }
+ */
 
 - (void)addFooter
 {
@@ -723,7 +725,7 @@
     footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
         
         PAGE_NUM += 1;
-
+        
         [self refresh];
         
     };
