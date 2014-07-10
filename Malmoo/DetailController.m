@@ -11,9 +11,9 @@
 #import "SubCateViewController.h"
 #import "MenuController.h"
 #import "Cell.h"
-#import "UMFeedbackViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface DetailController ()<UIFolderTableViewDelegate,UIActionSheetDelegate>
+@interface DetailController ()<UIFolderTableViewDelegate,MFMailComposeViewControllerDelegate>
 {
     NSString *selectedMenuType;
 }
@@ -257,29 +257,22 @@
 
 - (IBAction)moreBtnAction:(id)sender
 {
-    UIActionSheet *actionSheet = [UIActionSheet bk_actionSheetWithTitle:@"a"];
-    [actionSheet bk_addButtonWithTitle:@"Share this" handler:^{
-       
-        
-    }];
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [actionSheet bk_addButtonWithTitle:@"Report error" handler:^{
-            
-            [self showNativeFeedbackWithAppkey:UMENG_APP_KEY];
-            
-        }];
-    }
-    [actionSheet bk_setCancelButtonWithTitle:@"Cancel" handler:nil];
-    [actionSheet showInView:self.view];
-}
-
-- (void)showNativeFeedbackWithAppkey:(NSString *)appkey {
-    UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
-    feedbackViewController.appkey = appkey;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
-    navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    navigationController.navigationBar.translucent = NO;
-    [self presentViewController:navigationController animated:YES completion:nil];
+    [self displayComposerSheet];
+    
+//    UIActionSheet *actionSheet = [UIActionSheet bk_actionSheetWithTitle:@"a"];
+//    [actionSheet bk_addButtonWithTitle:@"Share this" handler:^{
+//       
+//        
+//    }];
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        [actionSheet bk_addButtonWithTitle:@"Report error" handler:^{
+//            
+//            
+//            
+//        }];
+//    }
+//    [actionSheet bk_setCancelButtonWithTitle:@"Cancel" handler:nil];
+//    [actionSheet showInView:self.view];
 }
 
 #pragma mark - Navigation
@@ -297,6 +290,42 @@
         [menuController setShop:_shop];
         [menuController setMenuType:selectedMenuType];
     }
+}
+
+#pragma mark - Mail
+
+-(void)displayComposerSheet
+{
+    // Attach an image to the email
+    UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
+    UIGraphicsBeginImageContext(screenWindow.frame.size);//全屏截图，包括window
+    [screenWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+    
+    [picker setSubject:@"Report Data Error"];
+    
+    // Set up recipients
+    NSArray *toRecipients = [NSArray arrayWithObject:@"weigang@gmail.com"];
+    
+    [picker setToRecipients:toRecipients];
+    [picker setMessageBody:@"I find an information error at:  , it should be: " isHTML:NO];
+    
+    NSData *myData = UIImageJPEGRepresentation(viewImage, 1.0);
+    [picker addAttachmentData:myData mimeType:@"image/png" fileName:@""];
+    
+    // Fill out the email body text
+    
+    [self presentViewController:picker animated:YES completion:nil];
+    
+}
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
