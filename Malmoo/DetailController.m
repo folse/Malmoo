@@ -20,6 +20,8 @@
     UIBarButtonItem *shareBtn;
     UIBarButtonItem *reportBtn;
     UIBarButtonItem *favouriteBtn;
+    UIImageView *coverImageView;
+    UIImage *originalImage;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
@@ -30,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *startersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mainDishesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dessertsLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 @property (assign) BOOL isOpen;
 @property (nonatomic,retain) NSIndexPath *selectIndex;
@@ -78,31 +79,109 @@
     
     [_titleLabel setText:_shop.name];
     [_addressLabel setText:_shop.address];
-    [_phoneBtn setTitle:_shop.phone forState:UIControlStateNormal];
+    [_phoneBtn setTitle:@"042-327050" forState:UIControlStateNormal];
     [_openHoursLabel setText:_shop.openHours];
     [_startersLabel setText:_shop.starterDishes];
     [_mainDishesLabel setText:_shop.mainDishes];
     [_dessertsLabel setText:_shop.dessertDishes];
     
-    NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:imagePath]){
+    [self removeNavigationBarShadow];
+    
+    [self setHeaderImage];
+}
+
+-(void)setHeaderImage
+{
+    if (_shop.avatarUrl != nil) {
         
-        //_avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+        [self.tableView setContentInset:UIEdgeInsetsMake(200, 0, 0, 0)];
+        
+        UIImageView *bgImageView = [[UIImageView alloc] init];
+        
+        NSString *originalImageUrl = [self getOriginalImageUrl:_shop.avatarUrl];
+        
+        NSString *originalImagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:originalImageUrl];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:originalImagePath]){
+            
+            originalImage = [UIImage imageWithContentsOfFile:originalImagePath];
+            
+            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, originalImage.size.height)];
+            
+        }else{
+            
+            NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            if ([fileManager fileExistsAtPath:imagePath]){
                 
-        [self.tableView setContentInset:UIEdgeInsetsMake(120, 0, 0, 0)];
+                originalImage = [UIImage imageWithContentsOfFile:imagePath];
+            }
+            
+            coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+            [bgImageView addSubview:coverImageView];
+            
+            [self showImageByDownloadingProgress:originalImageUrl withDownloadPath:originalImagePath];
+            
+            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, originalImage.size.height*320/120)];
+        }
         
-        UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:imagePath]];
-        [bgImageView setFrame:CGRectMake(0, 100, SCREEN_WIDTH, _avatarImageView.image.size.height)];
+        [bgImageView setImage:originalImage];
         [bgImageView setContentMode:UIViewContentModeScaleAspectFill];
         
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, _avatarImageView.image.size.height)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
         [bgView addSubview:bgImageView];
         [self.tableView setBackgroundView:bgView];
     }
-    
-    [self removeNavigationBarShadow];
+}
 
+-(NSString *)getOriginalImageUrl:(NSString *)imageUrl
+{
+    NSMutableString *imageUrlString = [[NSMutableString alloc] initWithString:imageUrl];
+    [imageUrlString replaceOccurrencesOfString:@"-w120/" withString:@"-w320/" options:NSBackwardsSearch range:NSMakeRange(0, imageUrlString.length)];
+    s(imageUrlString)
+    return imageUrlString;
+}
+
+-(void)showImageByDownloadingProgress:(NSString *)imageUrl withDownloadPath:(NSString *)imagePath
+{
+    NSURLRequest *photoRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:photoRequest];
+    
+    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:imagePath append:NO]];
+    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+        UIImage *shopImage = [UIImage imageWithContentsOfFile:imagePath];
+        
+        int totalExpectedToRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesExpectedToRead] intValue];
+        int totalRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesRead] intValue];
+        
+        float scaleProgress = (float)totalRead/(float)totalExpectedToRead;
+        
+        [coverImageView setFrame:CGRectMake(0, 0, 320, shopImage.size.height*scaleProgress)];
+        coverImageView.image = [self cutImage:shopImage withScale:scaleProgress];
+    }];
+    
+    [operation setCompletionBlock:^{
+        UIImage *shopImage = [UIImage imageWithContentsOfFile:imagePath];
+        [coverImageView setFrame:CGRectMake(0, 0, 320, shopImage.size.height)];
+        coverImageView.image = shopImage;
+    }];
+    
+    [operation start];
+}
+
+-(UIImage *)cutImage:(UIImage *)superImage withScale:(float)scale{
+    
+    CGSize subImageSize = CGSizeMake(superImage.size.width,superImage.size.height);
+    //定义裁剪的区域相对于原图片的位置
+    CGRect subImageRect = CGRectMake(0, 0, superImage.size.width,superImage.size.height*scale);
+    CGImageRef imageRef = superImage.CGImage;
+    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, subImageRect);
+    UIGraphicsBeginImageContext(subImageSize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextDrawImage(context, subImageRect, subImageRef);
+    UIImage* returnImage = [UIImage imageWithCGImage:subImageRef];
+    UIGraphicsEndImageContext(); //返回裁剪的部分图像
+    return returnImage;
 }
 
 - (void)didReceiveMemoryWarning
@@ -363,7 +442,7 @@
     NSString *appName =[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
     
     NSString *message = [NSString stringWithFormat:@"%@,%@,%@ Send by %@",_shop.name,_shop.address,shopPhoneString,appName];
-    NSArray *arrayOfActivityItems = [NSArray arrayWithObjects:message, _avatarImageView.image, nil];
+    NSArray *arrayOfActivityItems = [NSArray arrayWithObjects:message, nil];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc]
                                             initWithActivityItems: arrayOfActivityItems applicationActivities:nil];
     
