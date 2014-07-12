@@ -12,6 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="cQD-Ga-dRK">
                             <rect key="frame" x="0.0" y="64" width="320" height="170"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,7 +70,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Malmoo" id="TpJ-Xt-F1n">
-                        <barButtonItem key="backBarButtonItem" title=" " id="cJ6-L3-vSz"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Fxy-9q-qRg"/>
                         <barButtonItem key="leftBarButtonItem" image="btn_menu" id="7Y6-gk-uhB">
                             <connections>
                                 <action selector="menuBtnAction:" destination="ZAk-Xx-Ozh" id="U2a-NZ-2BM"/>
@@ -162,11 +163,11 @@
         <scene sceneID="L9O-2B-DuP">
             <objects>
                 <tableViewController id="RnT-s3-ol0" customClass="DetailController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tAO-5h-CNL" customClass="UIFolderTableView">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="1" id="tAO-5h-CNL" customClass="UIFolderTableView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="JTu-mW-PUt">
+                        <view key="tableHeaderView" alpha="0.5" contentMode="scaleToFill" id="JTu-mW-PUt">
                             <rect key="frame" x="0.0" y="64" width="320" height="154"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -200,11 +201,12 @@
                                         <action selector="phoneBtnAction:" destination="RnT-s3-ol0" eventType="touchUpInside" id="KR9-3x-pnP"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1i-a6-yHq">
-                                    <rect key="frame" x="250" y="92" width="60" height="44"/>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1i-a6-yHq">
+                                    <rect key="frame" x="230" y="100" width="80" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="14"/>
-                                    <state key="normal" title="Maps >">
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Maps" image="icon_map">
                                         <color key="titleColor" red="0.16470588235294117" green="0.69411764705882351" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -213,10 +215,10 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="tU3-U9-c0r">
-                            <rect key="frame" x="0.0" y="334" width="320" height="234"/>
+                            <rect key="frame" x="0.0" y="324" width="320" height="234"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-8p-GVS">
@@ -262,15 +264,15 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="openHour" rowHeight="51" id="u8A-KG-BZ0" customClass="Cell">
-                                <rect key="frame" x="0.0" y="273" width="320" height="51"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="openHour" rowHeight="50" id="u8A-KG-BZ0" customClass="Cell">
+                                <rect key="frame" x="0.0" y="273" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8A-KG-BZ0" id="epL-DX-jhc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="DownAccessory" translatesAutoresizingMaskIntoConstraints="NO" id="tjm-i0-EyV">
-                                            <rect key="frame" x="282" y="20" width="18" height="10"/>
+                                            <rect key="frame" x="289" y="20" width="18" height="10"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m53-WV-5H4">
@@ -331,6 +333,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="b3n-A2-Vzv">
+                        <barButtonItem key="backBarButtonItem" title=" " id="BDq-ao-h9Y"/>
                         <barButtonItem key="rightBarButtonItem" title="Direction" id="2wt-T0-Dq2">
                             <connections>
                                 <segue destination="Rt0-je-GSt" kind="push" identifier="DirectionController" id="uQe-II-Ht1"/>
@@ -777,8 +780,10 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
         <image name="DownAccessory" width="18" height="10"/>
         <image name="btn_menu" width="36" height="31"/>
         <image name="default_shop_photo" width="66" height="66"/>
+        <image name="icon_map" width="34" height="34"/>
         <image name="prize_bannar" width="300" height="90"/>
     </resources>
+    <color key="tintColor" red="0.21176470589999999" green="0.62352941179999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -100,7 +100,7 @@
 {
     for (UIView *view in self.navigationController.navigationBar.subviews) {
         for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
+            if ([view2 isKindOfClass:[UIImageView class]] && view2.frame.size.width == 320) {
                 [view2 removeFromSuperview];
             }
         }

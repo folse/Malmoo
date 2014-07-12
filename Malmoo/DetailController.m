@@ -65,6 +65,13 @@
     _shop.favourited = NO;
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -81,10 +88,21 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:imagePath]){
         
-        _avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+        //_avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+                
+        [self.tableView setContentInset:UIEdgeInsetsMake(120, 0, 0, 0)];
+        
+        UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:imagePath]];
+        [bgImageView setFrame:CGRectMake(0, 100, SCREEN_WIDTH, _avatarImageView.image.size.height)];
+        [bgImageView setContentMode:UIViewContentModeScaleAspectFill];
+        
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, _avatarImageView.image.size.height)];
+        [bgView addSubview:bgImageView];
+        [self.tableView setBackgroundView:bgView];
     }
     
     [self removeNavigationBarShadow];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,7 +115,7 @@
 {
     for (UIView *view in self.navigationController.navigationBar.subviews) {
         for (UIView *view2 in view.subviews) {
-            if ([view2 isKindOfClass:[UIImageView class]]) {
+            if ([view2 isKindOfClass:[UIImageView class]] && view2.frame.size.width == 320) {
                 [view2 removeFromSuperview];
             }
         }
@@ -180,6 +198,11 @@
                                self.tableView.scrollEnabled = YES;
                                [cell changeArrowWithUp:NO];
                            }];
+}
+
+-(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
 }
 
 -(void)CloseAndOpenACtion:(NSIndexPath *)indexPath
@@ -306,7 +329,7 @@
     
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
-    picker setna
+    [picker.navigationBar setTintColor:[UIColor whiteColor]];
     [picker setSubject:@"Report Data Error"];
     
     // Set up recipients
@@ -373,7 +396,7 @@
     
     shareBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(shareShop)];
     
-    reportBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
+    reportBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_report"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
     
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
