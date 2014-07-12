@@ -22,4 +22,6 @@
 @property (nonatomic, strong) NSString *mainDishes;
 @property (nonatomic, strong) NSString *dessertDishes;
 
+@property (nonatomic) BOOL favourited;
+
 @end

@@ -77,6 +77,8 @@
     
     HUD_SHOW
     
+    [self removeNavigationBarShadow];
+    
     //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
     shopArray = [NSMutableArray new];
@@ -92,6 +94,17 @@
     //
     //[self clearData];
     
+}
+
+-(void)removeNavigationBarShadow
+{
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        for (UIView *view2 in view.subviews) {
+            if ([view2 isKindOfClass:[UIImageView class]]) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
 }
 
 -(void)refresh
@@ -630,93 +643,6 @@
     
     [_mapView setRegion:region animated:YES];
 }
-
-/*
- 
- #pragma mark -
- #pragma mark Location manager
- - (CLLocationManager *)locationManager
- {
- if (_locationManager != nil)
- {
- return _locationManager;
- }
- _locationManager = [[CLLocationManager alloc] init];
- [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
- [_locationManager setDistanceFilter:kCLDistanceFilterNone];
- 
- [_locationManager setDelegate:self];
- return _locationManager;
- }
- 
- - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
- {
- //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法获取当前位置" message:@"请检查是否开启定位服务" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
- //[alert show];
- }
- 
- - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
- {
- CLLocation *currentLocation = [_locationManager location];
- if (currentLocation){
- 
- //        if(!isExcuted){
- //
- //            isExcuted = YES;
- //
- 
- [self displayLocation:currentLocation];
- 
- [[self locationManager] stopUpdatingLocation];
- 
- //            //            V1 get English City Name from Location
- //            //            CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
- //            //            [geoCoder  reverseGeocodeLocation:currentLocation completionHandler:
- //            //             ^(NSArray *placemarks, NSError *error) {
- //            //
- //            //                 for (CLPlacemark *placemark in placemarks)
- //            //                 {
- //            //                     NSString *city = placemark.locality;
- //            //
- //            //                     if (city.length > 0 ) {
- //            //                         stateString = city;
- //            //                     }else{
- //            //                         stateString = [placemark.addressDictionary objectForKey:@"State"];
- //            //                     }
- //            //
- //            //                     s(stateString);
- //
- //            [USER setFloat:currentLocation.coordinate.latitude forKey:@"latitude"];
- //            [USER setFloat:currentLocation.coordinate.longitude forKey:@"longitude"];
- //
- //            [self displayMyLocation:currentLocation];
- //
- //            //                 }
- //            //
- //            //             }];
- //
- //            //V2
- //            NSString *urlString = [NSString stringWithFormat:@"http://api.map.baidu.com/geocoder/v2/?ak=81a0285053693ac3d5302ad4a58153a0&callback=renderReverse&location=%f,%f&output=xml&pois=0", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude];
- //
- //            s(urlString)
- //            NSURL *url = [NSURL URLWithString:urlString];
- //            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
- //
- //            xmlOperation = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser) {
- //
- //                XMLParser.delegate = self;
- //                [XMLParser parse];
- //
- //            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
- //
- //                s(error)
- //            }];
- //
- //            [xmlOperation start];
- //        }
- }
- }
- */
 
 - (void)addFooter
 {

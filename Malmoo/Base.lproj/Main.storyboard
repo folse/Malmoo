@@ -216,7 +216,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="tU3-U9-c0r">
-                            <rect key="frame" x="0.0" y="334" width="320" height="50"/>
+                            <rect key="frame" x="0.0" y="334" width="320" height="234"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-8p-GVS">
@@ -274,7 +274,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m53-WV-5H4">
-                                            <rect key="frame" x="0.0" y="334" width="160" height="21"/>
+                                            <rect key="frame" x="20" y="9" width="160" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Trebuchet-BoldItalic" family="Trebuchet MS" pointSize="16"/>
                                             <color key="textColor" red="0.1647058824" green="0.69411764710000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -295,11 +295,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Detail" id="tey-Pr-Kgc">
                         <barButtonItem key="backBarButtonItem" title=" " id="T58-nx-uh2"/>
-                        <barButtonItem key="rightBarButtonItem" title="More" id="KTl-hZ-3NB">
-                            <connections>
-                                <action selector="moreBtnAction:" destination="RnT-s3-ol0" id="6Zh-nI-JEQ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="8Zq-tu-0sh" id="7tq-2B-nxb"/>
