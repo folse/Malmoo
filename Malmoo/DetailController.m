@@ -22,6 +22,7 @@
     UIBarButtonItem *favouriteBtn;
     UIImageView *coverImageView;
     UIImage *originalImage;
+    float bgImageViewHeight;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
@@ -94,8 +95,6 @@
 {
     if (_shop.avatarUrl != nil) {
         
-        [self.tableView setContentInset:UIEdgeInsetsMake(200, 0, 0, 0)];
-        
         UIImageView *bgImageView = [[UIImageView alloc] init];
         
         NSString *originalImageUrl = [self getOriginalImageUrl:_shop.avatarUrl];
@@ -106,7 +105,11 @@
             
             originalImage = [UIImage imageWithContentsOfFile:originalImagePath];
             
-            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, originalImage.size.height)];
+            bgImageViewHeight = originalImage.size.height;
+            
+            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, bgImageViewHeight)];
+            
+            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight, 0, 0, 0)];
             
         }else{
             
@@ -122,7 +125,15 @@
             
             [self showImageByDownloadingProgress:originalImageUrl withDownloadPath:originalImagePath];
             
-            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, originalImage.size.height*320/120)];
+            bgImageViewHeight = originalImage.size.height*320/120;
+            
+            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, bgImageViewHeight)];
+        }
+        
+        if(bgImageViewHeight <= 320){
+            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight-40, 0, 0, 0)];
+        }else{
+            [self.tableView setContentInset:UIEdgeInsetsMake(200, 0, 0, 0)];
         }
         
         [bgImageView setImage:originalImage];
@@ -131,6 +142,8 @@
         UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
         [bgView addSubview:bgImageView];
         [self.tableView setBackgroundView:bgView];
+        
+        
     }
 }
 
@@ -277,11 +290,6 @@
                                self.tableView.scrollEnabled = YES;
                                [cell changeArrowWithUp:NO];
                            }];
-}
-
--(float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0;
 }
 
 -(void)CloseAndOpenACtion:(NSIndexPath *)indexPath
