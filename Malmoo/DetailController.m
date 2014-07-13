@@ -99,7 +99,7 @@
         
         NSString *originalImageUrl = [self getOriginalImageUrl:_shop.avatarUrl];
         
-        NSString *originalImagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:originalImageUrl];
+        NSString *originalImagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:originalImageUrl];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:originalImagePath]){
             
@@ -113,7 +113,7 @@
             
         }else{
             
-            NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
+            NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
             NSFileManager *fileManager = [NSFileManager defaultManager];
             if ([fileManager fileExistsAtPath:imagePath]){
                 
@@ -131,7 +131,7 @@
         }
         
         if(bgImageViewHeight <= 320){
-            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight-40, 0, 0, 0)];
+            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight - 42, 0, 0, 0)];
         }else{
             [self.tableView setContentInset:UIEdgeInsetsMake(200, 0, 0, 0)];
         }

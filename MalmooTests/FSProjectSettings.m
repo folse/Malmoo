@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 folse. All rights reserved.
 //
 
-#import "ProjectSettings.h"
+#import "FSProjectSettings.h"
 #import "CommonCrypto/CommonDigest.h"
 
-@interface ProjectSettings ()
+@interface FSProjectSettings ()
 
 @end
 
-@implementation ProjectSettings
+@implementation FSProjectSettings
 
 -(NSString *)MD5:(NSString *)text
 {
@@ -36,8 +36,6 @@
 
 -(NSString *)getMD5FilePathWithUrl:(NSString *)url
 {
-    
-    
     NSString *urlMD5 = [self MD5:url];
     NSArray *documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [documents[0]stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",urlMD5]];

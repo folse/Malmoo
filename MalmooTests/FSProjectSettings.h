@@ -18,7 +18,8 @@
 #define USER_ID [USER valueForKey:@"userId"]
 #define USER_NAME [USER valueForKey:@"userName"]
 #define USER_LOGIN [USER boolForKey:@"userLogined"]
-#define APP_COLOR [UIColor colorWithRed:54.0/255.0 green:159.0/255.0 blue:220.0/255.0 alpha:1.0]
+#define APP_COLOR [UIColor colorWithRed:18.0/255.0 green:168.0/255.0 blue:255.0/255.0 alpha:1.0]
+//#define APP_COLOR [UIColor colorWithRed:54.0/255.0 green:159.0/255.0 blue:220.0/255.0 alpha:1.0]
 
 #define FIRST_LOAD [USER boolForKey:@"isFirstLoad"]
 #define PAGE_ID [USER valueForKey:@"pageId"]
@@ -41,7 +42,7 @@ HUD.square = YES;\
 HUD.margin = 15;\
 HUD.minShowTime = 1;\
 HUD.mode = MBProgressHUDModeCustomView;\
-HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:[UIColor colorWithRed:88.0/255.0 green:194.0/255.0 blue:255.0/255.0 alpha:1.0]];\
+HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:APP_COLOR];\
 [[UIApplication sharedApplication].keyWindow addSubview:HUD];\
 [HUD show:YES];\
 
@@ -57,7 +58,7 @@ HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce col
 
 //#define API_BASE_URL [NSString stringWithFormat:@"http://%@",[USER valueForKey:@"test"]]
 
-@interface ProjectSettings : NSObject
+@interface FSProjectSettings : NSObject
 
 -(NSString *)MD5:(NSString *)text;
 

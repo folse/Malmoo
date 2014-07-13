@@ -15,7 +15,7 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#import "ProjectSettings.h"
+#import "FSProjectSettings.h"
 #import <Parse/Parse.h>
 #import "YSpinKitView.h"
 #import "BlocksKit+UIKit.h"

@@ -429,7 +429,7 @@
     s(cellShop.avatarUrl)
     
     if (cellShop.avatarUrl.length > 0) {
-        NSString *imagePath = [[ProjectSettings alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
+        NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:imagePath]){
             
