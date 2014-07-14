@@ -353,11 +353,10 @@
                 shop.latitude = [NSString stringWithFormat:@"%f",location.latitude];
                 shop.longitude = [NSString stringWithFormat:@"%f",location.longitude];
                 shop.address = object[@"formatted_address"];
-                
-                
                 shop.starterDishes = object[@"starters"];
                 shop.mainDishes = object[@"maindishes"];
                 shop.dessertDishes = object[@"desserts"];
+                shop.parseObject = object;
                 
                 [shopArray addObject:shop];
                 

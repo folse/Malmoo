@@ -89,6 +89,33 @@
     [self removeNavigationBarShadow];
     
     [self setHeaderImage];
+    
+    
+    PFObject *myPost = [PFObject objectWithClassName:@"PhotoCategory"];
+    myPost[@"name"] = @"menu";
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+//    query.limit = 30;
+//    [query whereKey:@"place" equalTo:_shop.parseObject];
+//    [query whereKey:@"category" equalTo:myPost];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            for (PFObject *object in objects) {
+//                s(object[@"url"])
+//            }
+//            
+//        }
+//    }];
+    
+    PFObject *myComment = [PFObject objectWithClassName:@"Photo"];
+    myComment[@"url"] = @"http://abc";
+    
+    // Add a relation between the Post and Comment
+    myComment[@"category"] = myPost;
+    
+    // This will save both myPost and myComment
+    [myComment saveInBackground];
+    
 }
 
 -(void)setHeaderImage

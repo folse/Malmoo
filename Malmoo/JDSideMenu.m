@@ -10,7 +10,7 @@
 
 // constants
 const CGFloat JDSideMenuMinimumRelativePanDistanceToOpen = 0.33;
-const CGFloat JDSideMenuDefaultMenuWidth = 260.0;
+const CGFloat JDSideMenuDefaultMenuWidth = 242.0;
 const CGFloat JDSideMenuDefaultDamping = 0.5;
 
 // animation times

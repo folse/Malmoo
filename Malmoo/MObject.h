@@ -11,5 +11,6 @@
 @interface MObject : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) PFObject *parseObject;
 
 @end
