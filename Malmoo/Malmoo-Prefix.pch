@@ -16,6 +16,3 @@
 #endif
 
 #import "FSProjectSettings.h"
-#import <Parse/Parse.h>
-#import "YSpinKitView.h"
-#import "BlocksKit+UIKit.h"

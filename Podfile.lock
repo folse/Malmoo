@@ -18,33 +18,31 @@ PODS:
   - AFNetworking/UIKit (2.2.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BlocksKit (2.2.0):
+  - BlocksKit (2.2.2):
     - BlocksKit/All
-  - BlocksKit/All (2.2.0):
+  - BlocksKit/All (2.2.2):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
     - BlocksKit/MessageUI
     - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.0)
-  - BlocksKit/DynamicDelegate (2.2.0):
-    - BlocksKit/MiniFFI
-  - BlocksKit/MessageUI (2.2.0):
+  - BlocksKit/Core (2.2.2)
+  - BlocksKit/DynamicDelegate (2.2.2)
+  - BlocksKit/MessageUI (2.2.2):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - BlocksKit/MiniFFI (2.2.0)
-  - BlocksKit/UIKit (2.2.0):
+  - BlocksKit/UIKit (2.2.2):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - EAIntroView (2.6.1)
+  - EAIntroView (2.6.0)
 
 DEPENDENCIES:
   - AFNetworking (= 2.2.0)
-  - BlocksKit (= 2.2.0)
-  - EAIntroView (~> 2.6.0)
+  - BlocksKit (= 2.2.2)
+  - EAIntroView (= 2.6.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5f2538aa2d150b71d4e6cca3a420d796e1e1c374
-  BlocksKit: 4eeb8c24dcf888ef56205656d86ccd270ffd63c3
-  EAIntroView: 809dc4c9e8006390340c33346870e7b7bb52fe02
+  BlocksKit: 49fda17cbd628f3d6683f62de57edeaa315b386c
+  EAIntroView: 1223ef380aef3e2285508016a083d70e80c48a30
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
