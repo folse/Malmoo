@@ -36,6 +36,7 @@
 {
     [super viewDidLayoutSubviews];
     self.scrollView.contentSize = CGRectInset(self.scrollView.bounds, 0, -1).size;
+    self.sideMenuController.panGestureEnabled = NO;
 }
 
 - (IBAction)HomeBtnAction:(id)sender
