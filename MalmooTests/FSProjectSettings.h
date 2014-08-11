@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 #import "YSpinKitView.h"
 #import "BlocksKit+UIKit.h"
-#import "Place.h"
+#import "TSPlace.h"
 
 #define s(content) NSLog(@"%@", content);
 #define i(content) NSLog(@"%d", content);

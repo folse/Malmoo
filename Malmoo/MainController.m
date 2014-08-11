@@ -8,7 +8,7 @@
 
 #import "MainController.h"
 #import "MainCell.h"
-#import "DetailController.h"
+#import "TSDetailController.h"
 #import "FSImageDownloader.h"
 #import "PlaceMark.h"
 #import <MapKit/MKAnnotationView.h>
@@ -108,7 +108,7 @@
 
 -(void)refresh
 {
-    [self getShopData:nil];
+    [self getData:nil];
 }
 
 -(void)clearData
@@ -298,7 +298,7 @@
     }
 }
 
--(void)getShopData:(NSString *)keyWords
+-(void)getData:(NSString *)keyWords
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
     query.limit = 30;
@@ -336,7 +336,7 @@
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
                 
-                Place *place = [Place new];
+                TSPlace *place = [TSPlace new];
                 place.name = object[@"name"];
                 place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
                 place.openHours = object[@"openHours"];
@@ -416,7 +416,7 @@
     static NSString *identifier = @"MainCell";
     MainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    Place *cellPlace = placeArray[row];
+    TSPlace *cellPlace = placeArray[row];
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
@@ -513,8 +513,8 @@
             isSelectedFromMap = NO;
         }
         
-        Place *selectedPlace = placeArray[selectedId];
-        DetailController *detailController = segue.destinationViewController;
+        TSPlace *selectedPlace = placeArray[selectedId];
+        TSDetailController *detailController = segue.destinationViewController;
         detailController.place = selectedPlace;
     }
 }
@@ -549,7 +549,7 @@
     
     for (int i = 0; i < placeArray.count; i++) {
         
-        Place *mapPlace = [placeArray objectAtIndex:i];
+        TSPlace *mapPlace = [placeArray objectAtIndex:i];
         
         CLLocationCoordinate2D place;
         place.latitude =  [mapPlace.latitude doubleValue];

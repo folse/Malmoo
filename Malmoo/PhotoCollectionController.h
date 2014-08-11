@@ -10,6 +10,6 @@
 
 @interface PhotoCollectionController : UICollectionViewController
 
-@property (nonatomic,strong) Place *place;
+@property (nonatomic,strong) TSPlace *place;
 
 @end

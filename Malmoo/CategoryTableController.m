@@ -8,7 +8,7 @@
 
 #import "CategoryTableController.h"
 #import "MainCell.h"
-#import "DetailController.h"
+#import "TSDetailController.h"
 #import "FSImageDownloader.h"
 
 @interface CategoryTableController ()
@@ -55,14 +55,14 @@
     
     HUD_SHOW
     
-    [self getShopData:_categoryName];
+    [self getData:_categoryName];
 }
 
--(void)getShopData:(NSString *)keyWords
+-(void)getData:(NSString *)keyWords
 {
     placeArray = [NSMutableArray new];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Shop"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
     if (keyWords) {
         [query whereKey:@"category" containsString:keyWords];
     }
@@ -72,7 +72,7 @@
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
                 
-                Place *place = [Place new];
+                TSPlace *place = [TSPlace new];
                 place.name = object[@"name"];
                 place.address = object[@"address"];
                 place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -158,7 +158,7 @@
         cell = [[MainCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     
-    Place *cellPlace = placeArray[row];
+    TSPlace *cellPlace = placeArray[row];
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
@@ -228,8 +228,8 @@
 {
     if ([segue.identifier isEqualToString:@"DetailController"]) {
         
-        Place *selectedPlace = placeArray[selectedId];
-        DetailController *detailController = segue.destinationViewController;
+        TSPlace *selectedPlace = placeArray[selectedId];
+        TSDetailController *detailController = segue.destinationViewController;
         detailController.place = selectedPlace;
         
     }

@@ -10,7 +10,7 @@
 
 @interface MenuController : UITableViewController
 
-@property (nonatomic, strong) Place *place;
+@property (nonatomic, strong) TSPlace *place;
 
 @property (nonatomic) NSString *menuType;
 

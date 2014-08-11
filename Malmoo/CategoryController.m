@@ -50,10 +50,10 @@
     
     HUD_SHOW
         
-    [self getShopCategory];
+    [self getPlaceCategory];
 }
 
--(void)getShopCategory
+-(void)getPlaceCategory
 {
     categoryArray = [NSMutableArray new];
     

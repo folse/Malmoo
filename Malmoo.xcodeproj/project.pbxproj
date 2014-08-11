@@ -20,7 +20,7 @@
 		A10BC27118D04DE1002999F6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC27018D04DE1002999F6 /* StoreKit.framework */; };
 		A10BC27318D04DE8002999F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC27218D04DE8002999F6 /* SystemConfiguration.framework */; };
 		A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27518D05C40002999F6 /* YSpinKitView.m */; };
-		A10BC27A18D0713B002999F6 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27918D0713B002999F6 /* Place.m */; };
+		A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27918D0713B002999F6 /* TSPlace.m */; };
 		A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */; };
 		A10EDCA618D07F940048EA02 /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* MainCell.m */; };
 		A11316F1191E81E800EC96B6 /* PromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* PromotionController.m */; };
@@ -39,7 +39,7 @@
 		A171E18E18C6D186003113ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E17018C6D186003113ED /* UIKit.framework */; };
 		A171E19618C6D186003113ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A171E19418C6D186003113ED /* InfoPlist.strings */; };
 		A171E19818C6D186003113ED /* MalmooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A171E19718C6D186003113ED /* MalmooTests.m */; };
-		A1738D7518D6927F00FBFDFC /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1738D7418D6927F00FBFDFC /* DetailController.m */; };
+		A1738D7518D6927F00FBFDFC /* TSDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1738D7418D6927F00FBFDFC /* TSDetailController.m */; };
 		A1738D7818D695DE00FBFDFC /* FSImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A1738D7718D695DE00FBFDFC /* FSImageDownloader.m */; };
 		A178487718F13995005B05F1 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = A178486F18F13995005B05F1 /* Cell.m */; };
 		A178487818F13995005B05F1 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A178487018F13995005B05F1 /* Cell.xib */; };
@@ -95,8 +95,8 @@
 		A10BC27218D04DE8002999F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A10BC27418D05C40002999F6 /* YSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSpinKitView.h; sourceTree = "<group>"; };
 		A10BC27518D05C40002999F6 /* YSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSpinKitView.m; sourceTree = "<group>"; };
-		A10BC27818D0713B002999F6 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
-		A10BC27918D0713B002999F6 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		A10BC27818D0713B002999F6 /* TSPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlace.h; sourceTree = "<group>"; };
+		A10BC27918D0713B002999F6 /* TSPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlace.m; sourceTree = "<group>"; };
 		A10BC27C18D07E8B002999F6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A10EDCA418D07F940048EA02 /* MainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCell.h; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 		A171E19318C6D186003113ED /* MalmooTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MalmooTests-Info.plist"; sourceTree = "<group>"; };
 		A171E19518C6D186003113ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A171E19718C6D186003113ED /* MalmooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MalmooTests.m; sourceTree = "<group>"; };
-		A1738D7318D6927F00FBFDFC /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
-		A1738D7418D6927F00FBFDFC /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
+		A1738D7318D6927F00FBFDFC /* TSDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDetailController.h; sourceTree = "<group>"; };
+		A1738D7418D6927F00FBFDFC /* TSDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDetailController.m; sourceTree = "<group>"; };
 		A1738D7618D695DE00FBFDFC /* FSImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageDownloader.h; sourceTree = "<group>"; };
 		A1738D7718D695DE00FBFDFC /* FSImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageDownloader.m; sourceTree = "<group>"; };
 		A178486E18F13995005B05F1 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 		A10BC27B18D071CE002999F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A10BC27818D0713B002999F6 /* Place.h */,
-				A10BC27918D0713B002999F6 /* Place.m */,
+				A10BC27818D0713B002999F6 /* TSPlace.h */,
+				A10BC27918D0713B002999F6 /* TSPlace.m */,
 				A1165CB018F69D8300213808 /* PlaceCategory.h */,
 				A1165CB118F69D8300213808 /* PlaceCategory.m */,
 			);
@@ -394,8 +394,8 @@
 		A1BDDDE51998FB890041B0A1 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				A1738D7318D6927F00FBFDFC /* DetailController.h */,
-				A1738D7418D6927F00FBFDFC /* DetailController.m */,
+				A1738D7318D6927F00FBFDFC /* TSDetailController.h */,
+				A1738D7418D6927F00FBFDFC /* TSDetailController.m */,
 				A1BDDDE21998FB830041B0A1 /* PhotoCollectionController.h */,
 				A1BDDDE31998FB830041B0A1 /* PhotoCollectionController.m */,
 				A1830B5318DB4D540053DE81 /* MapController.h */,
@@ -608,7 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A108B50618DC81D1004DDA65 /* FSProjectSettings.m in Sources */,
-				A10BC27A18D0713B002999F6 /* Place.m in Sources */,
+				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
 				A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */,
@@ -616,7 +616,7 @@
 				A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */,
 				A178488718F16DDA005B05F1 /* DirectionController.m in Sources */,
 				A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */,
-				A1738D7518D6927F00FBFDFC /* DetailController.m in Sources */,
+				A1738D7518D6927F00FBFDFC /* TSDetailController.m in Sources */,
 				A1830BA318DBF5340053DE81 /* PlaceMark.m in Sources */,
 				A140346B18F3CB6E00EA05F9 /* MenuController.m in Sources */,
 				A10EDCA618D07F940048EA02 /* MainCell.m in Sources */,
