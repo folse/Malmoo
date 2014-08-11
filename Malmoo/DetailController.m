@@ -51,7 +51,7 @@
     
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
     [self addBottomToolBar];
 }
@@ -60,11 +60,11 @@
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
     [bottomToolBar removeFromSuperview];
     
-    _shop.favourited = NO;
+    _place.favourited = NO;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -78,53 +78,37 @@
 {
     [super viewDidLoad];
     
-    [_titleLabel setText:_shop.name];
-    [_addressLabel setText:_shop.address];
+    [_titleLabel setText:_place.name];
+    [_addressLabel setText:_place.address];
     [_phoneBtn setTitle:@"042-327050" forState:UIControlStateNormal];
-    [_openHoursLabel setText:_shop.openHours];
-    [_startersLabel setText:_shop.starterDishes];
-    [_mainDishesLabel setText:_shop.mainDishes];
-    [_dessertsLabel setText:_shop.dessertDishes];
+    [_openHoursLabel setText:_place.openHours];
+    [_startersLabel setText:_place.starterDishes];
+    [_mainDishesLabel setText:_place.mainDishes];
+    [_dessertsLabel setText:_place.dessertDishes];
     
     [self removeNavigationBarShadow];
     
     [self setHeaderImage];
     
     
-    PFObject *myPost = [PFObject objectWithClassName:@"PhotoCategory"];
-    myPost[@"name"] = @"menu";
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-//    query.limit = 30;
-//    [query whereKey:@"place" equalTo:_shop.parseObject];
-//    [query whereKey:@"category" equalTo:myPost];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            for (PFObject *object in objects) {
-//                s(object[@"url"])
-//            }
-//            
-//        }
-//    }];
-    
-    PFObject *myComment = [PFObject objectWithClassName:@"Photo"];
-    myComment[@"url"] = @"http://abc";
-    
-    // Add a relation between the Post and Comment
-    myComment[@"category"] = myPost;
-    
-    // This will save both myPost and myComment
-    [myComment saveInBackground];
+//    PFObject *myComment = [PFObject objectWithClassName:@"Photo"];
+//    myComment[@"url"] = @"http://abc";
+//    
+//    // Add a relation between the Post and Comment
+//    myComment[@"category"] = myPost;
+//    
+//    // This will save both myPost and myComment
+//    [myComment saveInBackground];
     
 }
 
 -(void)setHeaderImage
 {
-    if (_shop.avatarUrl != nil) {
+    if (_place.avatarUrl != nil) {
         
         UIImageView *bgImageView = [[UIImageView alloc] init];
         
-        NSString *originalImageUrl = [self getOriginalImageUrl:_shop.avatarUrl];
+        NSString *originalImageUrl = [self getOriginalImageUrl:_place.avatarUrl];
         
         NSString *originalImagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:originalImageUrl];
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -140,7 +124,7 @@
             
         }else{
             
-            NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:_shop.avatarUrl];
+            NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:_place.avatarUrl];
             NSFileManager *fileManager = [NSFileManager defaultManager];
             if ([fileManager fileExistsAtPath:imagePath]){
                 
@@ -169,7 +153,6 @@
         UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
         [bgView addSubview:bgImageView];
         [self.tableView setBackgroundView:bgView];
-        
         
     }
 }
@@ -243,22 +226,22 @@
 
 -(void)showDishMenu
 {
-    if (_shop.starterDishes) {
+    if (_place.starterDishes) {
         [_starterDishBtn setHidden:NO];
     }
     
-    if (_shop.mainDishes) {
+    if (_place.mainDishes) {
         [_mainDishBtn setHidden:NO];
     }
     
-    if (_shop.dessertDishes) {
+    if (_place.dessertDishes) {
         [_dessertDishBtn setHidden:NO];
     }
 }
 
 - (IBAction)phoneBtnAction:(id)sender
 {
-    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_shop.phone]];
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_place.phone]];
     UIWebView  *phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
     
@@ -297,7 +280,7 @@
     
     if ([cell.titleLabel.text isEqualToString:@"Open Hours"]) {
         
-        subVc.Info = _shop.openHours;
+        subVc.Info = _place.openHours;
     }
     
     self.tableView.scrollEnabled = NO;
@@ -420,12 +403,12 @@
     if ([segue.identifier isEqualToString:@"MapController"]) {
         
         MapController *mapController = segue.destinationViewController;
-        [mapController setShop:_shop];
+        [mapController setPlace:_place];
         
     }else if ([segue.identifier isEqualToString:@"MenuController"]) {
         
         MenuController *menuController = segue.destinationViewController;
-        [menuController setShop:_shop];
+        [menuController setPlace:_place];
         [menuController setMenuType:selectedMenuType];
     }
 }
@@ -468,7 +451,7 @@
 
 -(void)shareShop
 {
-    NSString *shopPhoneString = _shop.phone;
+    NSString *shopPhoneString = _place.phone;
     
     if (shopPhoneString == nil) {
         shopPhoneString = @" ";
@@ -476,7 +459,7 @@
     
     NSString *appName =[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
     
-    NSString *message = [NSString stringWithFormat:@"%@,%@,%@ Send by %@",_shop.name,_shop.address,shopPhoneString,appName];
+    NSString *message = [NSString stringWithFormat:@"%@,%@,%@ Send by %@",_place.name,_place.address,shopPhoneString,appName];
     NSArray *arrayOfActivityItems = [NSArray arrayWithObjects:message, nil];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc]
                                             initWithActivityItems: arrayOfActivityItems applicationActivities:nil];
@@ -486,17 +469,17 @@
 
 -(void)favouriteShop
 {
-    if (_shop.favourited) {
+    if (_place.favourited) {
         
         [favouriteBtn setImage:[UIImage imageNamed:@"icon_star"]];
         
-        _shop.favourited = NO;
+        _place.favourited = NO;
         
     }else{
         
         [favouriteBtn setImage:[UIImage imageNamed:@"icon_star_pressed"]];
         
-        _shop.favourited = YES;
+        _place.favourited = YES;
     }
 }
 

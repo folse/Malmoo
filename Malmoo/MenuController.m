@@ -30,14 +30,14 @@
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -48,15 +48,15 @@
     
     if([_menuType isEqualToString:@"Starters"]){
         
-        menuArray = [_shop.starterDishes componentsSeparatedByString:@","];
+        menuArray = [_place.starterDishes componentsSeparatedByString:@","];
         
     }else if([_menuType isEqualToString:@"Main Dishes"]){
         
-        menuArray = [_shop.mainDishes componentsSeparatedByString:@","];
+        menuArray = [_place.mainDishes componentsSeparatedByString:@","];
     
     }else if([_menuType isEqualToString:@"Desserts"]){
         
-        menuArray = [_shop.dessertDishes componentsSeparatedByString:@","];
+        menuArray = [_place.dessertDishes componentsSeparatedByString:@","];
     }
 }
 

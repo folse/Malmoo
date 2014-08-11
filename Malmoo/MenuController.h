@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Shop.h"
 
 @interface MenuController : UITableViewController
 
-@property (nonatomic, strong) Shop *shop;
+@property (nonatomic, strong) Place *place;
 
 @property (nonatomic) NSString *menuType;
 

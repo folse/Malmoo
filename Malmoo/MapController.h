@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Shop.h"
 
 @interface MapController : UIViewController
 
-@property (nonatomic, strong) Shop *shop;
+@property (nonatomic, strong) Place *place;
 
 @end

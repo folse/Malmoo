@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Shop.h"
 #import "UIFolderTableView.h"
 
 @interface DetailController : UITableViewController
 
-@property (nonatomic,strong) Shop *shop;
+@property (nonatomic,strong) Place *place;
 
 @end

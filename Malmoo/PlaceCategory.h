@@ -1,13 +1,13 @@
 //
-//  ShopCategory.m
+//  PlaceCategory.h
 //  Malmoo
 //
 //  Created by folse on 4/10/14.
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "ShopCategory.h"
+@interface PlaceCategory : NSObject
 
-@implementation ShopCategory
+@property (nonatomic, strong) NSString *name;
 
 @end

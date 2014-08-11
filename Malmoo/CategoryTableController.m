@@ -7,7 +7,6 @@
 //
 
 #import "CategoryTableController.h"
-#import "Shop.h"
 #import "MainCell.h"
 #import "DetailController.h"
 #import "FSImageDownloader.h"
@@ -15,7 +14,7 @@
 @interface CategoryTableController ()
 {
     MBProgressHUD *HUD;
-    NSMutableArray *shopArray;
+    NSMutableArray *placeArray;
     NSInteger selectedId;
 }
 
@@ -38,14 +37,14 @@
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -61,7 +60,7 @@
 
 -(void)getShopData:(NSString *)keyWords
 {
-    shopArray = [NSMutableArray new];
+    placeArray = [NSMutableArray new];
     
     PFQuery *query = [PFQuery queryWithClassName:@"Shop"];
     if (keyWords) {
@@ -73,24 +72,23 @@
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
                 
-                Shop *shop = [Shop new];
-                shop.name = object[@"name"];
-                shop.address = object[@"address"];
-                shop.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
-                shop.openHours = object[@"openHours"];
-                shop.tags = object[@"metatag"];
-                shop.avatarUrl = object[@"avatar"];
-                shop.starterDishes = object[@"starters"];
-                shop.mainDishes = object[@"maindishes"];
-                shop.dessertDishes = object[@"desserts"];
-                shop.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
-                shop.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
+                Place *place = [Place new];
+                place.name = object[@"name"];
+                place.address = object[@"address"];
+                place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
+                place.openHours = object[@"openHours"];
+                place.tags = object[@"metatag"];
+                place.avatarUrl = object[@"avatar"];
+                place.starterDishes = object[@"starters"];
+                place.mainDishes = object[@"maindishes"];
+                place.dessertDishes = object[@"desserts"];
+                place.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
+                place.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
+                                
+                [placeArray addObject:place];
                 
-                
-                [shopArray addObject:shop];
-                
-                NSIndexPath *index = [NSIndexPath indexPathForRow:shopArray.count-1 inSection:0];
-                [self startImageDownload:shop.avatarUrl forIndexPath:index];
+                NSIndexPath *index = [NSIndexPath indexPathForRow:placeArray.count-1 inSection:0];
+                [self startImageDownload:place.avatarUrl forIndexPath:index];
             }
             
             [HUD hide:YES];
@@ -144,7 +142,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return shopArray.count;
+    return placeArray.count;
 }
 
 
@@ -160,11 +158,11 @@
         cell = [[MainCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     
-    Shop *cellShop = shopArray[row];
-    [cell.titleLabel setText:cellShop.name];
-    [cell.addressLabel setText:cellShop.address];
+    Place *cellPlace = placeArray[row];
+    [cell.titleLabel setText:cellPlace.name];
+    [cell.addressLabel setText:cellPlace.address];
     
-    NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
+    NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellPlace.avatarUrl];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:imagePath]){
         
@@ -174,7 +172,7 @@
         
         if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
         {
-            [self startImageDownload:cellShop.avatarUrl forIndexPath:indexPath];
+            [self startImageDownload:cellPlace.avatarUrl forIndexPath:indexPath];
         }
     }
     
@@ -230,9 +228,9 @@
 {
     if ([segue.identifier isEqualToString:@"DetailController"]) {
         
-        Shop *selectedShop = shopArray[selectedId];
+        Place *selectedPlace = placeArray[selectedId];
         DetailController *detailController = segue.destinationViewController;
-        detailController.shop = selectedShop;
+        detailController.place = selectedPlace;
         
     }
 }

@@ -39,14 +39,14 @@
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -84,11 +84,11 @@
 - (void)markPlace
 {    
     CLLocationCoordinate2D place;
-    place.latitude =  [_shop.latitude doubleValue];
-    place.longitude = [_shop.longitude doubleValue];
+    place.latitude =  [_place.latitude doubleValue];
+    place.longitude = [_place.longitude doubleValue];
     
     PlaceMark *placeMark = [[PlaceMark alloc] initWithCoordinate:place];
-    placeMark.title = _shop.address;
+    placeMark.title = _place.address;
     
     [self.mapView addAnnotation:placeMark];
     
@@ -277,8 +277,8 @@
         DirectionController *directionController = segue.destinationViewController;
         [directionController setCurrentLat:[NSString stringWithFormat:@"%f",[_locationManager location].coordinate.latitude]];
         [directionController setCurrentLng:[NSString stringWithFormat:@"%f",[_locationManager location].coordinate.longitude]];
-        [directionController setDestinationLat:_shop.latitude];
-        [directionController setDestinationLng:_shop.longitude];
+        [directionController setDestinationLat:_place.latitude];
+        [directionController setDestinationLng:_place.longitude];
     }
 }
 

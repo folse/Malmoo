@@ -7,7 +7,6 @@
 //
 
 #import "MainController.h"
-#import "Shop.h"
 #import "MainCell.h"
 #import "DetailController.h"
 #import "FSImageDownloader.h"
@@ -21,7 +20,7 @@
 @interface MainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 {
     MBProgressHUD *HUD;
-    NSMutableArray *shopArray;
+    NSMutableArray *placeArray;
     NSInteger selectedId;
     BOOL isSelectedFromMap;
     BOOL isSearching;
@@ -61,14 +60,14 @@
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -81,7 +80,7 @@
     
     //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
-    shopArray = [NSMutableArray new];
+    placeArray = [NSMutableArray new];
     
     [self addFooter];
     
@@ -337,32 +336,28 @@
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
                 
-                Shop *shop = [Shop new];
-                shop.name = object[@"name"];
-                shop.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
-                shop.openHours = object[@"openHours"];
-                shop.tags = object[@"metatag"];
-                shop.avatarUrl = object[@"photo"];
-                //shop.address = object[@"address"];
-                //shop.avatarUrl = object[@"avatar"];
-                //shop.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
-                //shop.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
+                Place *place = [Place new];
+                place.name = object[@"name"];
+                place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
+                place.openHours = object[@"openHours"];
+                place.tags = object[@"metatag"];
+                place.avatarUrl = object[@"photo"];
                 
                 PFGeoPoint *location = object[@"location"];
                 
-                shop.latitude = [NSString stringWithFormat:@"%f",location.latitude];
-                shop.longitude = [NSString stringWithFormat:@"%f",location.longitude];
-                shop.address = object[@"formatted_address"];
-                shop.starterDishes = object[@"starters"];
-                shop.mainDishes = object[@"maindishes"];
-                shop.dessertDishes = object[@"desserts"];
-                shop.parseObject = object;
+                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
+                place.address = object[@"formatted_address"];
+                place.starterDishes = object[@"starters"];
+                place.mainDishes = object[@"maindishes"];
+                place.dessertDishes = object[@"desserts"];
+                place.parseObject = object;
                 
-                [shopArray addObject:shop];
+                [placeArray addObject:place];
                 
-                if (shop.avatarUrl.length > 0) {
-                    NSIndexPath *index = [NSIndexPath indexPathForRow:shopArray.count-1 inSection:0];
-                    [self startImageDownload:shop.avatarUrl forIndexPath:index];
+                if (place.avatarUrl.length > 0) {
+                    NSIndexPath *index = [NSIndexPath indexPathForRow:placeArray.count-1 inSection:0];
+                    [self startImageDownload:place.avatarUrl forIndexPath:index];
                 }
             }
             
@@ -411,7 +406,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return shopArray.count;
+    return placeArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -421,14 +416,12 @@
     static NSString *identifier = @"MainCell";
     MainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    Shop *cellShop = shopArray[row];
-    [cell.titleLabel setText:cellShop.name];
-    [cell.addressLabel setText:cellShop.address];
+    Place *cellPlace = placeArray[row];
+    [cell.titleLabel setText:cellPlace.name];
+    [cell.addressLabel setText:cellPlace.address];
     
-    s(cellShop.avatarUrl)
-    
-    if (cellShop.avatarUrl.length > 0) {
-        NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellShop.avatarUrl];
+    if (cellPlace.avatarUrl.length > 0) {
+        NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellPlace.avatarUrl];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:imagePath]){
             
@@ -440,7 +433,7 @@
             
             if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
             {
-                [self startImageDownload:cellShop.avatarUrl forIndexPath:indexPath];
+                [self startImageDownload:cellPlace.avatarUrl forIndexPath:indexPath];
             }
         }
     }else{
@@ -520,9 +513,9 @@
             isSelectedFromMap = NO;
         }
         
-        Shop *selectedShop = shopArray[selectedId];
+        Place *selectedPlace = placeArray[selectedId];
         DetailController *detailController = segue.destinationViewController;
-        detailController.shop = selectedShop;
+        detailController.place = selectedPlace;
     }
 }
 
@@ -554,16 +547,16 @@
 {
     NSMutableArray *stationList = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < shopArray.count; i++) {
+    for (int i = 0; i < placeArray.count; i++) {
         
-        Shop *mapShop = [shopArray objectAtIndex:i];
+        Place *mapPlace = [placeArray objectAtIndex:i];
         
         CLLocationCoordinate2D place;
-        place.latitude =  [mapShop.latitude doubleValue];
-        place.longitude = [mapShop.longitude doubleValue];
+        place.latitude =  [mapPlace.latitude doubleValue];
+        place.longitude = [mapPlace.longitude doubleValue];
         
         PlaceMark *placeMark = [[PlaceMark alloc] initWithCoordinate:place];
-        placeMark.title = mapShop.name;
+        placeMark.title = mapPlace.name;
         placeMark.markId = i;
         
         [stationList addObject:placeMark];
@@ -659,7 +652,7 @@
 
 -(void)doneLoadMore
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:shopArray.count-31 inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:placeArray.count-31 inSection:0];
     
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
     

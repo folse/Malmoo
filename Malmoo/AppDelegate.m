@@ -24,7 +24,7 @@
     
     [Parse setApplicationId:@"yAYNGwJJg4m79x3Vj7Tf0nysjBK9iefzix1OlKSS" clientKey:@"RUASuEpNaS2pR3YY3BoCrj0yZW0uztxZqEFbOicw"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    [MobClick startWithAppkey:UMENG_APP_KEY reportPolicy:SEND_INTERVAL channelId:@"AppStore"];
+    //[MobClick startWithAppkey:UMENG_APP_KEY reportPolicy:SEND_INTERVAL channelId:@"AppStore"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];

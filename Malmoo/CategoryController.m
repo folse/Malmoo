@@ -7,7 +7,7 @@
 //
 
 #import "CategoryController.h"
-#import "ShopCategory.h"
+#import "PlaceCategory.h"
 #import "CategoryTableController.h"
 
 @interface CategoryController ()
@@ -34,14 +34,14 @@
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -64,7 +64,7 @@
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
                 
-                ShopCategory *category = [ShopCategory new];
+                PlaceCategory *category = [PlaceCategory new];
                 category.name = object[@"name"];
 
                 [categoryArray addObject:category];
@@ -116,7 +116,7 @@
 {
     NSInteger row = [indexPath row];
     
-    ShopCategory *cellCategory = categoryArray[row];
+    PlaceCategory *cellCategory = categoryArray[row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
     
@@ -179,7 +179,7 @@
 {
     if ([segue.identifier isEqualToString:@"CategoryTableController"]) {
         
-        ShopCategory *selectedCategory = categoryArray[selectedId];
+        PlaceCategory *selectedCategory = categoryArray[selectedId];
         
         CategoryTableController *categoryTableController = segue.destinationViewController;
         [categoryTableController setCategoryName:selectedCategory.name];
