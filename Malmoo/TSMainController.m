@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "MainController.h"
-#import "MainCell.h"
+#import "TSMainController.h"
+#import "TSMainCell.h"
 #import "TSDetailController.h"
 #import "FSImageDownloader.h"
-#import "PlaceMark.h"
+#import "TSPlaceMark.h"
 #import <MapKit/MKAnnotationView.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
-#import "SearchController.h"
+#import "TSSearchController.h"
 #import "MJRefresh.h"
 
-@interface MainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
+@interface TSMainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 {
     MBProgressHUD *HUD;
     NSMutableArray *placeArray;
@@ -44,7 +44,7 @@
 
 @end
 
-@implementation MainController
+@implementation TSMainController
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -414,7 +414,7 @@
     NSInteger row = indexPath.row;
     
     static NSString *identifier = @"MainCell";
-    MainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    TSMainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     TSPlace *cellPlace = placeArray[row];
     [cell.titleLabel setText:cellPlace.name];
@@ -508,7 +508,7 @@
         
         if (isSelectedFromMap) {
             MKAnnotationView *view = sender;
-            PlaceMark *detailPlaceMark = (PlaceMark *)view.annotation;
+            TSPlaceMark *detailPlaceMark = (TSPlaceMark *)view.annotation;
             selectedId = detailPlaceMark.markId;
             isSelectedFromMap = NO;
         }
@@ -529,7 +529,7 @@
         imageDownloader = [[FSImageDownloader alloc] init];
         [imageDownloader setCompletionHandler:^(UIImage *image) {
             
-            MainCell *cell = (MainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            TSMainCell *cell = (TSMainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
             cell.avatarImageView.image = image;
             
             // Remove the IconDownloader from the in progress list.
@@ -555,7 +555,7 @@
         place.latitude =  [mapPlace.latitude doubleValue];
         place.longitude = [mapPlace.longitude doubleValue];
         
-        PlaceMark *placeMark = [[PlaceMark alloc] initWithCoordinate:place];
+        TSPlaceMark *placeMark = [[TSPlaceMark alloc] initWithCoordinate:place];
         placeMark.title = mapPlace.name;
         placeMark.markId = i;
         
@@ -575,7 +575,7 @@
         return nil;
     }
     
-    if ([annotation isKindOfClass:[PlaceMark class]]) {
+    if ([annotation isKindOfClass:[TSPlaceMark class]]) {
         static NSString *annotationIdentifier = @"annotationIdentifier";
         
         MKPinAnnotationView *pinView =

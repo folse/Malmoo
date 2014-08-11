@@ -6,7 +6,7 @@
 //
 //
 
-#import "MoreController.h"
+#import "TSMoreController.h"
 
 @interface MoreController ()
 

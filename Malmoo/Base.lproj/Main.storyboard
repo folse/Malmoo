@@ -7,7 +7,7 @@
         <!--Main Controller - Malmoo-->
         <scene sceneID="j5e-kA-Iin">
             <objects>
-                <tableViewController id="ZAk-Xx-Ozh" customClass="MainController" sceneMemberID="viewController">
+                <tableViewController id="ZAk-Xx-Ozh" customClass="TSMainController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" id="C4Q-m8-XIZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainCell" rowHeight="78" id="U9I-8p-KwN" customClass="MainCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainCell" rowHeight="78" id="U9I-8p-KwN" customClass="TSMainCell">
                                 <rect key="frame" x="0.0" y="256" width="320" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U9I-8p-KwN" id="IAT-mV-d5K">
@@ -94,7 +94,7 @@
         <!--Search Controller - Search-->
         <scene sceneID="UMS-Kh-qKS">
             <objects>
-                <tableViewController id="74T-ow-8n8" customClass="SearchController" sceneMemberID="viewController">
+                <tableViewController id="74T-ow-8n8" customClass="TSSearchController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="22" sectionFooterHeight="22" id="FU9-AX-yVN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="78" id="lVx-VY-QYN" customClass="MainCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="78" id="lVx-VY-QYN" customClass="TSMainCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lVx-VY-QYN" id="sD0-xV-sj0">
@@ -162,7 +162,7 @@
         <!--Detail Controller - Detail-->
         <scene sceneID="L9O-2B-DuP">
             <objects>
-                <tableViewController id="RnT-s3-ol0" customClass="DetailController" sceneMemberID="viewController">
+                <tableViewController id="RnT-s3-ol0" customClass="TSDetailController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="1" id="tAO-5h-CNL" customClass="UIFolderTableView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,6 +292,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Detail" id="tey-Pr-Kgc">
                         <barButtonItem key="backBarButtonItem" title=" " id="T58-nx-uh2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Photo" id="LcE-W6-mWn">
+                            <connections>
+                                <action selector="photosButtonAction:" destination="RnT-s3-ol0" id="FJW-RK-3xb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="8Zq-tu-0sh" id="7tq-2B-nxb"/>
@@ -308,13 +313,14 @@
             </objects>
             <point key="canvasLocation" x="1575" y="-177"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Photo Collection Controller-->
         <scene sceneID="InZ-0F-WA7">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="c3W-kX-pLZ" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="c3W-kX-pLZ" customClass="TSPhotoCollectionController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="bie-vm-NSm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Eh-dA-A2K">
                             <size key="itemSize" width="111" height="101"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -322,7 +328,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zgf-rX-RQw">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zgf-rX-RQw" customClass="TSPhotoCollectionViewCell">
                                 <rect key="frame" x="0.0" y="64" width="140" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -337,6 +343,9 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <size key="customSize" width="140" height="140"/>
+                                <connections>
+                                    <outlet property="coverImageView" destination="EeI-fG-9xb" id="fzU-ot-utM"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -353,7 +362,7 @@
         <!--Map Controller - Map-->
         <scene sceneID="fxD-Xc-pb1">
             <objects>
-                <viewController id="keO-qL-gDQ" customClass="MapController" sceneMemberID="viewController">
+                <viewController id="keO-qL-gDQ" customClass="TSMapController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4ad-G9-Vq5"/>
                         <viewControllerLayoutGuide type="bottom" id="dZj-cY-la5"/>
@@ -388,7 +397,7 @@
         <!--Menu Controller - Menu-->
         <scene sceneID="9Ss-tp-C01">
             <objects>
-                <tableViewController id="9sG-xR-1Dk" customClass="MenuController" sceneMemberID="viewController">
+                <tableViewController id="9sG-xR-1Dk" customClass="TSMenuController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" id="YdB-pl-tdX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -412,12 +421,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQS-PX-ODq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2040" y="515"/>
+            <point key="canvasLocation" x="2040" y="540"/>
         </scene>
         <!--Direction Controller - Direction-->
         <scene sceneID="o4c-ek-BY4">
             <objects>
-                <viewController id="Rt0-je-GSt" customClass="DirectionController" sceneMemberID="viewController">
+                <viewController id="Rt0-je-GSt" customClass="TSDirectionController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Os-nb-z7A"/>
                         <viewControllerLayoutGuide type="bottom" id="uKt-7z-wZY"/>
@@ -448,7 +457,7 @@
         <!--More Controller - Settings-->
         <scene sceneID="OIZ-6m-a32">
             <objects>
-                <tableViewController id="QPg-hP-S06" customClass="MoreController" sceneMemberID="viewController">
+                <tableViewController id="QPg-hP-S06" customClass="TSMoreController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JQ8-mW-JCK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -538,7 +547,7 @@
         <!--Category Controller - Category-->
         <scene sceneID="W7j-eY-rVb">
             <objects>
-                <tableViewController id="8Ce-c4-xB4" customClass="CategoryController" sceneMemberID="viewController">
+                <tableViewController id="8Ce-c4-xB4" customClass="TSCategoryController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="22" sectionFooterHeight="22" id="L0L-qE-zTd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,13 +587,13 @@
         <!--Category Table Controller-->
         <scene sceneID="4hN-P6-rg8">
             <objects>
-                <tableViewController id="Oz9-PX-S9q" customClass="CategoryTableController" sceneMemberID="viewController">
+                <tableViewController id="Oz9-PX-S9q" customClass="TSCategoryTableController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="mDv-B2-oR2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainCell" rowHeight="77" id="fyl-16-5Xn" customClass="MainCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainCell" rowHeight="77" id="fyl-16-5Xn" customClass="TSMainCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fyl-16-5Xn" id="KBS-8V-v2v">
@@ -667,7 +676,7 @@
         <!--Promotion Controller - Prize-->
         <scene sceneID="Xah-c8-fWG">
             <objects>
-                <tableViewController id="xoQ-5j-m6Z" customClass="PromotionController" sceneMemberID="viewController">
+                <tableViewController id="xoQ-5j-m6Z" customClass="TSPromotionController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="U1e-3K-TpW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,7 +726,7 @@ please feel free to contact us at  xxxxx@xxx.se </string>
         <!--Promotion Controller - About Us-->
         <scene sceneID="Rui-kg-5f6">
             <objects>
-                <tableViewController id="C69-21-CHE" customClass="PromotionController" sceneMemberID="viewController">
+                <tableViewController id="C69-21-CHE" customClass="TSPromotionController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HRa-pE-QcT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

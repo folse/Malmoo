@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "MapController.h"
-#import "PlaceMark.h"
+#import "TSMapController.h"
+#import "TSPlaceMark.h"
 #import <MapKit/MKAnnotationView.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
-#import "DirectionController.h"
+#import "TSDirectionController.h"
 
 @interface MapController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 {
@@ -87,7 +87,7 @@
     place.latitude =  [_place.latitude doubleValue];
     place.longitude = [_place.longitude doubleValue];
     
-    PlaceMark *placeMark = [[PlaceMark alloc] initWithCoordinate:place];
+    TSPlaceMark *placeMark = [[TSPlaceMark alloc] initWithCoordinate:place];
     placeMark.title = _place.address;
     
     [self.mapView addAnnotation:placeMark];
@@ -105,7 +105,7 @@
         return nil;
     }
     
-    if ([annotation isKindOfClass:[PlaceMark class]]) {
+    if ([annotation isKindOfClass:[TSPlaceMark class]]) {
         static NSString *annotationIdentifier = @"annotationIdentifier";
         
         MKPinAnnotationView *pinView =
@@ -274,7 +274,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"DirectionController"]) {
-        DirectionController *directionController = segue.destinationViewController;
+        TSDirectionController *directionController = segue.destinationViewController;
         [directionController setCurrentLat:[NSString stringWithFormat:@"%f",[_locationManager location].coordinate.latitude]];
         [directionController setCurrentLng:[NSString stringWithFormat:@"%f",[_locationManager location].coordinate.longitude]];
         [directionController setDestinationLat:_place.latitude];

@@ -13,6 +13,7 @@
 #import "YSpinKitView.h"
 #import "BlocksKit+UIKit.h"
 #import "TSPlace.h"
+#import <UIImageView+WebCache.h>
 
 #define s(content) NSLog(@"%@", content);
 #define i(content) NSLog(@"%d", content);

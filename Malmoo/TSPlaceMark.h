@@ -1,5 +1,5 @@
 //
-//  PlaceMark.h
+//  TSPlaceMark.h
 //  ThinkCare
 //
 //  Created by Jennifer on 4/16/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface PlaceMark : NSObject <MKAnnotation>{
+@interface TSPlaceMark : NSObject <MKAnnotation>{
 
     CLLocationCoordinate2D coordinate;
     NSString *title;

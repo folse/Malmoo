@@ -1,13 +1,13 @@
 //
-//  AccountController.h
+//  TSAccountController.h
 //  Malmoo
 //
 //  Created by folse on 3/11/14.
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "AccountController.h"
+#import "TSAccountController.h"
 
-@interface AccountController : UIViewController
+@interface TSAccountController : UIViewController
 
 @end

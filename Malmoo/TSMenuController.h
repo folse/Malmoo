@@ -1,5 +1,5 @@
 //
-//  MenuController.h
+//  TSMenuController.h
 //  Malmoo
 //
 //  Created by folse on 4/8/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuController : UITableViewController
+@interface TSMenuController : UITableViewController
 
 @property (nonatomic, strong) TSPlace *place;
 

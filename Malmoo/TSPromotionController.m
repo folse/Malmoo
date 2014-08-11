@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "PromotionController.h"
+#import "TSPromotionController.h"
 
-@interface PromotionController ()
+@interface TSPromotionController ()
 
 @end
 
-@implementation PromotionController
+@implementation TSPromotionController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

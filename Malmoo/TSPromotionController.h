@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PromotionController : UITableViewController
+@interface TSPromotionController : UITableViewController
 
 @end

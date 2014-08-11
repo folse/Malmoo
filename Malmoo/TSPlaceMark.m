@@ -1,14 +1,14 @@
 //
-//  PlaceMark.m
+//  TSPlaceMark.m
 //  ThinkCare
 //
 //  Created by Jennifer on 4/16/13.
 //  Copyright (c) 2013 Folse. All rights reserved.
 //
 
-#import "PlaceMark.h"
+#import "TSPlaceMark.h"
 
-@implementation PlaceMark
+@implementation TSPlaceMark
 
 @synthesize coordinate;
 @synthesize title;

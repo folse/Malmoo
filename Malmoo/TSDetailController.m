@@ -7,10 +7,10 @@
 //
 
 #import "TSDetailController.h"
-#import "MapController.h"
+#import "TSMapController.h"
 #import "SubCateViewController.h"
-#import "PhotoCollectionController.h"
-#import "MenuController.h"
+#import "TSPhotoCollectionController.h"
+#import "TSMenuController.h"
 #import "Cell.h"
 #import <MessageUI/MessageUI.h>
 
@@ -92,16 +92,16 @@
     
     [self setHeaderImage];
     
-    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap)];
-    [coverImageView setUserInteractionEnabled:YES];
-    [coverImageView addGestureRecognizer:imageTap];
+//    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap)];
+//    [coverImageView setUserInteractionEnabled:YES];
+//    [coverImageView addGestureRecognizer:imageTap];
     
 }
 
--(void)imageTap
-{
-    [self performSegueWithIdentifier:@"photoCollectionController" sender:self];
-}
+//-(void)imageTap
+//{
+//    
+//}
 
 -(void)setHeaderImage
 {
@@ -374,6 +374,10 @@
  return YES;
  }
  */
+- (IBAction)photosButtonAction:(id)sender
+{
+    [self performSegueWithIdentifier:@"photoCollectionController" sender:self];
+}
 
 - (IBAction)starterDishBtnAction:(id)sender
 {
@@ -408,13 +412,13 @@
         
     }else if ([segue.identifier isEqualToString:@"MenuController"]) {
         
-        MenuController *menuController = segue.destinationViewController;
+        TSMenuController *menuController = segue.destinationViewController;
         [menuController setPlace:_place];
         [menuController setMenuType:selectedMenuType];
         
     }else if ([segue.identifier isEqualToString:@"photoCollectionController"]) {
         
-        PhotoCollectionController *photoCollectionController = segue.destinationViewController;
+        TSPhotoCollectionController *photoCollectionController = segue.destinationViewController;
         [photoCollectionController setPlace:_place];
     }
 }

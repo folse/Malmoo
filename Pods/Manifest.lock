@@ -36,21 +36,21 @@ PODS:
   - EAIntroView (2.6.0)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
-  - SDWebImage-ProgressView (0.4.0):
-    - SDWebImage (~> 3.7.0)
+  - SDWebImage-ProgressView (0.3.1):
+    - SDWebImage (~> 3.0)
   - SDWebImage/Core (3.7.1)
 
 DEPENDENCIES:
   - AFNetworking (= 2.2.0)
   - BlocksKit (= 2.2.3)
   - EAIntroView (= 2.6.0)
-  - SDWebImage-ProgressView (= 0.4.0)
+  - SDWebImage-ProgressView (= 0.3.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5f2538aa2d150b71d4e6cca3a420d796e1e1c374
   BlocksKit: 07c8a80f04275efac6a5f8b973782489c083a182
   EAIntroView: 1223ef380aef3e2285508016a083d70e80c48a30
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SDWebImage-ProgressView: 5b094a93013b3f6ae9d622b58055c942c964b678
+  SDWebImage-ProgressView: 7b7a9512cbf22d0d6e3d20d9aa8b03e1940d164f
 
 COCOAPODS: 0.33.1

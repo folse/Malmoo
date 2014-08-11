@@ -1,5 +1,5 @@
 //
-//  MainController.h
+//  TSMainController.h
 //  Malmoo
 //
 //  Created by folse on 3/11/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainController : UITableViewController
+@interface TSMainController : UITableViewController
 
 @end

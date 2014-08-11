@@ -1,21 +1,25 @@
 //
-//  MenuController.m
+//  CategoryController.m
 //  Malmoo
 //
-//  Created by folse on 4/8/14.
+//  Created by folse on 3/21/14.
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "MenuController.h"
+#import "TSCategoryController.h"
+#import "TSPlaceCategory.h"
+#import "TSCategoryTableController.h"
 
-@interface MenuController ()
+@interface CategoryController ()
 {
-    NSArray *menuArray;
+    NSMutableArray *categoryArray;
+    MBProgressHUD *HUD;
+    NSInteger selectedId;
 }
 
 @end
 
-@implementation MenuController
+@implementation CategoryController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,26 +48,54 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:_menuType];
+    HUD_SHOW
+        
+    [self getPlaceCategory];
+}
+
+-(void)getPlaceCategory
+{
+    categoryArray = [NSMutableArray new];
     
-    if([_menuType isEqualToString:@"Starters"]){
-        
-        menuArray = [_place.starterDishes componentsSeparatedByString:@","];
-        
-    }else if([_menuType isEqualToString:@"Main Dishes"]){
-        
-        menuArray = [_place.mainDishes componentsSeparatedByString:@","];
-    
-    }else if([_menuType isEqualToString:@"Desserts"]){
-        
-        menuArray = [_place.dessertDishes componentsSeparatedByString:@","];
-    }
+    PFQuery *query = [PFQuery queryWithClassName:@"Category"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object);
+                
+                TSPlaceCategory *category = [TSPlaceCategory new];
+                category.name = object[@"name"];
+
+                [categoryArray addObject:category];
+            }
+            
+            [HUD hide:YES];
+            [self.tableView reloadData];
+            [self.tableView setHidden:NO];
+            
+        } else {
+            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)menuBtnAction:(id)sender
+{
+    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+    
+    if (sideMenu.isMenuVisible) {
+        [sideMenu hideMenuAnimated:YES];
+    }else{
+        [sideMenu showMenuAnimated:YES];
+    }
 }
 
 #pragma mark - Table view data source
@@ -76,19 +108,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return menuArray.count;
+    // Return the number of rows in the section.
+    return categoryArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = [indexPath row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dishCell" forIndexPath:indexPath];
+    TSPlaceCategory *cellCategory = categoryArray[row];
     
-    [cell.textLabel setText:menuArray[row]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
+    
+    [cell.textLabel setText:cellCategory.name];
     
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedId = indexPath.row;
+
+    [self performSegueWithIdentifier:@"CategoryTableController" sender:self];
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -128,15 +171,20 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"CategoryTableController"]) {
+        
+        TSPlaceCategory *selectedCategory = categoryArray[selectedId];
+        
+        CategoryTableController *categoryTableController = segue.destinationViewController;
+        [categoryTableController setCategoryName:selectedCategory.name];
+    }
 }
-*/
+
 
 @end

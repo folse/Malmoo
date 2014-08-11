@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoCollectionController : UICollectionViewController
+@interface TSPhotoCollectionController : UICollectionViewController
 
 @property (nonatomic,strong) TSPlace *place;
 

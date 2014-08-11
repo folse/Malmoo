@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "MainCell.h"
+#import "TSMainCell.h"
 
-@implementation MainCell
+@implementation TSMainCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

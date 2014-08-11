@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "CategoryTableController.h"
-#import "MainCell.h"
+#import "TSCategoryTableController.h"
+#import "TSMainCell.h"
 #import "TSDetailController.h"
 #import "FSImageDownloader.h"
 
@@ -119,7 +119,7 @@
         imageDownloader = [[FSImageDownloader alloc] init];
         [imageDownloader setCompletionHandler:^(UIImage *image) {
             
-            MainCell *cell = (MainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            TSMainCell *cell = (TSMainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
             cell.avatarImageView.image = image;
             
             // Remove the IconDownloader from the in progress list.
@@ -151,11 +151,11 @@
     NSInteger row = indexPath.row;
     
     static NSString *identifier = @"MainCell";
-    MainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    TSMainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     if (cell == nil) {
         
-        cell = [[MainCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[TSMainCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     
     TSPlace *cellPlace = placeArray[row];

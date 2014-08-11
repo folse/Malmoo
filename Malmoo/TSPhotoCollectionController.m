@@ -6,13 +6,17 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "PhotoCollectionController.h"
+#import "TSPhotoCollectionController.h"
+#import "TSPhotoCollectionViewCell.h"
 
-@interface PhotoCollectionController ()
+@interface TSPhotoCollectionController ()
+{
+    NSMutableArray *photoArray;
+}
 
 @end
 
-@implementation PhotoCollectionController
+@implementation TSPhotoCollectionController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,8 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    photoArray = [NSMutableArray new];
    
-     [self getPhotos];
+    [self getPhotos];
 }
 
 -(void)getPhotos
@@ -37,21 +43,37 @@
     [query whereKey:@"place" equalTo:_place.parseObject];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            
             for (PFObject *object in objects) {
                 s(object[@"url"])
+                [photoArray addObject:object[@"url"]];
             }
+            
+            [self.collectionView reloadData];
         }
     }];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 0;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return photoArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger index = indexPath.row;
+    
+    TSPhotoCollectionViewCell *cell = (TSPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    [cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:photoArray[0]] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+    
+    return cell;
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

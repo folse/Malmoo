@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-@interface PlaceCategory : NSObject
+@interface TSPlaceCategory : NSObject
 
 @property (nonatomic, strong) NSString *name;
 

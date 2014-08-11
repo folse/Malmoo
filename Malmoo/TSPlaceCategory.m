@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "PlaceCategory.h"
+#import "TSPlaceCategory.h"
 
-@implementation PlaceCategory
+@implementation TSPlaceCategory
 
 @end

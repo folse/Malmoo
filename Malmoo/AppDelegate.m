@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MainController.h"
-#import "AccountController.h"
+#import "TSMainController.h"
+#import "TSAccountController.h"
 #import "JDMenuViewController.h"
 
 @implementation AppDelegate

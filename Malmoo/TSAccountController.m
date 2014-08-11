@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "AccountController.h"
+#import "TSAccountController.h"
 
-@interface AccountController ()
+@interface TSAccountController ()
 
 @end
 
-@implementation AccountController
+@implementation TSAccountController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

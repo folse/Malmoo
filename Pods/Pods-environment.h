@@ -105,6 +105,6 @@
 // SDWebImage-ProgressView
 #define COCOAPODS_POD_AVAILABLE_SDWebImage_ProgressView
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_ProgressView 0
-#define COCOAPODS_VERSION_MINOR_SDWebImage_ProgressView 4
-#define COCOAPODS_VERSION_PATCH_SDWebImage_ProgressView 0
+#define COCOAPODS_VERSION_MINOR_SDWebImage_ProgressView 3
+#define COCOAPODS_VERSION_PATCH_SDWebImage_ProgressView 1
 

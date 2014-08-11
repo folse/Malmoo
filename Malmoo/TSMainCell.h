@@ -1,5 +1,5 @@
 //
-//  MainCell.h
+//  TSMainCell.h
 //  Malmoo
 //
 //  Created by folse on 3/12/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainCell : UITableViewCell
+@interface TSMainCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
