@@ -313,7 +313,7 @@
             </objects>
             <point key="canvasLocation" x="1575" y="-177"/>
         </scene>
-        <!--Photo Collection Controller-->
+        <!--Photo Collection Controller - Photos-->
         <scene sceneID="InZ-0F-WA7">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="c3W-kX-pLZ" customClass="TSPhotoCollectionController" sceneMemberID="viewController">
@@ -322,27 +322,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Eh-dA-A2K">
-                            <size key="itemSize" width="111" height="101"/>
+                            <size key="itemSize" width="151" height="157"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Zgf-rX-RQw" customClass="TSPhotoCollectionViewCell">
-                                <rect key="frame" x="0.0" y="64" width="140" height="140"/>
+                                <rect key="frame" x="0.0" y="64" width="152" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeI-fG-9xb">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeI-fG-9xb">
+                                            <rect key="frame" x="24" y="25" width="114" height="122"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <size key="customSize" width="140" height="140"/>
+                                <size key="customSize" width="152" height="152"/>
                                 <connections>
                                     <outlet property="coverImageView" destination="EeI-fG-9xb" id="fzU-ot-utM"/>
                                 </connections>
@@ -353,11 +353,41 @@
                             <outlet property="delegate" destination="c3W-kX-pLZ" id="QqP-8g-vuj"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="AkQ-y1-gvi"/>
+                    <navigationItem key="navigationItem" title="Photos" id="AkQ-y1-gvi"/>
+                    <connections>
+                        <segue destination="TdU-Us-jwx" kind="modal" identifier="photoGalleryController" modalTransitionStyle="crossDissolve" id="bMz-xO-yeY"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToG-HP-l4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2040" y="-847"/>
+        </scene>
+        <!--Photo Gallery Controller-->
+        <scene sceneID="Tg4-GT-FQm">
+            <objects>
+                <viewController id="TdU-Us-jwx" customClass="TSPhotoGalleryController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l1y-Oa-Fgi"/>
+                        <viewControllerLayoutGuide type="bottom" id="2KI-TI-xdR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fgQ-ny-oWB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VWf-NA-Sa6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="fullScreenImageView" destination="VWf-NA-Sa6" id="Ita-Ut-uK1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVo-1Y-ajA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2457" y="-847"/>
         </scene>
         <!--Map Controller - Map-->
         <scene sceneID="fxD-Xc-pb1">

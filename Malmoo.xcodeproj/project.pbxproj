@@ -10,15 +10,6 @@
 		0E87A8CFEBA94058AA2AF1E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A904064D304A8089D525CC /* libPods.a */; };
 		A108B50618DC81D1004DDA65 /* FSProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */; };
 		A10BC25918CF1F97002999F6 /* TSMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC25818CF1F97002999F6 /* TSMainController.m */; };
-		A10BC25B18CF2190002999F6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC25A18CF2190002999F6 /* Parse.framework */; };
-		A10BC26318D04919002999F6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC26218D04919002999F6 /* AudioToolbox.framework */; };
-		A10BC26518D0491F002999F6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC26418D0491F002999F6 /* CFNetwork.framework */; };
-		A10BC26718D0492E002999F6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC26618D0492E002999F6 /* CoreLocation.framework */; };
-		A10BC26B18D0493D002999F6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC26A18D0493D002999F6 /* MobileCoreServices.framework */; };
-		A10BC26D18D04942002999F6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC26C18D04942002999F6 /* QuartzCore.framework */; };
-		A10BC26F18D049D4002999F6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC26E18D049D4002999F6 /* Security.framework */; };
-		A10BC27118D04DE1002999F6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC27018D04DE1002999F6 /* StoreKit.framework */; };
-		A10BC27318D04DE8002999F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10BC27218D04DE8002999F6 /* SystemConfiguration.framework */; };
 		A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27518D05C40002999F6 /* YSpinKitView.m */; };
 		A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27918D0713B002999F6 /* TSPlace.m */; };
 		A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */; };
@@ -34,7 +25,6 @@
 		A171E17D18C6D186003113ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A171E17C18C6D186003113ED /* AppDelegate.m */; };
 		A171E18018C6D186003113ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A171E17E18C6D186003113ED /* Main.storyboard */; };
 		A171E18518C6D186003113ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A171E18418C6D186003113ED /* Images.xcassets */; };
-		A171E18C18C6D186003113ED /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E18B18C6D186003113ED /* XCTest.framework */; };
 		A171E18D18C6D186003113ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16C18C6D186003113ED /* Foundation.framework */; };
 		A171E18E18C6D186003113ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E17018C6D186003113ED /* UIKit.framework */; };
 		A171E19618C6D186003113ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A171E19418C6D186003113ED /* InfoPlist.strings */; };
@@ -51,7 +41,6 @@
 		A178488418F148D7005B05F1 /* TSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178488318F148D7005B05F1 /* TSSearchController.m */; };
 		A178488718F16DDA005B05F1 /* TSDirectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178488618F16DDA005B05F1 /* TSDirectionController.m */; };
 		A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5418DB4D540053DE81 /* TSMapController.m */; };
-		A1830B5718DB4DF40053DE81 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1830B5618DB4DF40053DE81 /* MapKit.framework */; };
 		A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5918DB4E4C0053DE81 /* JDSideMenu.m */; };
 		A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5B18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m */; };
 		A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6018DB4F530053DE81 /* JDMenuViewController.m */; };
@@ -62,7 +51,14 @@
 		A18DA11918F6A203007E14D1 /* TSCategoryTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18DA11818F6A203007E14D1 /* TSCategoryTableController.m */; };
 		A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */; };
 		A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */; };
-		A1C89B51196EC50B00BA9F32 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C89B50196EC50B00BA9F32 /* MessageUI.framework */; };
+		A1BDDDFC199A7A150041B0A1 /* TSPhotoGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */; };
+		A1BDDE0A199A825B0041B0A1 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDFE199A825B0041B0A1 /* MJPhoto.m */; };
+		A1BDDE0B199A825B0041B0A1 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1BDDDFF199A825B0041B0A1 /* MJPhotoBrowser.bundle */; };
+		A1BDDE0C199A825B0041B0A1 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE01199A825B0041B0A1 /* MJPhotoBrowser.m */; };
+		A1BDDE0D199A825B0041B0A1 /* MJPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE03199A825B0041B0A1 /* MJPhotoLoadingView.m */; };
+		A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE05199A825B0041B0A1 /* MJPhotoProgressView.m */; };
+		A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */; };
+		A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */; };
 		A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E318CEAD05008E6F57 /* TSAccountController.m */; };
 		A1E838E718CEAD1C008E6F57 /* FSProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */; };
 		A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */; };
@@ -85,15 +81,6 @@
 /* Begin PBXFileReference section */
 		A10BC25718CF1F97002999F6 /* TSMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMainController.h; sourceTree = "<group>"; };
 		A10BC25818CF1F97002999F6 /* TSMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMainController.m; sourceTree = "<group>"; };
-		A10BC25A18CF2190002999F6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Malmoo/Parse.framework; sourceTree = "<group>"; };
-		A10BC26218D04919002999F6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		A10BC26418D0491F002999F6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		A10BC26618D0492E002999F6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		A10BC26A18D0493D002999F6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		A10BC26C18D04942002999F6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A10BC26E18D049D4002999F6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		A10BC27018D04DE1002999F6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A10BC27218D04DE8002999F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A10BC27418D05C40002999F6 /* YSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSpinKitView.h; sourceTree = "<group>"; };
 		A10BC27518D05C40002999F6 /* YSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSpinKitView.m; sourceTree = "<group>"; };
 		A10BC27818D0713B002999F6 /* TSPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlace.h; sourceTree = "<group>"; };
@@ -121,7 +108,6 @@
 		A171E17F18C6D186003113ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A171E18418C6D186003113ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A171E18A18C6D186003113ED /* MalmooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MalmooTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A171E18B18C6D186003113ED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A171E19318C6D186003113ED /* MalmooTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MalmooTests-Info.plist"; sourceTree = "<group>"; };
 		A171E19518C6D186003113ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A171E19718C6D186003113ED /* MalmooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MalmooTests.m; sourceTree = "<group>"; };
@@ -167,7 +153,21 @@
 		A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSPhotoCollectionController.m; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.m; sourceTree = "<group>"; };
 		A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPhotoCollectionViewCell.m; sourceTree = "<group>"; };
-		A1C89B50196EC50B00BA9F32 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A1BDDDFA199A7A150041B0A1 /* TSPhotoGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoGalleryController.h; sourceTree = "<group>"; };
+		A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPhotoGalleryController.m; sourceTree = "<group>"; };
+		A1BDDDFD199A825B0041B0A1 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
+		A1BDDDFE199A825B0041B0A1 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
+		A1BDDDFF199A825B0041B0A1 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
+		A1BDDE00199A825B0041B0A1 /* MJPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoBrowser.h; sourceTree = "<group>"; };
+		A1BDDE01199A825B0041B0A1 /* MJPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoBrowser.m; sourceTree = "<group>"; };
+		A1BDDE02199A825B0041B0A1 /* MJPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoLoadingView.h; sourceTree = "<group>"; };
+		A1BDDE03199A825B0041B0A1 /* MJPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoLoadingView.m; sourceTree = "<group>"; };
+		A1BDDE04199A825B0041B0A1 /* MJPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoProgressView.h; sourceTree = "<group>"; };
+		A1BDDE05199A825B0041B0A1 /* MJPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoProgressView.m; sourceTree = "<group>"; };
+		A1BDDE06199A825B0041B0A1 /* MJPhotoToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoToolbar.h; sourceTree = "<group>"; };
+		A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
+		A1BDDE08199A825B0041B0A1 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
+		A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
 		A1E838E218CEAD05008E6F57 /* TSAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAccountController.h; sourceTree = "<group>"; };
 		A1E838E318CEAD05008E6F57 /* TSAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAccountController.m; sourceTree = "<group>"; };
 		A1E838E518CEAD1C008E6F57 /* FSProjectSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSProjectSettings.h; path = MalmooTests/FSProjectSettings.h; sourceTree = SOURCE_ROOT; };
@@ -191,20 +191,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1C89B51196EC50B00BA9F32 /* MessageUI.framework in Frameworks */,
-				A1830B5718DB4DF40053DE81 /* MapKit.framework in Frameworks */,
-				A10BC27318D04DE8002999F6 /* SystemConfiguration.framework in Frameworks */,
-				A10BC27118D04DE1002999F6 /* StoreKit.framework in Frameworks */,
-				A10BC26F18D049D4002999F6 /* Security.framework in Frameworks */,
-				A10BC26D18D04942002999F6 /* QuartzCore.framework in Frameworks */,
-				A10BC26B18D0493D002999F6 /* MobileCoreServices.framework in Frameworks */,
-				A10BC26718D0492E002999F6 /* CoreLocation.framework in Frameworks */,
 				A171E16F18C6D186003113ED /* CoreGraphics.framework in Frameworks */,
-				A10BC26518D0491F002999F6 /* CFNetwork.framework in Frameworks */,
-				A10BC26318D04919002999F6 /* AudioToolbox.framework in Frameworks */,
 				A171E17118C6D186003113ED /* UIKit.framework in Frameworks */,
 				A171E16D18C6D186003113ED /* Foundation.framework in Frameworks */,
-				A10BC25B18CF2190002999F6 /* Parse.framework in Frameworks */,
 				0E87A8CFEBA94058AA2AF1E7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +202,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A171E18C18C6D186003113ED /* XCTest.framework in Frameworks */,
 				A171E18E18C6D186003113ED /* UIKit.framework in Frameworks */,
 				A171E18D18C6D186003113ED /* Foundation.framework in Frameworks */,
 			);
@@ -278,21 +266,10 @@
 		A171E16B18C6D186003113ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A1C89B50196EC50B00BA9F32 /* MessageUI.framework */,
 				A1830B5618DB4DF40053DE81 /* MapKit.framework */,
-				A10BC27218D04DE8002999F6 /* SystemConfiguration.framework */,
-				A10BC27018D04DE1002999F6 /* StoreKit.framework */,
-				A10BC26E18D049D4002999F6 /* Security.framework */,
-				A10BC26C18D04942002999F6 /* QuartzCore.framework */,
-				A10BC26A18D0493D002999F6 /* MobileCoreServices.framework */,
-				A10BC26618D0492E002999F6 /* CoreLocation.framework */,
-				A10BC26418D0491F002999F6 /* CFNetwork.framework */,
-				A10BC26218D04919002999F6 /* AudioToolbox.framework */,
-				A10BC25A18CF2190002999F6 /* Parse.framework */,
 				A171E16C18C6D186003113ED /* Foundation.framework */,
 				A171E16E18C6D186003113ED /* CoreGraphics.framework */,
 				A171E17018C6D186003113ED /* UIKit.framework */,
-				A171E18B18C6D186003113ED /* XCTest.framework */,
 				D6A904064D304A8089D525CC /* libPods.a */,
 			);
 			name = Frameworks;
@@ -403,6 +380,8 @@
 				A1738D7418D6927F00FBFDFC /* TSDetailController.m */,
 				A1BDDDE21998FB830041B0A1 /* TSPhotoCollectionController.h */,
 				A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */,
+				A1BDDDFA199A7A150041B0A1 /* TSPhotoGalleryController.h */,
+				A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */,
 				A1830B5318DB4D540053DE81 /* TSMapController.h */,
 				A1830B5418DB4D540053DE81 /* TSMapController.m */,
 				A178488518F16DDA005B05F1 /* TSDirectionController.h */,
@@ -434,9 +413,30 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		A1BDDE11199A82600041B0A1 /* MJPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				A1BDDDFD199A825B0041B0A1 /* MJPhoto.h */,
+				A1BDDDFE199A825B0041B0A1 /* MJPhoto.m */,
+				A1BDDDFF199A825B0041B0A1 /* MJPhotoBrowser.bundle */,
+				A1BDDE00199A825B0041B0A1 /* MJPhotoBrowser.h */,
+				A1BDDE01199A825B0041B0A1 /* MJPhotoBrowser.m */,
+				A1BDDE02199A825B0041B0A1 /* MJPhotoLoadingView.h */,
+				A1BDDE03199A825B0041B0A1 /* MJPhotoLoadingView.m */,
+				A1BDDE04199A825B0041B0A1 /* MJPhotoProgressView.h */,
+				A1BDDE05199A825B0041B0A1 /* MJPhotoProgressView.m */,
+				A1BDDE06199A825B0041B0A1 /* MJPhotoToolbar.h */,
+				A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */,
+				A1BDDE08199A825B0041B0A1 /* MJPhotoView.h */,
+				A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */,
+			);
+			name = MJPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A1BDDE11199A82600041B0A1 /* MJPhotoBrowser */,
 				A1E95B47191F1DDC009BE585 /* MJRefresh */,
 				A178487C18F139AF005B05F1 /* ExpandTableViewCell */,
 				A1830B5E18DB4E580053DE81 /* JDSideMenu */,
@@ -556,6 +556,7 @@
 			files = (
 				A171E18518C6D186003113ED /* Images.xcassets in Resources */,
 				A178487818F13995005B05F1 /* Cell.xib in Resources */,
+				A1BDDE0B199A825B0041B0A1 /* MJPhotoBrowser.bundle in Resources */,
 				A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */,
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
@@ -616,10 +617,12 @@
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
+				A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */,
 				A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */,
 				A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */,
 				A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */,
 				A178488718F16DDA005B05F1 /* TSDirectionController.m in Sources */,
+				A1BDDE0A199A825B0041B0A1 /* MJPhoto.m in Sources */,
 				A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */,
 				A1738D7518D6927F00FBFDFC /* TSDetailController.m in Sources */,
 				A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */,
@@ -627,9 +630,11 @@
 				A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */,
 				A178487A18F13995005B05F1 /* UIFolderTableView.m in Sources */,
 				A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */,
+				A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */,
 				A178487718F13995005B05F1 /* Cell.m in Sources */,
 				A171E17918C6D186003113ED /* main.m in Sources */,
 				A178487918F13995005B05F1 /* FolderCoverView.m in Sources */,
+				A1BDDDFC199A7A150041B0A1 /* TSPhotoGalleryController.m in Sources */,
 				A10BC25918CF1F97002999F6 /* TSMainController.m in Sources */,
 				A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */,
 				A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */,
@@ -643,9 +648,12 @@
 				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
 				A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */,
 				A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */,
+				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
+				A1BDDE0C199A825B0041B0A1 /* MJPhotoBrowser.m in Sources */,
 				A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */,
 				A18DA11918F6A203007E14D1 /* TSCategoryTableController.m in Sources */,
+				A1BDDE0D199A825B0041B0A1 /* MJPhotoLoadingView.m in Sources */,
 				A1738D7818D695DE00FBFDFC /* FSImageDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,19 +803,6 @@
 					/Users/folse/Desktop,
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-Wl,-no_compact_unwind",
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					MessageUI,
-					"-framework",
-					MobileCoreServices,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -840,21 +835,8 @@
 					"$(PROJECT_DIR)",
 					/Users/folse/Desktop,
 				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_compact_unwind",
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					MessageUI,
-					"-framework",
-					MobileCoreServices,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "650FC2F0-6291-4A5F-8387-F36C038591EF";
+				PROVISIONING_PROFILE = "09F0FCE1-8EA9-4872-9883-B4971C849FA2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

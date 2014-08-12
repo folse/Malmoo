@@ -8,10 +8,15 @@
 
 #import "TSPhotoCollectionController.h"
 #import "TSPhotoCollectionViewCell.h"
+#import "TSPhotoGalleryController.h"
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 
 @interface TSPhotoCollectionController ()
 {
+    NSMutableArray *photos;
     NSMutableArray *photoArray;
+    NSString *selectedPhotoUrl;
 }
 
 @end
@@ -44,9 +49,18 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
+            photos = [NSMutableArray arrayWithCapacity:[objects count]];
             for (PFObject *object in objects) {
-                s(object[@"url"])
-                [photoArray addObject:object[@"url"]];
+                
+                if (object[@"url"] != nil) {
+                    
+                    [photoArray addObject:object[@"url"]];
+                    
+                    MJPhoto *photo = [[MJPhoto alloc] init];
+                    photo.url = [NSURL URLWithString:object[@"url"]];
+                    
+                    [photos addObject:photo];
+                }
             }
             
             [self.collectionView reloadData];
@@ -59,26 +73,31 @@
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return photoArray.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     NSInteger index = indexPath.row;
     
     TSPhotoCollectionViewCell *cell = (TSPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
-    [cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:photoArray[0]] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+    [cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:photoArray[index]] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
-    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedPhotoUrl = photoArray[indexPath.row];
+    //[self performSegueWithIdentifier:@"photoGalleryController" sender:self];
     
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    browser.currentPhotoIndex = indexPath.row;
+    browser.photos = photos;
+    [browser show];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,15 +106,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    TSPhotoGalleryController *photoGalleryController =[segue destinationViewController];
+    photoGalleryController.photoArray = [NSArray arrayWithObject:selectedPhotoUrl];
 }
-*/
+
 
 @end

@@ -3,4 +3,5 @@ pod 'BlocksKit', '2.2.3'
 pod 'AFNetworking', '2.2.0'
 pod 'EAIntroView', '2.6.0'
 pod 'SDWebImage-ProgressView', '0.3.1'
+pod 'Parse', '1.2.20'
 inhibit_all_warnings!
