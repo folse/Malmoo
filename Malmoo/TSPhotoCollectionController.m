@@ -46,6 +46,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
     query.limit = 30;
     [query whereKey:@"place" equalTo:_place.parseObject];
+    [query whereKey:@"category" equalTo:[PFObject objectWithoutDataWithClassName:@"PhotoCategory" objectId:@"kyal3eTN0P"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
