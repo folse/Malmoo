@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIFolderTableView.h"
+#import "BTGlassScrollView.h"
 
-@interface TSDetailController : UITableViewController
+@interface TSDetailController : UITableViewController<UIScrollViewAccessibilityDelegate>
 
 @property (nonatomic,strong) TSPlace *place;
 

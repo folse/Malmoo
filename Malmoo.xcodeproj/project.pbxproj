@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E87A8CFEBA94058AA2AF1E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A904064D304A8089D525CC /* libPods.a */; };
 		A108B50618DC81D1004DDA65 /* FSProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */; };
+		A10A4BAF19A9F6F90011E5A1 /* BTGlassScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A4BAC19A9F6F90011E5A1 /* BTGlassScrollView.m */; };
+		A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A4BAE19A9F6F90011E5A1 /* UIImage+ImageEffects.m */; };
 		A10BC25918CF1F97002999F6 /* TSMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC25818CF1F97002999F6 /* TSMainController.m */; };
 		A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27518D05C40002999F6 /* YSpinKitView.m */; };
 		A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27918D0713B002999F6 /* TSPlace.m */; };
@@ -79,6 +81,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A10A4BAB19A9F6F90011E5A1 /* BTGlassScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTGlassScrollView.h; sourceTree = "<group>"; };
+		A10A4BAC19A9F6F90011E5A1 /* BTGlassScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTGlassScrollView.m; sourceTree = "<group>"; };
+		A10A4BAD19A9F6F90011E5A1 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		A10A4BAE19A9F6F90011E5A1 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		A10BC25718CF1F97002999F6 /* TSMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMainController.h; sourceTree = "<group>"; };
 		A10BC25818CF1F97002999F6 /* TSMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMainController.m; sourceTree = "<group>"; };
 		A10BC27418D05C40002999F6 /* YSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSpinKitView.h; sourceTree = "<group>"; };
@@ -210,6 +216,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A10A4BB119A9F7010011E5A1 /* BTGlassScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				A10A4BAB19A9F6F90011E5A1 /* BTGlassScrollView.h */,
+				A10A4BAC19A9F6F90011E5A1 /* BTGlassScrollView.m */,
+				A10A4BAD19A9F6F90011E5A1 /* UIImage+ImageEffects.h */,
+				A10A4BAE19A9F6F90011E5A1 /* UIImage+ImageEffects.m */,
+			);
+			name = BTGlassScrollView;
+			sourceTree = "<group>";
+		};
 		A10BC27718D05C48002999F6 /* YSpinKitView */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +453,7 @@
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A10A4BB119A9F7010011E5A1 /* BTGlassScrollView */,
 				A1BDDE11199A82600041B0A1 /* MJPhotoBrowser */,
 				A1E95B47191F1DDC009BE585 /* MJRefresh */,
 				A178487C18F139AF005B05F1 /* ExpandTableViewCell */,
@@ -617,6 +635,7 @@
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
+				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,
 				A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */,
 				A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */,
 				A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */,
@@ -628,6 +647,7 @@
 				A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */,
 				A140346B18F3CB6E00EA05F9 /* TSMenuController.m in Sources */,
 				A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */,
+				A10A4BAF19A9F6F90011E5A1 /* BTGlassScrollView.m in Sources */,
 				A178487A18F13995005B05F1 /* UIFolderTableView.m in Sources */,
 				A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */,
 				A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */,

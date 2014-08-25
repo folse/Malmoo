@@ -212,7 +212,7 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="tU3-U9-c0r">
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="tU3-U9-c0r">
                             <rect key="frame" x="0.0" y="282" width="320" height="234"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -365,7 +365,6 @@
         <!--Photo Gallery Controller-->
         <scene sceneID="Tg4-GT-FQm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVo-1Y-ajA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="TdU-Us-jwx" customClass="TSPhotoGalleryController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l1y-Oa-Fgi"/>
@@ -386,6 +385,7 @@
                         <outlet property="fullScreenImageView" destination="VWf-NA-Sa6" id="Ita-Ut-uK1"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVo-1Y-ajA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2457" y="-847"/>
         </scene>

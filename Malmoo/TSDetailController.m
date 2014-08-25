@@ -15,13 +15,16 @@
 #import <MessageUI/MessageUI.h>
 
 
-@interface TSDetailController ()<UIFolderTableViewDelegate,MFMailComposeViewControllerDelegate>
+@interface TSDetailController ()<MFMailComposeViewControllerDelegate>
 {
     NSString *selectedMenuType;
     UIToolbar *bottomToolBar;
     UIBarButtonItem *shareBtn;
+    UIBarButtonItem *shareImageBtn;
     UIBarButtonItem *reportBtn;
+    UIBarButtonItem *reportImageBtn;
     UIBarButtonItem *favouriteBtn;
+    UIBarButtonItem *favouriteImageBtn;
     UIImageView *coverImageView;
     UIImage *originalImage;
     float bgImageViewHeight;
@@ -48,9 +51,7 @@
 @implementation TSDetailController
 
 -(void)viewWillAppear:(BOOL)animated
-{
-    [self showDishMenu];
-    
+{    
     [super viewWillAppear:animated];
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
@@ -80,6 +81,8 @@
 {
     [super viewDidLoad];
     
+    self.title = _place.name;
+    
     [_titleLabel setText:_place.name];
     [_addressLabel setText:_place.address];
     [_phoneBtn setTitle:@"042-327050" forState:UIControlStateNormal];
@@ -91,17 +94,8 @@
     [self removeNavigationBarShadow];
     
     [self setHeaderImage];
-    
-//    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap)];
-//    [coverImageView setUserInteractionEnabled:YES];
-//    [coverImageView addGestureRecognizer:imageTap];
-    
-}
 
-//-(void)imageTap
-//{
-//    
-//}
+}
 
 -(void)setHeaderImage
 {
@@ -225,21 +219,6 @@
     }
 }
 
--(void)showDishMenu
-{
-    if (_place.starterDishes) {
-        [_starterDishBtn setHidden:NO];
-    }
-    
-    if (_place.mainDishes) {
-        [_mainDishBtn setHidden:NO];
-    }
-    
-    if (_place.dessertDishes) {
-        [_dessertDishBtn setHidden:NO];
-    }
-}
-
 - (IBAction)phoneBtnAction:(id)sender
 {
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_place.phone]];
@@ -254,87 +233,27 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     
-    return 1;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Cell *cell = (Cell *)[tableView dequeueReusableCellWithIdentifier:@"openHour" forIndexPath:indexPath];
+    Cell *cell = (Cell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Cell *cell = (Cell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    [cell changeArrowWithUp:YES];
-    SubCateViewController *subVc = [[SubCateViewController alloc]
-                                    initWithNibName:NSStringFromClass([SubCateViewController class])
-                                    bundle:nil];
-    
-    if ([cell.titleLabel.text isEqualToString:@"Open Hours"]) {
-        
-        subVc.Info = _place.openHours;
-    }
-    
-    self.tableView.scrollEnabled = NO;
-    UIFolderTableView *folderTableView = (UIFolderTableView *)tableView;
-    [folderTableView openFolderAtIndexPath:indexPath WithContentView:subVc.view
-                                 openBlock:^(UIView *subClassView, CFTimeInterval duration, CAMediaTimingFunction *timingFunction){
-                                     // opening actions
-                                     //[self CloseAndOpenACtion:indexPath];
-                                 }
-                                closeBlock:^(UIView *subClassView, CFTimeInterval duration, CAMediaTimingFunction *timingFunction){
-                                    // closing actions
-                                    //[self CloseAndOpenACtion:indexPath];
-                                    //[cell changeArrowWithUp:NO];
-                                }
-                           completionBlock:^{
-                               // completed actions
-                               self.tableView.scrollEnabled = YES;
-                               [cell changeArrowWithUp:NO];
-                           }];
-}
+//    Cell *cell = (Cell *)[self.tableView cellForRowAtIndexPath:indexPath];
 
--(void)CloseAndOpenACtion:(NSIndexPath *)indexPath
-{
-    if ([indexPath isEqual:self.selectIndex]) {
-        self.isOpen = NO;
-        [self didSelectCellRowFirstDo:NO nextDo:NO];
-        self.selectIndex = nil;
-    }
-    else
-    {
-        if (!self.selectIndex) {
-            self.selectIndex = indexPath;
-            [self didSelectCellRowFirstDo:YES nextDo:NO];
-        }
-        else
-        {
-            [self didSelectCellRowFirstDo:NO nextDo:YES];
-        }
-    }
-}
-
-- (void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert
-{
-    self.isOpen = firstDoInsert;
-    
-    Cell *cell = (Cell *)[self.tableView cellForRowAtIndexPath:self.selectIndex];
-    [cell changeArrowWithUp:firstDoInsert];
-    
-    if (nextDoInsert) {
-        self.isOpen = YES;
-        self.selectIndex = [self.tableView indexPathForSelectedRow];
-        [self didSelectCellRowFirstDo:YES nextDo:NO];
-    }
 }
 
 /*
@@ -481,13 +400,13 @@
 {
     if (_place.favourited) {
         
-        [favouriteBtn setImage:[UIImage imageNamed:@"icon_star"]];
+        [favouriteImageBtn setImage:[UIImage imageNamed:@"icon_star"]];
         
         _place.favourited = NO;
         
     }else{
         
-        [favouriteBtn setImage:[UIImage imageNamed:@"icon_star_pressed"]];
+        [favouriteImageBtn setImage:[UIImage imageNamed:@"icon_star_pressed"]];
         
         _place.favourited = YES;
     }
@@ -499,15 +418,21 @@
     bottomToolBar.tintColor = APP_COLOR;
     [bottomToolBar sizeToFit];
     
-    favouriteBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_star"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
+    favouriteImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_star"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
+    favouriteBtn = [[UIBarButtonItem alloc] initWithTitle:@"Favorite" style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
+    [favouriteBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
     
-    shareBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
+    shareImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
+    shareBtn = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
+    [shareBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
     
-    reportBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_report"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
+    reportImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_report"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
+    reportBtn = [[UIBarButtonItem alloc] initWithTitle:@"Report" style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
+    [reportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
     
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
-    NSArray *itemArray = [[NSArray alloc] initWithObjects:flexSpace, favouriteBtn, flexSpace, shareBtn, flexSpace, reportBtn, flexSpace, nil];
+    NSArray *itemArray = [[NSArray alloc] initWithObjects:flexSpace, favouriteImageBtn,favouriteBtn, flexSpace, shareImageBtn,shareBtn, flexSpace, reportImageBtn,reportBtn, flexSpace, nil];
     
     [bottomToolBar setItems:itemArray animated:YES];
     
