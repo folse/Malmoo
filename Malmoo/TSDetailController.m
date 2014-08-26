@@ -13,7 +13,7 @@
 #import "TSMenuController.h"
 #import "Cell.h"
 #import <MessageUI/MessageUI.h>
-
+#import "TSDetailControllerView.h"
 
 @interface TSDetailController ()<MFMailComposeViewControllerDelegate>
 {
@@ -49,14 +49,31 @@
 @end
 
 @implementation TSDetailController
+{
+    UIScrollView *_viewScroller;
+    
+    BTGlassScrollView *_glassScrollView;
+    
+    BTGlassScrollView *_glassScrollView1;
+    BTGlassScrollView *_glassScrollView2;
+    BTGlassScrollView *_glassScrollView3;
+    int _page;
+}
 
 -(void)viewWillAppear:(BOOL)animated
-{    
+{
     [super viewWillAppear:animated];
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
     [self addBottomToolBar];
+    
+    //show animation trick
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        // [_glassScrollView1 setBackgroundImage:[UIImage imageNamed:@"background"] overWriteBlur:YES animated:YES duration:1];
+    });
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -93,8 +110,42 @@
     
     [self removeNavigationBarShadow];
     
-    [self setHeaderImage];
+    //[self setHeaderImage];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //preventing weird inset
+    [self setAutomaticallyAdjustsScrollViewInsets: NO];
+    
+    //navigation bar work
+    //    NSShadow *shadow = [[NSShadow alloc] init];
+    //    [shadow setShadowOffset:CGSizeMake(1, 1)];
+    //    [shadow setShadowColor:[UIColor blackColor]];
+    //    [shadow setShadowBlurRadius:1];
+    //    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSShadowAttributeName: shadow};
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.title = @"Awesome";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    TSDetailControllerView *detailView = [[TSDetailControllerView alloc] init];
+    
+    _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"bg_menu"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:detailView];
+    
+    [self.tableView addSubview:_glassScrollView];
+}
 
+- (void)viewWillLayoutSubviews
+{
+    // if the view has navigation bar, this is a great place to realign the top part to allow navigation controller
+    // or even the status bar
+    
+    [_glassScrollView setTopLayoutGuideLength:[self.topLayoutGuide length]];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self viewWillAppear:YES];
 }
 
 -(void)setHeaderImage
@@ -252,8 +303,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    Cell *cell = (Cell *)[self.tableView cellForRowAtIndexPath:indexPath];
-
+    //    Cell *cell = (Cell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
 }
 
 /*

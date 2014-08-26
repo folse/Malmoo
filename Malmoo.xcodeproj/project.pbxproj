@@ -68,6 +68,8 @@
 		A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3D191F1DD6009BE585 /* MJRefreshConst.m */; };
 		A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3F191F1DD6009BE585 /* MJRefreshFooterView.m */; };
 		A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */; };
+		A1FD808219AC1D2200379334 /* TSDetailControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FD808119AC1D2200379334 /* TSDetailControllerView.m */; };
+		A1FD808419AC1D4700379334 /* TSDetailControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FD808319AC1D4700379334 /* TSDetailControllerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +190,9 @@
 		A1E95B3F191F1DD6009BE585 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		A1E95B40191F1DD6009BE585 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		A1FD808019AC1D2200379334 /* TSDetailControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDetailControllerView.h; sourceTree = "<group>"; };
+		A1FD808119AC1D2200379334 /* TSDetailControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDetailControllerView.m; sourceTree = "<group>"; };
+		A1FD808319AC1D4700379334 /* TSDetailControllerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSDetailControllerView.xib; sourceTree = "<group>"; };
 		D6A904064D304A8089D525CC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEF10630F6F44AF5A989FCF5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,12 +255,15 @@
 		A10EDCA718D07F980048EA02 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */,
-				A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */,
-				A1830BA118DBF5340053DE81 /* TSPlaceMark.h */,
-				A1830BA218DBF5340053DE81 /* TSPlaceMark.m */,
 				A10EDCA418D07F940048EA02 /* TSMainCell.h */,
 				A10EDCA518D07F940048EA02 /* TSMainCell.m */,
+				A1830BA118DBF5340053DE81 /* TSPlaceMark.h */,
+				A1830BA218DBF5340053DE81 /* TSPlaceMark.m */,
+				A1FD808019AC1D2200379334 /* TSDetailControllerView.h */,
+				A1FD808119AC1D2200379334 /* TSDetailControllerView.m */,
+				A1FD808319AC1D4700379334 /* TSDetailControllerView.xib */,
+				A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */,
+				A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -575,6 +583,7 @@
 				A171E18518C6D186003113ED /* Images.xcassets in Resources */,
 				A178487818F13995005B05F1 /* Cell.xib in Resources */,
 				A1BDDE0B199A825B0041B0A1 /* MJPhotoBrowser.bundle in Resources */,
+				A1FD808419AC1D4700379334 /* TSDetailControllerView.xib in Resources */,
 				A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */,
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
@@ -637,6 +646,7 @@
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
 				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,
 				A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */,
+				A1FD808219AC1D2200379334 /* TSDetailControllerView.m in Sources */,
 				A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */,
 				A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */,
 				A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */,
