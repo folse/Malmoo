@@ -10,22 +10,23 @@
 
 @implementation TSDetailControllerView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
-    self = [super initWithFrame:frame];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TSDetailControllerView" owner:self options:nil];
+    self = [nib objectAtIndex:0];
     if (self) {
-        // Initialization code
+        // Custom initialization
+        
     }
     return self;
 }
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
+
 }
-*/
 
 @end

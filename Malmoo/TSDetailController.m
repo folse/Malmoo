@@ -130,7 +130,7 @@
     
     TSDetailControllerView *detailView = [[TSDetailControllerView alloc] init];
     
-    _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"bg_menu"] blurredImage:nil viewDistanceFromBottom:120 foregroundView:detailView];
+    _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
     [self.tableView addSubview:_glassScrollView];
 }
