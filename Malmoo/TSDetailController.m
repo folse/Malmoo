@@ -345,8 +345,8 @@
  }
  */
 - (IBAction)photosButtonAction:(id)sender
-{
-    [self performSegueWithIdentifier:@"photoCollectionController" sender:self];
+{    
+    //[self performSegueWithIdentifier:@"photoCollectionController" sender:self];
 }
 
 - (IBAction)starterDishBtnAction:(id)sender
