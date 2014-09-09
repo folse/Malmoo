@@ -9,5 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface TSDetailControllerView : UIView
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (strong, nonatomic) IBOutlet UIButton *phoneButton;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *newsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *parkingLabel;
+@property (strong, nonatomic) IBOutlet UILabel *alcoholLabel;
+@property (strong, nonatomic) IBOutlet UILabel *reservation;
+@property (strong, nonatomic) IBOutlet UILabel *openHourLabel;
+@property (strong, nonatomic) IBOutlet UIScrollView *albumScrollView;
 
 @end

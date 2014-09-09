@@ -348,9 +348,11 @@
                 place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
                 place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
                 place.address = object[@"formatted_address"];
-                place.starterDishes = object[@"starters"];
-                place.mainDishes = object[@"maindishes"];
-                place.dessertDishes = object[@"desserts"];
+                place.description = object[@"description"];
+                place.news = object[@"news"];
+                place.parking = object[@"has_parking"];
+                place.alcohol = object[@"has_alcohol"];
+                place.reservation = object[@"phone_reservation"];
                 place.parseObject = object;
                 
                 [placeArray addObject:place];

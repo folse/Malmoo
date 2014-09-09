@@ -46,18 +46,6 @@
     
     [self.navigationItem setTitle:_menuType];
     
-    if([_menuType isEqualToString:@"Starters"]){
-        
-        menuArray = [_place.starterDishes componentsSeparatedByString:@","];
-        
-    }else if([_menuType isEqualToString:@"Main Dishes"]){
-        
-        menuArray = [_place.mainDishes componentsSeparatedByString:@","];
-    
-    }else if([_menuType isEqualToString:@"Desserts"]){
-        
-        menuArray = [_place.dessertDishes componentsSeparatedByString:@","];
-    }
 }
 
 - (void)didReceiveMemoryWarning

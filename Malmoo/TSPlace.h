@@ -16,9 +16,12 @@
 @property (nonatomic, strong) NSString *tags;
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
-@property (nonatomic, strong) NSString *starterDishes;
-@property (nonatomic, strong) NSString *mainDishes;
-@property (nonatomic, strong) NSString *dessertDishes;
+@property (nonatomic, strong) NSString *news;
+@property (nonatomic, strong) NSString *description;
+
+@property (nonatomic) BOOL parking;
+@property (nonatomic) BOOL alcohol;
+@property (nonatomic) BOOL reservation;
 
 @property (nonatomic, strong) PFObject *parseObject;
 

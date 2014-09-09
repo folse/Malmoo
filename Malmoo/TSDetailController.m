@@ -100,17 +100,9 @@
     
     self.title = _place.name;
     
-    [_titleLabel setText:_place.name];
-    [_addressLabel setText:_place.address];
-    [_phoneBtn setTitle:@"042-327050" forState:UIControlStateNormal];
-    [_openHoursLabel setText:_place.openHours];
-    [_startersLabel setText:_place.starterDishes];
-    [_mainDishesLabel setText:_place.mainDishes];
-    [_dessertsLabel setText:_place.dessertDishes];
-    
     [self removeNavigationBarShadow];
     
-    //[self setHeaderImage];
+    [self setHeaderImage];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -125,10 +117,17 @@
     //    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSShadowAttributeName: shadow};
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.title = @"Awesome";
+    self.title = @"Detail";
     self.view.backgroundColor = [UIColor whiteColor];
     
     TSDetailControllerView *detailView = [[TSDetailControllerView alloc] init];
+    
+    [detailView.nameLabel setText:_place.name];
+    [detailView.newsLabel setText:_place.news];
+    [detailView.addressLabel setText:_place.address];
+    [detailView.openHourLabel setText:_place.openHours];
+    [detailView.descriptionLabel setText:_place.description];
+    [detailView.phoneButton setTitle:@"042-327050" forState:UIControlStateNormal];
     
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
@@ -193,12 +192,14 @@
             [self.tableView setContentInset:UIEdgeInsetsMake(200, 0, 0, 0)];
         }
         
-        [bgImageView setImage:originalImage];
-        [bgImageView setContentMode:UIViewContentModeScaleAspectFill];
+        //[bgImageView setImage:originalImage];
+        //[bgImageView setContentMode:UIViewContentModeScaleAspectFill];
         
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
-        [bgView addSubview:bgImageView];
-        [self.tableView setBackgroundView:bgView];
+        [_glassScrollView setBackgroundImage:originalImage];
+        
+//        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
+//        [bgView addSubview:bgImageView];
+//        [self.tableView setBackgroundView:bgView];
         
     }
 }
@@ -346,22 +347,7 @@
  */
 - (IBAction)photosButtonAction:(id)sender
 {    
-    //[self performSegueWithIdentifier:@"photoCollectionController" sender:self];
-}
-
-- (IBAction)starterDishBtnAction:(id)sender
-{
-    [self menuBtnAction:sender];
-}
-
-- (IBAction)mainDishBtnAction:(id)sender
-{
-    [self menuBtnAction:sender];
-}
-
-- (IBAction)dessertDishBtnAction:(id)sender
-{
-    [self menuBtnAction:sender];
+    [self performSegueWithIdentifier:@"photoCollectionController" sender:self];
 }
 
 -(void)menuBtnAction:(id)sender

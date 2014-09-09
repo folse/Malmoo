@@ -19,6 +19,8 @@
 		A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* TSPromotionController.m */; };
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
 		A140346B18F3CB6E00EA05F9 /* TSMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A140346A18F3CB6E00EA05F9 /* TSMenuController.m */; };
+		A16E678619BEB596005EE27B /* TSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678519BEB596005EE27B /* TSSearchController.m */; };
+		A16E678919BEB5A4005EE27B /* TSDirectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678819BEB5A4005EE27B /* TSDirectionController.m */; };
 		A171E16D18C6D186003113ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16C18C6D186003113ED /* Foundation.framework */; };
 		A171E16F18C6D186003113ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16E18C6D186003113ED /* CoreGraphics.framework */; };
 		A171E17118C6D186003113ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E17018C6D186003113ED /* UIKit.framework */; };
@@ -40,8 +42,6 @@
 		A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487618F13995005B05F1 /* UIView+screenshot.m */; };
 		A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487E18F13A39005B05F1 /* SubCateViewController.m */; };
 		A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A178487F18F13A39005B05F1 /* SubCateViewController.xib */; };
-		A178488418F148D7005B05F1 /* TSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178488318F148D7005B05F1 /* TSSearchController.m */; };
-		A178488718F16DDA005B05F1 /* TSDirectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178488618F16DDA005B05F1 /* TSDirectionController.m */; };
 		A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5418DB4D540053DE81 /* TSMapController.m */; };
 		A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5918DB4E4C0053DE81 /* JDSideMenu.m */; };
 		A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5B18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m */; };
@@ -103,6 +103,10 @@
 		A1165CB118F69D8300213808 /* TSPlaceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceCategory.m; sourceTree = "<group>"; };
 		A140346918F3CB6E00EA05F9 /* TSMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMenuController.h; sourceTree = "<group>"; };
 		A140346A18F3CB6E00EA05F9 /* TSMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMenuController.m; sourceTree = "<group>"; };
+		A16E678419BEB596005EE27B /* TSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSearchController.h; sourceTree = "<group>"; };
+		A16E678519BEB596005EE27B /* TSSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSearchController.m; sourceTree = "<group>"; };
+		A16E678719BEB5A4005EE27B /* TSDirectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDirectionController.h; sourceTree = "<group>"; };
+		A16E678819BEB5A4005EE27B /* TSDirectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDirectionController.m; sourceTree = "<group>"; };
 		A171E16918C6D186003113ED /* Malmoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malmoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A171E16C18C6D186003113ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A171E16E18C6D186003113ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,10 +139,6 @@
 		A178487D18F13A39005B05F1 /* SubCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCateViewController.h; sourceTree = "<group>"; };
 		A178487E18F13A39005B05F1 /* SubCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCateViewController.m; sourceTree = "<group>"; };
 		A178487F18F13A39005B05F1 /* SubCateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCateViewController.xib; sourceTree = "<group>"; };
-		A178488218F148D7005B05F1 /* TSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSearchController.h; path = ../../../BitBucket/Malmoo/Malmoo/TSSearchController.h; sourceTree = "<group>"; };
-		A178488318F148D7005B05F1 /* TSSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSearchController.m; path = ../../../BitBucket/Malmoo/Malmoo/TSSearchController.m; sourceTree = "<group>"; };
-		A178488518F16DDA005B05F1 /* TSDirectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSDirectionController.h; path = ../../../BitBucket/Malmoo/Malmoo/TSDirectionController.h; sourceTree = "<group>"; };
-		A178488618F16DDA005B05F1 /* TSDirectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSDirectionController.m; path = ../../../BitBucket/Malmoo/Malmoo/TSDirectionController.m; sourceTree = "<group>"; };
 		A1830B5318DB4D540053DE81 /* TSMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMapController.h; sourceTree = "<group>"; };
 		A1830B5418DB4D540053DE81 /* TSMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMapController.m; sourceTree = "<group>"; };
 		A1830B5618DB4DF40053DE81 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -409,8 +409,8 @@
 				A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */,
 				A1830B5318DB4D540053DE81 /* TSMapController.h */,
 				A1830B5418DB4D540053DE81 /* TSMapController.m */,
-				A178488518F16DDA005B05F1 /* TSDirectionController.h */,
-				A178488618F16DDA005B05F1 /* TSDirectionController.m */,
+				A16E678719BEB5A4005EE27B /* TSDirectionController.h */,
+				A16E678819BEB5A4005EE27B /* TSDirectionController.m */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -431,8 +431,8 @@
 				A1E838E318CEAD05008E6F57 /* TSAccountController.m */,
 				A11316EF191E81E800EC96B6 /* TSPromotionController.h */,
 				A11316F0191E81E800EC96B6 /* TSPromotionController.m */,
-				A178488218F148D7005B05F1 /* TSSearchController.h */,
-				A178488318F148D7005B05F1 /* TSSearchController.m */,
+				A16E678419BEB596005EE27B /* TSSearchController.h */,
+				A16E678519BEB596005EE27B /* TSSearchController.m */,
 				A1830B6418DB4F570053DE81 /* Menu */,
 			);
 			name = Controller;
@@ -646,11 +646,12 @@
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
 				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,
 				A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */,
+				A16E678619BEB596005EE27B /* TSSearchController.m in Sources */,
 				A1FD808219AC1D2200379334 /* TSDetailControllerView.m in Sources */,
+				A16E678919BEB5A4005EE27B /* TSDirectionController.m in Sources */,
 				A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */,
 				A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */,
 				A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */,
-				A178488718F16DDA005B05F1 /* TSDirectionController.m in Sources */,
 				A1BDDE0A199A825B0041B0A1 /* MJPhoto.m in Sources */,
 				A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */,
 				A1738D7518D6927F00FBFDFC /* TSDetailController.m in Sources */,
@@ -668,7 +669,6 @@
 				A10BC25918CF1F97002999F6 /* TSMainController.m in Sources */,
 				A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */,
 				A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */,
-				A178488418F148D7005B05F1 /* TSSearchController.m in Sources */,
 				A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */,
 				A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */,
 				A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */,

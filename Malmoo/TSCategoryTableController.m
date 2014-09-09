@@ -79,9 +79,11 @@
                 place.openHours = object[@"openHours"];
                 place.tags = object[@"metatag"];
                 place.avatarUrl = object[@"avatar"];
-                place.starterDishes = object[@"starters"];
-                place.mainDishes = object[@"maindishes"];
-                place.dessertDishes = object[@"desserts"];
+                place.description = object[@"description"];
+                place.news = object[@"news"];
+                place.parking = object[@"has_parking"];
+                place.alcohol = object[@"has_alcohol"];
+                place.reservation = object[@"phone_reservation"];
                 place.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
                 place.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
                                 
