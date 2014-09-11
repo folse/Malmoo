@@ -42,7 +42,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="rewardBtnAction:" destination="-1" eventType="touchUpInside" id="qqC-9G-quj"/>
+                                <action selector="moreBtnAction:" destination="-1" eventType="touchUpInside" id="fYU-gF-814"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Oj-oe-tCH">
@@ -55,7 +55,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="rewardBtnAction:" destination="-1" eventType="touchUpInside" id="jHv-dt-OBY"/>
+                                <action selector="HomeBtnAction:" destination="-1" eventType="touchUpInside" id="Y80-ig-ZGJ"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CuX-Gw-fwS">
@@ -68,7 +68,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="rewardBtnAction:" destination="-1" eventType="touchUpInside" id="WAd-pZ-sep"/>
+                                <action selector="favouriteBtnAction:" destination="-1" eventType="touchUpInside" id="oqr-ov-eFW"/>
                             </connections>
                         </button>
                     </subviews>

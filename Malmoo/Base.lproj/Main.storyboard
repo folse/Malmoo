@@ -163,133 +163,6 @@
         <scene sceneID="L9O-2B-DuP">
             <objects>
                 <tableViewController id="RnT-s3-ol0" customClass="TSDetailController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="1" id="tAO-5h-CNL" customClass="UIFolderTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" alpha="0.80000000000000004" contentMode="scaleToFill" id="JTu-mW-PUt">
-                            <rect key="frame" x="0.0" y="64" width="320" height="112"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="297" translatesAutoresizingMaskIntoConstraints="NO" id="fzd-j0-zvj">
-                                    <rect key="frame" x="13" y="0.0" width="297" height="43"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="14"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="232" translatesAutoresizingMaskIntoConstraints="NO" id="8Zq-tu-0sh">
-                                    <rect key="frame" x="13" y="68" width="232" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfQ-iD-wFO">
-                                    <rect key="frame" x="13" y="41" width="220" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                                    <state key="normal" title="phone">
-                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="phoneBtnAction:" destination="RnT-s3-ol0" eventType="touchUpInside" id="KR9-3x-pnP"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1i-a6-yHq">
-                                    <rect key="frame" x="230" y="71" width="80" height="34"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <inset key="titleEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="Maps" image="icon_map">
-                                        <color key="titleColor" red="0.16470588235294117" green="0.69411764705882351" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <segue destination="keO-qL-gDQ" kind="push" identifier="MapController" id="tOS-AZ-bJU"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="tU3-U9-c0r">
-                            <rect key="frame" x="0.0" y="282" width="320" height="234"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFO-8p-GVS">
-                                    <rect key="frame" x="7" y="10" width="90" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.35099224449999999" green="0.76078431369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Trebuchet-BoldItalic" family="Trebuchet MS" pointSize="14"/>
-                                    <state key="normal" title="Starters">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="starterDishBtnAction:" destination="RnT-s3-ol0" eventType="touchUpInside" id="oSE-40-vRF"/>
-                                    </connections>
-                                </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9H-I9-tNu">
-                                    <rect key="frame" x="115" y="10" width="90" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.35099224449999999" green="0.76078431369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Trebuchet-BoldItalic" family="Trebuchet MS" pointSize="14"/>
-                                    <state key="normal" title="Main Dishes">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="mainDishBtnAction:" destination="RnT-s3-ol0" eventType="touchUpInside" id="gez-KY-oGU"/>
-                                    </connections>
-                                </button>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91V-k9-SjJ">
-                                    <rect key="frame" x="221" y="10" width="90" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.35099224449999999" green="0.76078431369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="Trebuchet-BoldItalic" family="Trebuchet MS" pointSize="14"/>
-                                    <state key="normal" title="Desserts">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="dessertDishBtnAction:" destination="RnT-s3-ol0" eventType="touchUpInside" id="6M1-DL-YdL"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </view>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="openHour" rowHeight="50" id="u8A-KG-BZ0" customClass="Cell">
-                                <rect key="frame" x="0.0" y="231" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8A-KG-BZ0" id="epL-DX-jhc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="DownAccessory" translatesAutoresizingMaskIntoConstraints="NO" id="tjm-i0-EyV">
-                                            <rect key="frame" x="289" y="20" width="18" height="10"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m53-WV-5H4">
-                                            <rect key="frame" x="20" y="12" width="160" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Trebuchet-BoldItalic" family="Trebuchet MS" pointSize="14"/>
-                                            <color key="textColor" red="0.1647058824" green="0.69411764710000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="arrowImageView" destination="tjm-i0-EyV" id="3Jd-CQ-fsf"/>
-                                    <outlet property="titleLabel" destination="m53-WV-5H4" id="32i-q6-fR4"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="RnT-s3-ol0" id="uIy-GZ-hZo"/>
-                            <outlet property="delegate" destination="RnT-s3-ol0" id="brS-Wq-kuk"/>
-                        </connections>
-                    </tableView>
                     <navigationItem key="navigationItem" title="Detail" id="tey-Pr-Kgc">
                         <barButtonItem key="backBarButtonItem" title=" " id="T58-nx-uh2"/>
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="LcE-W6-mWn">
@@ -299,12 +172,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressLabel" destination="8Zq-tu-0sh" id="7tq-2B-nxb"/>
-                        <outlet property="dessertDishBtn" destination="91V-k9-SjJ" id="JXV-al-CKD"/>
-                        <outlet property="mainDishBtn" destination="Y9H-I9-tNu" id="gSu-ve-hmi"/>
-                        <outlet property="phoneBtn" destination="hfQ-iD-wFO" id="WlH-qP-Reu"/>
-                        <outlet property="starterDishBtn" destination="eFO-8p-GVS" id="r32-Rc-7KY"/>
-                        <outlet property="titleLabel" destination="fzd-j0-zvj" id="nk6-kr-VAy"/>
                         <segue destination="9sG-xR-1Dk" kind="push" identifier="MenuController" id="Jcj-Nj-SP2"/>
                         <segue destination="c3W-kX-pLZ" kind="push" identifier="photoCollectionController" id="fez-0x-SBU"/>
                     </connections>
@@ -853,10 +720,8 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
         </scene>
     </scenes>
     <resources>
-        <image name="DownAccessory" width="18" height="10"/>
         <image name="btn_menu" width="36" height="31"/>
         <image name="default_shop_photo" width="66" height="66"/>
-        <image name="icon_map" width="34" height="34"/>
         <image name="prize_bannar" width="300" height="90"/>
     </resources>
     <color key="tintColor" red="0.21176470589999999" green="0.62352941179999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>

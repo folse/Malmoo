@@ -58,6 +58,7 @@
     BTGlassScrollView *_glassScrollView2;
     BTGlassScrollView *_glassScrollView3;
     int _page;
+    TSDetailControllerView *detailView;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -120,18 +121,37 @@
     self.title = @"Detail";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    TSDetailControllerView *detailView = [[TSDetailControllerView alloc] init];
+    detailView = [[TSDetailControllerView alloc] init];
     
     [detailView.nameLabel setText:_place.name];
     [detailView.newsLabel setText:_place.news];
     [detailView.addressLabel setText:_place.address];
     [detailView.openHourLabel setText:_place.openHours];
     [detailView.descriptionLabel setText:_place.description];
-    [detailView.phoneButton setTitle:@"042-327050" forState:UIControlStateNormal];
+    [detailView.phoneButton setTitle:_place.phone forState:UIControlStateNormal];
     
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
     [self.tableView addSubview:_glassScrollView];
+}
+
+-(void)showPlacePhotoAlbum
+{
+    NSArray *photoUrlArray;
+    
+    [detailView.albumScrollView setDelegate:self];
+    [detailView.albumScrollView setPagingEnabled:YES];
+    [detailView.albumScrollView setContentSize:CGSizeMake(70*photoUrlArray.count, 70)];
+    
+    for (int i = 0; i < photoUrlArray.count; i++) {
+        
+        NSString *imageName = photoUrlArray[i];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i-50, 0, 70, 70)];
+        [imageView setImage:[UIImage imageNamed:imageName]];
+        
+        [detailView.albumScrollView addSubview:imageView];
+    }
 }
 
 - (void)viewWillLayoutSubviews
