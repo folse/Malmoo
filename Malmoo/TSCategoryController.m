@@ -10,7 +10,7 @@
 #import "TSPlaceCategory.h"
 #import "TSCategoryTableController.h"
 
-@interface CategoryController ()
+@interface TSCategoryController ()
 {
     NSMutableArray *categoryArray;
     MBProgressHUD *HUD;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation CategoryController
+@implementation TSCategoryController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

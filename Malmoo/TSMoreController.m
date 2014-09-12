@@ -8,11 +8,11 @@
 
 #import "TSMoreController.h"
 
-@interface MoreController ()
+@interface TSMoreController ()
 
 @end
 
-@implementation MoreController
+@implementation TSMoreController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

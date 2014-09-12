@@ -67,8 +67,6 @@
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
-    [self addBottomToolBar];
-    
     //show animation trick
     double delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -82,8 +80,6 @@
     [super viewWillAppear:animated];
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
-    
-    [bottomToolBar removeFromSuperview];
     
     _place.favourited = NO;
 }
@@ -129,6 +125,12 @@
     [detailView.openHourLabel setText:_place.openHours];
     [detailView.descriptionLabel setText:_place.description];
     [detailView.phoneButton setTitle:_place.phone forState:UIControlStateNormal];
+    
+    [detailView.favoriteButton addTarget:self action:@selector(favoriteButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [detailView.shareButton addTarget:self action:@selector(shareButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [detailView.reportButton addTarget:self action:@selector(reportButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
@@ -399,9 +401,7 @@
     }
 }
 
-#pragma mark - Mail
-
--(void)showComposerSheet
+-(void)reportButtonAction
 {
     // Attach an image to the email
     UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
@@ -427,7 +427,6 @@
     // Fill out the email body text
     
     [self presentViewController:picker animated:YES completion:nil];
-    
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
@@ -435,7 +434,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)sharePlace
+-(void)shareButtonAction
 {
     NSString *placePhoneString = _place.phone;
     
@@ -453,7 +452,7 @@
     [self.navigationController presentViewController:activityVC animated:YES completion:nil];
 }
 
--(void)favouritePlace
+-(void)favoriteButtonAction
 {
     if (_place.favourited) {
         
@@ -469,31 +468,31 @@
     }
 }
 
--(void)addBottomToolBar
-{
-    bottomToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-44, self.view.frame.size.width, 44.0f)];
-    bottomToolBar.tintColor = APP_COLOR;
-    [bottomToolBar sizeToFit];
-    
-    favouriteImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_star"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
-    favouriteBtn = [[UIBarButtonItem alloc] initWithTitle:@"Favorite" style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
-    [favouriteBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
-    
-    shareImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
-    shareBtn = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
-    [shareBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
-    
-    reportImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_report"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
-    reportBtn = [[UIBarButtonItem alloc] initWithTitle:@"Report" style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
-    [reportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
-    
-    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    
-    NSArray *itemArray = [[NSArray alloc] initWithObjects:flexSpace, favouriteImageBtn,favouriteBtn, flexSpace, shareImageBtn,shareBtn, flexSpace, reportImageBtn,reportBtn, flexSpace, nil];
-    
-    [bottomToolBar setItems:itemArray animated:YES];
-    
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:bottomToolBar];
-}
+//-(void)addBottomToolBar
+//{
+//    bottomToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-44, self.view.frame.size.width, 44.0f)];
+//    bottomToolBar.tintColor = APP_COLOR;
+//    [bottomToolBar sizeToFit];
+//    
+//    favouriteImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_star"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
+//    favouriteBtn = [[UIBarButtonItem alloc] initWithTitle:@"Favorite" style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
+//    [favouriteBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
+//    
+//    shareImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
+//    shareBtn = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
+//    [shareBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
+//    
+//    reportImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_report"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
+//    reportBtn = [[UIBarButtonItem alloc] initWithTitle:@"Report" style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
+//    [reportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
+//    
+//    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+//    
+//    NSArray *itemArray = [[NSArray alloc] initWithObjects:flexSpace, favouriteImageBtn,favouriteBtn, flexSpace, shareImageBtn,shareBtn, flexSpace, reportImageBtn,reportBtn, flexSpace, nil];
+//    
+//    [bottomToolBar setItems:itemArray animated:YES];
+//    
+//    [[[[UIApplication sharedApplication] delegate] window] addSubview:bottomToolBar];
+//}
 
 @end

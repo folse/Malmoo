@@ -432,7 +432,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Oz4-29-ySo"/>
                         <barButtonItem key="leftBarButtonItem" image="btn_menu" id="k0X-DG-Hwg">
                             <connections>
-                                <action selector="menuBtnAction:" destination="QPg-hP-S06" id="ED3-bW-nNj"/>
+                                <action selector="menuBtnAction:" destination="QPg-hP-S06" id="Uif-g8-6Lp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -469,7 +469,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="1Jw-Bc-fI0"/>
                         <barButtonItem key="leftBarButtonItem" image="btn_menu" id="m0r-KH-L5x">
                             <connections>
-                                <action selector="menuBtnAction:" destination="8Ce-c4-xB4" id="tMh-h3-2nx"/>
+                                <action selector="menuBtnAction:" destination="8Ce-c4-xB4" id="WNr-Z7-3MU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
