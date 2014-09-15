@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *newsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *parkingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *alcoholLabel;
-@property (strong, nonatomic) IBOutlet UILabel *reservation;
+@property (strong, nonatomic) IBOutlet UILabel *reservationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *openHourLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *albumScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;

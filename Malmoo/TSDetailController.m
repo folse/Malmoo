@@ -126,6 +126,24 @@
     [detailView.descriptionLabel setText:_place.description];
     [detailView.phoneButton setTitle:_place.phone forState:UIControlStateNormal];
     
+    if (_place.parking) {
+        [detailView.parkingLabel setText:@"Parking √"];
+    }else{
+        [detailView.parkingLabel setText:@"Parking X"];
+    }
+    
+    if (_place.alcohol) {
+        [detailView.alcoholLabel setText:@"Alcohol √"];
+    }else{
+        [detailView.alcoholLabel setText:@"Alcohol X"];
+    }
+    
+    if (_place.reservation) {
+        [detailView.reservationLabel setText:@"Reservation √"];
+    }else{
+        [detailView.reservationLabel setText:@"Reservation X"];
+    }
+    
     [detailView.favoriteButton addTarget:self action:@selector(favoriteButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     [detailView.shareButton addTarget:self action:@selector(shareButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -416,7 +434,7 @@
     [picker setSubject:@"Report Data Error"];
     
     // Set up recipients
-    NSArray *toRecipients = [NSArray arrayWithObject:@"weigang@gmail.com"];
+    NSArray *toRecipients = [NSArray arrayWithObject:@"feedback@mtscandic.com"];
     
     [picker setToRecipients:toRecipients];
     [picker setMessageBody:@"I find an information error at:  , it should be: " isHTML:NO];

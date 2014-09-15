@@ -95,9 +95,6 @@
                     <state key="normal" title="  Favorite" image="icon_star">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="du" value=""/>
-                    </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTU-t5-ZsE">
                     <rect key="frame" x="217" y="566" width="94" height="44"/>
@@ -133,7 +130,7 @@
                 <outlet property="parkingLabel" destination="ckS-Z2-JyU" id="53d-nL-sn4"/>
                 <outlet property="phoneButton" destination="HQE-lN-KsK" id="M0l-9C-gbp"/>
                 <outlet property="reportButton" destination="JTU-t5-ZsE" id="Phs-2E-1ur"/>
-                <outlet property="reservation" destination="He8-5V-5Qn" id="Uec-qb-hGv"/>
+                <outlet property="reservationLabel" destination="He8-5V-5Qn" id="8hK-xo-AgJ"/>
                 <outlet property="shareButton" destination="iMk-QH-Lp8" id="y5N-eH-ZXc"/>
             </connections>
         </view>
