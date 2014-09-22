@@ -30,21 +30,9 @@
     float bgImageViewHeight;
 }
 
-@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UIButton *phoneBtn;
-
-@property (strong, nonatomic) IBOutlet UILabel *openHoursLabel;
-@property (weak, nonatomic) IBOutlet UILabel *startersLabel;
-@property (weak, nonatomic) IBOutlet UILabel *mainDishesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dessertsLabel;
-
 @property (assign) BOOL isOpen;
 @property (nonatomic,retain) NSIndexPath *selectIndex;
 
-@property (strong, nonatomic) IBOutlet UIButton *starterDishBtn;
-@property (strong, nonatomic) IBOutlet UIButton *mainDishBtn;
-@property (strong, nonatomic) IBOutlet UIButton *dessertDishBtn;
 
 @end
 
@@ -73,6 +61,8 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         // [_glassScrollView1 setBackgroundImage:[UIImage imageNamed:@"background"] overWriteBlur:YES animated:YES duration:1];
     });
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -153,6 +143,24 @@
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
     [self.tableView addSubview:_glassScrollView];
+    
+     [self getPhotos];
+}
+
+-(void)getPhotos
+{
+    PFObject *placeObject = (PFObject *)_place;
+    PFRelation *relation = [placeObject relationForKey:@"photos"];
+    
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            s(objects)
+            
+        } else {
+            s(error)
+        }
+    }];
 }
 
 -(void)showPlacePhotoAlbum
