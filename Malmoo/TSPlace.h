@@ -21,6 +21,7 @@
 
 @property (nonatomic) BOOL parking;
 @property (nonatomic) BOOL alcohol;
+@property (nonatomic) BOOL delivery;
 @property (nonatomic) BOOL reservation;
 
 @property (nonatomic, strong) PFObject *parseObject;

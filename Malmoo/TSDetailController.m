@@ -128,6 +128,12 @@
         [detailView.alcoholLabel setText:@"Alcohol X"];
     }
     
+    if (_place.delivery) {
+        [detailView.reservationLabel setText:@"Reservation √"];
+    }else{
+        [detailView.reservationLabel setText:@"Reservation X"];
+    }
+    
     if (_place.reservation) {
         [detailView.reservationLabel setText:@"Reservation √"];
     }else{

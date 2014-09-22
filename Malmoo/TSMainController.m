@@ -341,17 +341,18 @@
                 place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
                 place.openHours = object[@"openHours"];
                 place.tags = object[@"metatag"];
-                place.avatarUrl = object[@"photo"];
+                place.avatarUrl = object[@"avatar"];
                 
-                PFGeoPoint *location = object[@"location"];
+//                PFGeoPoint *location = object[@"location"];
+//                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+//                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
                 
-                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
-                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
-                place.address = object[@"formatted_address"];
+                place.address = object[@"address"];
                 place.description = object[@"description"];
                 place.news = object[@"news"];
-                place.parking = object[@"has_parking"];
+                place.parking = object[@"has_park"];
                 place.alcohol = object[@"has_alcohol"];
+                place.delivery = object[@"delivery"];
                 place.reservation = object[@"phone_reservation"];
                 place.parseObject = object;
                 
