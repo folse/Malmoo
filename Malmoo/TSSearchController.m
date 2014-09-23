@@ -9,7 +9,6 @@
 #import "TSSearchController.h"
 #import "TSMainCell.h"
 #import "TSDetailController.h"
-#import "FSImageDownloader.h"
 
 @interface TSSearchController ()<UISearchBarDelegate>
 {
@@ -98,9 +97,6 @@
                     place.reservation = object[@"phone_reservation"];
                     
                     [resultArray addObject:place];
-                    
-                    NSIndexPath *index = [NSIndexPath indexPathForRow:resultArray.count-1 inSection:0];
-                    [self startImageDownload:place.avatarUrl forIndexPath:index];
                 }
                 
                 if (resultArray.count > 0) {
@@ -145,19 +141,7 @@
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
-    NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellPlace.avatarUrl];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:imagePath]){
-        
-        cell.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
-        
-    }else{
-        
-        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
-        {
-            [self startImageDownload:cellPlace.avatarUrl forIndexPath:indexPath];
-        }
-    }
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:cellPlace.avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
 }
@@ -167,66 +151,6 @@
     selectedId = indexPath.row;
     
     [self performSegueWithIdentifier:@"DetailController" sender:self];
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table cell image support
-
--(void)startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexPath
-{
-    FSImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
-    if (imageDownloader == nil)
-    {
-        imageDownloader = [[FSImageDownloader alloc] init];
-        [imageDownloader setCompletionHandler:^(UIImage *image) {
-            
-            TSMainCell *cell = (TSMainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-            cell.avatarImageView.image = image;
-            
-            // Remove the IconDownloader from the in progress list.
-            // This will result in it being deallocated.
-            [self.imageDownloadsInProgress removeObjectForKey:indexPath];
-        }];
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
-        [imageDownloader downloadImageFrom:url];
-    }
 }
 
 #pragma mark - Navigation

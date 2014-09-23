@@ -167,13 +167,14 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="T58-nx-uh2"/>
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="LcE-W6-mWn">
                             <connections>
-                                <action selector="photosButtonAction:" destination="RnT-s3-ol0" id="FJW-RK-3xb"/>
+                                <action selector="menuButtonAction:" destination="RnT-s3-ol0" id="7X8-NG-iec"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="9sG-xR-1Dk" kind="push" identifier="MenuController" id="Jcj-Nj-SP2"/>
-                        <segue destination="c3W-kX-pLZ" kind="push" identifier="photoCollectionController" id="fez-0x-SBU"/>
+                        <segue destination="c3W-kX-pLZ" kind="push" identifier="PhotoCollectionController" id="fez-0x-SBU"/>
+                        <segue destination="keO-qL-gDQ" kind="push" identifier="MapController" id="Mvc-PU-5LK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzy-8z-PVB" userLabel="First Responder" sceneMemberID="firstResponder"/>

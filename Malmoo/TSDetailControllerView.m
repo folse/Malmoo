@@ -18,6 +18,7 @@
         // Custom initialization
         
     }
+    
     return self;
 }
 

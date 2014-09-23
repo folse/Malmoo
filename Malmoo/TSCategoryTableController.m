@@ -9,7 +9,6 @@
 #import "TSCategoryTableController.h"
 #import "TSMainCell.h"
 #import "TSDetailController.h"
-#import "FSImageDownloader.h"
 
 @interface CategoryTableController ()
 {
@@ -89,8 +88,6 @@
                                 
                 [placeArray addObject:place];
                 
-                NSIndexPath *index = [NSIndexPath indexPathForRow:placeArray.count-1 inSection:0];
-                [self startImageDownload:place.avatarUrl forIndexPath:index];
             }
             
             [HUD hide:YES];
@@ -108,29 +105,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - Table cell image support
-
--(void)startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexPath
-{
-    FSImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
-    if (imageDownloader == nil)
-    {
-        imageDownloader = [[FSImageDownloader alloc] init];
-        [imageDownloader setCompletionHandler:^(UIImage *image) {
-            
-            TSMainCell *cell = (TSMainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-            cell.avatarImageView.image = image;
-            
-            // Remove the IconDownloader from the in progress list.
-            // This will result in it being deallocated.
-            [self.imageDownloadsInProgress removeObjectForKey:indexPath];
-        }];
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
-        [imageDownloader downloadImageFrom:url];
-    }
 }
 
 #pragma mark - Table view data source
@@ -164,19 +138,7 @@
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
-    NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellPlace.avatarUrl];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:imagePath]){
-        
-        cell.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
-        
-    }else{
-        
-        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
-        {
-            [self startImageDownload:cellPlace.avatarUrl forIndexPath:indexPath];
-        }
-    }
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:cellPlace.avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
 }

@@ -10,8 +10,8 @@
 #import "UIImage+ImageEffects.h"
 
 //default blur settings
-#define DEFAULT_BLUR_RADIUS 14
-#define DEFAULT_BLUR_TINT_COLOR [UIColor colorWithWhite:255 alpha:.3]
+#define DEFAULT_BLUR_RADIUS 22
+#define DEFAULT_BLUR_TINT_COLOR [UIColor colorWithRed:186/255.0 green:186/255.0 blue:186/255.0 alpha:.6]
 #define DEFAULT_BLUR_DELTA_FACTOR 1.4
 
 //how much the background moves when scroll

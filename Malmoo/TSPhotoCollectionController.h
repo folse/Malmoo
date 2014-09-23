@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong) TSPlace *place;
 
+@property (nonatomic,strong) NSString *defaultPhotoType;
+
 @end

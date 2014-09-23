@@ -10,7 +10,6 @@
 #import "TSMapController.h"
 #import "SubCateViewController.h"
 #import "TSPhotoCollectionController.h"
-#import "TSMenuController.h"
 #import "Cell.h"
 #import <MessageUI/MessageUI.h>
 #import "TSDetailControllerView.h"
@@ -28,11 +27,11 @@
     UIImageView *coverImageView;
     UIImage *originalImage;
     float bgImageViewHeight;
+    NSMutableArray *photoUrlArray;
 }
 
 @property (assign) BOOL isOpen;
 @property (nonatomic,retain) NSIndexPath *selectIndex;
-
 
 @end
 
@@ -54,13 +53,6 @@
     [super viewWillAppear:animated];
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
-    
-    //show animation trick
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        // [_glassScrollView1 setBackgroundImage:[UIImage imageNamed:@"background"] overWriteBlur:YES animated:YES duration:1];
-    });
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -89,19 +81,17 @@
     
     [self removeNavigationBarShadow];
     
-    [self setHeaderImage];
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     //preventing weird inset
     [self setAutomaticallyAdjustsScrollViewInsets: NO];
     
     //navigation bar work
-    //    NSShadow *shadow = [[NSShadow alloc] init];
-    //    [shadow setShadowOffset:CGSizeMake(1, 1)];
-    //    [shadow setShadowColor:[UIColor blackColor]];
-    //    [shadow setShadowBlurRadius:1];
-    //    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSShadowAttributeName: shadow};
+//    NSShadow *shadow = [[NSShadow alloc] init];
+//    [shadow setShadowOffset:CGSizeMake(1, 1)];
+//    [shadow setShadowColor:[UIColor blackColor]];
+//    [shadow setShadowBlurRadius:1];
+//    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSShadowAttributeName: shadow};
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.title = @"Detail";
@@ -111,33 +101,34 @@
     
     [detailView.nameLabel setText:_place.name];
     [detailView.newsLabel setText:_place.news];
-    [detailView.addressLabel setText:_place.address];
+    [detailView.addressButton setTitle:_place.address forState:UIControlStateNormal];
+    [detailView.addressButton.titleLabel setNumberOfLines:3];
     [detailView.openHourLabel setText:_place.openHours];
     [detailView.descriptionLabel setText:_place.description];
     [detailView.phoneButton setTitle:_place.phone forState:UIControlStateNormal];
     
     if (_place.parking) {
-        [detailView.parkingLabel setText:@"Parking √"];
+        [detailView.parkingLabel setText:@"Parking　√"];
     }else{
-        [detailView.parkingLabel setText:@"Parking X"];
+        [detailView.parkingLabel setText:@"Parking　X"];
     }
     
     if (_place.alcohol) {
-        [detailView.alcoholLabel setText:@"Alcohol √"];
+        [detailView.alcoholLabel setText:@"Alcohol　√"];
     }else{
-        [detailView.alcoholLabel setText:@"Alcohol X"];
+        [detailView.alcoholLabel setText:@"Alcohol　X"];
     }
     
     if (_place.delivery) {
-        [detailView.reservationLabel setText:@"Reservation √"];
+        [detailView.reservationLabel setText:@"Delivery　√"];
     }else{
-        [detailView.reservationLabel setText:@"Reservation X"];
+        [detailView.reservationLabel setText:@"Delivery　X"];
     }
     
     if (_place.reservation) {
-        [detailView.reservationLabel setText:@"Reservation √"];
+        [detailView.reservationLabel setText:@"Reservation　√"];
     }else{
-        [detailView.reservationLabel setText:@"Reservation X"];
+        [detailView.reservationLabel setText:@"Reservation　X"];
     }
     
     [detailView.favoriteButton addTarget:self action:@selector(favoriteButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -146,24 +137,33 @@
     
     [detailView.reportButton addTarget:self action:@selector(reportButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
-    _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"background3"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
+    [detailView.mapButton addTarget:self action:@selector(mapButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.tableView addSubview:_glassScrollView];
+    [detailView.phoneButton addTarget:self action:@selector(phoneButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
-     [self getPhotos];
+    [self setHeaderImage];
+
 }
 
 -(void)getPhotos
 {
-    PFObject *placeObject = (PFObject *)_place;
-    PFRelation *relation = [placeObject relationForKey:@"photos"];
-    
-    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    PFRelation *relation = [_place.parseObject relationForKey:@"photos"];
+    PFQuery *productPhotoQuery = [relation query];
+    productPhotoQuery.limit = 4;
+    //[productPhotoQuery whereKey:@"product" equalTo:@"true"];
+    [productPhotoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-            s(objects)
+            photoUrlArray = [NSMutableArray new];
+            
+            for (PFObject *photoObject in objects) {
+                [photoUrlArray addObject:photoObject[@"url"]];
+            }
+            
+            [self showPlacePhotoAlbum];
             
         } else {
+            
             s(error)
         }
     }];
@@ -171,19 +171,25 @@
 
 -(void)showPlacePhotoAlbum
 {
-    NSArray *photoUrlArray;
-    
     [detailView.albumScrollView setDelegate:self];
-    [detailView.albumScrollView setPagingEnabled:YES];
     [detailView.albumScrollView setContentSize:CGSizeMake(70*photoUrlArray.count, 70)];
+    
+    UIGestureRecognizer *imageTap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(photoButtonAction)];
     
     for (int i = 0; i < photoUrlArray.count; i++) {
         
-        NSString *imageName = photoUrlArray[i];
+        NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",photoUrlArray[i]];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i-50, 0, 70, 70)];
-        [imageView setImage:[UIImage imageNamed:imageName]];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+20*i+20, 0, 70, 70)];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+
+        [imageView setUserInteractionEnabled:YES];
+        [imageView addGestureRecognizer:imageTap];
         
+        CALayer *layer = [imageView layer];
+        layer.borderColor = [UIColor whiteColor].CGColor;
+        layer.borderWidth = 3.6f;
+    
         [detailView.albumScrollView addSubview:imageView];
     }
 }
@@ -201,70 +207,95 @@
     [self viewWillAppear:YES];
 }
 
+
 -(void)setHeaderImage
 {
     if (_place.avatarUrl != nil) {
         
-        UIImageView *bgImageView = [[UIImageView alloc] init];
+        NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/x1136/interlace/1",_place.avatarUrl];
+
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:bgImageUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            
+            _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:image blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
+            
+            [self.tableView addSubview:_glassScrollView];
+            
+            [self getPhotos];
+            
+        }];
         
-        NSString *originalImageUrl = [self getOriginalImageUrl:_place.avatarUrl];
-        
-        NSString *originalImagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:originalImageUrl];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        if ([fileManager fileExistsAtPath:originalImagePath]){
-            
-            originalImage = [UIImage imageWithContentsOfFile:originalImagePath];
-            
-            bgImageViewHeight = originalImage.size.height;
-            
-            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, bgImageViewHeight)];
-            
-            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight, 0, 0, 0)];
-            
-        }else{
-            
-            NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:_place.avatarUrl];
-            NSFileManager *fileManager = [NSFileManager defaultManager];
-            if ([fileManager fileExistsAtPath:imagePath]){
-                
-                originalImage = [UIImage imageWithContentsOfFile:imagePath];
-            }
-            
-            coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-            [bgImageView addSubview:coverImageView];
-            
-            [self showImageByDownloadingProgress:originalImageUrl withDownloadPath:originalImagePath];
-            
-            bgImageViewHeight = originalImage.size.height*320/120;
-            
-            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, bgImageViewHeight)];
-        }
-        
-        if(bgImageViewHeight <= 320){
-            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight - 42, 0, 0, 0)];
-        }else{
-            [self.tableView setContentInset:UIEdgeInsetsMake(200, 0, 0, 0)];
-        }
-        
-        //[bgImageView setImage:originalImage];
-        //[bgImageView setContentMode:UIViewContentModeScaleAspectFill];
-        
-        [_glassScrollView setBackgroundImage:originalImage];
-        
-//        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
-//        [bgView addSubview:bgImageView];
-//        [self.tableView setBackgroundView:bgView];
-        
+        [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+
     }
 }
 
--(NSString *)getOriginalImageUrl:(NSString *)imageUrl
-{
-    NSMutableString *imageUrlString = [[NSMutableString alloc] initWithString:imageUrl];
-    [imageUrlString replaceOccurrencesOfString:@"-w120/" withString:@"-w320/" options:NSBackwardsSearch range:NSMakeRange(0, imageUrlString.length)];
-    s(imageUrlString)
-    return imageUrlString;
-}
+//-(void)setHeaderImage
+//{
+//    if (_place.avatarUrl != nil) {
+//        
+//        UIImageView *bgImageView = [[UIImageView alloc] init];
+//        
+//        NSString *originalImageUrl = [self getOriginalImageUrl:_place.avatarUrl];
+//        
+//        NSString *originalImagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:originalImageUrl];
+//        NSFileManager *fileManager = [NSFileManager defaultManager];
+//        if ([fileManager fileExistsAtPath:originalImagePath]){
+//            
+//            originalImage = [UIImage imageWithContentsOfFile:originalImagePath];
+//            
+//            bgImageViewHeight = originalImage.size.height;
+//            
+//            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, bgImageViewHeight)];
+//            
+//            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight, 0, 0, 0)];
+//            
+//        }else{
+//            
+//            NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:_place.avatarUrl];
+//            NSFileManager *fileManager = [NSFileManager defaultManager];
+//            if ([fileManager fileExistsAtPath:imagePath]){
+//                
+//                originalImage = [UIImage imageWithContentsOfFile:imagePath];
+//            }
+//            
+//            coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+//            [bgImageView addSubview:coverImageView];
+//            
+//            [self showImageByDownloadingProgress:originalImageUrl withDownloadPath:originalImagePath];
+//            
+//            bgImageViewHeight = originalImage.size.height*320/120;
+//            
+//            [bgImageView setFrame:CGRectMake(0, 64, SCREEN_WIDTH, bgImageViewHeight)];
+//        }
+//        
+////        if(bgImageViewHeight <= 320){
+////            [self.tableView setContentInset:UIEdgeInsetsMake(bgImageViewHeight - 42, 0, 0, 0)];
+////        }else{
+//            [self.tableView setContentInset:UIEdgeInsetsMake(-20, 0, 0, 0)];
+////        }
+//        
+//        //[bgImageView setImage:originalImage];
+//        //[bgImageView setContentMode:UIViewContentModeScaleAspectFill];
+//        
+//        [_glassScrollView setBackgroundImage:originalImage];
+//        
+////        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, originalImage.size.height)];
+////        [bgView addSubview:bgImageView];
+////        [self.tableView setBackgroundView:bgView];
+//        
+//    }
+//}
+//
+//-(NSString *)getOriginalImageUrl:(NSString *)imageUrl
+//{
+//    NSMutableString *imageUrlString = [[NSMutableString alloc] initWithString:imageUrl];
+//    [imageUrlString replaceOccurrencesOfString:@"-w120/" withString:@"-w320/" options:NSBackwardsSearch range:NSMakeRange(0, imageUrlString.length)];
+//    s(imageUrlString)
+//    return imageUrlString;
+//}
 
 -(void)showImageByDownloadingProgress:(NSString *)imageUrl withDownloadPath:(NSString *)imagePath
 {
@@ -325,7 +356,7 @@
     }
 }
 
-- (IBAction)phoneBtnAction:(id)sender
+- (void)phoneButtonAction
 {
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_place.phone]];
     UIWebView  *phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
@@ -334,81 +365,19 @@
     [self.view addSubview:phoneCallWebView];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(void)mapButtonAction
 {
-    // Return the number of sections.
-    return 0;
+    [self performSegueWithIdentifier:@"MapController" sender:self];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(void)photoButtonAction
 {
-    // Return the number of rows in the section.
-    
-    return 0;
+    [self performSegueWithIdentifier:@"PhotoCollectionController" sender:self];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Cell *cell = (Cell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //    Cell *cell = (Cell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-}
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-- (IBAction)photosButtonAction:(id)sender
+- (IBAction)menuButtonAction:(id)sender
 {    
-    [self performSegueWithIdentifier:@"photoCollectionController" sender:self];
-}
-
--(void)menuBtnAction:(id)sender
-{
-    UIButton *actionBtn = (UIButton *)sender;
-    selectedMenuType = [[actionBtn titleLabel] text];
-    [self performSegueWithIdentifier:@"MenuController" sender:self];
+    [self performSegueWithIdentifier:@"MenuPhotoCollectionController" sender:self];
 }
 
 #pragma mark - Navigation
@@ -420,15 +389,16 @@
         MapController *mapController = segue.destinationViewController;
         [mapController setPlace:_place];
         
-    }else if ([segue.identifier isEqualToString:@"MenuController"]) {
-        
-        TSMenuController *menuController = segue.destinationViewController;
-        [menuController setPlace:_place];
-        [menuController setMenuType:selectedMenuType];
-        
-    }else if ([segue.identifier isEqualToString:@"photoCollectionController"]) {
+    }else if ([segue.identifier isEqualToString:@"PhotoCollectionController"]) {
         
         TSPhotoCollectionController *photoCollectionController = segue.destinationViewController;
+        [photoCollectionController setDefaultPhotoType:@"product"];
+        [photoCollectionController setPlace:_place];
+        
+    }else if ([segue.identifier isEqualToString:@"MenuPhotoCollectionController"]) {
+        
+        TSPhotoCollectionController *photoCollectionController = segue.destinationViewController;
+        [photoCollectionController setDefaultPhotoType:@"menu"];
         [photoCollectionController setPlace:_place];
     }
 }

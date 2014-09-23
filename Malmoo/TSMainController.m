@@ -9,7 +9,6 @@
 #import "TSMainController.h"
 #import "TSMainCell.h"
 #import "TSDetailController.h"
-#import "FSImageDownloader.h"
 #import "TSPlaceMark.h"
 #import <MapKit/MKAnnotationView.h>
 #import <CoreLocation/CoreLocation.h>
@@ -301,8 +300,8 @@
 -(void)getData:(NSString *)keyWords
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    query.limit = 30;
-    query.skip = PAGE_NUM*30;
+    query.limit = 15;
+    query.skip = PAGE_NUM*15;
     
     if (keyWords) {
         
@@ -338,11 +337,11 @@
                 
                 TSPlace *place = [TSPlace new];
                 place.name = object[@"name"];
-                place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
-                place.openHours = object[@"openHours"];
-                place.tags = object[@"metatag"];
+                place.phone = object[@"phone"];
+                place.openHours = object[@"open_hour"];
                 place.avatarUrl = object[@"avatar"];
                 
+//                place.tags = object[@"tag"];
 //                PFGeoPoint *location = object[@"location"];
 //                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
 //                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
@@ -357,11 +356,6 @@
                 place.parseObject = object;
                 
                 [placeArray addObject:place];
-                
-                if (place.avatarUrl.length > 0) {
-                    NSIndexPath *index = [NSIndexPath indexPathForRow:placeArray.count-1 inSection:0];
-                    [self startImageDownload:place.avatarUrl forIndexPath:index];
-                }
             }
             
             [HUD hide:YES];
@@ -423,22 +417,14 @@
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
-    if (cellPlace.avatarUrl.length > 0) {
-        NSString *imagePath = [[FSProjectSettings alloc] getMD5FilePathWithUrl:cellPlace.avatarUrl];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        if ([fileManager fileExistsAtPath:imagePath]){
-            
-            cell.avatarImageView.image = [UIImage imageWithContentsOfFile:imagePath];
-            
-        }else{
-            
-            cell.avatarImageView.image = [UIImage imageNamed:@"default_shop_photo"];
-            
-            if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
-            {
-                [self startImageDownload:cellPlace.avatarUrl forIndexPath:indexPath];
-            }
+    if (cellPlace.avatarUrl != nil) {
+        
+        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
+        {
+            NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",cellPlace.avatarUrl];
+            [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
         }
+        
     }else{
         cell.avatarImageView.image = [UIImage imageNamed:@"default_shop_photo"];
     }
@@ -452,56 +438,6 @@
     
     [self performSegueWithIdentifier:@"DetailController" sender:self];
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 
 #pragma mark - Navigation
 
@@ -519,28 +455,6 @@
         TSPlace *selectedPlace = placeArray[selectedId];
         TSDetailController *detailController = segue.destinationViewController;
         detailController.place = selectedPlace;
-    }
-}
-
-#pragma mark - Table cell image support
-
--(void)startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexPath
-{
-    FSImageDownloader *imageDownloader = [self.imageDownloadsInProgress objectForKey:indexPath];
-    if (imageDownloader == nil)
-    {
-        imageDownloader = [[FSImageDownloader alloc] init];
-        [imageDownloader setCompletionHandler:^(UIImage *image) {
-            
-            TSMainCell *cell = (TSMainCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-            cell.avatarImageView.image = image;
-            
-            // Remove the IconDownloader from the in progress list.
-            // This will result in it being deallocated.
-            [self.imageDownloadsInProgress removeObjectForKey:indexPath];
-        }];
-        [self.imageDownloadsInProgress setObject:imageDownloader forKey:indexPath];
-        [imageDownloader downloadImageFrom:url];
     }
 }
 
