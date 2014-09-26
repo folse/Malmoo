@@ -92,9 +92,10 @@
                     place.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
                     place.description = object[@"description"];
                     place.news = object[@"news"];
-                    place.parking = object[@"has_parking"];
-                    place.alcohol = object[@"has_alcohol"];
-                    place.reservation = object[@"phone_reservation"];
+                    place.parking = [object[@"has_parking"] boolValue];
+                    place.alcohol = [object[@"has_alcohol"] boolValue];
+                    place.delivery = [object[@"delivery"] boolValue];
+                    place.reservation = [object[@"phone_reservation"] boolValue];
                     
                     [resultArray addObject:place];
                 }

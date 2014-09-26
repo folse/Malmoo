@@ -40,11 +40,6 @@
     UIScrollView *_viewScroller;
     
     BTGlassScrollView *_glassScrollView;
-    
-    BTGlassScrollView *_glassScrollView1;
-    BTGlassScrollView *_glassScrollView2;
-    BTGlassScrollView *_glassScrollView3;
-    int _page;
     TSDetailControllerView *detailView;
 }
 
@@ -105,7 +100,6 @@
     [detailView.addressButton.titleLabel setNumberOfLines:3];
     [detailView.openHourLabel setText:_place.openHours];
     [detailView.descriptionLabel setText:_place.description];
-    [detailView.phoneButton setTitle:_place.phone forState:UIControlStateNormal];
     
     if (_place.parking) {
         [detailView.parkingLabel setText:@"Parking　√"];
@@ -143,6 +137,60 @@
     
     [self setHeaderImage];
 
+}
+
+-(NSString *)showOpenHours:(NSString *)openHourData
+{
+    NSString *openHourString = @"";
+    
+    NSArray *weekDayDataArray = [openHourData componentsSeparatedByString:@"\n"];
+    
+    switch ([self getTodayWeekDay]) {
+        // 1 is Sunday
+        case 1:
+            openHourString = weekDayDataArray[6];
+            break;
+        // 2 is Monday
+        case 2:
+            openHourString = weekDayDataArray[0];
+            break;
+            
+        case 3:
+            openHourString = weekDayDataArray[1];
+            break;
+            
+        case 4:
+            openHourString = weekDayDataArray[2];
+            break;
+            
+        case 5:
+            openHourString = weekDayDataArray[3];
+            break;
+            
+        case 6:
+            openHourString = weekDayDataArray[4];
+            break;
+            
+        case 7:
+            openHourString = weekDayDataArray[5];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return openHourString;
+}
+
+-(NSInteger)getTodayWeekDay
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSWeekdayCalendarUnit fromDate:date];
+    
+    NSInteger weeekDay = [components weekday];
+    
+    return weeekDay;
 }
 
 -(void)getPhotos
@@ -207,7 +255,6 @@
     [self viewWillAppear:YES];
 }
 
-
 -(void)setHeaderImage
 {
     if (_place.avatarUrl != nil) {
@@ -222,6 +269,8 @@
             _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:image blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
             
             [self.tableView addSubview:_glassScrollView];
+            
+            self.view.backgroundColor = [UIColor blackColor];
             
             [self getPhotos];
             
@@ -378,6 +427,11 @@
 - (IBAction)menuButtonAction:(id)sender
 {    
     [self performSegueWithIdentifier:@"MenuPhotoCollectionController" sender:self];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
 }
 
 #pragma mark - Navigation

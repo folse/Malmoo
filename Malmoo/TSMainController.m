@@ -349,10 +349,10 @@
                 place.address = object[@"address"];
                 place.description = object[@"description"];
                 place.news = object[@"news"];
-                place.parking = object[@"has_park"];
-                place.alcohol = object[@"has_alcohol"];
-                place.delivery = object[@"delivery"];
-                place.reservation = object[@"phone_reservation"];
+                place.parking = [object[@"has_park"] boolValue];
+                place.alcohol = [object[@"has_alcohol"] boolValue];
+                place.delivery = [object[@"delivery"] boolValue];
+                place.reservation = [object[@"phone_reservation"] boolValue];
                 place.parseObject = object;
                 
                 [placeArray addObject:place];
