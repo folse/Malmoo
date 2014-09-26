@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *newsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *parkingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wifiLabel;
 @property (strong, nonatomic) IBOutlet UILabel *alcoholLabel;
 @property (weak, nonatomic) IBOutlet UILabel *deliveryLabel;
 @property (strong, nonatomic) IBOutlet UILabel *reservationLabel;

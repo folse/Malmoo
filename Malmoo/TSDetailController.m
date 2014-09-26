@@ -101,28 +101,24 @@
     [detailView.openHourLabel setText:_place.openHours];
     [detailView.descriptionLabel setText:_place.description];
     
-    if (_place.parking) {
-        [detailView.parkingLabel setText:@"Parking　√"];
-    }else{
-        [detailView.parkingLabel setText:@"Parking　X"];
+    if (!_place.parking) {
+        [detailView.parkingLabel setAlpha:0.2];
     }
     
-    if (_place.alcohol) {
-        [detailView.alcoholLabel setText:@"Alcohol　√"];
-    }else{
-        [detailView.alcoholLabel setText:@"Alcohol　X"];
+    if (!_place.wifi) {
+        [detailView.parkingLabel setAlpha:0.2];
     }
     
-    if (_place.delivery) {
-        [detailView.reservationLabel setText:@"Delivery　√"];
-    }else{
-        [detailView.reservationLabel setText:@"Delivery　X"];
+    if (!_place.alcohol) {
+        [detailView.alcoholLabel setAlpha:0.2];
     }
     
-    if (_place.reservation) {
-        [detailView.reservationLabel setText:@"Reservation　√"];
-    }else{
-        [detailView.reservationLabel setText:@"Reservation　X"];
+    if (!_place.delivery) {
+        [detailView.reservationLabel setAlpha:0.2];
+    }
+    
+    if (!_place.reservation) {
+        [detailView.reservationLabel setAlpha:0.2];
     }
     
     [detailView.favoriteButton addTarget:self action:@selector(favoriteButtonAction) forControlEvents:UIControlEventTouchUpInside];

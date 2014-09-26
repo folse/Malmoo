@@ -846,7 +846,7 @@
 					/Users/folse/Desktop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09F0FCE1-8EA9-4872-9883-B4971C849FA2";
+				PROVISIONING_PROFILE = "7c165593-676b-451e-90ae-daee7ac77ce9";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

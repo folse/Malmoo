@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *news;
 @property (nonatomic, strong) NSString *description;
 
+@property (nonatomic) BOOL wifi;
 @property (nonatomic) BOOL parking;
 @property (nonatomic) BOOL alcohol;
 @property (nonatomic) BOOL delivery;
