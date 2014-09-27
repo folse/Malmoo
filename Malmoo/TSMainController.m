@@ -432,7 +432,8 @@
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",cellPlace.avatarUrl];
+    //NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",cellPlace.avatarUrl];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/330x/crop/!330x120a0a30",cellPlace.avatarUrl];
     [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
