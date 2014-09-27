@@ -1,5 +1,5 @@
 //
-//  MapController.m
+//  TSMapController.m
 //  Malmoo
 //
 //  Created by folse on 3/21/14.
@@ -13,7 +13,7 @@
 #import <MapKit/MapKit.h>
 #import "TSDirectionController.h"
 
-@interface MapController ()<CLLocationManagerDelegate,MKMapViewDelegate>
+@interface TSMapController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 {
     CLLocation *currentLocation;
 }
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation MapController
+@implementation TSMapController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +38,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[self createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
@@ -68,6 +70,19 @@
 -(void)getLocation
 {
     
+}
+
+- (UIImage *)createImageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 /*

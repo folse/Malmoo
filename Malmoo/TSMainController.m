@@ -28,11 +28,13 @@
     NSArray *clearArray;
     int clearId;
     int pageId;
+    int PAGE_COUNT;
+    int PAGE_NUM;
+    int lastDataCount;
+    MJRefreshFooterView *_footer;
     UIWebView *webView;
     NSString *apiKey;
     PFObject *currentObject;
-    int PAGE_NUM;
-    MJRefreshFooterView *_footer;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -59,6 +61,8 @@
 {
     [super viewWillAppear:animated];
     
+    [self.navigationController.navigationBar setBackgroundImage:[self createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
+    
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
@@ -79,6 +83,8 @@
     
     //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
+    PAGE_COUNT = 15;
+    
     placeArray = [NSMutableArray new];
     
     [self addFooter];
@@ -91,7 +97,7 @@
     //    [webView setDelegate:self];
     //
     //[self clearData];
-        
+    
 }
 
 -(void)removeNavigationBarShadow
@@ -161,6 +167,19 @@
             [self clearData];
         }
     }
+}
+
+- (UIImage *)createImageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 -(void)getRealImageUrl:(NSString *)url
@@ -300,8 +319,8 @@
 -(void)getData:(NSString *)keyWords
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    query.limit = 15;
-    query.skip = PAGE_NUM*15;
+    query.limit = PAGE_COUNT;
+    query.skip = PAGE_NUM*PAGE_COUNT;
     
     if (keyWords) {
         
@@ -314,12 +333,8 @@
         //        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         //            if (!error) {
         
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:55.596149 longitude:13.004419];
-        
+        //PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:55.596149 longitude:13.004419];
         //[query whereKey:@"location" nearGeoPoint:geoPoint];
-        
-        f(geoPoint.latitude)
-        f(geoPoint.longitude)
         
         [self findObjects:query];
         //            }
@@ -340,12 +355,6 @@
                 place.phone = object[@"phone"];
                 place.openHours = object[@"open_hour"];
                 place.avatarUrl = object[@"avatar"];
-                
-//                place.tags = object[@"tag"];
-//                PFGeoPoint *location = object[@"location"];
-//                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
-//                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
-                
                 place.address = object[@"address"];
                 place.description = object[@"description"];
                 place.news = object[@"news"];
@@ -354,6 +363,11 @@
                 place.delivery = [object[@"delivery"] boolValue];
                 place.reservation = [object[@"phone_reservation"] boolValue];
                 place.parseObject = object;
+                //place.tags = object[@"tag"];
+                
+                PFGeoPoint *location = object[@"location"];
+                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
                 
                 [placeArray addObject:place];
             }
@@ -362,6 +376,7 @@
             [self.tableView reloadData];
             [self.tableView setHidden:NO];
             
+            lastDataCount = objects.count;
             if (PAGE_NUM > 0) {
                 [self doneLoadMore];
             }else{
@@ -417,17 +432,8 @@
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
-    if (cellPlace.avatarUrl != nil) {
-        
-        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
-        {
-            NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",cellPlace.avatarUrl];
-            [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
-        }
-        
-    }else{
-        cell.avatarImageView.image = [UIImage imageNamed:@"default_shop_photo"];
-    }
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",cellPlace.avatarUrl];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
 }
@@ -569,11 +575,14 @@
 
 -(void)doneLoadMore
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:placeArray.count-31 inSection:0];
-    
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
-    
-    [_footer endRefreshing];
+    if (placeArray.count > 0) {
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:placeArray.count-lastDataCount-1 inSection:0];
+        
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        
+        [_footer endRefreshing];
+    }
 }
 
 @end

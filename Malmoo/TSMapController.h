@@ -1,5 +1,5 @@
 //
-//  MapController.h
+//  TSMapController.h
 //  Malmoo
 //
 //  Created by folse on 3/21/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MapController : UIViewController
+@interface TSMapController : UIViewController
 
 @property (nonatomic, strong) TSPlace *place;
 

@@ -14,16 +14,22 @@
 @property (strong, nonatomic) IBOutlet UIButton *phoneButton;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *newsLabel;
-@property (strong, nonatomic) IBOutlet UILabel *parkingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *wifiLabel;
-@property (strong, nonatomic) IBOutlet UILabel *alcoholLabel;
+@property (weak, nonatomic) IBOutlet UIButton *parkingButton;
+@property (weak, nonatomic) IBOutlet UILabel *parkingLabel;
+@property (weak, nonatomic) IBOutlet UIButton *alcoholButton;
+@property (weak, nonatomic) IBOutlet UILabel *alcoholLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deliveryButton;
 @property (weak, nonatomic) IBOutlet UILabel *deliveryLabel;
-@property (strong, nonatomic) IBOutlet UILabel *reservationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *wifiButton;
+@property (weak, nonatomic) IBOutlet UILabel *wifiLabel;
+@property (weak, nonatomic) IBOutlet UIButton *reservationButton;
+@property (weak, nonatomic) IBOutlet UILabel *reservationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *openHourLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *albumScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
+@property (weak, nonatomic) IBOutlet UIButton *openHourButton;
 
 @end

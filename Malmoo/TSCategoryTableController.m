@@ -84,11 +84,12 @@
                 place.alcohol = [object[@"has_alcohol"] boolValue];
                 place.delivery = [object[@"delivery"] boolValue];
                 place.reservation = [object[@"phone_reservation"] boolValue];
-                place.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
-                place.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
+                PFGeoPoint *location = object[@"location"];
+                
+                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
                                 
                 [placeArray addObject:place];
-                
             }
             
             [HUD hide:YES];

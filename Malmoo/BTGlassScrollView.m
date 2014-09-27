@@ -47,7 +47,7 @@
         //create views
         [self createBackgroundView];
         [self createForegroundView];
-        [self createTopShadow];
+        //[self createTopShadow];
         [self createBottomShadow];
     }
     return self;
@@ -87,7 +87,7 @@
     
     //shadows
     //[self createTopShadow];
-    [_topShadowLayer setFrame:CGRectMake(0, 0, bounds.size.width, _foregroundScrollView.contentInset.top + DEFAULT_TOP_FADING_HEIGHT_HALF)];
+    //[_topShadowLayer setFrame:CGRectMake(0, 0, bounds.size.width, _foregroundScrollView.contentInset.top + DEFAULT_TOP_FADING_HEIGHT_HALF)];
     [_botShadowLayer setFrame:CGRectMake(0, bounds.size.height - _viewDistanceFromBottom, bounds.size.width, bounds.size.height)];//CGRectOffset(_botShadowLayer.bounds, 0, frame.size.height - _viewDistanceFromBottom)];
 
     if (_delegate && [_delegate respondsToSelector:@selector(glassScrollView:didChangedToFrame:)]) {
@@ -119,7 +119,7 @@
     _foregroundContainerView.layer.mask = [self createTopMaskWithSize:CGSizeMake(_foregroundContainerView.frame.size.width, _foregroundContainerView.frame.size.height) startFadeAt:_foregroundScrollView.contentInset.top - DEFAULT_TOP_FADING_HEIGHT_HALF endAt:_foregroundScrollView.contentInset.top + DEFAULT_TOP_FADING_HEIGHT_HALF topColor:[UIColor colorWithWhite:1.0 alpha:0.0] botColor:[UIColor colorWithWhite:1.0 alpha:1.0]];
     
     //recreate shadow
-    [self createTopShadow];
+    [self createBottomShadow];
 }
 
 
@@ -203,7 +203,7 @@
 {
     _backgroundImageView = [[UIImageView alloc] initWithImage:_backgroundImage];
     [_backgroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_backgroundImageView setContentMode:UIViewContentModeScaleAspectFill];
+    [_backgroundImageView setContentMode:UIViewContentModeScaleAspectFit];
     [_constraitView addSubview:_backgroundImageView];
     _blurredBackgroundImageView = [[UIImageView alloc] initWithImage:_blurredBackgroundImage];
     [_blurredBackgroundImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
