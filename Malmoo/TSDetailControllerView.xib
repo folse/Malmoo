@@ -159,7 +159,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bly-AT-5XA">
                     <rect key="frame" x="15" y="402" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="icon_available">
+                    <state key="normal" image="icon_shop">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -225,7 +225,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_available" width="34" height="34"/>
         <image name="icon_calendar" width="34" height="34"/>
         <image name="icon_call" width="34" height="34"/>
         <image name="icon_delivery" width="34" height="34"/>
@@ -234,6 +233,7 @@
         <image name="icon_parking" width="34" height="34"/>
         <image name="icon_report" width="19" height="20"/>
         <image name="icon_share" width="20" height="20"/>
+        <image name="icon_shop" width="34" height="34"/>
         <image name="icon_star" width="20" height="21"/>
         <image name="icon_wifi" width="34" height="34"/>
         <image name="icon_wine" width="34" height="34"/>

@@ -40,6 +40,10 @@
                                             <rect key="frame" x="0.0" y="11" width="320" height="120"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_cell_cover" translatesAutoresizingMaskIntoConstraints="NO" id="VIj-68-Wtd">
+                                            <rect key="frame" x="0.0" y="76" width="320" height="55"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J26-oJ-mV9">
                                             <rect key="frame" x="20" y="76" width="280" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -722,6 +726,7 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
         </scene>
     </scenes>
     <resources>
+        <image name="bg_cell_cover" width="320" height="65"/>
         <image name="btn_menu" width="36" height="31"/>
         <image name="default_shop_photo" width="66" height="66"/>
         <image name="prize_bannar" width="300" height="90"/>

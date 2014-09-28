@@ -110,7 +110,7 @@
     }
     
     if (!_place.reservation) {
-        [detailView.reservationButton setTitle:_place.phone forState:UIControlStateNormal];
+        [detailView.reservationLabel setText:_place.phone];
     }
     
     [self.tableView setContentInset:UIEdgeInsetsMake(-20, 0, 0, 0)];
@@ -219,7 +219,7 @@
 {
     PFRelation *relation = [_place.parseObject relationForKey:@"photos"];
     PFQuery *productPhotoQuery = [relation query];
-    productPhotoQuery.limit = 4;
+    productPhotoQuery.limit = 3;
     [productPhotoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -303,7 +303,7 @@
         
         NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",photoUrlArray[i]];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+20*i+20, 0, 70, 70)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+26*i+26, 0, 70, 70)];
         [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
 
         [imageView setUserInteractionEnabled:YES];

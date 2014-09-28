@@ -63,6 +63,8 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[self createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
     
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
