@@ -54,7 +54,6 @@
 {
     PFRelation *relation = [_place.parseObject relationForKey:@"photos"];
     PFQuery *productPhotoQuery = [relation query];
-    productPhotoQuery.limit = 4;
     //[productPhotoQuery whereKey:@"product" equalTo:@"true"];
     [productPhotoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {

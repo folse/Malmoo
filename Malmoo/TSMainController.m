@@ -332,15 +332,18 @@
         
     }else{
         
-        //        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        //            if (!error) {
-        
-        //PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:55.596149 longitude:13.004419];
-        //[query whereKey:@"location" nearGeoPoint:geoPoint];
-        
-        [self findObjects:query];
-        //            }
-        //        }];
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+            if (!error) {
+                
+                //PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:55.596149 longitude:13.004419];
+                
+                CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
+                [self displayLocation:currentLocation];
+                
+                [query whereKey:@"location" nearGeoPoint:geoPoint];
+                [self findObjects:query];
+            }
+        }];
     }
 }
 

@@ -10,6 +10,6 @@
 
 @interface CategoryTableController : UITableViewController
 
-@property (nonatomic, strong) NSString *categoryName;
+@property (nonatomic, strong) PFObject *category;
 
 @end

@@ -57,10 +57,10 @@
 {
     categoryArray = [NSMutableArray new];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Category"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Category_Place"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            
+            s(objects)
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
                 
@@ -182,7 +182,7 @@
         TSPlaceCategory *selectedCategory = categoryArray[selectedId];
         
         CategoryTableController *categoryTableController = segue.destinationViewController;
-        [categoryTableController setCategoryName:selectedCategory.name];
+        [categoryTableController setCategory:selectedCategory.name];
     }
 }
 

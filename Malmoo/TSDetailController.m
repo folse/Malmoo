@@ -17,16 +17,6 @@
 @interface TSDetailController ()<MFMailComposeViewControllerDelegate>
 {
     NSString *clickedPhotoType;
-    UIToolbar *bottomToolBar;
-    UIBarButtonItem *shareBtn;
-    UIBarButtonItem *shareImageBtn;
-    UIBarButtonItem *reportBtn;
-    UIBarButtonItem *reportImageBtn;
-    UIBarButtonItem *favouriteBtn;
-    UIBarButtonItem *favouriteImageBtn;
-    UIImageView *coverImageView;
-    UIImage *originalImage;
-    float bgImageViewHeight;
     NSMutableArray *photoUrlArray;
 }
 
@@ -122,6 +112,11 @@
     [self setHeaderImage];
     
     [self setOpenHour];
+    
+    if (_place.favourited) {
+        
+        [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
+    }
     
     [detailView.favoriteButton addTarget:self action:@selector(favoriteButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -303,7 +298,7 @@
         
         NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",photoUrlArray[i]];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+26*i+26, 0, 70, 70)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+31*i+26, 0, 70, 70)];
         [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
 
         [imageView setUserInteractionEnabled:YES];
@@ -330,32 +325,32 @@
     [self viewWillAppear:YES];
 }
 
--(void)showImageByDownloadingProgress:(NSString *)imageUrl withDownloadPath:(NSString *)imagePath
-{
-    NSURLRequest *photoRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:photoRequest];
-    
-    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:imagePath append:NO]];
-    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
-        UIImage *placeImage = [UIImage imageWithContentsOfFile:imagePath];
-        
-        int totalExpectedToRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesExpectedToRead] intValue];
-        int totalRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesRead] intValue];
-        
-        float scaleProgress = (float)totalRead/(float)totalExpectedToRead;
-        
-        [coverImageView setFrame:CGRectMake(0, 0, 320, placeImage.size.height*scaleProgress)];
-        coverImageView.image = [self cutImage:placeImage withScale:scaleProgress];
-    }];
-    
-    [operation setCompletionBlock:^{
-        UIImage *placeImage = [UIImage imageWithContentsOfFile:imagePath];
-        [coverImageView setFrame:CGRectMake(0, 0, 320, placeImage.size.height)];
-        coverImageView.image = placeImage;
-    }];
-    
-    [operation start];
-}
+//-(void)showImageByDownloadingProgress:(NSString *)imageUrl withDownloadPath:(NSString *)imagePath
+//{
+//    NSURLRequest *photoRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:photoRequest];
+//    
+//    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:imagePath append:NO]];
+//    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+//        UIImage *placeImage = [UIImage imageWithContentsOfFile:imagePath];
+//        
+//        int totalExpectedToRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesExpectedToRead] intValue];
+//        int totalRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesRead] intValue];
+//        
+//        float scaleProgress = (float)totalRead/(float)totalExpectedToRead;
+//        
+//        [coverImageView setFrame:CGRectMake(0, 0, 320, placeImage.size.height*scaleProgress)];
+//        coverImageView.image = [self cutImage:placeImage withScale:scaleProgress];
+//    }];
+//    
+//    [operation setCompletionBlock:^{
+//        UIImage *placeImage = [UIImage imageWithContentsOfFile:imagePath];
+//        [coverImageView setFrame:CGRectMake(0, 0, 320, placeImage.size.height)];
+//        coverImageView.image = placeImage;
+//    }];
+//    
+//    [operation start];
+//}
 
 -(UIImage *)cutImage:(UIImage *)superImage withScale:(float)scale{
     
@@ -501,13 +496,13 @@
 {
     if (_place.favourited) {
         
-        [favouriteImageBtn setImage:[UIImage imageNamed:@"icon_star"]];
+        [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star"] forState:UIControlStateNormal];
         
         _place.favourited = NO;
         
     }else{
         
-        [favouriteImageBtn setImage:[UIImage imageNamed:@"icon_star_pressed"]];
+        [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
         
         _place.favourited = YES;
     }
