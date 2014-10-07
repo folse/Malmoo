@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
 @property (nonatomic, strong) NSString *news;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *descriptions;
 
 @property (nonatomic) BOOL wifi;
 @property (nonatomic) BOOL parking;

@@ -18,6 +18,7 @@
 		A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* TSMainCell.m */; };
 		A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* TSPromotionController.m */; };
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
+		A169DCA619E46B5B003D4846 /* FSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A169DCA519E46B5B003D4846 /* FSTableViewController.m */; };
 		A16E678619BEB596005EE27B /* TSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678519BEB596005EE27B /* TSSearchController.m */; };
 		A16E678919BEB5A4005EE27B /* TSDirectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678819BEB5A4005EE27B /* TSDirectionController.m */; };
 		A171E16D18C6D186003113ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A171E16C18C6D186003113ED /* Foundation.framework */; };
@@ -48,7 +49,6 @@
 		A1830B6A18DB5C460053DE81 /* TSMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6918DB5C460053DE81 /* TSMoreController.m */; };
 		A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6C18DB604E0053DE81 /* TSCategoryController.m */; };
 		A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830BA218DBF5340053DE81 /* TSPlaceMark.m */; };
-		A18DA11918F6A203007E14D1 /* TSCategoryTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18DA11818F6A203007E14D1 /* TSCategoryTableController.m */; };
 		A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */; };
 		A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */; };
 		A1BDDDFC199A7A150041B0A1 /* TSPhotoGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */; };
@@ -99,6 +99,8 @@
 		A11316F0191E81E800EC96B6 /* TSPromotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPromotionController.m; sourceTree = "<group>"; };
 		A1165CB018F69D8300213808 /* TSPlaceCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceCategory.h; sourceTree = "<group>"; };
 		A1165CB118F69D8300213808 /* TSPlaceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceCategory.m; sourceTree = "<group>"; };
+		A169DCA419E46B5B003D4846 /* FSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTableViewController.h; sourceTree = "<group>"; };
+		A169DCA519E46B5B003D4846 /* FSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTableViewController.m; sourceTree = "<group>"; };
 		A16E678419BEB596005EE27B /* TSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSearchController.h; sourceTree = "<group>"; };
 		A16E678519BEB596005EE27B /* TSSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSearchController.m; sourceTree = "<group>"; };
 		A16E678719BEB5A4005EE27B /* TSDirectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDirectionController.h; sourceTree = "<group>"; };
@@ -149,8 +151,6 @@
 		A1830B6C18DB604E0053DE81 /* TSCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCategoryController.m; sourceTree = "<group>"; };
 		A1830BA118DBF5340053DE81 /* TSPlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceMark.h; sourceTree = "<group>"; };
 		A1830BA218DBF5340053DE81 /* TSPlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceMark.m; sourceTree = "<group>"; };
-		A18DA11718F6A203007E14D1 /* TSCategoryTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCategoryTableController.h; sourceTree = "<group>"; };
-		A18DA11818F6A203007E14D1 /* TSCategoryTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCategoryTableController.m; sourceTree = "<group>"; };
 		A1BDDDE21998FB830041B0A1 /* TSPhotoCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSPhotoCollectionController.h; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.h; sourceTree = "<group>"; };
 		A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSPhotoCollectionController.m; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.m; sourceTree = "<group>"; };
 		A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -260,6 +260,15 @@
 				A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		A169DCA719E46B63003D4846 /* FSTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A169DCA419E46B5B003D4846 /* FSTableViewController.h */,
+				A169DCA519E46B5B003D4846 /* FSTableViewController.m */,
+			);
+			name = FSTableViewController;
 			sourceTree = "<group>";
 		};
 		A171E16018C6D186003113ED = {
@@ -406,8 +415,6 @@
 				A1BDDDE51998FB890041B0A1 /* Detail */,
 				A1830B6B18DB604E0053DE81 /* TSCategoryController.h */,
 				A1830B6C18DB604E0053DE81 /* TSCategoryController.m */,
-				A18DA11718F6A203007E14D1 /* TSCategoryTableController.h */,
-				A18DA11818F6A203007E14D1 /* TSCategoryTableController.m */,
 				A1830B6818DB5C460053DE81 /* TSMoreController.h */,
 				A1830B6918DB5C460053DE81 /* TSMoreController.m */,
 				A1E838E218CEAD05008E6F57 /* TSAccountController.h */,
@@ -444,6 +451,7 @@
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A169DCA719E46B63003D4846 /* FSTableViewController */,
 				A10A4BB119A9F7010011E5A1 /* BTGlassScrollView */,
 				A1BDDE11199A82600041B0A1 /* MJPhotoBrowser */,
 				A1E95B47191F1DDC009BE585 /* MJRefresh */,
@@ -527,7 +535,7 @@
 		A171E16118C6D186003113ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Folse;
 				TargetAttributes = {
 					A171E16818C6D186003113ED = {
@@ -651,6 +659,7 @@
 				A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */,
 				A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */,
 				A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */,
+				A169DCA619E46B5B003D4846 /* FSTableViewController.m in Sources */,
 				A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */,
 				A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */,
 				A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */,
@@ -663,7 +672,6 @@
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
 				A1BDDE0C199A825B0041B0A1 /* MJPhotoBrowser.m in Sources */,
 				A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */,
-				A18DA11918F6A203007E14D1 /* TSCategoryTableController.m in Sources */,
 				A1BDDE0D199A825B0041B0A1 /* MJPhotoLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,7 +727,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -758,7 +765,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -791,7 +797,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DEF10630F6F44AF5A989FCF5 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -824,7 +829,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DEF10630F6F44AF5A989FCF5 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";

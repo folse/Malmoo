@@ -79,7 +79,8 @@
 {
     [super viewDidLoad];
     
-    HUD_SHOW
+    HUD_Define
+    [HUD show:YES];
     
     [self removeNavigationBarShadow];
     
@@ -93,7 +94,23 @@
     
     //sleep(3);
     
-    [self refresh];
+    if (_category) {
+        
+        [[[NSThread alloc] initWithTarget:self selector:@selector(getCategoryPlaceData) object:nil] start];
+        
+        [_mapView setHidden:YES];
+        
+        self.navigationItem.leftBarButtonItem = nil;
+        
+        [self.navigationItem setTitle:_category[@"name"]];
+        
+        [self.tableView setContentInset:UIEdgeInsetsMake(-160, 0, 0, 0)];
+        
+    }else{
+        
+        [self refresh];
+    }
+    
     
     //    webView = [[UIWebView alloc] init];
     //    [webView setDelegate:self];
@@ -347,6 +364,20 @@
     }
 }
 
+-(void)getCategoryPlaceData
+{
+    placeArray = [NSMutableArray new];
+    
+    PFQuery *placeCategoryQuery = [PFQuery queryWithClassName:@"Category_Place"];
+    PFObject *categoryObject = [placeCategoryQuery getObjectWithId:_category.objectId];
+    
+    PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
+    [placeQuery whereKey:@"category" containedIn:[NSArray arrayWithObject:categoryObject]];
+    placeQuery.limit = PAGE_COUNT;
+    placeQuery.skip = PAGE_NUM*PAGE_COUNT;
+    [self findObjects:placeQuery];
+}
+
 -(void)findObjects:(PFQuery *)query
 {
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -361,7 +392,7 @@
                 place.openHours = object[@"open_hour"];
                 place.avatarUrl = object[@"avatar"];
                 place.address = object[@"address"];
-                place.description = object[@"description"];
+                place.descriptions = object[@"description"];
                 place.news = object[@"news"];
                 place.parking = [object[@"has_park"] boolValue];
                 place.alcohol = [object[@"has_alcohol"] boolValue];
@@ -403,12 +434,19 @@
 
 - (IBAction)menuBtnAction:(id)sender
 {
-    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
-    
-    if (sideMenu.isMenuVisible) {
-        [sideMenu hideMenuAnimated:YES];
+    if (_category) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
     }else{
-        [sideMenu showMenuAnimated:YES];
+        
+        JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+        
+        if (sideMenu.isMenuVisible) {
+            [sideMenu hideMenuAnimated:YES];
+        }else{
+            [sideMenu showMenuAnimated:YES];
+        }
     }
 }
 
@@ -474,7 +512,7 @@
 
 - (void)markPlace
 {
-    NSMutableArray *stationList = [[NSMutableArray alloc] init];
+    NSMutableArray *placeList = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < placeArray.count; i++) {
         
@@ -488,11 +526,11 @@
         placeMark.title = mapPlace.name;
         placeMark.markId = i;
         
-        [stationList addObject:placeMark];
+        [placeList addObject:placeMark];
     }
     
-    if (stationList.count > 0) {
-        [self.mapView addAnnotations:stationList];
+    if (placeList.count > 0) {
+        [self.mapView addAnnotations:placeList];
     }
     
 }

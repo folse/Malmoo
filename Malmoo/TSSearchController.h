@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSSearchController : UITableViewController
+@interface TSSearchController : FSTableViewController
 
 @end

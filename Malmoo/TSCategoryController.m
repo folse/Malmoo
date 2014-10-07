@@ -8,7 +8,7 @@
 
 #import "TSCategoryController.h"
 #import "TSPlaceCategory.h"
-#import "TSCategoryTableController.h"
+#import "TSMainController.h"
 
 @interface TSCategoryController ()
 {
@@ -48,7 +48,8 @@
 {
     [super viewDidLoad];
     
-    HUD_SHOW
+    HUD_Define
+    [HUD show:YES];
         
     [self getPlaceCategory];
 }
@@ -66,6 +67,7 @@
                 
                 TSPlaceCategory *category = [TSPlaceCategory new];
                 category.name = object[@"name"];
+                category.parseObject = object;
 
                 [categoryArray addObject:category];
             }
@@ -121,6 +123,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
     
     [cell.textLabel setText:cellCategory.name];
+    [cell.textLabel setTextColor:[UIColor darkGrayColor]];
+    [cell.textLabel setFont:[UIFont boldSystemFontOfSize:17]];
     
     return cell;
 }
@@ -129,7 +133,7 @@
 {
     selectedId = indexPath.row;
 
-    [self performSegueWithIdentifier:@"CategoryTableController" sender:self];
+    [self performSegueWithIdentifier:@"MainController" sender:self];
 }
 
 
@@ -177,12 +181,12 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"CategoryTableController"]) {
+    if ([segue.identifier isEqualToString:@"MainController"]) {
         
         TSPlaceCategory *selectedCategory = categoryArray[selectedId];
         
-        CategoryTableController *categoryTableController = segue.destinationViewController;
-        [categoryTableController setCategory:selectedCategory.name];
+        TSMainController *mainController = segue.destinationViewController;
+        [mainController setCategory:selectedCategory.parseObject];
     }
 }
 

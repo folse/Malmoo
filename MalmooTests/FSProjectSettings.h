@@ -14,6 +14,7 @@
 #import "BlocksKit+UIKit.h"
 #import "TSPlace.h"
 #import <UIImageView+WebCache.h>
+#import "FSTableViewController.h"
 
 #define s(content) NSLog(@"%@", content);
 #define i(content) NSLog(@"%d", content);
@@ -40,7 +41,7 @@
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
-#define HUD_SHOW \
+#define HUD_Define \
 HUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];\
 HUD.center = self.view.center;\
 HUD.square = YES;\
@@ -48,8 +49,7 @@ HUD.margin = 15;\
 HUD.minShowTime = 1;\
 HUD.mode = MBProgressHUDModeCustomView;\
 HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:APP_COLOR];\
-[[UIApplication sharedApplication].keyWindow addSubview:HUD];\
-[HUD show:YES];\
+[[UIApplication sharedApplication].keyWindow addSubview:HUD];
 
 #define TEST FALSE
 

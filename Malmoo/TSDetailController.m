@@ -37,7 +37,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_empty"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_empty"] forBarMetrics:UIBarMetricsDefault];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -77,7 +77,7 @@
     [detailView.newsLabel setText:_place.news];
     [detailView.addressButton setTitle:_place.address forState:UIControlStateNormal];
     [detailView.addressButton.titleLabel setNumberOfLines:3];
-    [detailView.descriptionLabel setText:_place.description];
+    [detailView.descriptionLabel setText:_place.descriptions];
     
     if (!_place.parking) {
         [detailView.parkingLabel setAlpha:0.2];
@@ -306,7 +306,7 @@
         
         CALayer *layer = [imageView layer];
         layer.borderColor = [UIColor whiteColor].CGColor;
-        layer.borderWidth = 3.6f;
+        layer.borderWidth = 3.0f;
     
         [detailView.albumScrollView addSubview:imageView];
     }

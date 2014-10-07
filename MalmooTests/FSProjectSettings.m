@@ -31,7 +31,6 @@
     }else{
        return @"";
     }
-    
 }
 
 -(NSString *)getMD5FilePathWithUrl:(NSString *)url

@@ -9,12 +9,19 @@
 #import "TSSearchController.h"
 #import "TSMainCell.h"
 #import "TSDetailController.h"
+#import "MJRefresh.h"
 
 @interface TSSearchController ()<UISearchBarDelegate>
 {
     NSMutableArray *resultArray;
     NSInteger selectedId;
     BOOL isSearching;
+    int PAGE_COUNT;
+    int PAGE_NUM;
+    int lastDataCount;
+    PFQuery *tagQuery;
+    PFQuery *nameQuery;
+    MJRefreshFooterView *_footer;
 }
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -58,6 +65,10 @@
     [super viewDidLoad];
 
     resultArray = [NSMutableArray new];
+    
+    PAGE_COUNT = 15;
+    
+    [self addFooter];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,46 +81,81 @@
     [_searchBar becomeFirstResponder];
 }
 
--(void)getData:(NSString *)keyWords
+-(void)getSearchPlaceData:(NSString *)keywords
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Shop"];
-    if (keyWords) {
-        [query whereKey:@"metatag" containsString:keyWords];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                
-                [resultArray removeAllObjects];
-                
-                for (PFObject *object in objects) {
-                    
-                    TSPlace *place = [TSPlace new];
-                    place.name = object[@"name"];
-                    place.address = object[@"address"];
-                    place.phone = [object[@"phone"] stringByReplacingOccurrencesOfString:@" " withString:@""];
-                    place.openHours = object[@"openHours"];
-                    place.avatarUrl = object[@"avatar"];
-                    place.latitude = [object[@"location"] componentsSeparatedByString:@","][0];
-                    place.longitude = [object[@"location"] componentsSeparatedByString:@","][1];
-                    place.description = object[@"description"];
-                    place.news = object[@"news"];
-                    place.parking = [object[@"has_parking"] boolValue];
-                    place.alcohol = [object[@"has_alcohol"] boolValue];
-                    place.delivery = [object[@"delivery"] boolValue];
-                    place.reservation = [object[@"phone_reservation"] boolValue];
-                    
-                    [resultArray addObject:place];
-                }
-                
-                if (resultArray.count > 0) {
-                    [self.tableView reloadData];
-                }
-                
-            } else {
-                
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
+    NSMutableArray *tagArray = [NSMutableArray new];
+    
+    NSArray *keywordsArray = [keywords componentsSeparatedByString:@" "];
+    
+    for (NSString *keyword in keywordsArray) {
+        PFQuery *tagObjectQuery = [PFQuery queryWithClassName:@"Tag"];
+        [tagObjectQuery whereKey:@"name" equalTo:keyword];
+        PFObject *tagObject = [tagObjectQuery getFirstObject];
+        [tagArray addObject:tagObject];
     }
+    
+    //    nameQuery = [PFQuery queryWithClassName:@"Place"];
+    //    [nameQuery whereKey:@"name" containedIn:keywordsArray];
+    
+    tagQuery = [PFQuery queryWithClassName:@"Place"];
+    [tagQuery whereKey:@"tag" containedIn:tagArray];
+
+    [self searchQuery];
+}
+
+-(void)searchQuery
+{
+    PFQuery *placeQuery = [PFQuery orQueryWithSubqueries:@[tagQuery]];
+    
+    placeQuery.limit = PAGE_COUNT;
+    placeQuery.skip = PAGE_NUM*PAGE_COUNT;
+    [resultArray removeAllObjects];
+    [self findObjects:placeQuery];
+}
+
+-(void)findObjects:(PFQuery *)query
+{
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object);
+                
+                TSPlace *place = [TSPlace new];
+                place.name = object[@"name"];
+                place.phone = object[@"phone"];
+                place.openHours = object[@"open_hour"];
+                place.avatarUrl = object[@"avatar"];
+                place.address = object[@"address"];
+                place.descriptions = object[@"description"];
+                place.news = object[@"news"];
+                place.parking = [object[@"has_park"] boolValue];
+                place.alcohol = [object[@"has_alcohol"] boolValue];
+                place.delivery = [object[@"delivery"] boolValue];
+                place.reservation = [object[@"phone_reservation"] boolValue];
+                place.parseObject = object;
+                
+                PFGeoPoint *location = object[@"location"];
+                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
+                
+                [resultArray addObject:place];
+            }
+            
+            [HUD hide:YES];
+            [self.tableView reloadData];
+            [self.tableView setHidden:NO];
+            
+            lastDataCount = objects.count;
+            if (PAGE_NUM > 0) {
+                [self doneLoadMore];
+            }
+            
+        } else {
+            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -171,13 +217,41 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self getData:_searchBar.text];
+    HUD_Define
+    [HUD show:YES];
+    [self getSearchPlaceData:_searchBar.text];
     [_searchBar resignFirstResponder];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
 {
     
+}
+
+- (void)addFooter
+{
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.tableView;
+    footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
+        
+        PAGE_NUM += 1;
+        
+        [self searchQuery];
+        
+    };
+    _footer = footer;
+}
+
+-(void)doneLoadMore
+{
+    if (resultArray.count > 0) {
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:resultArray.count-lastDataCount-1 inSection:0];
+        
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        
+        [_footer endRefreshing];
+    }
 }
 
 @end

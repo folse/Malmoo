@@ -35,8 +35,8 @@ PODS:
     - BlocksKit/DynamicDelegate
   - Bolts (1.1.2)
   - EAIntroView (2.6.0)
-  - Facebook-iOS-SDK (3.18.0):
-    - Bolts
+  - Facebook-iOS-SDK (3.19.0):
+    - Bolts (~> 1.0)
   - Parse (1.2.20):
     - Facebook-iOS-SDK (~> 3.11)
   - SDWebImage (3.7.1):
@@ -59,7 +59,7 @@ SPEC CHECKSUMS:
   BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
   Bolts: 2635e8698a630774689441047f3465d78c48d485
   EAIntroView: 1223ef380aef3e2285508016a083d70e80c48a30
-  Facebook-iOS-SDK: fa12c51cc57bfb6f92e47793c9d4d2c65bc92741
+  Facebook-iOS-SDK: cb7d74759d0b1ba546e6e6f1dde407b0d4e448d6
   Parse: 28c0dc54f30201a369d29a2f76c09fa43b2add16
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SDWebImage-ProgressView: 7b7a9512cbf22d0d6e3d20d9aa8b03e1940d164f
