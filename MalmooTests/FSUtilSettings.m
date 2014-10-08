@@ -1,21 +1,20 @@
 //
-//  F.m
-//  mmgj
+//  FSUtilSettings.m
 //
 //  Created by folse on 11/19/13.
 //  Copyright (c) 2013 folse. All rights reserved.
 //
 
-#import "FSProjectSettings.h"
+#import "FSUtilSettings.h"
 #import "CommonCrypto/CommonDigest.h"
 
-@interface FSProjectSettings ()
+@interface FSUtilSettings ()
 
 @end
 
-@implementation FSProjectSettings
+@implementation FSUtilSettings
 
--(NSString *)MD5:(NSString *)text
++(NSString *)MD5:(NSString *)text
 {
     if (text) {
         const char *cStr = [text UTF8String];
@@ -33,11 +32,24 @@
     }
 }
 
--(NSString *)getMD5FilePathWithUrl:(NSString *)url
++(NSString *)getMD5FilePathWithUrl:(NSString *)url
 {
     NSString *urlMD5 = [self MD5:url];
     NSArray *documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [documents[0]stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",urlMD5]];
+}
+
++ (UIImage *)createImageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

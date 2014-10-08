@@ -30,7 +30,7 @@
     int pageId;
     int PAGE_COUNT;
     int PAGE_NUM;
-    int lastDataCount;
+    NSInteger lastDataCount;
     MJRefreshFooterView *_footer;
     UIWebView *webView;
     NSString *apiKey;
@@ -101,6 +101,7 @@
         [_mapView setHidden:YES];
         
         self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
         
         [self.navigationItem setTitle:_category[@"name"]];
         

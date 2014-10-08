@@ -1,6 +1,5 @@
 //
-//  F.h
-//  ThinkCare
+//  FSUtilSettings.h
 //
 //  Created by Folse on 5/11/13.
 //  Copyright (c) 2013 Folse. All rights reserved.
@@ -54,19 +53,21 @@ HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce col
 #define TEST FALSE
 
 #if TEST
-#define API_BASE_URL @"http://0.meilidaren.duapp.com"
+#define API_BASE_URL @"http://0.api.com"
 #else
-#define API_BASE_URL @"http://mldrapi.duapp.com"
+#define API_BASE_URL @"http://api.com"
 #endif
 
 #define UMENG_APP_KEY @"536ef5ee56240b0a790f4074"
 
 //#define API_BASE_URL [NSString stringWithFormat:@"http://%@",[USER valueForKey:@"test"]]
 
-@interface FSProjectSettings : NSObject
+@interface FSUtilSettings : NSObject
 
--(NSString *)MD5:(NSString *)text;
++ (NSString *)MD5:(NSString *)text;
 
--(NSString *)getMD5FilePathWithUrl:(NSString *)url;
++ (NSString *)getMD5FilePathWithUrl:(NSString *)url;
+
++ (UIImage *)createImageWithColor:(UIColor *)color;
 
 @end

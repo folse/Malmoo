@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E87A8CFEBA94058AA2AF1E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A904064D304A8089D525CC /* libPods.a */; };
-		A108B50618DC81D1004DDA65 /* FSProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */; };
+		A108B50618DC81D1004DDA65 /* FSUtilSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */; };
 		A10A4BAF19A9F6F90011E5A1 /* BTGlassScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A4BAC19A9F6F90011E5A1 /* BTGlassScrollView.m */; };
 		A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A10A4BAE19A9F6F90011E5A1 /* UIImage+ImageEffects.m */; };
 		A10BC25918CF1F97002999F6 /* TSMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC25818CF1F97002999F6 /* TSMainController.m */; };
@@ -60,7 +60,7 @@
 		A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */; };
 		A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */; };
 		A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E318CEAD05008E6F57 /* TSAccountController.m */; };
-		A1E838E718CEAD1C008E6F57 /* FSProjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */; };
+		A1E838E718CEAD1C008E6F57 /* FSUtilSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */; };
 		A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */; };
 		A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3B191F1DD6009BE585 /* MJRefreshBaseView.m */; };
 		A1E95B44191F1DD6009BE585 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3D191F1DD6009BE585 /* MJRefreshConst.m */; };
@@ -172,8 +172,8 @@
 		A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
 		A1E838E218CEAD05008E6F57 /* TSAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAccountController.h; sourceTree = "<group>"; };
 		A1E838E318CEAD05008E6F57 /* TSAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAccountController.m; sourceTree = "<group>"; };
-		A1E838E518CEAD1C008E6F57 /* FSProjectSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSProjectSettings.h; path = MalmooTests/FSProjectSettings.h; sourceTree = SOURCE_ROOT; };
-		A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSProjectSettings.m; path = MalmooTests/FSProjectSettings.m; sourceTree = SOURCE_ROOT; };
+		A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSUtilSettings.h; path = MalmooTests/FSUtilSettings.h; sourceTree = SOURCE_ROOT; };
+		A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSUtilSettings.m; path = MalmooTests/FSUtilSettings.m; sourceTree = SOURCE_ROOT; };
 		A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		A1E95B39191F1DD6009BE585 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		A1E95B3A191F1DD6009BE585 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 			children = (
 				A171E17B18C6D186003113ED /* AppDelegate.h */,
 				A171E17C18C6D186003113ED /* AppDelegate.m */,
-				A1E838E518CEAD1C008E6F57 /* FSProjectSettings.h */,
-				A1E838E618CEAD1C008E6F57 /* FSProjectSettings.m */,
+				A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */,
+				A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */,
 				A171E17E18C6D186003113ED /* Main.storyboard */,
 				A171E18418C6D186003113ED /* Images.xcassets */,
 				A1BDDDE71998FBC30041B0A1 /* Controller */,
@@ -630,7 +630,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A108B50618DC81D1004DDA65 /* FSProjectSettings.m in Sources */,
+				A108B50618DC81D1004DDA65 /* FSUtilSettings.m in Sources */,
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
@@ -680,7 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1E838E718CEAD1C008E6F57 /* FSProjectSettings.m in Sources */,
+				A1E838E718CEAD1C008E6F57 /* FSUtilSettings.m in Sources */,
 				A171E19818C6D186003113ED /* MalmooTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,7 +813,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Malmoo",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Elephrame-azwqhoddrifjpaboskkmzparsenp/Build/Products/Debug-iphoneos",
 					"$(PROJECT_DIR)",
 					/Users/folse/Desktop,
 				);
@@ -845,7 +844,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Malmoo",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Elephrame-azwqhoddrifjpaboskkmzparsenp/Build/Products/Debug-iphoneos",
 					"$(PROJECT_DIR)",
 					/Users/folse/Desktop,
 				);

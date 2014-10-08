@@ -18,7 +18,7 @@
     BOOL isSearching;
     int PAGE_COUNT;
     int PAGE_NUM;
-    int lastDataCount;
+    NSInteger lastDataCount;
     PFQuery *tagQuery;
     PFQuery *nameQuery;
     MJRefreshFooterView *_footer;
@@ -46,6 +46,8 @@
     [super viewWillAppear:animated];
     
     //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[FSUtilSettings createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -63,7 +65,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     resultArray = [NSMutableArray new];
     
     PAGE_COUNT = 15;
@@ -85,27 +87,32 @@
 {
     NSMutableArray *tagArray = [NSMutableArray new];
     
+    tagQuery = [PFQuery queryWithClassName:@"Place"];
+    nameQuery = [PFQuery queryWithClassName:@"Place"];
+    
+    
     NSArray *keywordsArray = [keywords componentsSeparatedByString:@" "];
     
     for (NSString *keyword in keywordsArray) {
+        
         PFQuery *tagObjectQuery = [PFQuery queryWithClassName:@"Tag"];
         [tagObjectQuery whereKey:@"name" equalTo:keyword];
         PFObject *tagObject = [tagObjectQuery getFirstObject];
-        [tagArray addObject:tagObject];
+        if(tagObject){
+            [tagArray addObject:tagObject];
+        }
     }
     
-    //    nameQuery = [PFQuery queryWithClassName:@"Place"];
-    //    [nameQuery whereKey:@"name" containedIn:keywordsArray];
+//    [nameQuery whereKey:@"name" containsStri
     
-    tagQuery = [PFQuery queryWithClassName:@"Place"];
     [tagQuery whereKey:@"tag" containedIn:tagArray];
-
+    
     [self searchQuery];
 }
 
 -(void)searchQuery
 {
-    PFQuery *placeQuery = [PFQuery orQueryWithSubqueries:@[tagQuery]];
+    PFQuery *placeQuery = [PFQuery orQueryWithSubqueries:@[nameQuery,tagQuery]];
     
     placeQuery.limit = PAGE_COUNT;
     placeQuery.skip = PAGE_NUM*PAGE_COUNT;
