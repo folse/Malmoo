@@ -63,11 +63,14 @@
             for (PFObject *photoObject in objects) {
                 
                 if (photoObject[@"url"] != nil) {
-                    
-                    [photoUrlArray addObject:photoObject[@"url"]];
-                    
+                                        
                     MJPhoto *photo = [[MJPhoto alloc] init];
-                    photo.url = [NSURL URLWithString:photoObject[@"url"]];
+                    NSString *photoUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/thumbnail/420x",photoObject[@"url"]];
+                    photoUrl = [photoUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    
+                    [photoUrlArray addObject:photoUrl];
+                    
+                    photo.url = [NSURL URLWithString:photoUrl];
                     [photos addObject:photo];
                 }
             }
@@ -79,31 +82,6 @@
             s(error)
         }
     }];
-    
-    //    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
-    //    query.limit = 30;
-    //    [query whereKey:@"place" equalTo:_place.parseObject];
-    //    [query whereKey:@"category" equalTo:[PFObject objectWithoutDataWithClassName:@"PhotoCategory" objectId:@"kyal3eTN0P"]];
-    //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-    //        if (!error) {
-    //
-    //            photos = [NSMutableArray arrayWithCapacity:[objects count]];
-    //            for (PFObject *object in objects) {
-    //
-    //                if (object[@"url"] != nil) {
-    //
-    //                    [photoArray addObject:object[@"url"]];
-    //
-    //                    MJPhoto *photo = [[MJPhoto alloc] init];
-    //                    photo.url = [NSURL URLWithString:object[@"url"]];
-    //
-    //                    [photos addObject:photo];
-    //                }
-    //            }
-    //
-    //            [self.collectionView reloadData];
-    //        }
-    //    }];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

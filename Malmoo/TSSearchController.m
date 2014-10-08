@@ -19,8 +19,7 @@
     int PAGE_COUNT;
     int PAGE_NUM;
     NSInteger lastDataCount;
-    PFQuery *tagQuery;
-    PFQuery *nameQuery;
+    NSMutableArray *queryArray;
     MJRefreshFooterView *_footer;
 }
 
@@ -85,11 +84,11 @@
 
 -(void)getSearchPlaceData:(NSString *)keywords
 {
+    queryArray = [NSMutableArray new];
+    
     NSMutableArray *tagArray = [NSMutableArray new];
     
-    tagQuery = [PFQuery queryWithClassName:@"Place"];
-    nameQuery = [PFQuery queryWithClassName:@"Place"];
-    
+    PFQuery *tagQuery = [PFQuery queryWithClassName:@"Place"];
     
     NSArray *keywordsArray = [keywords componentsSeparatedByString:@" "];
     
@@ -101,18 +100,33 @@
         if(tagObject){
             [tagArray addObject:tagObject];
         }
+        
+        //Search From Place Name
+        PFQuery *nameQuery = [PFQuery queryWithClassName:@"Place"];
+        [nameQuery whereKey:@"name" containsString:keyword];
+        [queryArray addObject:nameQuery];
+        
+        //Search From Place Description
+        PFQuery *descriptionQuery = [PFQuery queryWithClassName:@"Place"];
+        [descriptionQuery whereKey:@"description" containsString:keyword];
+        [queryArray addObject:descriptionQuery];
+        
+        //Search From Place Address
+        PFQuery *addressQuery = [PFQuery queryWithClassName:@"Place"];
+        [addressQuery whereKey:@"address" containsString:keyword];
+        [queryArray addObject:addressQuery];
     }
     
-//    [nameQuery whereKey:@"name" containsStri
-    
     [tagQuery whereKey:@"tag" containedIn:tagArray];
+    
+    [queryArray addObject:tagQuery];
     
     [self searchQuery];
 }
 
 -(void)searchQuery
 {
-    PFQuery *placeQuery = [PFQuery orQueryWithSubqueries:@[nameQuery,tagQuery]];
+    PFQuery *placeQuery = [PFQuery orQueryWithSubqueries:queryArray];
     
     placeQuery.limit = PAGE_COUNT;
     placeQuery.skip = PAGE_NUM*PAGE_COUNT;
@@ -126,6 +140,7 @@
         if (!error) {
             
             for (PFObject *object in objects) {
+                
                 NSLog(@"%@", object);
                 
                 TSPlace *place = [TSPlace new];

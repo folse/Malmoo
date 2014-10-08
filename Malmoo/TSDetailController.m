@@ -37,7 +37,7 @@
 {
     [super viewWillAppear:animated];
     
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_empty"] forBarMetrics:UIBarMetricsDefault];
+    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_empty"] forBarMetrics:UIBarMetricsDefault];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -149,7 +149,9 @@
 {
     if (_place.avatarUrl != nil) {
         
-        NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/x%f/crop/!%fxa420a0/quality/100",_place.avatarUrl,SCREEN_HEIGHT*2,SCREEN_WIDTH*2];
+        NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa420a0/quality/100",_place.avatarUrl,SCREEN_HEIGHT*2,SCREEN_WIDTH*2];
+        
+        bgHdImageUrl = [bgHdImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         NSURL *hdImageURL = [NSURL URLWithString:bgHdImageUrl];
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
@@ -165,7 +167,9 @@
             
         }else{
             
-            NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/x%f/crop/!%fxa210a0/quality/20",_place.avatarUrl,SCREEN_HEIGHT,SCREEN_WIDTH];
+            NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa210a0/quality/20",_place.avatarUrl,SCREEN_HEIGHT,SCREEN_WIDTH];
+            s(bgHdImageUrl)
+            bgImageUrl = [bgImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
             NSURL *bgImageURL = [NSURL URLWithString:bgImageUrl];
             
@@ -173,7 +177,7 @@
                 
                 UIImage *bgImage = [manager.imageCache imageFromDiskCacheForKey:[manager cacheKeyForURL:bgImageURL]];
                 
-                 [self setBgImage:bgImage withHdImageURL:hdImageURL];
+                [self setBgImage:bgImage withHdImageURL:hdImageURL];
                 
             }else{
                 
@@ -205,7 +209,7 @@
     [manager downloadImageWithURL:hdBgImageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-    
+        
         [_glassScrollView setBackgroundImage:image overWriteBlur:YES animated:YES duration:1.6];
     }];
 }
@@ -296,18 +300,20 @@
     
     for (int i = 0; i < photoUrlArray.count; i++) {
         
-        NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/w/140",photoUrlArray[i]];
+        NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/gravity/North/thumbnail/150x/crop/!112x112a8",photoUrlArray[i]];
         
+        thumbnailUrl = [thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+31*i+26, 0, 70, 70)];
         [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
-
+        [imageView setContentMode:UIViewContentModeScaleAspectFit];
         [imageView setUserInteractionEnabled:YES];
         [imageView addGestureRecognizer:imageTap];
         
         CALayer *layer = [imageView layer];
         layer.borderColor = [UIColor whiteColor].CGColor;
         layer.borderWidth = 3.0f;
-    
+        
         [detailView.albumScrollView addSubview:imageView];
     }
 }
@@ -329,26 +335,26 @@
 //{
 //    NSURLRequest *photoRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]];
 //    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:photoRequest];
-//    
+//
 //    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:imagePath append:NO]];
 //    [operation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
 //        UIImage *placeImage = [UIImage imageWithContentsOfFile:imagePath];
-//        
+//
 //        int totalExpectedToRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesExpectedToRead] intValue];
 //        int totalRead = [[NSString stringWithFormat:@"%ld",(long)totalBytesRead] intValue];
-//        
+//
 //        float scaleProgress = (float)totalRead/(float)totalExpectedToRead;
-//        
+//
 //        [coverImageView setFrame:CGRectMake(0, 0, 320, placeImage.size.height*scaleProgress)];
 //        coverImageView.image = [self cutImage:placeImage withScale:scaleProgress];
 //    }];
-//    
+//
 //    [operation setCompletionBlock:^{
 //        UIImage *placeImage = [UIImage imageWithContentsOfFile:imagePath];
 //        [coverImageView setFrame:CGRectMake(0, 0, 320, placeImage.size.height)];
 //        coverImageView.image = placeImage;
 //    }];
-//    
+//
 //    [operation start];
 //}
 
@@ -519,25 +525,25 @@
 //    bottomToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-44, self.view.frame.size.width, 44.0f)];
 //    bottomToolBar.tintColor = APP_COLOR;
 //    [bottomToolBar sizeToFit];
-//    
+//
 //    favouriteImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_star"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
 //    favouriteBtn = [[UIBarButtonItem alloc] initWithTitle:@"Favorite" style:UIBarButtonItemStyleBordered target:self action:@selector(favouritePlace)];
 //    [favouriteBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
-//    
+//
 //    shareImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
 //    shareBtn = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStyleBordered target:self action:@selector(sharePlace)];
 //    [shareBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
-//    
+//
 //    reportImageBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_report"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
 //    reportBtn = [[UIBarButtonItem alloc] initWithTitle:@"Report" style:UIBarButtonItemStyleBordered target:self action:@selector(showComposerSheet)];
 //    [reportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:APP_COLOR,NSForegroundColorAttributeName,[UIFont fontWithName:@"Helvetica-Light" size:14.0],NSFontAttributeName,nil] forState:normal];
-//    
+//
 //    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-//    
+//
 //    NSArray *itemArray = [[NSArray alloc] initWithObjects:flexSpace, favouriteImageBtn,favouriteBtn, flexSpace, shareImageBtn,shareBtn, flexSpace, reportImageBtn,reportBtn, flexSpace, nil];
-//    
+//
 //    [bottomToolBar setItems:itemArray animated:YES];
-//    
+//
 //    [[[[UIApplication sharedApplication] delegate] window] addSubview:bottomToolBar];
 //}
 
