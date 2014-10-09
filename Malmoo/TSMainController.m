@@ -478,7 +478,7 @@
     
     //NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/330x/crop/!330x120a0a30",cellPlace.avatarUrl];
     
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80/quality/100",cellPlace.avatarUrl];
 
     avatarUrl = [avatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];

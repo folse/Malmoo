@@ -149,7 +149,7 @@
 {
     if (_place.avatarUrl != nil) {
         
-        NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa420a0/quality/100",_place.avatarUrl,SCREEN_HEIGHT*2,SCREEN_WIDTH*2];
+        NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa420a0/quality/70",_place.avatarUrl,SCREEN_HEIGHT*2,SCREEN_WIDTH*2];
         
         bgHdImageUrl = [bgHdImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
@@ -167,7 +167,7 @@
             
         }else{
             
-            NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa210a0/quality/20",_place.avatarUrl,SCREEN_HEIGHT,SCREEN_WIDTH];
+            NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa210a0/quality/18",_place.avatarUrl,SCREEN_HEIGHT,SCREEN_WIDTH];
             s(bgHdImageUrl)
             bgImageUrl = [bgImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
