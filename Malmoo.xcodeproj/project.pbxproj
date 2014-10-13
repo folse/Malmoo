@@ -18,6 +18,9 @@
 		A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* TSMainCell.m */; };
 		A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* TSPromotionController.m */; };
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
+		A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546819E94F290032AE03 /* UIImage+UIImageExt.m */; };
+		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
+		A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546C19E94F290032AE03 /* UIImage+vImage.m */; };
 		A169DCA619E46B5B003D4846 /* FSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A169DCA519E46B5B003D4846 /* FSTableViewController.m */; };
 		A16E678619BEB596005EE27B /* TSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678519BEB596005EE27B /* TSSearchController.m */; };
 		A16E678919BEB5A4005EE27B /* TSDirectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678819BEB5A4005EE27B /* TSDirectionController.m */; };
@@ -99,6 +102,12 @@
 		A11316F0191E81E800EC96B6 /* TSPromotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPromotionController.m; sourceTree = "<group>"; };
 		A1165CB018F69D8300213808 /* TSPlaceCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceCategory.h; sourceTree = "<group>"; };
 		A1165CB118F69D8300213808 /* TSPlaceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceCategory.m; sourceTree = "<group>"; };
+		A154546719E94F290032AE03 /* UIImage+UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageExt.h"; sourceTree = "<group>"; };
+		A154546819E94F290032AE03 /* UIImage+UIImageExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageExt.m"; sourceTree = "<group>"; };
+		A154546919E94F290032AE03 /* UIImage+Blend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blend.h"; sourceTree = "<group>"; };
+		A154546A19E94F290032AE03 /* UIImage+Blend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blend.m"; sourceTree = "<group>"; };
+		A154546B19E94F290032AE03 /* UIImage+vImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+vImage.h"; sourceTree = "<group>"; };
+		A154546C19E94F290032AE03 /* UIImage+vImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+vImage.m"; sourceTree = "<group>"; };
 		A169DCA419E46B5B003D4846 /* FSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTableViewController.h; sourceTree = "<group>"; };
 		A169DCA519E46B5B003D4846 /* FSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTableViewController.m; sourceTree = "<group>"; };
 		A16E678419BEB596005EE27B /* TSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSearchController.h; sourceTree = "<group>"; };
@@ -260,6 +269,19 @@
 				A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		A154547019E94F3B0032AE03 /* UIImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				A154546719E94F290032AE03 /* UIImage+UIImageExt.h */,
+				A154546819E94F290032AE03 /* UIImage+UIImageExt.m */,
+				A154546919E94F290032AE03 /* UIImage+Blend.h */,
+				A154546A19E94F290032AE03 /* UIImage+Blend.m */,
+				A154546B19E94F290032AE03 /* UIImage+vImage.h */,
+				A154546C19E94F290032AE03 /* UIImage+vImage.m */,
+			);
+			name = UIImageHelper;
 			sourceTree = "<group>";
 		};
 		A169DCA719E46B63003D4846 /* FSTableViewController */ = {
@@ -451,6 +473,7 @@
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A154547019E94F3B0032AE03 /* UIImageHelper */,
 				A169DCA719E46B63003D4846 /* FSTableViewController */,
 				A10A4BB119A9F7010011E5A1 /* BTGlassScrollView */,
 				A1BDDE11199A82600041B0A1 /* MJPhotoBrowser */,
@@ -634,6 +657,7 @@
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
+				A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */,
 				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,
 				A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */,
 				A16E678619BEB596005EE27B /* TSSearchController.m in Sources */,
@@ -663,6 +687,7 @@
 				A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */,
 				A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */,
 				A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */,
+				A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */,
 				A1830B6A18DB5C460053DE81 /* TSMoreController.m in Sources */,
 				A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */,
 				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
@@ -670,6 +695,7 @@
 				A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */,
 				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
+				A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */,
 				A1BDDE0C199A825B0041B0A1 /* MJPhotoBrowser.m in Sources */,
 				A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */,
 				A1BDDE0D199A825B0041B0A1 /* MJPhotoLoadingView.m in Sources */,
@@ -848,7 +874,7 @@
 					/Users/folse/Desktop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7c165593-676b-451e-90ae-daee7ac77ce9";
+				PROVISIONING_PROFILE = "0ffbef0e-4600-44f3-81a4-943b1521219e";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -23,6 +23,7 @@
     NSInteger selectedId;
     BOOL isSelectedFromMap;
     BOOL isSearching;
+    BOOL isRefreshFromMap;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
     NSArray *clearArray;
@@ -42,6 +43,8 @@
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatiorView;
 
 @end
 
@@ -65,14 +68,14 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 - (void)viewDidLoad
@@ -81,6 +84,9 @@
     
     HUD_Define
     [HUD show:YES];
+    
+    [_activityIndicatiorView setHidden:YES];
+    [_activityIndicatiorView stopAnimating];
     
     [self removeNavigationBarShadow];
     
@@ -353,8 +359,6 @@
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
             if (!error) {
                 
-                //PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:55.596149 longitude:13.004419];
-                
                 CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
                 [self displayLocation:currentLocation];
                 
@@ -383,6 +387,14 @@
 {
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            
+            [_activityIndicatiorView stopAnimating];
+            [_activityIndicatiorView setHidden:YES];
+            
+            if (isRefreshFromMap && objects.count > 0) {
+                [placeArray removeAllObjects];
+                isRefreshFromMap = NO;
+            }
             
             for (PFObject *object in objects) {
                 NSLog(@"%@", object);
@@ -476,12 +488,10 @@
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
     
-    //NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/330x/crop/!330x120a0a30",cellPlace.avatarUrl];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
     
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80/quality/100",cellPlace.avatarUrl];
-
     avatarUrl = [avatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[[UIImage imageNamed:@"default_shop_photo"] unsharpen]];
     
     return cell;
 }
@@ -580,6 +590,24 @@
     
     isSelectedFromMap = YES;
     [self performSegueWithIdentifier:@"DetailController" sender:view];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    if (mapView.annotations.count > 0) {
+        
+        [_activityIndicatiorView setHidden:NO];
+        [_activityIndicatiorView startAnimating];
+        
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+        query.limit = PAGE_COUNT;
+        query.skip = PAGE_NUM*PAGE_COUNT;
+        [query whereKey:@"location" nearGeoPoint:geoPoint];
+        [self findObjects:query];
+        isRefreshFromMap = YES;
+    }
 }
 
 - (void)displayLocation:(CLLocation *)location

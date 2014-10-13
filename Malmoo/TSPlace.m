@@ -10,4 +10,9 @@
 
 @implementation TSPlace
 
+-(void)setAvatarUrl:(NSString *)avatarUrl
+{
+    _avatarUrl = [avatarUrl stringByReplacingOccurrencesOfString:@"http://ts-image1.qiniudn.com" withString:@"http://ts-image1.qiniug.com"];
+}
+
 @end

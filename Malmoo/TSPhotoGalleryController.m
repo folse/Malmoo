@@ -24,6 +24,22 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[FSUtilSettings createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

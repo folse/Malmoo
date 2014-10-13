@@ -41,7 +41,7 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
 }
 
@@ -51,7 +51,7 @@
     
     _place.favourited = NO;
     
-    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -177,7 +177,7 @@
                 
                 UIImage *bgImage = [manager.imageCache imageFromDiskCacheForKey:[manager cacheKeyForURL:bgImageURL]];
                 
-                [self setBgImage:bgImage withHdImageURL:hdImageURL];
+                [self setBgImage:[bgImage unsharpen] withHdImageURL:hdImageURL];
                 
             }else{
                 
@@ -185,7 +185,7 @@
                     
                 } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                     
-                    [self setBgImage:image withHdImageURL:hdImageURL];
+                    [self setBgImage:[image unsharpen] withHdImageURL:hdImageURL];
                 }];
             }
         }

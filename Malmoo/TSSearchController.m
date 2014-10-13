@@ -44,7 +44,7 @@
 {
     [super viewWillAppear:animated];
     
-    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
     [self.navigationController.navigationBar setBackgroundImage:[FSUtilSettings createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
 }
@@ -53,7 +53,7 @@
 {
     [super viewWillAppear:animated];
     
-    //[MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewDidAppear:(BOOL)animated
