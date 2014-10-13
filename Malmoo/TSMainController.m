@@ -24,6 +24,7 @@
     BOOL isSelectedFromMap;
     BOOL isSearching;
     BOOL isRefreshFromMap;
+    BOOL hasOldMapCenterLocation;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
     NSArray *clearArray;
@@ -36,6 +37,7 @@
     UIWebView *webView;
     NSString *apiKey;
     PFObject *currentObject;
+    CLLocation *oldMapCenterLocation;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -90,6 +92,13 @@
     
     [self removeNavigationBarShadow];
     
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [locationManager requestAlwaysAuthorization];
+        [locationManager requestWhenInUseAuthorization];
+    }
+    [locationManager startUpdatingLocation];
+    
     //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
     PAGE_COUNT = 15;
@@ -117,7 +126,6 @@
         
         [self refresh];
     }
-    
     
     //    webView = [[UIWebView alloc] init];
     //    [webView setDelegate:self];
@@ -594,7 +602,12 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    if (mapView.annotations.count > 0) {
+    f(mapView.region.center.latitude)
+    f(mapView.region.center.longitude)
+    
+    if (oldMapCenterLocation != nil && mapView.region.center.latitude != oldMapCenterLocation.coordinate.latitude && mapView.region.center.longitude != oldMapCenterLocation.coordinate.longitude) {
+        
+        isRefreshFromMap = YES;
         
         [_activityIndicatiorView setHidden:NO];
         [_activityIndicatiorView startAnimating];
@@ -606,8 +619,14 @@
         query.skip = PAGE_NUM*PAGE_COUNT;
         [query whereKey:@"location" nearGeoPoint:geoPoint];
         [self findObjects:query];
-        isRefreshFromMap = YES;
+        
     }
+    
+    if (oldMapCenterLocation != nil) {
+        hasOldMapCenterLocation = YES;
+    }
+    
+    oldMapCenterLocation = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
 }
 
 - (void)displayLocation:(CLLocation *)location

@@ -179,6 +179,7 @@
 		A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
 		A1BDDE08199A825B0041B0A1 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
 		A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		A1D3B2E919EC4CCC00B45FFE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A1E838E218CEAD05008E6F57 /* TSAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAccountController.h; sourceTree = "<group>"; };
 		A1E838E318CEAD05008E6F57 /* TSAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAccountController.m; sourceTree = "<group>"; };
 		A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSUtilSettings.h; path = MalmooTests/FSUtilSettings.h; sourceTree = SOURCE_ROOT; };
@@ -316,6 +317,7 @@
 		A171E16B18C6D186003113ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1D3B2E919EC4CCC00B45FFE /* CoreLocation.framework */,
 				A1830B5618DB4DF40053DE81 /* MapKit.framework */,
 				A171E16C18C6D186003113ED /* Foundation.framework */,
 				A171E16E18C6D186003113ED /* CoreGraphics.framework */,
@@ -562,7 +564,7 @@
 				ORGANIZATIONNAME = Folse;
 				TargetAttributes = {
 					A171E16818C6D186003113ED = {
-						DevelopmentTeam = 6XX8659PN2;
+						DevelopmentTeam = V68CP8VT5Z;
 					};
 					A171E18918C6D186003113ED = {
 						TestTargetID = A171E16818C6D186003113ED;
@@ -844,7 +846,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0ffbef0e-4600-44f3-81a4-943b1521219e";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
