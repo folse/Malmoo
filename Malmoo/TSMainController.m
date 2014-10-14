@@ -575,7 +575,7 @@
             MKPinAnnotationView *customPinView = [[MKPinAnnotationView alloc]
                                                   initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
             customPinView.pinColor = MKPinAnnotationColorPurple;
-            customPinView.animatesDrop = YES;
+            customPinView.animatesDrop = NO;
             customPinView.canShowCallout = YES;
             
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -605,7 +605,7 @@
     f(mapView.region.center.latitude)
     f(mapView.region.center.longitude)
     
-    if (oldMapCenterLocation != nil && mapView.region.center.latitude != oldMapCenterLocation.coordinate.latitude && mapView.region.center.longitude != oldMapCenterLocation.coordinate.longitude) {
+    if (hasOldMapCenterLocation && oldMapCenterLocation != nil && mapView.region.center.latitude != oldMapCenterLocation.coordinate.latitude && mapView.region.center.longitude != oldMapCenterLocation.coordinate.longitude) {
         
         isRefreshFromMap = YES;
         
