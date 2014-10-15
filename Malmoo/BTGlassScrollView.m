@@ -229,8 +229,8 @@
     [_foregroundScrollView setShowsHorizontalScrollIndicator:NO];
     [_foregroundContainerView addSubview:_foregroundScrollView];
     
-    UITapGestureRecognizer *_tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foregroundTapped:)];
-    [_foregroundScrollView addGestureRecognizer:_tapRecognizer];
+//    UITapGestureRecognizer *_tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foregroundTapped:)];
+//    [_foregroundScrollView addGestureRecognizer:_tapRecognizer];
     
     
     [_foregroundView setFrame:CGRectOffset(_foregroundView.bounds, (_foregroundScrollView.frame.size.width - _foregroundView.bounds.size.width)/2, _foregroundScrollView.frame.size.height - _viewDistanceFromBottom)];

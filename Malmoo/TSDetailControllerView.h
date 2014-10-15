@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *reservationButton;
 @property (weak, nonatomic) IBOutlet UILabel *reservationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *openHourLabel;
-@property (strong, nonatomic) IBOutlet UIScrollView *albumScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;

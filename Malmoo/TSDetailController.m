@@ -293,9 +293,6 @@
 
 -(void)showPlacePhotoAlbum
 {
-    [detailView.albumScrollView setDelegate:self];
-    [detailView.albumScrollView setContentSize:CGSizeMake(70*photoUrlArray.count, 70)];
-    
     UIGestureRecognizer *imageTap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(photoButtonAction)];
     
     for (int i = 0; i < photoUrlArray.count; i++) {
@@ -314,7 +311,7 @@
         layer.borderColor = [UIColor whiteColor].CGColor;
         layer.borderWidth = 3.0f;
         
-        [detailView.albumScrollView addSubview:imageView];
+        [detailView addSubview:imageView];
     }
 }
 
