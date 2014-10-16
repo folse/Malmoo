@@ -30,5 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIButton *openHourButton;
+@property (strong, nonatomic) IBOutlet UIImageView *thumbnailLeftImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *thumbnailCenterImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *thumbnailRightImageView;
 
 @end

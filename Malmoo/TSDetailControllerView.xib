@@ -168,6 +168,15 @@
                         <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-hk-nZ8">
+                    <rect key="frame" x="124" y="195" width="72" height="72"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-MH-2MG">
+                    <rect key="frame" x="20" y="195" width="72" height="72"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ce0-li-P86">
+                    <rect key="frame" x="223" y="195" width="72" height="72"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -191,6 +200,9 @@
                 <outlet property="reservationButton" destination="bly-AT-5XA" id="qrc-Wa-BGH"/>
                 <outlet property="reservationLabel" destination="He8-5V-5Qn" id="Bpu-jk-HZ7"/>
                 <outlet property="shareButton" destination="iMk-QH-Lp8" id="y5N-eH-ZXc"/>
+                <outlet property="thumbnailCenterImageView" destination="vXY-hk-nZ8" id="FzC-IK-zzt"/>
+                <outlet property="thumbnailLeftImageView" destination="hIB-MH-2MG" id="cUm-XP-DEt"/>
+                <outlet property="thumbnailRightImageView" destination="Ce0-li-P86" id="zmn-QS-Fdb"/>
                 <outlet property="wifiButton" destination="Pww-nc-cDL" id="Gtz-uq-d6u"/>
                 <outlet property="wifiLabel" destination="yH1-Ie-W5p" id="szn-X4-Taj"/>
             </connections>

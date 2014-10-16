@@ -294,25 +294,37 @@
 -(void)showPlacePhotoAlbum
 {
     UIGestureRecognizer *imageTap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(photoButtonAction)];
+//    
+//    for (int i = 0; i < photoUrlArray.count; i++) {
+//        
+
+//        
+//        thumbnailUrl = [thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//                
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+31*i+26, 0, 70, 70)];
+//        [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+//        [imageView setContentMode:UIViewContentModeScaleAspectFit];
+//        [imageView setUserInteractionEnabled:YES];
+//        [imageView addGestureRecognizer:imageTap];
+//        
+//        CALayer *layer = [imageView layer];
+//        layer.borderColor = [UIColor whiteColor].CGColor;
+//        layer.borderWidth = 3.0f;
+//        
+//        [detailView addSubview:imageView];
+//    }
     
-    for (int i = 0; i < photoUrlArray.count; i++) {
-        
-        NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/gravity/North/thumbnail/150x/crop/!112x112a8",photoUrlArray[i]];
-        
-        thumbnailUrl = [thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+31*i+26, 0, 70, 70)];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
-        [imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [imageView setUserInteractionEnabled:YES];
-        [imageView addGestureRecognizer:imageTap];
-        
-        CALayer *layer = [imageView layer];
-        layer.borderColor = [UIColor whiteColor].CGColor;
-        layer.borderWidth = 3.0f;
-        
-        [detailView addSubview:imageView];
-    }
+    NSString *thumbnailLeftUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/gravity/North/thumbnail/150x/crop/!112x112a8",photoUrlArray[0]];
+    thumbnailLeftUrl = [thumbnailLeftUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [detailView.thumbnailLeftImageView sd_setImageWithURL:[NSURL URLWithString:thumbnailLeftUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+    [detailView.thumbnailLeftImageView setContentMode:UIViewContentModeScaleAspectFit];
+    [detailView.thumbnailLeftImageView setUserInteractionEnabled:YES];
+    [detailView.thumbnailLeftImageView addGestureRecognizer:imageTap];
+    
+    CALayer *layer = [detailView.thumbnailLeftImageView layer];
+    layer.borderColor = [UIColor whiteColor].CGColor;
+    layer.borderWidth = 3.0f;
 }
 
 - (void)viewWillLayoutSubviews
