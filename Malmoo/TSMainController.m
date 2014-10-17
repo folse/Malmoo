@@ -38,6 +38,7 @@
     NSString *apiKey;
     PFObject *currentObject;
     CLLocation *oldMapCenterLocation;
+    CLLocationManager *locationManager;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -92,12 +93,14 @@
     
     [self removeNavigationBarShadow];
     
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate= self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    [locationManager startUpdatingLocation];
     if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [locationManager requestAlwaysAuthorization];
-        [locationManager requestWhenInUseAuthorization];
     }
-    [locationManager startUpdatingLocation];
     
     //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
