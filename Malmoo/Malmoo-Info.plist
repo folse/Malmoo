@@ -29,9 +29,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>YES</string>
+	<string>It will help to find more great places</string>
 	<key>NSLocationWhenInUseDescription</key>
-	<string>YES</string>
+	<string>It will help to find more great places</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

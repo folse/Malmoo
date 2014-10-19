@@ -24,7 +24,6 @@
     BOOL isSelectedFromMap;
     BOOL isSearching;
     BOOL isRefreshFromMap;
-    BOOL haslastMapCenterLocation;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
     NSArray *clearArray;
@@ -402,7 +401,7 @@
             [_activityIndicatiorView stopAnimating];
             [_activityIndicatiorView setHidden:YES];
             
-            if (isRefreshFromMap && objects.count > 0) {
+            if (isRefreshFromMap) {
                 [placeArray removeAllObjects];
                 isRefreshFromMap = NO;
                 PAGE_NUM = 0;
@@ -503,7 +502,7 @@
     NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
     
     avatarUrl = [avatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[[UIImage imageNamed:@"default_shop_photo"] unsharpen]];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[[UIImage imageNamed:@"img_empty"] unsharpen]];
     
     return cell;
 }
@@ -571,8 +570,6 @@
 
 - (void)markPlace
 {
-    NSMutableArray *placeList = [[NSMutableArray alloc] init];
-    
     for (int i = 0; i < placeArray.count; i++) {
         
         TSPlace *mapPlace = [placeArray objectAtIndex:i];
@@ -585,13 +582,21 @@
         placeMark.title = mapPlace.name;
         placeMark.markId = i;
         
-        [placeList addObject:placeMark];
+        if (![self hasAnnotation:placeMark]) {
+            [_mapView addAnnotation:placeMark];
+        }
+    }
+}
+
+-(BOOL)hasAnnotation:(TSPlaceMark *)placeMark
+{
+    for (TSPlaceMark *placeAnnotation in _mapView.annotations) {
+        if ([placeAnnotation.title isEqualToString:placeMark.title]) {
+            return YES;
+        }
     }
     
-    if (placeList.count > 0) {
-        [self.mapView addAnnotations:placeList];
-    }
-    
+    return NO;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
