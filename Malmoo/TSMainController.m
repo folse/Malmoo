@@ -24,7 +24,7 @@
     BOOL isSelectedFromMap;
     BOOL isSearching;
     BOOL isRefreshFromMap;
-    BOOL hasOldMapCenterLocation;
+    BOOL haslastMapCenterLocation;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
     NSArray *clearArray;
@@ -37,13 +37,11 @@
     UIWebView *webView;
     NSString *apiKey;
     PFObject *currentObject;
-    CLLocation *oldMapCenterLocation;
+    CLLocation *lastMapCenterLocation;
     CLLocationManager *locationManager;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-
-@property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 
@@ -96,11 +94,11 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate= self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
     
     [locationManager startUpdatingLocation];
-    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [locationManager requestAlwaysAuthorization];
-    }
     
     //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
@@ -125,9 +123,6 @@
         
         [self.tableView setContentInset:UIEdgeInsetsMake(-160, 0, 0, 0)];
         
-    }else{
-        
-        [self refresh];
     }
     
     //    webView = [[UIWebView alloc] init];
@@ -367,16 +362,21 @@
         
     }else{
         
-        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-            if (!error) {
-                
-                CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
-                [self displayLocation:currentLocation];
-                
-                [query whereKey:@"location" nearGeoPoint:geoPoint];
-                [self findObjects:query];
-            }
-        }];
+        f(lastMapCenterLocation.coordinate.latitude)
+        f(lastMapCenterLocation.coordinate.longitude)
+        
+        PFGeoPoint *locationPoint = [PFGeoPoint geoPointWithLatitude:lastMapCenterLocation.coordinate.latitude longitude:lastMapCenterLocation.coordinate.longitude];
+        
+        [query whereKey:@"location" nearGeoPoint:locationPoint];
+        [self findObjects:query];
+        
+        //        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        //            if (!error) {
+        //
+        //                [query whereKey:@"location" nearGeoPoint:geoPoint];
+        //                [self findObjects:query];
+        //            }
+        //        }];
     }
 }
 
@@ -405,10 +405,11 @@
             if (isRefreshFromMap && objects.count > 0) {
                 [placeArray removeAllObjects];
                 isRefreshFromMap = NO;
+                PAGE_NUM = 0;
             }
             
             for (PFObject *object in objects) {
-                NSLog(@"%@", object);
+                //NSLog(@"%@", object);
                 
                 TSPlace *place = [TSPlace new];
                 place.name = object[@"name"];
@@ -535,6 +536,39 @@
 
 #pragma mark - Map
 
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    [self displayLocation:userLocation];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    f(mapView.region.center.latitude)
+    f(mapView.region.center.longitude)
+    
+    if (lastMapCenterLocation != nil) {
+        if (mapView.region.center.latitude != lastMapCenterLocation.coordinate.latitude || mapView.region.center.longitude != lastMapCenterLocation.coordinate.longitude) {
+            
+            [HUD hide:YES];
+            
+            isRefreshFromMap = YES;
+            
+            [_activityIndicatiorView setHidden:NO];
+            [_activityIndicatiorView startAnimating];
+            
+            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+            query.limit = PAGE_COUNT;
+            query.skip = PAGE_NUM*PAGE_COUNT;
+            [query whereKey:@"location" nearGeoPoint:geoPoint];
+            [self findObjects:query];
+        }
+    }
+    
+    lastMapCenterLocation = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
+}
+
 - (void)markPlace
 {
     NSMutableArray *placeList = [[NSMutableArray alloc] init];
@@ -603,36 +637,7 @@
     [self performSegueWithIdentifier:@"DetailController" sender:view];
 }
 
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
-{
-    f(mapView.region.center.latitude)
-    f(mapView.region.center.longitude)
-    
-    if (hasOldMapCenterLocation && oldMapCenterLocation != nil && mapView.region.center.latitude != oldMapCenterLocation.coordinate.latitude && mapView.region.center.longitude != oldMapCenterLocation.coordinate.longitude) {
-        
-        isRefreshFromMap = YES;
-        
-        [_activityIndicatiorView setHidden:NO];
-        [_activityIndicatiorView startAnimating];
-        
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
-        
-        PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-        query.limit = PAGE_COUNT;
-        query.skip = PAGE_NUM*PAGE_COUNT;
-        [query whereKey:@"location" nearGeoPoint:geoPoint];
-        [self findObjects:query];
-        
-    }
-    
-    if (oldMapCenterLocation != nil) {
-        hasOldMapCenterLocation = YES;
-    }
-    
-    oldMapCenterLocation = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
-}
-
-- (void)displayLocation:(CLLocation *)location
+- (void)displayLocation:(MKUserLocation *)location
 {
     MKCoordinateRegion region;
     CLLocationDegrees maxLat = -90;
@@ -651,8 +656,8 @@
     
     region.center.latitude     = (maxLat + minLat) / 2;
     region.center.longitude    = (maxLon + minLon) / 2;
-    region.span.latitudeDelta  = maxLat - minLat + 0.01;
-    region.span.longitudeDelta = maxLon - minLon + 0.01;
+    region.span.latitudeDelta  = maxLat - minLat + 0.03;
+    region.span.longitudeDelta = maxLon - minLon + 0.03;
     
     [_mapView setRegion:region animated:YES];
 }

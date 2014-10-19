@@ -37,7 +37,7 @@
 {
     [super viewWillAppear:animated];
     
-    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_empty"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_empty"] forBarMetrics:UIBarMetricsDefault];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -103,7 +103,7 @@
         [detailView.reservationLabel setText:_place.phone];
     }
     
-    [self.tableView setContentInset:UIEdgeInsetsMake(-20, 0, 0, 0)];
+    [self.tableView setFrame:CGRectMake(0, 0, SCREEN_WIDTH    , SCREEN_HEIGHT)];
     
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
@@ -149,8 +149,8 @@
 {
     if (_place.avatarUrl != nil) {
         
-        NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa420a0/quality/70",_place.avatarUrl,SCREEN_HEIGHT*2,SCREEN_WIDTH*2];
-        
+        NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/%fx/crop/!x%fa420a0/quality/70",_place.avatarUrl,SCREEN_WIDTH*2,SCREEN_HEIGHT*2];
+        s(bgHdImageUrl)
         bgHdImageUrl = [bgHdImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         NSURL *hdImageURL = [NSURL URLWithString:bgHdImageUrl];
@@ -167,7 +167,7 @@
             
         }else{
             
-            NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/crop/!%fxa210a0/quality/18",_place.avatarUrl,SCREEN_HEIGHT,SCREEN_WIDTH];
+            NSString *bgImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/%fx/crop/!x%fa210a0/quality/18",_place.avatarUrl,SCREEN_WIDTH,SCREEN_HEIGHT];
             s(bgHdImageUrl)
             bgImageUrl = [bgImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
@@ -293,38 +293,36 @@
 
 -(void)showPlacePhotoAlbum
 {
-    UIGestureRecognizer *imageTap = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(photoButtonAction)];
-//    
-//    for (int i = 0; i < photoUrlArray.count; i++) {
-//        
+    for (int i = 0; i < photoUrlArray.count; i++) {
+        
+        NSString *thumbnailUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/gravity/North/thumbnail/150x/crop/!112x112a8",photoUrlArray[i]];
 
-//        
-//        thumbnailUrl = [thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//                
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(70*i+31*i+26, 0, 70, 70)];
-//        [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
-//        [imageView setContentMode:UIViewContentModeScaleAspectFit];
-//        [imageView setUserInteractionEnabled:YES];
-//        [imageView addGestureRecognizer:imageTap];
-//        
-//        CALayer *layer = [imageView layer];
-//        layer.borderColor = [UIColor whiteColor].CGColor;
-//        layer.borderWidth = 3.0f;
-//        
-//        [detailView addSubview:imageView];
-//    }
+        thumbnailUrl = [thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(72*i+28*i+26, 198, 72, 72)];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+        [imageView setContentMode:UIViewContentModeScaleAspectFit];
+        [imageView setUserInteractionEnabled:YES];
+        [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoButtonAction)]];
+        
+        CALayer *layer = [imageView layer];
+        layer.borderColor = [UIColor whiteColor].CGColor;
+        layer.borderWidth = 2.0f;
+        
+        [detailView addSubview:imageView];
+    }
     
-    NSString *thumbnailLeftUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/gravity/North/thumbnail/150x/crop/!112x112a8",photoUrlArray[0]];
-    thumbnailLeftUrl = [thumbnailLeftUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [detailView.thumbnailLeftImageView sd_setImageWithURL:[NSURL URLWithString:thumbnailLeftUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
-    [detailView.thumbnailLeftImageView setContentMode:UIViewContentModeScaleAspectFit];
-    [detailView.thumbnailLeftImageView setUserInteractionEnabled:YES];
-    [detailView.thumbnailLeftImageView addGestureRecognizer:imageTap];
-    
-    CALayer *layer = [detailView.thumbnailLeftImageView layer];
-    layer.borderColor = [UIColor whiteColor].CGColor;
-    layer.borderWidth = 3.0f;
+//    NSString *thumbnailLeftUrl = [NSString stringWithFormat:@"%@?imageView2/1/format|imageMogr2/gravity/North/thumbnail/150x/crop/!112x112a8",photoUrlArray[0]];
+//    thumbnailLeftUrl = [thumbnailLeftUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    
+//    [detailView.thumbnailLeftImageView sd_setImageWithURL:[NSURL URLWithString:thumbnailLeftUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+//    [detailView.thumbnailLeftImageView setContentMode:UIViewContentModeScaleAspectFit];
+//    [detailView.thumbnailLeftImageView setUserInteractionEnabled:YES];
+//    [detailView.thumbnailLeftImageView addGestureRecognizer:imageTap];
+//    
+//    CALayer *layer = [detailView.thumbnailLeftImageView layer];
+//    layer.borderColor = [UIColor whiteColor].CGColor;
+//    layer.borderWidth = 3.0f;
 }
 
 - (void)viewWillLayoutSubviews

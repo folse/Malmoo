@@ -17,11 +17,13 @@
     NSMutableArray *photos;
     NSMutableArray *photoUrlArray;
     NSString *selectedPhotoUrl;
+    MBProgressHUD *HUD;
 }
 
 @end
 
 @implementation TSPhotoCollectionController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +55,8 @@
 {
     [super viewDidLoad];
     
+    HUD_Define
+    
     photoUrlArray = [NSMutableArray new];
     
     [self getPhotos];
@@ -60,6 +64,8 @@
 
 -(void)getPhotos
 {
+    [HUD show:YES];
+    
     PFRelation *relation = [_place.parseObject relationForKey:@"photos"];
     PFQuery *productPhotoQuery = [relation query];
     //[productPhotoQuery whereKey:@"product" equalTo:@"true"];
@@ -82,6 +88,8 @@
                     [photos addObject:photo];
                 }
             }
+            
+            [HUD hide:YES];
             
             [self.collectionView reloadData];
             
@@ -128,6 +136,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)refreshButton:(id)sender
+{
+    
+    [photos removeAllObjects];
+    [photoUrlArray removeAllObjects];
+    
+    [self getPhotos];
 }
 
 #pragma mark - Navigation
