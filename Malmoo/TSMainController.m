@@ -24,6 +24,7 @@
     BOOL isSelectedFromMap;
     BOOL isSearching;
     BOOL isRefreshFromMap;
+    BOOL updatedUserLocation;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
     NSArray *clearArray;
@@ -537,7 +538,11 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    [self displayLocation:userLocation];
+    if (!updatedUserLocation) {
+        updatedUserLocation = YES;
+        [self displayLocation:userLocation];
+    }
+    
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated

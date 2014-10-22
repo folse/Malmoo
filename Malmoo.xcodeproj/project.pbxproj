@@ -44,6 +44,7 @@
 		A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487618F13995005B05F1 /* UIView+screenshot.m */; };
 		A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487E18F13A39005B05F1 /* SubCateViewController.m */; };
 		A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A178487F18F13A39005B05F1 /* SubCateViewController.xib */; };
+		A17F6BE019F4AAAE00888BB3 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */; };
 		A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5418DB4D540053DE81 /* TSMapController.m */; };
 		A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5918DB4E4C0053DE81 /* JDSideMenu.m */; };
 		A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5B18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m */; };
@@ -146,6 +147,7 @@
 		A178487D18F13A39005B05F1 /* SubCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCateViewController.h; sourceTree = "<group>"; };
 		A178487E18F13A39005B05F1 /* SubCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCateViewController.m; sourceTree = "<group>"; };
 		A178487F18F13A39005B05F1 /* SubCateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCateViewController.xib; sourceTree = "<group>"; };
+		A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		A1830B5318DB4D540053DE81 /* TSMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMapController.h; sourceTree = "<group>"; };
 		A1830B5418DB4D540053DE81 /* TSMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMapController.m; sourceTree = "<group>"; };
 		A1830B5618DB4DF40053DE81 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -341,6 +343,7 @@
 				A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */,
 				A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */,
 				A171E17E18C6D186003113ED /* Main.storyboard */,
+				A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */,
 				A171E18418C6D186003113ED /* Images.xcassets */,
 				A1BDDDE71998FBC30041B0A1 /* Controller */,
 				A10EDCA718D07F980048EA02 /* View */,
@@ -617,6 +620,7 @@
 				A178487818F13995005B05F1 /* Cell.xib in Resources */,
 				A1BDDE0B199A825B0041B0A1 /* MJPhotoBrowser.bundle in Resources */,
 				A1FD808419AC1D4700379334 /* TSDetailControllerView.xib in Resources */,
+				A17F6BE019F4AAAE00888BB3 /* Account.storyboard in Resources */,
 				A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */,
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
