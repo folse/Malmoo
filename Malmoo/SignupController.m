@@ -9,6 +9,12 @@
 #import "SignupController.h"
 
 @interface SignupController ()
+{
+    NSString *userName;
+    NSString *password;
+    NSString *email;
+    NSString *mobile;
+}
 
 @end
 
@@ -17,6 +23,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+}
+
+-(void)parseSignupUser
+{
+    PFUser *user = [PFUser user];
+    user.username = userName;
+    user.password = password;
+    user.email = email;
+    
+    if (mobile != nil && mobile.length > 0) {
+        user[@"mobile"] = mobile;
+    }
+    
+    user[@"isMerchant"] = @NO;
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hooray! Let them use the app now.
+        } else {
+            NSString *errorString = [error userInfo][@"error"];
+            // Show the errorString somewhere and let the user try again.
+            s(errorString)
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
