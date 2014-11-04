@@ -129,6 +129,22 @@
     [detailView.phoneButton addTarget:self action:@selector(phoneButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     [detailView.openHourButton addTarget:self action:@selector(openHourButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    PFObject *favorite = [PFObject objectWithClassName:@"Favorite"];
+    favorite[@"user"] = [PFUser currentUser];
+    favorite[@"place"] = _place.parseObject;
+    [favorite saveInBackground];
+    
+    PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"_place.parseObject"];
+    [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [favoriteQuery whereKey:@"place" equalTo:_place.parseObject];
+    [favoriteQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!object) {
+            NSLog(@"The getFirstObject request failed.");
+        } else {
+            [object deleteInBackground];
+        }
+    }];
 }
 
 -(void)setOpenHour
