@@ -18,6 +18,7 @@
 		A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* TSMainCell.m */; };
 		A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* TSPromotionController.m */; };
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
+		A12A9EA71A09C2880084376C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EA61A09C2880084376C /* GuideController.m */; };
 		A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546819E94F290032AE03 /* UIImage+UIImageExt.m */; };
 		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
 		A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546C19E94F290032AE03 /* UIImage+vImage.m */; };
@@ -105,6 +106,8 @@
 		A11316F0191E81E800EC96B6 /* TSPromotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPromotionController.m; sourceTree = "<group>"; };
 		A1165CB018F69D8300213808 /* TSPlaceCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceCategory.h; sourceTree = "<group>"; };
 		A1165CB118F69D8300213808 /* TSPlaceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceCategory.m; sourceTree = "<group>"; };
+		A12A9EA51A09C2880084376C /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
+		A12A9EA61A09C2880084376C /* GuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
 		A154546719E94F290032AE03 /* UIImage+UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageExt.h"; sourceTree = "<group>"; };
 		A154546819E94F290032AE03 /* UIImage+UIImageExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageExt.m"; sourceTree = "<group>"; };
 		A154546919E94F290032AE03 /* UIImage+Blend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blend.h"; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 		A1AE450D19EF761E004B328B /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				A12A9EA51A09C2880084376C /* GuideController.h */,
+				A12A9EA61A09C2880084376C /* GuideController.m */,
 				A1AE450A19EF75C4004B328B /* LoginController.h */,
 				A1AE450B19EF75C4004B328B /* LoginController.m */,
 				A1AE450E19EF7657004B328B /* SignupController.h */,
@@ -680,6 +685,7 @@
 				A108B50618DC81D1004DDA65 /* FSUtilSettings.m in Sources */,
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
+				A12A9EA71A09C2880084376C /* GuideController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
 				A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */,
 				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,

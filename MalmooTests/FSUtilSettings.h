@@ -31,7 +31,8 @@
 #define FIRST_LOAD [USER boolForKey:@"isFirstLoad"]
 #define PAGE_ID [USER valueForKey:@"pageId"]
 
-#define STORY_BOARD [UIStoryboard storyboardWithName:@"Main" bundle:nil]
+#define MAIN_STORYBOARD [UIStoryboard storyboardWithName:@"Main" bundle:nil]
+#define ACCOUNT_STORYBOARD [UIStoryboard storyboardWithName:@"Account" bundle:nil]
 
 #define e(content) [MobClick event:content];
 

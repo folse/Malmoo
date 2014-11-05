@@ -10,9 +10,17 @@
 
 @interface LoginController ()
 
+
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+
 @end
 
 @implementation LoginController
+{
+    NSString *usernameString;
+    NSString *passwordString;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +30,29 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)loginButtonAction:(id)sender
+{
+    usernameString = _usernameTextField.text;
+    passwordString = _passwordTextField.text;
+    
+    if (usernameString.length > 0 && passwordString.length > 0) {
+        
+        [PFUser logInWithUsernameInBackground:usernameString password:passwordString block:^(PFUser *user, NSError *error) {
+            
+            if (error != nil) {
+                [USER setObject:user forKey:@"PFCurrentUser"];
+            }else{
+                
+            }
+        }];
+        
+    }else{
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please input the username and password" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
 }
 
 /*
