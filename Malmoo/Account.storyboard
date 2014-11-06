@@ -26,14 +26,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vj-sF-3BC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1002" y="258"/>
+            <point key="canvasLocation" x="1000" y="258"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="ayt-gU-Ngq">
             <objects>
                 <tableViewController id="93T-JZ-43v" customClass="LoginController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Dhc-Fz-jnZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="gnJ-xC-4gI">
@@ -109,7 +109,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ftH-yL-jNe"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="passwordTextField" destination="w1l-EV-tUA" id="cmd-IE-6sE"/>
                         <outlet property="usernameTextField" destination="k6E-f6-amX" id="v4e-1F-3gA"/>
@@ -117,7 +117,34 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MY6-nR-RRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="258"/>
+            <point key="canvasLocation" x="1476" y="258"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="msd-nP-W1D">
+            <objects>
+                <tableViewController id="8OM-XK-Vgo" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="74K-4y-tTd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="m0Q-Ly-Yjy">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0Q-Ly-Yjy" id="NvH-m3-gME">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8OM-XK-Vgo" id="yKW-tG-zIx"/>
+                            <outlet property="delegate" destination="8OM-XK-Vgo" id="Aby-2p-tzc"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwa-54-h0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1476" y="928"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9zy-7W-Buc">
@@ -137,6 +164,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Osc-MM-Sow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="517" y="258"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="YO5-ZX-6zu">
+            <objects>
+                <tableViewController id="ydS-1f-etc" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="J6b-8l-y00">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UNs-bG-Lyy">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UNs-bG-Lyy" id="rdH-HD-y9r">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ydS-1f-etc" id="ME5-TF-3cy"/>
+                            <outlet property="delegate" destination="ydS-1f-etc" id="Nzj-ui-2pE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0q-C5-IMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>
