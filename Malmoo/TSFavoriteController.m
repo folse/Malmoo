@@ -44,15 +44,12 @@
         
         PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
         [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-        [favoriteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        for(PFObject *favorite in [favoriteQuery findObjects]){
             
-            s(objects)
-            
-            for(PFObject *favorite in objects){
-                
-                [self findPlace:favorite[@"place"][@"objectId"]];
-            }
-        }];
+            PFObject *place = favorite[@"place"];
+            [self findPlace:place.objectId];
+        }
         
         [self getTableViewData];
         
@@ -65,9 +62,9 @@
 -(void)findPlace:(NSString *)placeObjectId
 {
     PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
-    PFObject *place = [placeQuery getObjectWithId:placeObjectId];
-    
-    [placeObjectArray addObject:place];
+    [placeQuery getObjectInBackgroundWithId:placeObjectId block:^(PFObject *object, NSError *error) {
+        [placeObjectArray addObject:object];
+    }];
 }
 
 -(void)getTableViewData
