@@ -1,5 +1,5 @@
 //
-//  LoginController.m
+//  TSLoginController.m
 //  Malmoo
 //
 //  Created by folse on 10/16/14.
@@ -8,7 +8,7 @@
 
 #import "TSLoginController.h"
 
-@interface LoginController ()
+@interface TSLoginController ()
 
 
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation LoginController
+@implementation TSLoginController
 {
     NSString *usernameString;
     NSString *passwordString;

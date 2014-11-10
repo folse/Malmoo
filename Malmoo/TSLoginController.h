@@ -1,5 +1,5 @@
 //
-//  LoginController.h
+//  TSLoginController.h
 //  Malmoo
 //
 //  Created by folse on 10/16/14.
@@ -8,6 +8,6 @@
 
 #import "FSTableViewController.h"
 
-@interface LoginController : UITableViewController
+@interface TSLoginController : UITableViewController
 
 @end

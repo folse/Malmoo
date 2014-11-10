@@ -14,6 +14,7 @@
 @interface TSFavoriteController ()
 {
     NSMutableArray *placeArray;
+    NSMutableArray *placeObjectArray;
     int pageId;
     int PAGE_COUNT;
     int PAGE_NUM;
@@ -32,6 +33,7 @@
     PAGE_COUNT = 15;
     
     placeArray = [NSMutableArray new];
+    placeObjectArray = [NSMutableArray new];
     
     [self getData];
 }
@@ -48,66 +50,62 @@
             
             for(PFObject *favorite in objects){
                 
-                PFObject *place = favorite[@"place"];
-                
-                s(place[@"name"])
-                
-                [placeArray addObject:place];
+                [self findPlace:favorite[@"place"][@"objectId"]];
             }
         }];
+        
+        [self getTableViewData];
         
     }else{
         
         // need login
     }
-    
-
 }
 
--(void)findObjects:(PFQuery *)query
+-(void)findPlace:(NSString *)placeObjectId
 {
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            for (PFObject *object in objects) {
-                //NSLog(@"%@", object);
-                
-                TSPlace *place = [TSPlace new];
-                place.name = object[@"name"];
-                place.phone = object[@"phone"];
-                place.openHours = object[@"open_hour"];
-                place.avatarUrl = object[@"avatar"];
-                place.address = object[@"address"];
-                place.descriptions = object[@"description"];
-                place.news = object[@"news"];
-                place.parking = [object[@"has_park"] boolValue];
-                place.alcohol = [object[@"has_alcohol"] boolValue];
-                place.delivery = [object[@"delivery"] boolValue];
-                place.reservation = [object[@"phone_reservation"] boolValue];
-                place.parseObject = object;
-                //place.tags = object[@"tag"];
-                
-                PFGeoPoint *location = object[@"location"];
-                place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
-                place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
-                
-                [placeArray addObject:place];
-            }
-            
-            [HUD hide:YES];
-            [self.tableView reloadData];
-            [self.tableView setHidden:NO];
-            
-            lastDataCount = objects.count;
-            if (PAGE_NUM > 0) {
-                [self doneLoadMore];
-            }
-            
-        } else {
-            
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
+    PFObject *place = [placeQuery getObjectWithId:placeObjectId];
+    
+    [placeObjectArray addObject:place];
+}
+
+-(void)getTableViewData
+{
+    for (PFObject *object in placeObjectArray) {
+        //NSLog(@"%@", object);
+        
+        TSPlace *place = [TSPlace new];
+        place.name = object[@"name"];
+        place.phone = object[@"phone"];
+        place.openHours = object[@"open_hour"];
+        place.avatarUrl = object[@"avatar"];
+        place.address = object[@"address"];
+        place.descriptions = object[@"description"];
+        place.news = object[@"news"];
+        place.parking = [object[@"has_park"] boolValue];
+        place.alcohol = [object[@"has_alcohol"] boolValue];
+        place.delivery = [object[@"delivery"] boolValue];
+        place.reservation = [object[@"phone_reservation"] boolValue];
+        place.parseObject = object;
+        //place.tags = object[@"tag"];
+        
+        PFGeoPoint *location = object[@"location"];
+        place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
+        place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
+        
+        [placeArray addObject:place];
+    }
+    
+    [HUD hide:YES];
+    [self.tableView reloadData];
+    [self.tableView setHidden:NO];
+    
+    lastDataCount = placeObjectArray.count;
+    if (PAGE_NUM > 0) {
+        [self doneLoadMore];
+    }
+    
 }
 
 - (void)addFooter
@@ -194,13 +192,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
