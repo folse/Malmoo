@@ -41,25 +41,25 @@
 
 - (IBAction)HomeBtnAction:(id)sender
 {
-    UINavigationController *navController = [STORY_BOARD instantiateViewControllerWithIdentifier:@"mainNav"];
+    UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"mainNav"];
     [self.sideMenuController setContentController:navController animated:YES];
 }
 
 - (IBAction)favouriteBtnAction:(id)sender
 {
-    UINavigationController *navController = [STORY_BOARD instantiateViewControllerWithIdentifier:@"categoryNav"];
+    UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"categoryNav"];
     [self.sideMenuController setContentController:navController animated:YES];
 }
 
 - (IBAction)moreBtnAction:(id)sender
 {
-    UINavigationController *navController = [STORY_BOARD instantiateViewControllerWithIdentifier:@"moreNav"];
+    UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"moreNav"];
     [self.sideMenuController setContentController:navController animated:YES];
 }
 
 - (IBAction)rewardBtnAction:(id)sender
 {
-    UINavigationController *navController = [STORY_BOARD instantiateViewControllerWithIdentifier:@"rewardNav"];
+    UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"rewardNav"];
     [self.sideMenuController setContentController:navController animated:YES];
 }
 @end

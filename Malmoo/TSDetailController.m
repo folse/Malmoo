@@ -43,7 +43,6 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -62,7 +61,6 @@
     if ([USER boolForKey:@"needContinueFavorite"]) {
         [self favoriteButtonAction];
     }
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -90,6 +88,7 @@
     [detailView.addressButton.titleLabel setNumberOfLines:3];
     [detailView.descriptionLabel setText:_place.descriptions];
     
+    
     if (!_place.parking) {
         [detailView.parkingLabel setAlpha:0.2];
         [detailView.parkingButton setAlpha:0.2];
@@ -114,7 +113,19 @@
         [detailView.reservationLabel setText:_place.phone];
     }
     
-    [self.tableView setFrame:CGRectMake(0, 0, SCREEN_WIDTH    , SCREEN_HEIGHT)];
+    if (_place.phone) {
+        
+        [detailView.phoneButton setTitle:_place.phone forState:UIControlStateNormal];
+        
+    }else{
+        
+        [detailView.phoneButton setEnabled:NO];
+    }
+    
+    if (_place.favourited) {
+        
+        [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
+    }
     
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
@@ -123,11 +134,6 @@
     [self setHeaderImage];
     
     [self setOpenHour];
-    
-    if (_place.favourited) {
-        
-        [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
-    }
     
     [detailView.favoriteButton addTarget:self action:@selector(favoriteButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -144,17 +150,30 @@
 
 -(void)addFavorite
 {
-    PFObject *favorite = [PFObject objectWithClassName:@"Favorite"];
-    favorite[@"user"] = [PFUser currentUser];
-    favorite[@"place"] = _place.parseObject;
-    [favorite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        _place.favourited = YES;
+    _place.favourited = YES;
+    
+    PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
+    [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    [favoriteQuery whereKey:@"place" equalTo:_place.parseObject];
+    [favoriteQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        
+        if(number == 0){
+            
+            PFObject *favorite = [PFObject objectWithClassName:@"Favorite"];
+            favorite[@"user"] = [PFUser currentUser];
+            favorite[@"place"] = _place.parseObject;
+            [favorite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+            }];
+        }
     }];
 }
 
 -(void)removeFavorite
 {
-    PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"_place.parseObject"];
+    _place.favourited = NO;
+    
+    PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
     [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [favoriteQuery whereKey:@"place" equalTo:_place.parseObject];
     [favoriteQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
@@ -162,7 +181,7 @@
             NSLog(@"The getFirstObject request failed.");
         } else {
             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                 _place.favourited = NO;
+                
             }];
         }
     }];
@@ -424,11 +443,9 @@
 
 - (void)phoneButtonAction
 {
-    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",_place.phone]];
-    UIWebView  *phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
-    
-    [self.view addSubview:phoneCallWebView];
+    NSString *telUrl = [NSString stringWithFormat:@"telprompt:%@",[_place.phone stringByReplacingOccurrencesOfString:@" " withString:@""]];
+    NSURL *url = [[NSURL alloc] initWithString:telUrl];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 -(void)mapButtonAction
@@ -552,7 +569,7 @@
         GuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
         [self presentViewController:guideController animated:YES completion:^{
             
-            [USER setBool:YES forKey:@"needContinueFavorite"];
+            
         }];
     }
 }

@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -39,11 +40,26 @@
     
     if (usernameString.length > 0 && passwordString.length > 0) {
         
+        [SVProgressHUD show];
+        
         [PFUser logInWithUsernameInBackground:usernameString password:passwordString block:^(PFUser *user, NSError *error) {
             
-            if (error != nil) {
-                [USER setObject:user forKey:@"PFCurrentUser"];
+            [SVProgressHUD dismiss];
+            
+            if (!error) {
+                
+                [USER setBool:YES forKey:@"userLogined"];
+                [USER setBool:YES forKey:@"needContinueFavorite"];
+                
+                [SVProgressHUD showSuccessWithStatus:@"Success"];
+
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
             }else{
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alertView show];
                 
             }
         }];
@@ -53,6 +69,11 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please input the username and password" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
+}
+
+- (IBAction)dismissPage:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

@@ -113,7 +113,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83T-kd-wnn">
                     <rect key="frame" x="268" y="443" width="44" height="44"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" image="icon_calendar">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -157,13 +157,13 @@
                         <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Z4-O3-Qkj">
-                    <rect key="frame" x="47" y="395" width="268" height="44"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="21" maxY="0.0"/>
-                    <inset key="titleEdgeInsets" minX="-20" minY="0.0" maxX="200" maxY="0.0"/>
-                    <state key="normal" title="ddd" image="icon_call">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Z4-O3-Qkj">
+                    <rect key="frame" x="14" y="395" width="300" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="260" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="88899" image="icon_call">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
@@ -191,6 +191,7 @@
                 <outlet property="wifiButton" destination="Pww-nc-cDL" id="Gtz-uq-d6u"/>
                 <outlet property="wifiLabel" destination="yH1-Ie-W5p" id="szn-X4-Taj"/>
             </connections>
+            <point key="canvasLocation" x="94" y="328"/>
         </view>
     </objects>
     <resources>

@@ -8,6 +8,6 @@
 
 #import "FSTableViewController.h"
 
-@interface SignupController : FSTableViewController
+@interface SignupController : UITableViewController
 
 @end

@@ -1,13 +1,13 @@
 //
-//  LoginController.h
+//  FavoriteController.h
 //  Malmoo
 //
-//  Created by folse on 10/16/14.
+//  Created by folse on 11/10/14.
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
 #import "FSTableViewController.h"
 
-@interface LoginController : UITableViewController
+@interface FavoriteController : FSTableViewController
 
 @end

@@ -14,11 +14,12 @@
 		A10BC25918CF1F97002999F6 /* TSMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC25818CF1F97002999F6 /* TSMainController.m */; };
 		A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27518D05C40002999F6 /* YSpinKitView.m */; };
 		A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27918D0713B002999F6 /* TSPlace.m */; };
-		A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */; };
 		A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* TSMainCell.m */; };
 		A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* TSPromotionController.m */; };
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
 		A12A9EA71A09C2880084376C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EA61A09C2880084376C /* GuideController.m */; };
+		A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */; };
+		A150B7911A105B8F0044A1BE /* FavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = A150B7901A105B8F0044A1BE /* FavoriteController.m */; };
 		A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546819E94F290032AE03 /* UIImage+UIImageExt.m */; };
 		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
 		A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546C19E94F290032AE03 /* UIImage+vImage.m */; };
@@ -98,8 +99,6 @@
 		A10BC27518D05C40002999F6 /* YSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSpinKitView.m; sourceTree = "<group>"; };
 		A10BC27818D0713B002999F6 /* TSPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlace.h; sourceTree = "<group>"; };
 		A10BC27918D0713B002999F6 /* TSPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlace.m; sourceTree = "<group>"; };
-		A10BC27C18D07E8B002999F6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A10EDCA418D07F940048EA02 /* TSMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMainCell.h; sourceTree = "<group>"; };
 		A10EDCA518D07F940048EA02 /* TSMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMainCell.m; sourceTree = "<group>"; };
 		A11316EF191E81E800EC96B6 /* TSPromotionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPromotionController.h; sourceTree = "<group>"; };
@@ -108,6 +107,10 @@
 		A1165CB118F69D8300213808 /* TSPlaceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceCategory.m; sourceTree = "<group>"; };
 		A12A9EA51A09C2880084376C /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
 		A12A9EA61A09C2880084376C /* GuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
+		A12A9EA91A0FB8590084376C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A150B78F1A105B8F0044A1BE /* FavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteController.h; sourceTree = "<group>"; };
+		A150B7901A105B8F0044A1BE /* FavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteController.m; sourceTree = "<group>"; };
 		A154546719E94F290032AE03 /* UIImage+UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageExt.h"; sourceTree = "<group>"; };
 		A154546819E94F290032AE03 /* UIImage+UIImageExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageExt.m"; sourceTree = "<group>"; };
 		A154546919E94F290032AE03 /* UIImage+Blend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blend.h"; sourceTree = "<group>"; };
@@ -283,6 +286,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		A12A9EA81A0FB8470084376C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A12A9EA91A0FB8590084376C /* MBProgressHUD.h */,
+				A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		A154547019E94F3B0032AE03 /* UIImageHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +447,8 @@
 				A1AE450B19EF75C4004B328B /* LoginController.m */,
 				A1AE450E19EF7657004B328B /* SignupController.h */,
 				A1AE450F19EF7657004B328B /* SignupController.m */,
+				A150B78F1A105B8F0044A1BE /* FavoriteController.h */,
+				A150B7901A105B8F0044A1BE /* FavoriteController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -501,6 +515,7 @@
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A12A9EA81A0FB8470084376C /* MBProgressHUD */,
 				A154547019E94F3B0032AE03 /* UIImageHelper */,
 				A169DCA719E46B63003D4846 /* FSTableViewController */,
 				A10A4BB119A9F7010011E5A1 /* BTGlassScrollView */,
@@ -509,18 +524,8 @@
 				A178487C18F139AF005B05F1 /* ExpandTableViewCell */,
 				A1830B5E18DB4E580053DE81 /* JDSideMenu */,
 				A10BC27718D05C48002999F6 /* YSpinKitView */,
-				A1E838ED18CEAD8A008E6F57 /* MBProgressHUD */,
 			);
 			name = Vender;
-			sourceTree = "<group>";
-		};
-		A1E838ED18CEAD8A008E6F57 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				A10BC27C18D07E8B002999F6 /* MBProgressHUD.h */,
-				A10BC27D18D07E8B002999F6 /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		A1E95B47191F1DDC009BE585 /* MJRefresh */ = {
@@ -688,6 +693,7 @@
 				A12A9EA71A09C2880084376C /* GuideController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
 				A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */,
+				A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */,
 				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,
 				A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */,
 				A16E678619BEB596005EE27B /* TSSearchController.m in Sources */,
@@ -704,6 +710,7 @@
 				A10A4BAF19A9F6F90011E5A1 /* BTGlassScrollView.m in Sources */,
 				A178487A18F13995005B05F1 /* UIFolderTableView.m in Sources */,
 				A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */,
+				A150B7911A105B8F0044A1BE /* FavoriteController.m in Sources */,
 				A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */,
 				A178487718F13995005B05F1 /* Cell.m in Sources */,
 				A1AE451019EF7657004B328B /* SignupController.m in Sources */,
@@ -723,7 +730,6 @@
 				A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */,
 				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
 				A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */,
-				A10BC27E18D07E8B002999F6 /* MBProgressHUD.m in Sources */,
 				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
 				A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */,

@@ -15,6 +15,7 @@
 #import <MapKit/MapKit.h>
 #import "TSSearchController.h"
 #import "MJRefresh.h"
+#import "GuideController.h"
 
 @interface TSMainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 {
@@ -124,6 +125,14 @@
         [self.tableView setContentInset:UIEdgeInsetsMake(-160, 0, 0, 0)];
         
     }
+    
+//    GuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+//    [self presentViewController:guideController animated:YES completion:^{
+//        
+//        
+//    }];
+    
+    
     
     //    webView = [[UIWebView alloc] init];
     //    [webView setDelegate:self];

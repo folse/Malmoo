@@ -30,7 +30,7 @@
     [self.window makeKeyAndVisible];
     
     UIViewController *menuController = [[JDMenuViewController alloc] init];
-    UINavigationController *navController = [STORY_BOARD instantiateViewControllerWithIdentifier:@"mainNav"];
+    UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"mainNav"];
     JDSideMenu *sideMenu = [[JDSideMenu alloc] initWithContentController:navController menuController:menuController];
     [sideMenu setBackgroundImage:[UIImage imageNamed:@"bg_menu"]];
     self.window.rootViewController = sideMenu;

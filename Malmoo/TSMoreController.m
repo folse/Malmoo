@@ -54,6 +54,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)logoutButtonAction:(id)sender
+{
+    [USER setBool:NO forKey:@"userLogined"];
+    
+    [SVProgressHUD showSuccessWithStatus:@"Success"];
+}
+
 - (IBAction)menuBtnAction:(id)sender
 {
     JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
