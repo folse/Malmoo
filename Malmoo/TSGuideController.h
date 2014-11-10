@@ -1,5 +1,5 @@
 //
-//  GuideController.h
+//  TSGuideController.h
 //  Malmoo
 //
 //  Created by folse on 11/5/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuideController : UIViewController
+@interface TSGuideController : UIViewController
 
 @end

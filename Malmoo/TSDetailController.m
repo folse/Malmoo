@@ -13,7 +13,7 @@
 #import "Cell.h"
 #import <MessageUI/MessageUI.h>
 #import "TSDetailControllerView.h"
-#import "GuideController.h"
+#import "TSGuideController.h"
 
 @interface TSDetailController ()<MFMailComposeViewControllerDelegate>
 {
@@ -566,9 +566,8 @@
         
     }else{
         
-        GuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
         [self presentViewController:guideController animated:YES completion:^{
-            
             
         }];
     }

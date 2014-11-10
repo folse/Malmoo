@@ -1,14 +1,14 @@
 //
-//  GuideController.m
+//  TSGuideController.m
 //  Malmoo
 //
 //  Created by folse on 11/5/14.
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "GuideController.h"
+#import "TSGuideController.h"
 
-@interface GuideController ()
+@interface TSGuideController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *firstBgImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondBgImageView;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation GuideController
+@implementation TSGuideController
 
 -(void)viewDidAppear:(BOOL)animated
 {

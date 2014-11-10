@@ -17,9 +17,9 @@
 		A10EDCA618D07F940048EA02 /* TSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10EDCA518D07F940048EA02 /* TSMainCell.m */; };
 		A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11316F0191E81E800EC96B6 /* TSPromotionController.m */; };
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
-		A12A9EA71A09C2880084376C /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EA61A09C2880084376C /* GuideController.m */; };
+		A12A9EA71A09C2880084376C /* TSGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EA61A09C2880084376C /* TSGuideController.m */; };
 		A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */; };
-		A150B7911A105B8F0044A1BE /* FavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = A150B7901A105B8F0044A1BE /* FavoriteController.m */; };
+		A150B7911A105B8F0044A1BE /* TSFavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = A150B7901A105B8F0044A1BE /* TSFavoriteController.m */; };
 		A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546819E94F290032AE03 /* UIImage+UIImageExt.m */; };
 		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
 		A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546C19E94F290032AE03 /* UIImage+vImage.m */; };
@@ -55,8 +55,8 @@
 		A1830B6A18DB5C460053DE81 /* TSMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6918DB5C460053DE81 /* TSMoreController.m */; };
 		A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6C18DB604E0053DE81 /* TSCategoryController.m */; };
 		A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830BA218DBF5340053DE81 /* TSPlaceMark.m */; };
-		A1AE450C19EF75C4004B328B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450B19EF75C4004B328B /* LoginController.m */; };
-		A1AE451019EF7657004B328B /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450F19EF7657004B328B /* SignupController.m */; };
+		A1AE450C19EF75C4004B328B /* TSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450B19EF75C4004B328B /* TSLoginController.m */; };
+		A1AE451019EF7657004B328B /* TSSignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450F19EF7657004B328B /* TSSignupController.m */; };
 		A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */; };
 		A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */; };
 		A1BDDDFC199A7A150041B0A1 /* TSPhotoGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */; };
@@ -105,12 +105,12 @@
 		A11316F0191E81E800EC96B6 /* TSPromotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPromotionController.m; sourceTree = "<group>"; };
 		A1165CB018F69D8300213808 /* TSPlaceCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceCategory.h; sourceTree = "<group>"; };
 		A1165CB118F69D8300213808 /* TSPlaceCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceCategory.m; sourceTree = "<group>"; };
-		A12A9EA51A09C2880084376C /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
-		A12A9EA61A09C2880084376C /* GuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
+		A12A9EA51A09C2880084376C /* TSGuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGuideController.h; sourceTree = "<group>"; };
+		A12A9EA61A09C2880084376C /* TSGuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGuideController.m; sourceTree = "<group>"; };
 		A12A9EA91A0FB8590084376C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		A150B78F1A105B8F0044A1BE /* FavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteController.h; sourceTree = "<group>"; };
-		A150B7901A105B8F0044A1BE /* FavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteController.m; sourceTree = "<group>"; };
+		A150B78F1A105B8F0044A1BE /* TSFavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFavoriteController.h; sourceTree = "<group>"; };
+		A150B7901A105B8F0044A1BE /* TSFavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFavoriteController.m; sourceTree = "<group>"; };
 		A154546719E94F290032AE03 /* UIImage+UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageExt.h"; sourceTree = "<group>"; };
 		A154546819E94F290032AE03 /* UIImage+UIImageExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageExt.m"; sourceTree = "<group>"; };
 		A154546919E94F290032AE03 /* UIImage+Blend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blend.h"; sourceTree = "<group>"; };
@@ -170,10 +170,10 @@
 		A1830B6C18DB604E0053DE81 /* TSCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCategoryController.m; sourceTree = "<group>"; };
 		A1830BA118DBF5340053DE81 /* TSPlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceMark.h; sourceTree = "<group>"; };
 		A1830BA218DBF5340053DE81 /* TSPlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceMark.m; sourceTree = "<group>"; };
-		A1AE450A19EF75C4004B328B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		A1AE450B19EF75C4004B328B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		A1AE450E19EF7657004B328B /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
-		A1AE450F19EF7657004B328B /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
+		A1AE450A19EF75C4004B328B /* TSLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLoginController.h; sourceTree = "<group>"; };
+		A1AE450B19EF75C4004B328B /* TSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLoginController.m; sourceTree = "<group>"; };
+		A1AE450E19EF7657004B328B /* TSSignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSignupController.h; sourceTree = "<group>"; };
+		A1AE450F19EF7657004B328B /* TSSignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSignupController.m; sourceTree = "<group>"; };
 		A1BDDDE21998FB830041B0A1 /* TSPhotoCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSPhotoCollectionController.h; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.h; sourceTree = "<group>"; };
 		A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSPhotoCollectionController.m; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.m; sourceTree = "<group>"; };
 		A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -441,14 +441,14 @@
 		A1AE450D19EF761E004B328B /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				A12A9EA51A09C2880084376C /* GuideController.h */,
-				A12A9EA61A09C2880084376C /* GuideController.m */,
-				A1AE450A19EF75C4004B328B /* LoginController.h */,
-				A1AE450B19EF75C4004B328B /* LoginController.m */,
-				A1AE450E19EF7657004B328B /* SignupController.h */,
-				A1AE450F19EF7657004B328B /* SignupController.m */,
-				A150B78F1A105B8F0044A1BE /* FavoriteController.h */,
-				A150B7901A105B8F0044A1BE /* FavoriteController.m */,
+				A12A9EA51A09C2880084376C /* TSGuideController.h */,
+				A12A9EA61A09C2880084376C /* TSGuideController.m */,
+				A1AE450A19EF75C4004B328B /* TSLoginController.h */,
+				A1AE450B19EF75C4004B328B /* TSLoginController.m */,
+				A1AE450E19EF7657004B328B /* TSSignupController.h */,
+				A1AE450F19EF7657004B328B /* TSSignupController.m */,
+				A150B78F1A105B8F0044A1BE /* TSFavoriteController.h */,
+				A150B7901A105B8F0044A1BE /* TSFavoriteController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -690,7 +690,7 @@
 				A108B50618DC81D1004DDA65 /* FSUtilSettings.m in Sources */,
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
-				A12A9EA71A09C2880084376C /* GuideController.m in Sources */,
+				A12A9EA71A09C2880084376C /* TSGuideController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
 				A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */,
 				A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */,
@@ -710,10 +710,10 @@
 				A10A4BAF19A9F6F90011E5A1 /* BTGlassScrollView.m in Sources */,
 				A178487A18F13995005B05F1 /* UIFolderTableView.m in Sources */,
 				A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */,
-				A150B7911A105B8F0044A1BE /* FavoriteController.m in Sources */,
+				A150B7911A105B8F0044A1BE /* TSFavoriteController.m in Sources */,
 				A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */,
 				A178487718F13995005B05F1 /* Cell.m in Sources */,
-				A1AE451019EF7657004B328B /* SignupController.m in Sources */,
+				A1AE451019EF7657004B328B /* TSSignupController.m in Sources */,
 				A171E17918C6D186003113ED /* main.m in Sources */,
 				A178487918F13995005B05F1 /* FolderCoverView.m in Sources */,
 				A1BDDDFC199A7A150041B0A1 /* TSPhotoGalleryController.m in Sources */,
@@ -733,7 +733,7 @@
 				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
 				A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */,
-				A1AE450C19EF75C4004B328B /* LoginController.m in Sources */,
+				A1AE450C19EF75C4004B328B /* TSLoginController.m in Sources */,
 				A1BDDE0C199A825B0041B0A1 /* MJPhotoBrowser.m in Sources */,
 				A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */,
 				A1BDDE0D199A825B0041B0A1 /* MJPhotoLoadingView.m in Sources */,

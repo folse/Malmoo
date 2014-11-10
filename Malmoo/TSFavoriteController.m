@@ -1,27 +1,30 @@
 //
-//  FavoriteController.m
+//  TSFavoriteController.m
 //  Malmoo
 //
 //  Created by folse on 11/10/14.
 //  Copyright (c) 2014 Folse. All rights reserved.
 //
 
-#import "FavoriteController.h"
+#import "TSFavoriteController.h"
 #import "MJRefresh.h"
+#import "TSMainCell.h"
+#import "TSDetailController.h"
 
-@interface FavoriteController ()
+@interface TSFavoriteController ()
 {
     NSMutableArray *placeArray;
     int pageId;
     int PAGE_COUNT;
     int PAGE_NUM;
     NSInteger lastDataCount;
+    NSInteger selectedId;
     MJRefreshFooterView *_footer;
 }
 
 @end
 
-@implementation FavoriteController
+@implementation TSFavoriteController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,17 +32,36 @@
     PAGE_COUNT = 15;
     
     placeArray = [NSMutableArray new];
+    
+    [self getData];
 }
 
 -(void)getData
 {
-    PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
-    [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [favoriteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    if (USER_LOGIN) {
         
-        [self findObjects:favoriteQuery];
+        PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
+        [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+        [favoriteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            
+            s(objects)
+            
+            for(PFObject *favorite in objects){
+                
+                PFObject *place = favorite[@"place"];
+                
+                s(place[@"name"])
+                
+                [placeArray addObject:place];
+            }
+        }];
         
-    }];
+    }else{
+        
+        // need login
+    }
+    
+
 }
 
 -(void)findObjects:(PFQuery *)query
@@ -111,6 +133,58 @@
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
         
         [_footer endRefreshing];
+    }
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return placeArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    
+    static NSString *identifier = @"FavoriteCell";
+    TSMainCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    TSPlace *cellPlace = placeArray[row];
+    [cell.titleLabel setText:cellPlace.name];
+    [cell.addressLabel setText:cellPlace.address];
+    
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
+    
+    avatarUrl = [avatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[[UIImage imageNamed:@"img_empty"] unsharpen]];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedId = indexPath.row;
+    
+    [self performSegueWithIdentifier:@"DetailController" sender:self];
+}
+
+#pragma mark - Navigation
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"DetailController"]) {
+        
+        TSPlace *selectedPlace = placeArray[selectedId];
+        TSDetailController *detailController = segue.destinationViewController;
+        detailController.place = selectedPlace;
     }
 }
 

@@ -15,7 +15,7 @@
 #import <MapKit/MapKit.h>
 #import "TSSearchController.h"
 #import "MJRefresh.h"
-#import "GuideController.h"
+#import "TSGuideController.h"
 
 @interface TSMainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 {

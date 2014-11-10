@@ -1,5 +1,5 @@
 //
-//  SignupController.h
+//  TSSignupController.h
 //  Malmoo
 //
 //  Created by folse on 10/16/14.
@@ -8,6 +8,6 @@
 
 #import "FSTableViewController.h"
 
-@interface SignupController : UITableViewController
+@interface TSSignupController : UITableViewController
 
 @end

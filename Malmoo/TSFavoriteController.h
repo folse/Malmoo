@@ -1,5 +1,5 @@
 //
-//  FavoriteController.h
+//  TSFavoriteController.h
 //  Malmoo
 //
 //  Created by folse on 11/10/14.
@@ -8,6 +8,6 @@
 
 #import "FSTableViewController.h"
 
-@interface FavoriteController : FSTableViewController
+@interface TSFavoriteController : FSTableViewController
 
 @end

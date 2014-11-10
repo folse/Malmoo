@@ -8,7 +8,7 @@
         <!--Guide Controller-->
         <scene sceneID="ahp-ia-lzW">
             <objects>
-                <viewController storyboardIdentifier="GuideController" id="loB-B5-uSh" customClass="GuideController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuideController" id="loB-B5-uSh" customClass="TSGuideController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m4y-Yu-2yA"/>
                         <viewControllerLayoutGuide type="bottom" id="Oo7-AZ-Xuf"/>
@@ -85,7 +85,7 @@
         <!--TouchSweden-->
         <scene sceneID="ayt-gU-Ngq">
             <objects>
-                <tableViewController id="93T-JZ-43v" customClass="LoginController" sceneMemberID="viewController">
+                <tableViewController id="93T-JZ-43v" customClass="TSLoginController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Dhc-Fz-jnZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,7 +179,7 @@
         <!--Join Free-->
         <scene sceneID="msd-nP-W1D">
             <objects>
-                <tableViewController id="8OM-XK-Vgo" customClass="SignupController" sceneMemberID="viewController">
+                <tableViewController id="8OM-XK-Vgo" customClass="TSSignupController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="74K-4y-tTd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
