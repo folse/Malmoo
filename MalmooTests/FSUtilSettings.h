@@ -45,14 +45,22 @@
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 #define HUD_Define \
-//HUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];\
-//HUD.center = self.view.center;\
-//HUD.square = YES;\
-//HUD.margin = 15;\
-//HUD.minShowTime = 1;\
-//HUD.mode = MBProgressHUDModeCustomView;\
-//HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:APP_COLOR];\
-//[[UIApplication sharedApplication].keyWindow addSubview:HUD];
+HUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];\
+HUD.center = self.view.center;\
+HUD.square = YES;\
+HUD.margin = 15;\
+HUD.minShowTime = 1;\
+HUD.mode = MBProgressHUDModeCustomView;\
+HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:APP_COLOR];\
+[[UIApplication sharedApplication].keyWindow addSubview:HUD];\
+
+#define HUD_SHOW \
+svProgressHUD = [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]]; \
+[svProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]]; \
+[svProgressHUD show];\
+
+#define HUD_DISMISS \
+[svProgressHUD dismiss]; \
 
 #define TEST FALSE
 

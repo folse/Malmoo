@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSCategoryController : UITableViewController
+@interface TSCategoryController : FSTableViewController
 
 @end

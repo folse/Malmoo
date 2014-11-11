@@ -47,10 +47,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
+    HUD_SHOW
     
-    HUD_Define
-    [HUD show:YES];
+    categoryArray = [USER objectForKey:@"categoryArray"];
+    
+    if (categoryArray != nil && categoryArray.count > 0) {
         
+        HUD_DISMISS
+        
+        [self.tableView reloadData];
+        [self.tableView setHidden:NO];
+    }
+    
     [self getPlaceCategory];
 }
 
@@ -63,6 +72,7 @@
         if (!error) {
             s(objects)
             for (PFObject *object in objects) {
+                
                 NSLog(@"%@", object);
                 
                 TSPlaceCategory *category = [TSPlaceCategory new];
@@ -72,9 +82,13 @@
                 [categoryArray addObject:category];
             }
             
-            [HUD hide:YES];
-            [self.tableView reloadData];
-            [self.tableView setHidden:NO];
+            if (self.tableView.indexPathsForVisibleRows.count == 0) {
+                [HUD hide:YES];
+                [self.tableView reloadData];
+                [self.tableView setHidden:NO];
+            }
+            
+            [USER setObject:categoryArray forKey:@"categoryArray"];
             
         } else {
             
@@ -136,7 +150,6 @@
     [self performSegueWithIdentifier:@"MainController" sender:self];
 }
 
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,6 +202,5 @@
         [mainController setCategory:selectedCategory.parseObject];
     }
 }
-
 
 @end
