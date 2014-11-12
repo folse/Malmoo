@@ -45,6 +45,7 @@ PODS:
     - SDWebImage (~> 3.0)
   - SDWebImage/Core (3.7.1)
   - UMengAnalytics (3.1.8)
+  - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
   - AFNetworking (= 2.2.0)
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - Parse (= 1.2.20)
   - SDWebImage-ProgressView (= 0.3.1)
   - UMengAnalytics (= 3.1.8)
+  - ZBarSDK (= 1.3.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5f2538aa2d150b71d4e6cca3a420d796e1e1c374
@@ -64,5 +66,6 @@ SPEC CHECKSUMS:
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SDWebImage-ProgressView: 7b7a9512cbf22d0d6e3d20d9aa8b03e1940d164f
   UMengAnalytics: c263b4e0f27e91551b7e79eacdf812f1bae0e256
+  ZBarSDK: 3ed560856963f765b66d834f464590bd6ba13b44
 
 COCOAPODS: 0.34.4

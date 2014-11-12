@@ -20,8 +20,6 @@
 		A12A9EA71A09C2880084376C /* TSGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EA61A09C2880084376C /* TSGuideController.m */; };
 		A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */; };
 		A150B7911A105B8F0044A1BE /* TSFavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = A150B7901A105B8F0044A1BE /* TSFavoriteController.m */; };
-		A150B7A01A1111B20044A1BE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A150B79D1A1111B20044A1BE /* SVProgressHUD.bundle */; };
-		A150B7A11A1111B20044A1BE /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A150B79F1A1111B20044A1BE /* SVProgressHUD.m */; };
 		A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546819E94F290032AE03 /* UIImage+UIImageExt.m */; };
 		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
 		A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546C19E94F290032AE03 /* UIImage+vImage.m */; };
@@ -69,6 +67,15 @@
 		A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE05199A825B0041B0A1 /* MJPhotoProgressView.m */; };
 		A1BDDE0F199A825B0041B0A1 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */; };
 		A1BDDE10199A825B0041B0A1 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */; };
+		A1C8EAD31A139EFB006AE0B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C8EAD11A139EFB006AE0B3 /* SVProgressHUD.m */; };
+		A1C8EAD41A139EFB006AE0B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1C8EAD21A139EFB006AE0B3 /* SVProgressHUD.bundle */; };
+		A1C8EAD61A13A631006AE0B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EAD51A13A631006AE0B3 /* AVFoundation.framework */; };
+		A1C8EAD81A13A63D006AE0B3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EAD71A13A63D006AE0B3 /* CoreMedia.framework */; };
+		A1C8EADA1A13A647006AE0B3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EAD91A13A647006AE0B3 /* CoreVideo.framework */; };
+		A1C8EADC1A13A657006AE0B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EADB1A13A657006AE0B3 /* QuartzCore.framework */; };
+		A1C8EADE1A13A670006AE0B3 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EADD1A13A670006AE0B3 /* libiconv.dylib */; };
+		A1C8EAE21A13A6BA006AE0B3 /* ZbarScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */; };
+		A1C8EAE41A13A8C9006AE0B3 /* MutiLanguage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */; };
 		A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E318CEAD05008E6F57 /* TSAccountController.m */; };
 		A1E838E718CEAD1C008E6F57 /* FSUtilSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */; };
 		A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */; };
@@ -114,9 +121,6 @@
 		A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A150B78F1A105B8F0044A1BE /* TSFavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFavoriteController.h; sourceTree = "<group>"; };
 		A150B7901A105B8F0044A1BE /* TSFavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFavoriteController.m; sourceTree = "<group>"; };
-		A150B79D1A1111B20044A1BE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		A150B79E1A1111B20044A1BE /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		A150B79F1A1111B20044A1BE /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		A154546719E94F290032AE03 /* UIImage+UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageExt.h"; sourceTree = "<group>"; };
 		A154546819E94F290032AE03 /* UIImage+UIImageExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageExt.m"; sourceTree = "<group>"; };
 		A154546919E94F290032AE03 /* UIImage+Blend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blend.h"; sourceTree = "<group>"; };
@@ -199,6 +203,17 @@
 		A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
 		A1BDDE08199A825B0041B0A1 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
 		A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		A1C8EAD01A139EFB006AE0B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		A1C8EAD11A139EFB006AE0B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A1C8EAD21A139EFB006AE0B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		A1C8EAD51A13A631006AE0B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A1C8EAD71A13A63D006AE0B3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A1C8EAD91A13A647006AE0B3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		A1C8EADB1A13A657006AE0B3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A1C8EADD1A13A670006AE0B3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		A1C8EAE01A13A6BA006AE0B3 /* ZbarScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZbarScannerController.h; sourceTree = "<group>"; };
+		A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZbarScannerController.m; sourceTree = "<group>"; };
+		A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MutiLanguage.storyboard; sourceTree = "<group>"; };
 		A1D3B2E919EC4CCC00B45FFE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A1E838E218CEAD05008E6F57 /* TSAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAccountController.h; sourceTree = "<group>"; };
 		A1E838E318CEAD05008E6F57 /* TSAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAccountController.m; sourceTree = "<group>"; };
@@ -226,6 +241,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C8EADE1A13A670006AE0B3 /* libiconv.dylib in Frameworks */,
+				A1C8EADC1A13A657006AE0B3 /* QuartzCore.framework in Frameworks */,
+				A1C8EADA1A13A647006AE0B3 /* CoreVideo.framework in Frameworks */,
+				A1C8EAD81A13A63D006AE0B3 /* CoreMedia.framework in Frameworks */,
+				A1C8EAD61A13A631006AE0B3 /* AVFoundation.framework in Frameworks */,
 				A171E16F18C6D186003113ED /* CoreGraphics.framework in Frameworks */,
 				A171E17118C6D186003113ED /* UIKit.framework in Frameworks */,
 				A171E16D18C6D186003113ED /* Foundation.framework in Frameworks */,
@@ -313,9 +333,9 @@
 		A150B79C1A1111560044A1BE /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				A150B79D1A1111B20044A1BE /* SVProgressHUD.bundle */,
-				A150B79E1A1111B20044A1BE /* SVProgressHUD.h */,
-				A150B79F1A1111B20044A1BE /* SVProgressHUD.m */,
+				A1C8EAD01A139EFB006AE0B3 /* SVProgressHUD.h */,
+				A1C8EAD11A139EFB006AE0B3 /* SVProgressHUD.m */,
+				A1C8EAD21A139EFB006AE0B3 /* SVProgressHUD.bundle */,
 			);
 			name = SVProgressHUD;
 			sourceTree = "<group>";
@@ -365,6 +385,11 @@
 		A171E16B18C6D186003113ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1C8EADD1A13A670006AE0B3 /* libiconv.dylib */,
+				A1C8EADB1A13A657006AE0B3 /* QuartzCore.framework */,
+				A1C8EAD91A13A647006AE0B3 /* CoreVideo.framework */,
+				A1C8EAD71A13A63D006AE0B3 /* CoreMedia.framework */,
+				A1C8EAD51A13A631006AE0B3 /* AVFoundation.framework */,
 				A1D3B2E919EC4CCC00B45FFE /* CoreLocation.framework */,
 				A1830B5618DB4DF40053DE81 /* MapKit.framework */,
 				A171E16C18C6D186003113ED /* Foundation.framework */,
@@ -384,6 +409,7 @@
 				A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */,
 				A171E17E18C6D186003113ED /* Main.storyboard */,
 				A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */,
+				A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */,
 				A171E18418C6D186003113ED /* Images.xcassets */,
 				A1BDDDE71998FBC30041B0A1 /* Controller */,
 				A10EDCA718D07F980048EA02 /* View */,
@@ -537,9 +563,19 @@
 			name = MJPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		A1C8EADF1A13A67C006AE0B3 /* ZbarScanner */ = {
+			isa = PBXGroup;
+			children = (
+				A1C8EAE01A13A6BA006AE0B3 /* ZbarScannerController.h */,
+				A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */,
+			);
+			name = ZbarScanner;
+			sourceTree = "<group>";
+		};
 		A1E838E918CEAD38008E6F57 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A1C8EADF1A13A67C006AE0B3 /* ZbarScanner */,
 				A150B79C1A1111560044A1BE /* SVProgressHUD */,
 				A12A9EA81A0FB8470084376C /* MBProgressHUD */,
 				A154547019E94F3B0032AE03 /* UIImageHelper */,
@@ -661,8 +697,9 @@
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
 				A171E18018C6D186003113ED /* Main.storyboard in Resources */,
+				A1C8EAE41A13A8C9006AE0B3 /* MutiLanguage.storyboard in Resources */,
 				A1830B6318DB4F530053DE81 /* JDMenuViewController.xib in Resources */,
-				A150B7A01A1111B20044A1BE /* SVProgressHUD.bundle in Resources */,
+				A1C8EAD41A139EFB006AE0B3 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +756,7 @@
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A12A9EA71A09C2880084376C /* TSGuideController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,
-				A150B7A11A1111B20044A1BE /* SVProgressHUD.m in Sources */,
+				A1C8EAD31A139EFB006AE0B3 /* SVProgressHUD.m in Sources */,
 				A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */,
 				A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */,
 				A10A4BB019A9F6F90011E5A1 /* UIImage+ImageEffects.m in Sources */,
@@ -749,6 +786,7 @@
 				A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */,
 				A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */,
 				A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */,
+				A1C8EAE21A13A6BA006AE0B3 /* ZbarScannerController.m in Sources */,
 				A169DCA619E46B5B003D4846 /* FSTableViewController.m in Sources */,
 				A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */,
 				A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */,

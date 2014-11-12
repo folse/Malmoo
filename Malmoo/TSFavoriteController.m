@@ -42,6 +42,8 @@
 {
     if (USER_LOGIN) {
         
+        HUD_SHOW
+        
         PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
         [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
         
@@ -94,7 +96,7 @@
         [placeArray addObject:place];
     }
     
-    [HUD hide:YES];
+    HUD_DISMISS
     [self.tableView reloadData];
     [self.tableView setHidden:NO];
     

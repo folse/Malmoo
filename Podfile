@@ -5,4 +5,5 @@ pod 'EAIntroView', '2.6.0'
 pod 'SDWebImage-ProgressView', '0.3.1'
 pod 'Parse', '1.2.20'
 pod 'UMengAnalytics', '3.1.8'
+pod 'ZBarSDK', '1.3.1'
 inhibit_all_warnings!

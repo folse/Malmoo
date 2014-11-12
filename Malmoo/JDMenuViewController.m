@@ -62,4 +62,15 @@
     UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"rewardNav"];
     [self.sideMenuController setContentController:navController animated:YES];
 }
+
+- (IBAction)scanBtnAction:(id)sender
+{
+    ZbarScannerController *scannerController = [ZbarScannerController scanSuccess:^(NSString *data) {
+        
+        
+    }];
+    [self.sideMenuController setContentController:scannerController animated:YES];
+}
+
+
 @end

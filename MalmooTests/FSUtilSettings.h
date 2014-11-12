@@ -17,6 +17,7 @@
 #import "UIImage+UIImageExt.h"
 #import "UIImage+vImage.h"
 #import "SVProgressHUD.h"
+#import "ZbarScannerController.h"
 
 #define s(content) NSLog(@"%@", content);
 #define i(content) NSLog(@"%d", content);
@@ -52,7 +53,15 @@ HUD.margin = 15;\
 HUD.minShowTime = 1;\
 HUD.mode = MBProgressHUDModeCustomView;\
 HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:APP_COLOR];\
-[[UIApplication sharedApplication].keyWindow addSubview:HUD];\
+[[UIApplication sharedApplication].keyWindow addSubview:HUD];
+
+#define HUD_SHOW \
+[SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]]; \
+[SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]]; \
+[SVProgressHUD show];
+
+#define HUD_DISMISS \
+[SVProgressHUD dismiss]; \
 
 #define TEST FALSE
 
@@ -73,9 +82,5 @@ HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce col
 + (NSString *)getMD5FilePathWithUrl:(NSString *)url;
 
 + (UIImage *)createImageWithColor:(UIColor *)color;
-
-+ (void)showHUD;
-
-+ (void)dismissHUD;
 
 @end

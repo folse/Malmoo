@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-ZBarSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,52 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2C61D9171614518C24FC3393</key>
+		<key>068E6BD6DBC7E71B6F16AADD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>350CFFDD7F5B0AFA77E126C1</key>
+		<key>0CC0382B6A6BCC63BDF0D5C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42DDC5DA07F5D56C682DE61C</key>
+		<key>1DE48C08C25384E0BCD02C42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61F3311CE36DCEC3C7F3BB97</key>
+		<key>3FA493B3EC3A5F1742E2E2CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7701B1044E4BEAB55B255ACE</key>
+		<key>597468E955FD323484E11686</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>969A4A638F093253F6B0D93C</key>
+		<key>5BA771203596A77557C952C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5CF86DFECA51C6B9DC908EC</key>
+		<key>642E71BF5C6436D211F3474B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3DB01AE6B76F7AD5C882FF0</key>
+		<key>A2313AF1A9E096A442A3176E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E656843F50177A4F7F13A56E</key>
+		<key>B0D3DB347C2AC52076098D01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0AE65F08C0D5EA2AAB33EEF</key>
+		<key>D5054D97F8B66CB11627BB1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE85B5565A954EF3881A1D80</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -48,15 +48,13 @@
 {
     [super viewDidLoad];
  
-    //[SVProgressHUD set];
-    //[SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]];
-    [SVProgressHUD show];
+    HUD_SHOW
     
     categoryArray = [USER objectForKey:@"categoryArray"];
     
     if (categoryArray != nil && categoryArray.count > 0) {
         
-        //HUD_DISMISS
+        HUD_DISMISS
         
         [self.tableView reloadData];
         [self.tableView setHidden:NO];
@@ -71,6 +69,7 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"Category_Place"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
         if (!error) {
             s(objects)
             for (PFObject *object in objects) {
