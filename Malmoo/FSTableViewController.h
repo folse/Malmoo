@@ -11,7 +11,7 @@
 @interface FSTableViewController : UITableViewController
 {
     MBProgressHUD *HUD;
-    SVProgressHUD *svProgressHUD;
+//SVProgressHUD *svProgressHUD;
 }
 
 @end

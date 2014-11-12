@@ -54,14 +54,6 @@ HUD.mode = MBProgressHUDModeCustomView;\
 HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce color:APP_COLOR];\
 [[UIApplication sharedApplication].keyWindow addSubview:HUD];\
 
-#define HUD_SHOW \
-svProgressHUD = [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]]; \
-[svProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]]; \
-[svProgressHUD show];\
-
-#define HUD_DISMISS \
-[svProgressHUD dismiss]; \
-
 #define TEST FALSE
 
 #if TEST
@@ -81,5 +73,9 @@ svProgressHUD = [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0
 + (NSString *)getMD5FilePathWithUrl:(NSString *)url;
 
 + (UIImage *)createImageWithColor:(UIColor *)color;
+
++ (void)showHUD;
+
++ (void)dismissHUD;
 
 @end
