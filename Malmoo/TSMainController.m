@@ -17,6 +17,7 @@
 #import "MJRefresh.h"
 #import "TSGuideController.h"
 
+
 @interface TSMainController ()<CLLocationManagerDelegate,MKMapViewDelegate,UISearchDisplayDelegate,UISearchBarDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 {
     MBProgressHUD *HUD;
@@ -126,11 +127,11 @@
         
     }
     
-//    GuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
-//    [self presentViewController:guideController animated:YES completion:^{
-//        
-//        
-//    }];
+    TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+    [self presentViewController:guideController animated:YES completion:^{
+        
+        
+    }];
     
     
     

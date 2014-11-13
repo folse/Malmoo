@@ -55,6 +55,7 @@
 		A1830B6A18DB5C460053DE81 /* TSMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6918DB5C460053DE81 /* TSMoreController.m */; };
 		A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6C18DB604E0053DE81 /* TSCategoryController.m */; };
 		A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830BA218DBF5340053DE81 /* TSPlaceMark.m */; };
+		A18AA9591A13BA7F00D931E6 /* TSMutiLanguageMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18AA9581A13BA7F00D931E6 /* TSMutiLanguageMenuController.m */; };
 		A1AE450C19EF75C4004B328B /* TSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450B19EF75C4004B328B /* TSLoginController.m */; };
 		A1AE451019EF7657004B328B /* TSSignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450F19EF7657004B328B /* TSSignupController.m */; };
 		A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */; };
@@ -180,6 +181,8 @@
 		A1830B6C18DB604E0053DE81 /* TSCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCategoryController.m; sourceTree = "<group>"; };
 		A1830BA118DBF5340053DE81 /* TSPlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPlaceMark.h; sourceTree = "<group>"; };
 		A1830BA218DBF5340053DE81 /* TSPlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceMark.m; sourceTree = "<group>"; };
+		A18AA9571A13BA7F00D931E6 /* TSMutiLanguageMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMutiLanguageMenuController.h; sourceTree = "<group>"; };
+		A18AA9581A13BA7F00D931E6 /* TSMutiLanguageMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMutiLanguageMenuController.m; sourceTree = "<group>"; };
 		A1AE450A19EF75C4004B328B /* TSLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLoginController.h; sourceTree = "<group>"; };
 		A1AE450B19EF75C4004B328B /* TSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLoginController.m; sourceTree = "<group>"; };
 		A1AE450E19EF7657004B328B /* TSSignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSignupController.h; sourceTree = "<group>"; };
@@ -489,6 +492,15 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		A18AA95A1A13BA8300D931E6 /* TSMutiLanguageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				A18AA9571A13BA7F00D931E6 /* TSMutiLanguageMenuController.h */,
+				A18AA9581A13BA7F00D931E6 /* TSMutiLanguageMenuController.m */,
+			);
+			name = TSMutiLanguageMenu;
+			sourceTree = "<group>";
+		};
 		A1AE450D19EF761E004B328B /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +550,7 @@
 				A11316F0191E81E800EC96B6 /* TSPromotionController.m */,
 				A16E678419BEB596005EE27B /* TSSearchController.h */,
 				A16E678519BEB596005EE27B /* TSSearchController.m */,
+				A18AA95A1A13BA8300D931E6 /* TSMutiLanguageMenu */,
 				A1830B6418DB4F570053DE81 /* Menu */,
 			);
 			name = Controller;
@@ -657,7 +670,7 @@
 				ORGANIZATIONNAME = Folse;
 				TargetAttributes = {
 					A171E16818C6D186003113ED = {
-						DevelopmentTeam = V68CP8VT5Z;
+						DevelopmentTeam = 6XX8659PN2;
 					};
 					A171E18918C6D186003113ED = {
 						TestTargetID = A171E16818C6D186003113ED;
@@ -796,6 +809,7 @@
 				A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */,
 				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
 				A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */,
+				A18AA9591A13BA7F00D931E6 /* TSMutiLanguageMenuController.m in Sources */,
 				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
 				A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */,
@@ -929,8 +943,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -960,7 +974,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (

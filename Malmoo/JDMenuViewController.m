@@ -67,7 +67,7 @@
 {
     ZbarScannerController *scannerController = [ZbarScannerController scanSuccess:^(NSString *data) {
         
-        
+        s(data)
     }];
     [self.sideMenuController setContentController:scannerController animated:YES];
 }

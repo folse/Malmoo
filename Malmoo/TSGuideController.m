@@ -35,24 +35,13 @@
 
 }
 
--(void)dismissPage
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 -(void)showBgAnimation
 {
     [UIView animateWithDuration:4.5 animations:^{
         
-        [_firstBgImageView setFrame:CGRectMake(220, 10, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
-        
-        //[_firstBgImageView setFrame:CGRectMake(-_firstBgImageView.image.size.width+210, 10, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
+        [_firstBgImageView setFrame:CGRectMake(-_firstBgImageView.image.size.width+210, 10, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
         
     } completion:^(BOOL finished) {
-        
-        UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissPage)];
-        [_firstBgImageView setUserInteractionEnabled:YES];
-        [_firstBgImageView addGestureRecognizer:imageTap];
         
         [UIView animateWithDuration:1.0 animations:^{
             
@@ -101,6 +90,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)dismissPageAction:(id)sender
+{
+    
 }
 
 /*
