@@ -68,6 +68,9 @@
     ZbarScannerController *scannerController = [ZbarScannerController scanSuccess:^(NSString *data) {
         
         s(data)
+        
+        UINavigationController *navController = [MUTILANGUAGE_STORYBOARD instantiateViewControllerWithIdentifier:@"mutilanguageMenuNav"];
+        [self.sideMenuController setContentController:navController animated:YES];
     }];
     [self.sideMenuController setContentController:scannerController animated:YES];
 }

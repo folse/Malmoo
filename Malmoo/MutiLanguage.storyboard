@@ -142,7 +142,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Kmn-bT-dbB">
             <objects>
-                <navigationController storyboardIdentifier="TSMutiLanguageMenuNav" automaticallyAdjustsScrollViewInsets="NO" id="39a-ii-GR6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mutiLanguageMenuNav" automaticallyAdjustsScrollViewInsets="NO" id="39a-ii-GR6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XEo-B0-yUV">

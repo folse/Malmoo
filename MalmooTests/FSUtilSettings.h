@@ -35,6 +35,7 @@
 
 #define MAIN_STORYBOARD [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 #define ACCOUNT_STORYBOARD [UIStoryboard storyboardWithName:@"Account" bundle:nil]
+#define MUTILANGUAGE_STORYBOARD [UIStoryboard storyboardWithName:@"MutiLanguage" bundle:nil]
 
 #define e(content) [MobClick event:content];
 
