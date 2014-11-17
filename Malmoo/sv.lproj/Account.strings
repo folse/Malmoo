@@ -1,0 +1,51 @@
+
+/* Class = "IBUIButton"; normalTitle = "LOGIN"; ObjectID = "1Tp-4M-nRP"; */
+"1Tp-4M-nRP.normalTitle" = "LOGIN";
+
+/* Class = "IBUILabel"; text = "live a little better "; ObjectID = "4Uh-qu-Xod"; */
+"4Uh-qu-Xod.text" = "live a little better ";
+
+/* Class = "IBUIBarButtonItem"; title = "  x"; ObjectID = "Ldd-ny-0jg"; */
+"Ldd-ny-0jg.title" = "  x";
+
+/* Class = "IBUITextField"; placeholder = "password"; ObjectID = "Qj7-5v-E24"; */
+"Qj7-5v-E24.placeholder" = "password";
+
+/* Class = "IBUITextField"; placeholder = "username"; ObjectID = "Rmr-oJ-zfl"; */
+"Rmr-oJ-zfl.placeholder" = "username";
+
+/* Class = "IBUITextField"; placeholder = "email"; ObjectID = "Vyy-Ui-Lmu"; */
+"Vyy-Ui-Lmu.placeholder" = "email";
+
+/* Class = "IBUIButton"; normalTitle = "SIGN UP"; ObjectID = "ZXe-uQ-nYB"; */
+"ZXe-uQ-nYB.normalTitle" = "SIGN UP";
+
+/* Class = "IBUIButton"; normalTitle = "user terms"; ObjectID = "Zmr-4T-V2d"; */
+"Zmr-4T-V2d.normalTitle" = "user terms";
+
+/* Class = "IBUIButton"; normalTitle = "Sign up"; ObjectID = "cVL-tx-L4W"; */
+"cVL-tx-L4W.normalTitle" = "Sign up";
+
+/* Class = "IBUINavigationItem"; title = "TouchSweden"; ObjectID = "ftH-yL-jNe"; */
+"ftH-yL-jNe.title" = "TouchSweden";
+
+/* Class = "IBUITextField"; placeholder = "Username"; ObjectID = "k6E-f6-amX"; */
+"k6E-f6-amX.placeholder" = "Username";
+
+/* Class = "IBUILabel"; text = "agree with "; ObjectID = "l9d-IN-Vgd"; */
+"l9d-IN-Vgd.text" = "agree with ";
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "msg-Uc-RxY"; */
+"msg-Uc-RxY.normalTitle" = "Login";
+
+/* Class = "IBUINavigationItem"; title = "Join Free"; ObjectID = "nsI-Ln-p9P"; */
+"nsI-Ln-p9P.title" = "Join Free";
+
+/* Class = "IBUIButton"; normalTitle = "Later"; ObjectID = "v7a-Cv-ESZ"; */
+"v7a-Cv-ESZ.normalTitle" = "Later";
+
+/* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "w1l-EV-tUA"; */
+"w1l-EV-tUA.placeholder" = "Password";
+
+/* Class = "IBUIBarButtonItem"; title = "  x"; ObjectID = "zqb-iA-3Lh"; */
+"zqb-iA-3Lh.title" = "  x";

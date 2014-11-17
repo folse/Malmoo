@@ -46,7 +46,6 @@
 		A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487618F13995005B05F1 /* UIView+screenshot.m */; };
 		A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487E18F13A39005B05F1 /* SubCateViewController.m */; };
 		A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A178487F18F13A39005B05F1 /* SubCateViewController.xib */; };
-		A17F6BE019F4AAAE00888BB3 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */; };
 		A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5418DB4D540053DE81 /* TSMapController.m */; };
 		A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5918DB4E4C0053DE81 /* JDSideMenu.m */; };
 		A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5B18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m */; };
@@ -58,6 +57,7 @@
 		A18AA9591A13BA7F00D931E6 /* TSMutiLanguageMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18AA9581A13BA7F00D931E6 /* TSMutiLanguageMenuController.m */; };
 		A1AE450C19EF75C4004B328B /* TSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450B19EF75C4004B328B /* TSLoginController.m */; };
 		A1AE451019EF7657004B328B /* TSSignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450F19EF7657004B328B /* TSSignupController.m */; };
+		A1AF39711A19AC91006F26F5 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1AF39731A19AC91006F26F5 /* Account.storyboard */; };
 		A1BDDDE41998FB830041B0A1 /* TSPhotoCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */; };
 		A1BDDDF9199917FB0041B0A1 /* TSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */; };
 		A1BDDDFC199A7A150041B0A1 /* TSPhotoGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BDDDFB199A7A150041B0A1 /* TSPhotoGalleryController.m */; };
@@ -164,7 +164,6 @@
 		A178487D18F13A39005B05F1 /* SubCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCateViewController.h; sourceTree = "<group>"; };
 		A178487E18F13A39005B05F1 /* SubCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCateViewController.m; sourceTree = "<group>"; };
 		A178487F18F13A39005B05F1 /* SubCateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCateViewController.xib; sourceTree = "<group>"; };
-		A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		A1830B5318DB4D540053DE81 /* TSMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMapController.h; sourceTree = "<group>"; };
 		A1830B5418DB4D540053DE81 /* TSMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMapController.m; sourceTree = "<group>"; };
 		A1830B5618DB4DF40053DE81 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -190,6 +189,8 @@
 		A1AF396E1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		A1AF396F1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1AF39701A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A1AF39761A19ACA6006F26F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
+		A1AF39771A19ACFC006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Account.strings; sourceTree = "<group>"; };
 		A1BDDDE21998FB830041B0A1 /* TSPhotoCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSPhotoCollectionController.h; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.h; sourceTree = "<group>"; };
 		A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSPhotoCollectionController.m; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.m; sourceTree = "<group>"; };
 		A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -414,7 +415,7 @@
 				A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */,
 				A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */,
 				A171E17E18C6D186003113ED /* Main.storyboard */,
-				A17F6BDF19F4AAAE00888BB3 /* Account.storyboard */,
+				A1AF39731A19AC91006F26F5 /* Account.storyboard */,
 				A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */,
 				A171E18418C6D186003113ED /* Images.xcassets */,
 				A1BDDDE71998FBC30041B0A1 /* Controller */,
@@ -709,7 +710,7 @@
 				A178487818F13995005B05F1 /* Cell.xib in Resources */,
 				A1BDDE0B199A825B0041B0A1 /* MJPhotoBrowser.bundle in Resources */,
 				A1FD808419AC1D4700379334 /* TSDetailControllerView.xib in Resources */,
-				A17F6BE019F4AAAE00888BB3 /* Account.storyboard in Resources */,
+				A1AF39711A19AC91006F26F5 /* Account.storyboard in Resources */,
 				A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */,
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
@@ -869,6 +870,15 @@
 				A1AF39701A199A3F006F26F5 /* sv */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A1AF39731A19AC91006F26F5 /* Account.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1AF39761A19ACA6006F26F5 /* Base */,
+				A1AF39771A19ACFC006F26F5 /* sv */,
+			);
+			name = Account.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -141,6 +141,9 @@
     //
     //[self clearData];
     
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", @"") message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
+    
 }
 
 -(void)removeNavigationBarShadow
