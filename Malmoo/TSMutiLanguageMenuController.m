@@ -37,6 +37,17 @@
     }
 }
 
+- (IBAction)dismissPageAction:(id)sender
+{
+    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+    
+    if (sideMenu.isMenuVisible) {
+        [sideMenu hideMenuAnimated:YES];
+    }else{
+        [sideMenu showMenuAnimated:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

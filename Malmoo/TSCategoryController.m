@@ -47,17 +47,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    HUD_SHOW
     
-    categoryArray = [USER objectForKey:@"categoryArray"];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    NSData *categoryArrayData = [USER objectForKey:@"categoryArray"];
+    categoryArray = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:categoryArrayData]];
     
     if (categoryArray != nil && categoryArray.count > 0) {
         
-        HUD_DISMISS
-        
         [self.tableView reloadData];
-        [self.tableView setHidden:NO];
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
+        
+    }else{
+        
+        //HUD_SHOW
     }
     
     [self getPlaceCategory];
@@ -65,20 +68,23 @@
 
 -(void)getPlaceCategory
 {
-    categoryArray = [NSMutableArray new];
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Category_Place"];
+    [query whereKey:@"hidden" equalTo:@NO];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
+        HUD_DISMISS
+        
         if (!error) {
-            s(objects)
+            
+            categoryArray = [NSMutableArray new];
+            
             for (PFObject *object in objects) {
                 
                 NSLog(@"%@", object);
                 
                 TSPlaceCategory *category = [TSPlaceCategory new];
                 category.name = object[@"name"];
-                category.parseObject = object;
+                category.objectId = object.objectId;
 
                 [categoryArray addObject:category];
             }
@@ -86,10 +92,12 @@
             if (self.tableView.indexPathsForVisibleRows.count == 0) {
                 [HUD hide:YES];
                 [self.tableView reloadData];
-                [self.tableView setHidden:NO];
+                [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
             }
             
-            [USER setObject:categoryArray forKey:@"categoryArray"];
+            NSData *categoryArrayData = [NSKeyedArchiver archivedDataWithRootObject:categoryArray];
+            
+            [USER setObject:categoryArrayData forKey:@"categoryArray"];
             
         } else {
             
@@ -147,8 +155,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedId = indexPath.row;
-
-    [self performSegueWithIdentifier:@"MainController" sender:self];
+    
+    if (categoryArray.count > 0) {
+        [self performSegueWithIdentifier:@"MainController" sender:self];
+    }
 }
 
 /*
@@ -200,7 +210,8 @@
         TSPlaceCategory *selectedCategory = categoryArray[selectedId];
         
         TSMainController *mainController = segue.destinationViewController;
-        [mainController setCategory:selectedCategory.parseObject];
+        [mainController setCategoryName:selectedCategory.name];
+        [mainController setCategoryObjectId:selectedCategory.objectId];
     }
 }
 

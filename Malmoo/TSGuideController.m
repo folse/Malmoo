@@ -32,7 +32,6 @@
     [super viewDidLoad];
     
     [self showBgAnimation];
-
 }
 
 -(void)showBgAnimation

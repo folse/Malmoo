@@ -40,11 +40,13 @@
     
     if (usernameString.length > 0 && passwordString.length > 0) {
         
-        [SVProgressHUD show];
+        [self.view endEditing:YES];
+        
+        HUD_SHOW
         
         [PFUser logInWithUsernameInBackground:usernameString password:passwordString block:^(PFUser *user, NSError *error) {
             
-            [SVProgressHUD dismiss];
+            HUD_DISMISS
             
             if (!error) {
                 
@@ -52,13 +54,12 @@
                 [USER setBool:YES forKey:@"needContinueFavorite"];
                 
                 [SVProgressHUD showSuccessWithStatus:@"Success"];
-
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             }else{
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", @"") message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
                 
             }

@@ -18,7 +18,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tod-yN-j8g">
-                                    <rect key="frame" x="57" y="8" width="206" height="29"/>
+                                    <rect key="frame" x="57" y="10" width="206" height="29"/>
                                     <segments>
                                         <segment title="English"/>
                                         <segment title="Chinese"/>
@@ -28,7 +28,7 @@
                                     </connections>
                                 </segmentedControl>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <sections>
                             <tableViewSection headerTitle="Starter" id="7jo-BU-2hE">
@@ -129,7 +129,13 @@
                             <outlet property="delegate" destination="YDi-Fn-p1V" id="LX2-r4-31M"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Larry's Menu" id="FCh-wH-knP"/>
+                    <navigationItem key="navigationItem" title="Larry's Menu" id="FCh-wH-knP">
+                        <barButtonItem key="leftBarButtonItem" image="btn_menu" id="iFS-SN-Kcz">
+                            <connections>
+                                <action selector="dismissPageAction:" destination="YDi-Fn-p1V" id="xY9-Sl-adq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="languageSegmentedControl" destination="Tod-yN-j8g" id="Oc1-Hs-bIb"/>
@@ -159,4 +165,7 @@
             <point key="canvasLocation" x="606" y="351"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_menu" width="36" height="31"/>
+    </resources>
 </document>

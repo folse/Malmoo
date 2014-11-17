@@ -10,6 +10,7 @@
 #import "MJRefresh.h"
 #import "TSMainCell.h"
 #import "TSDetailController.h"
+#import "TSGuideController.h"
 
 @interface TSFavoriteController ()
 {
@@ -21,52 +22,111 @@
     NSInteger lastDataCount;
     NSInteger selectedId;
     MJRefreshFooterView *_footer;
+    PFGeoPoint *currentGeoPoint;
 }
 
 @end
 
 @implementation TSFavoriteController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[self createImageWithColor:APP_COLOR] forBarMetrics:UIBarMetricsDefault];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+//-(void)viewDidAppear:(BOOL)animated
+//{
+  //  [self viewDidAppear:animated];
+    
+//    if (USER_LOGIN) {
+//        
+//        HUD_SHOW
+//        
+//        PAGE_NUM = 0;
+//        
+//        [[[NSThread alloc] initWithTarget:self selector:@selector(getData) object:nil] start];
+//        
+//    }else{
+//        
+//        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+//        [self presentViewController:guideController animated:YES completion:^{
+//            
+//        }];
+//    }
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self removeNavigationBarShadow];
+    
+    PAGE_NUM = 0;
     PAGE_COUNT = 15;
     
     placeArray = [NSMutableArray new];
     placeObjectArray = [NSMutableArray new];
     
-    [self getData];
-}
-
--(void)getData
-{
+    [self addFooter];
+    
     if (USER_LOGIN) {
         
         HUD_SHOW
         
-        PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
-        [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-        
-        for(PFObject *favorite in [favoriteQuery findObjects]){
-            
-            PFObject *place = favorite[@"place"];
-            [self findPlace:place.objectId];
-        }
-        
-        [self getTableViewData];
+        [[[NSThread alloc] initWithTarget:self selector:@selector(getData) object:nil] start];
         
     }else{
         
-        // need login
+        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+        [self presentViewController:guideController animated:YES completion:^{
+            
+        }];
     }
+}
+
+-(void)getData
+{
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            
+            currentGeoPoint = geoPoint;
+            
+            PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
+            [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+            favoriteQuery.limit = PAGE_COUNT;
+            favoriteQuery.skip = PAGE_NUM*PAGE_COUNT;
+            for(PFObject *favorite in [favoriteQuery findObjects]){
+                
+                PFObject *place = favorite[@"place"];
+                [self findPlace:place.objectId];
+            }
+            
+            [self getTableViewData];
+            
+        }else{
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please check your location settings" message:@"Maybe network issues" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
+    }];
 }
 
 -(void)findPlace:(NSString *)placeObjectId
 {
     PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
-    [placeQuery getObjectInBackgroundWithId:placeObjectId block:^(PFObject *object, NSError *error) {
-        [placeObjectArray addObject:object];
-    }];
+    [placeObjectArray addObject:[placeQuery getObjectWithId:placeObjectId]];
 }
 
 -(void)getTableViewData
@@ -93,6 +153,18 @@
         place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
         place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
         
+        CLLocation *placeLocation = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
+        
+        CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentGeoPoint.latitude longitude:currentGeoPoint.longitude];
+        
+        CLLocationDistance meters = [placeLocation distanceFromLocation:currentLocation];
+        
+        place.distance = [NSString stringWithFormat:@"%dm",(int)meters];
+        
+        if (meters > 1000) {
+            place.distance = [NSString stringWithFormat:@"%.01fkm",meters/1000];
+        }
+        
         [placeArray addObject:place];
     }
     
@@ -104,7 +176,6 @@
     if (PAGE_NUM > 0) {
         [self doneLoadMore];
     }
-    
 }
 
 - (void)addFooter
@@ -173,6 +244,11 @@
     [self performSegueWithIdentifier:@"DetailController" sender:self];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 130;
+}
+
 #pragma mark - Navigation
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -183,6 +259,30 @@
         TSDetailController *detailController = segue.destinationViewController;
         detailController.place = selectedPlace;
     }
+}
+
+-(void)removeNavigationBarShadow
+{
+    for (UIView *view in self.navigationController.navigationBar.subviews) {
+        for (UIView *view2 in view.subviews) {
+            if ([view2 isKindOfClass:[UIImageView class]] && view2.frame.size.width == 320) {
+                [view2 removeFromSuperview];
+            }
+        }
+    }
+}
+
+- (UIImage *)createImageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (void)didReceiveMemoryWarning {

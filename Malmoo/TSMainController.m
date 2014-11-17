@@ -39,6 +39,7 @@
     UIWebView *webView;
     NSString *apiKey;
     PFObject *currentObject;
+    CLLocation *currentLocation;
     CLLocation *lastMapCenterLocation;
     CLLocationManager *locationManager;
 }
@@ -85,9 +86,6 @@
 {
     [super viewDidLoad];
     
-    HUD_Define
-    [HUD show:YES];
-    
     [_activityIndicatiorView setHidden:YES];
     [_activityIndicatiorView stopAnimating];
     
@@ -96,8 +94,8 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate= self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    if([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
+    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [locationManager requestAlwaysAuthorization];
     }
     
     [locationManager startUpdatingLocation];
@@ -112,7 +110,18 @@
     
     //sleep(3);
     
-    if (_category) {
+    if (USER_LOGIN) {
+        
+        HUD_Define
+        [HUD show:YES];
+        
+    }else{
+        
+        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+        [self presentViewController:guideController animated:YES completion:nil];
+    }
+    
+    if (_categoryName) {
         
         [[[NSThread alloc] initWithTarget:self selector:@selector(getCategoryPlaceData) object:nil] start];
         
@@ -121,19 +130,11 @@
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = nil;
         
-        [self.navigationItem setTitle:_category[@"name"]];
+        [self.navigationItem setTitle:_categoryName];
         
         [self.tableView setContentInset:UIEdgeInsetsMake(-160, 0, 0, 0)];
         
     }
-    
-    TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
-    [self presentViewController:guideController animated:YES completion:^{
-        
-        
-    }];
-    
-    
     
     //    webView = [[UIWebView alloc] init];
     //    [webView setDelegate:self];
@@ -156,59 +157,6 @@
 -(void)refresh
 {
     [self getData:nil];
-}
-
--(void)clearData
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    query.skip = pageId * 100;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            clearArray = objects;
-            
-            [self findDuplicateData:clearArray[clearId]];
-            
-            //[self copyPhotoData:clearArray[clearId]];
-            
-            //[self replaceLocationData:clearArray[clearId]];
-            
-        } else {
-            
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-}
-
--(void)copyPhotoData:(PFObject *)eachObject
-{
-    NSString *photoUrl = eachObject[@"photo"];
-    NSArray *photoArray = eachObject[@"photos"];
-    
-    if (photoArray.count > 0 && !photoUrl.length > 0) {
-        
-        s(@"hasPhoto")
-        
-        NSString *photoReference = eachObject[@"photos"][0][@"photo_reference"];
-        
-        currentObject = eachObject;
-        
-        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
-        
-    }else {
-        
-        clearId += 1;
-        
-        if(clearId != 100){
-            NSLog(@"cIearArrayId:%d",clearId);
-            [self copyPhotoData:clearArray[clearId]];
-        }else{
-            clearId = 0;
-            pageId += 1;
-            i(pageId)
-            [self clearData];
-        }
-    }
 }
 
 - (UIImage *)createImageWithColor:(UIColor *)color
@@ -241,121 +189,6 @@
     }
     
     return YES;
-}
-
--(void)savePhotoUrl:(PFObject *)object withUrl:(NSString *)photoUrl
-{
-    object[@"photo"] = photoUrl;
-    
-    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        
-        clearId += 1;
-        
-        if(clearId != 100){
-            NSLog(@"cIearArrayId:%d",clearId);
-            [self copyPhotoData:clearArray[clearId]];
-        }else{
-            clearId = 0;
-            pageId += 1;
-            i(pageId)
-            [self clearData];
-        }
-    }];
-}
-
--(void)findDuplicateData:(PFObject *)eachObject
-{
-    NSString *name = eachObject[@"name"];
-    NSString *address = eachObject[@"formatted_address"];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    [query whereKey:@"name" equalTo:name];
-    [query whereKey:@"formatted_address" equalTo:address];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        if (!error) {
-            
-            for (int i = 0; i < objects.count - 1; i++) {
-                
-                [objects[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        s(@"Delete Successful")
-                    }
-                }];
-            }
-            
-            clearId += 1;
-            
-            if(clearId != 100){
-                [self findDuplicateData:clearArray[clearId]];
-            }else{
-                clearId = 0;
-                pageId += 1;
-                i(pageId)
-                [self clearData];
-            }
-            
-        } else {
-            
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-    
-    i(clearId)
-}
-
--(void)replaceLocationData:(PFObject *)eachObject
-{
-    PFGeoPoint *location = eachObject[@"location"];
-    
-    if (!location) {
-        
-        NSString *lat = eachObject[@"geometry"][@"location"][@"lat"];
-        NSString *lng = eachObject[@"geometry"][@"location"][@"lng"];
-        
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
-        
-        eachObject[@"location"] = geoPoint;
-        
-        [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            
-            clearId += 1;
-            
-            if(clearId != 100){
-                
-                NSLog(@"cIearArrayId:%d",clearId);
-                
-                /* by folse
-                 Change this method name
-                 */
-                
-                //[self copyPhotoData:clearArray[clearId]];
-                [self replaceLocationData:clearArray[clearId]];
-                
-            }else{
-                
-                clearId = 0;
-                pageId += 1;
-                i(pageId)
-                [self clearData];
-                
-            }
-        }];
-        
-    }else {
-        
-        clearId += 1;
-        
-        if(clearId != 100){
-            NSLog(@"cIearArrayId:%d",clearId);
-            [self copyPhotoData:clearArray[clearId]];
-        }else{
-            clearId = 0;
-            pageId += 1;
-            i(pageId)
-            [self clearData];
-        }
-    }
 }
 
 -(void)getData:(NSString *)keyWords
@@ -395,7 +228,7 @@
     placeArray = [NSMutableArray new];
     
     PFQuery *placeCategoryQuery = [PFQuery queryWithClassName:@"Category_Place"];
-    PFObject *categoryObject = [placeCategoryQuery getObjectWithId:_category.objectId];
+    PFObject *categoryObject = [placeCategoryQuery getObjectWithId:_categoryObjectId];
     
     PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
     [placeQuery whereKey:@"category" containedIn:[NSArray arrayWithObject:categoryObject]];
@@ -419,7 +252,7 @@
             }
             
             for (PFObject *object in objects) {
-                //NSLog(@"%@", object);
+                NSLog(@"%@", object);
                 
                 TSPlace *place = [TSPlace new];
                 place.name = object[@"name"];
@@ -434,11 +267,22 @@
                 place.delivery = [object[@"delivery"] boolValue];
                 place.reservation = [object[@"phone_reservation"] boolValue];
                 place.parseObject = object;
-                //place.tags = object[@"tag"];
                 
                 PFGeoPoint *location = object[@"location"];
                 place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
                 place.longitude = [NSString stringWithFormat:@"%f",location.longitude];
+                
+                if (currentLocation) {
+                    
+                    CLLocation *placeLocation = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
+                    CLLocationDistance meters = [placeLocation distanceFromLocation:currentLocation];
+                    
+                    place.distance = [NSString stringWithFormat:@"%dm",(int)meters];
+                    
+                    if (meters > 1000) {
+                        place.distance = [NSString stringWithFormat:@"%.01fkm",meters/1000];
+                    }
+                }
                 
                 [placeArray addObject:place];
             }
@@ -469,7 +313,7 @@
 
 - (IBAction)menuBtnAction:(id)sender
 {
-    if (_category) {
+    if (_categoryName) {
         
         [self.navigationController popViewControllerAnimated:YES];
         
@@ -509,6 +353,7 @@
     TSPlace *cellPlace = placeArray[row];
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
+    [cell.distanceLabel setText:cellPlace.distance];
     
     NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
     
@@ -552,7 +397,7 @@
         updatedUserLocation = YES;
         [self displayLocation:userLocation];
     }
-    
+    currentLocation = [[CLLocation alloc] initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -705,6 +550,177 @@
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
         
         [_footer endRefreshing];
+    }
+}
+
+#pragma parse more data control method
+
+
+-(void)clearData
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    query.skip = pageId * 100;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            clearArray = objects;
+            
+            [self findDuplicateData:clearArray[clearId]];
+            
+            //[self copyPhotoData:clearArray[clearId]];
+            
+            //[self replaceLocationData:clearArray[clearId]];
+            
+        } else {
+            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)copyPhotoData:(PFObject *)eachObject
+{
+    NSString *photoUrl = eachObject[@"photo"];
+    NSArray *photoArray = eachObject[@"photos"];
+    
+    if (photoArray.count > 0 && !photoUrl.length > 0) {
+        
+        s(@"hasPhoto")
+        
+        NSString *photoReference = eachObject[@"photos"][0][@"photo_reference"];
+        
+        currentObject = eachObject;
+        
+        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
+        
+    }else {
+        
+        clearId += 1;
+        
+        if(clearId != 100){
+            NSLog(@"cIearArrayId:%d",clearId);
+            [self copyPhotoData:clearArray[clearId]];
+        }else{
+            clearId = 0;
+            pageId += 1;
+            i(pageId)
+            [self clearData];
+        }
+    }
+}
+
+-(void)savePhotoUrl:(PFObject *)object withUrl:(NSString *)photoUrl
+{
+    object[@"photo"] = photoUrl;
+    
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        clearId += 1;
+        
+        if(clearId != 100){
+            NSLog(@"cIearArrayId:%d",clearId);
+            [self copyPhotoData:clearArray[clearId]];
+        }else{
+            clearId = 0;
+            pageId += 1;
+            i(pageId)
+            [self clearData];
+        }
+    }];
+}
+
+-(void)findDuplicateData:(PFObject *)eachObject
+{
+    NSString *name = eachObject[@"name"];
+    NSString *address = eachObject[@"formatted_address"];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    [query whereKey:@"name" equalTo:name];
+    [query whereKey:@"formatted_address" equalTo:address];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            
+            for (int i = 0; i < objects.count - 1; i++) {
+                
+                [objects[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        s(@"Delete Successful")
+                    }
+                }];
+            }
+            
+            clearId += 1;
+            
+            if(clearId != 100){
+                [self findDuplicateData:clearArray[clearId]];
+            }else{
+                clearId = 0;
+                pageId += 1;
+                i(pageId)
+                [self clearData];
+            }
+            
+        } else {
+            
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    i(clearId)
+}
+
+-(void)replaceLocationData:(PFObject *)eachObject
+{
+    PFGeoPoint *location = eachObject[@"location"];
+    
+    if (!location) {
+        
+        NSString *lat = eachObject[@"geometry"][@"location"][@"lat"];
+        NSString *lng = eachObject[@"geometry"][@"location"][@"lng"];
+        
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+        
+        eachObject[@"location"] = geoPoint;
+        
+        [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            clearId += 1;
+            
+            if(clearId != 100){
+                
+                NSLog(@"cIearArrayId:%d",clearId);
+                
+                /* by folse
+                 Change this method name
+                 */
+                
+                //[self copyPhotoData:clearArray[clearId]];
+                [self replaceLocationData:clearArray[clearId]];
+                
+            }else{
+                
+                clearId = 0;
+                pageId += 1;
+                i(pageId)
+                [self clearData];
+                
+            }
+        }];
+        
+    }else {
+        
+        clearId += 1;
+        
+        if(clearId != 100){
+            NSLog(@"cIearArrayId:%d",clearId);
+            [self copyPhotoData:clearArray[clearId]];
+        }else{
+            clearId = 0;
+            pageId += 1;
+            i(pageId)
+            [self clearData];
+        }
     }
 }
 

@@ -187,6 +187,9 @@
 		A1AE450B19EF75C4004B328B /* TSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLoginController.m; sourceTree = "<group>"; };
 		A1AE450E19EF7657004B328B /* TSSignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSignupController.h; sourceTree = "<group>"; };
 		A1AE450F19EF7657004B328B /* TSSignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSignupController.m; sourceTree = "<group>"; };
+		A1AF396E1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		A1AF396F1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A1AF39701A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1BDDDE21998FB830041B0A1 /* TSPhotoCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSPhotoCollectionController.h; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.h; sourceTree = "<group>"; };
 		A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSPhotoCollectionController.m; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.m; sourceTree = "<group>"; };
 		A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -670,7 +673,7 @@
 				ORGANIZATIONNAME = Folse;
 				TargetAttributes = {
 					A171E16818C6D186003113ED = {
-						DevelopmentTeam = 6XX8659PN2;
+						DevelopmentTeam = V68CP8VT5Z;
 					};
 					A171E18918C6D186003113ED = {
 						TestTargetID = A171E16818C6D186003113ED;
@@ -684,6 +687,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = A171E16018C6D186003113ED;
 			productRefGroup = A171E16A18C6D186003113ED /* Products */;
@@ -844,6 +848,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A171E17618C6D186003113ED /* en */,
+				A1AF396F1A199A3F006F26F5 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A171E17F18C6D186003113ED /* Base */,
+				A1AF396E1A199A3F006F26F5 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -860,6 +866,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A171E19518C6D186003113ED /* en */,
+				A1AF39701A199A3F006F26F5 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -943,8 +950,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				CODE_SIGN_IDENTITY = "iPhone Developer: feng zhu (9EJXYJ953W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: feng zhu (9EJXYJ953W)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -992,7 +999,7 @@
 					/Users/folse/Desktop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0ffbef0e-4600-44f3-81a4-943b1521219e";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

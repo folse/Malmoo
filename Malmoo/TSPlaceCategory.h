@@ -10,6 +10,6 @@
 
 @property (nonatomic, strong) NSString *name;
 
-@property (nonatomic, strong) PFObject *parseObject;
+@property (nonatomic, strong) NSString *objectId;
 
 @end

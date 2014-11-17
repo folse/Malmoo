@@ -58,7 +58,7 @@
 {
     [super viewDidAppear:animated];
     
-    if ([USER boolForKey:@"needContinueFavorite"]) {
+    if ([USER boolForKey:@"needContinueFavorite"] && USER_LOGIN) {
         [self favoriteButtonAction];
     }
 }

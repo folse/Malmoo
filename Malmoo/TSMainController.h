@@ -10,6 +10,9 @@
 
 @interface TSMainController : UITableViewController
 
-@property (nonatomic, strong) PFObject *category;
+@property (nonatomic, strong) NSString *categoryName;
+
+@property (nonatomic, strong) NSString *categoryObjectId;
+
 
 @end

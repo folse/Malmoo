@@ -37,7 +37,9 @@
     
     if (usernameString.length > 0 && passwordString.length > 0 && emailString.length > 0) {
         
-        [SVProgressHUD show];
+        [self.view endEditing:YES];
+        
+        HUD_SHOW
         
         PFUser *user = [PFUser user];
         user.username = usernameString;
@@ -51,7 +53,7 @@
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            [SVProgressHUD dismiss];
+            HUD_DISMISS
             
             if (!error) {
                 

@@ -23,14 +23,14 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     self = [super initWithFrame:frame];
     if (self) {
         
-//        self.scanLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-//        self.scanLine.image = [UIImage imageNamed:@"bg_scan"];
-//        [self addSubview:self.scanLine];
+        //        self.scanLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        //        self.scanLine.image = [UIImage imageNamed:@"bg_scan"];
+        //        [self addSubview:self.scanLine];
         
         UIImageView *bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, SCREEN_WIDTH, SCREEN_HEIGHT)];
         bgView.image = [UIImage imageNamed:@"bg_scan"];
         [self addSubview:bgView];
-    
+        
     }
     return self;
 }
@@ -65,10 +65,33 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     return controller;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [_readView start];
+    [_cameraOverlayView setNeedsDisplay];
+    [self performSelector:@selector(removeLoadingView) withObject:nil afterDelay:0.3];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     float barHeight = 64;
     
     [self.navigationController.navigationBar setHidden:YES];
@@ -99,27 +122,18 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     [_loadingView setHidesWhenStopped:YES];
     [_loadingBackgroundView addSubview:_loadingView];
     
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
+  //[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-90, SCREEN_HEIGHT-30-38, 90, 38)];
-    [closeButton setTitle:@"X 关闭" forState:UIControlStateNormal];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(12, 44, 90, 38)];
+    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(cancleButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
     
-    CGFloat duration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:duration];
-
-    closeButton.transform = CGAffineTransformMakeRotation(-M_PI * 1.5);
-    
-    [UIView commitAnimations];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [_readView start];
-    [_cameraOverlayView setNeedsDisplay];
-    [self performSelector:@selector(removeLoadingView) withObject:nil afterDelay:0.3];
+//    CGFloat duration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:duration];
+    //closeButton.transform = CGAffineTransformMakeRotation(-M_PI * 1.5);
+    //[UIView commitAnimations];
 }
 
 - (void)removeLoadingView{
@@ -127,7 +141,8 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     [_loadingBackgroundView removeFromSuperview];
 }
 
--(void)cancleButtonClick{
+-(void)cancleButtonClick
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

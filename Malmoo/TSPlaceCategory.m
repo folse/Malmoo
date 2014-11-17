@@ -10,4 +10,21 @@
 
 @implementation TSPlaceCategory
 
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    //encode properties/values
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.objectId forKey:@"objectId"];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if((self = [super init])) {
+        //decode properties/values
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.objectId = [aDecoder decodeObjectForKey:@"objectId"];
+    }
+    return self;
+}
+
 @end

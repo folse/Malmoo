@@ -69,10 +69,10 @@
         
         s(data)
         
-        UINavigationController *navController = [MUTILANGUAGE_STORYBOARD instantiateViewControllerWithIdentifier:@"mutilanguageMenuNav"];
+        UINavigationController *navController = [MUTILANGUAGE_STORYBOARD instantiateViewControllerWithIdentifier:@"mutiLanguageMenuNav"];
         [self.sideMenuController setContentController:navController animated:YES];
     }];
-    [self.sideMenuController setContentController:scannerController animated:YES];
+    [self presentViewController:scannerController animated:YES completion:nil];
 }
 
 

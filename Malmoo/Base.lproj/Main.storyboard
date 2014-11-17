@@ -45,15 +45,21 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_cell_cover" translatesAutoresizingMaskIntoConstraints="NO" id="VIj-68-Wtd">
                                             <rect key="frame" x="0.0" y="74" width="320" height="55"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J26-oJ-mV9">
-                                            <rect key="frame" x="12" y="68" width="296" height="30"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J26-oJ-mV9">
+                                            <rect key="frame" x="12" y="58" width="300" height="50"/>
                                             <fontDescription key="fontDescription" name="EuphemiaUCAS-Bold" family="Euphemia UCAS" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxR-Ud-MWL">
-                                            <rect key="frame" x="12" y="96" width="296" height="28"/>
+                                            <rect key="frame" x="12" y="96" width="250" height="28"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZD-al-bGJ">
+                                            <rect key="frame" x="263" y="99" width="49" height="21"/>
+                                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -64,6 +70,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="DxR-Ud-MWL" id="kqs-hS-bTR"/>
                                     <outlet property="avatarImageView" destination="fDw-XR-lN5" id="Ysk-9f-Yzq"/>
+                                    <outlet property="distanceLabel" destination="tZD-al-bGJ" id="p6T-J1-WS6"/>
                                     <outlet property="titleLabel" destination="J26-oJ-mV9" id="wbw-MZ-U5S"/>
                                 </connections>
                             </tableViewCell>
@@ -367,7 +374,7 @@
                         <sections>
                             <tableViewSection id="AQ6-B3-gf4">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pCr-GA-n6C">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pCr-GA-n6C">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pCr-GA-n6C" id="elP-Yo-VJz">
@@ -386,7 +393,7 @@
                                             <segue destination="txH-QP-Wh8" kind="push" id="goC-6W-nCL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RVE-Ed-jlN">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RVE-Ed-jlN">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RVE-Ed-jlN" id="LeW-Ob-5bz">
@@ -405,7 +412,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8Is-Im-bBh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8Is-Im-bBh">
                                         <rect key="frame" x="0.0" y="143" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Is-Im-bBh" id="2jC-8v-MvM">
@@ -421,7 +428,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="UPa-1Y-vve">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="UPa-1Y-vve">
                                         <rect key="frame" x="0.0" y="187" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UPa-1Y-vve" id="caV-DH-XiP">
@@ -604,7 +611,7 @@ please feel free to contact us at  xxxxx@xxx.se </string>
             </objects>
             <point key="canvasLocation" x="1116" y="1973"/>
         </scene>
-        <!--Favorite Controller-->
+        <!--Favorites-->
         <scene sceneID="Gq7-ia-ojP">
             <objects>
                 <tableViewController id="txH-QP-Wh8" customClass="TSFavoriteController" sceneMemberID="viewController">
@@ -638,6 +645,12 @@ please feel free to contact us at  xxxxx@xxx.se </string>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLd-N5-f72">
+                                            <rect key="frame" x="262" y="99" width="49" height="21"/>
+                                            <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -654,7 +667,10 @@ please feel free to contact us at  xxxxx@xxx.se </string>
                             <outlet property="delegate" destination="txH-QP-Wh8" id="0MS-I6-J9N"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XkU-Ap-unC"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="XkU-Ap-unC"/>
+                    <connections>
+                        <segue destination="RnT-s3-ol0" kind="push" identifier="DetailController" id="O4n-Tc-VCa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbF-vf-RiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -770,8 +786,8 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="O4n-Tc-VCa"/>
         <segue reference="bBj-Fg-8Li"/>
-        <segue reference="soD-16-rmZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.21176470589999999" green="0.62352941179999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>
