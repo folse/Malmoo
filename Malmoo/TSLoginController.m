@@ -59,7 +59,7 @@
                 
             }else{
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", @"") message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", @"") message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                 [alertView show];
                 
             }
@@ -67,7 +67,7 @@
         
     }else{
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please input the username and password" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Please input the username and password", @"")   message:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alertView show];
     }
 }

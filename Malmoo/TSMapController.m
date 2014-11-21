@@ -185,7 +185,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法获取当前位置" message:@"请检查是否开启定位服务" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't get current location",nil) message:NSLocalizedString(@"Please check your location settings",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
     [alert show];
 }
 

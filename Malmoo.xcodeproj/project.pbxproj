@@ -76,7 +76,8 @@
 		A1C8EADC1A13A657006AE0B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EADB1A13A657006AE0B3 /* QuartzCore.framework */; };
 		A1C8EADE1A13A670006AE0B3 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EADD1A13A670006AE0B3 /* libiconv.dylib */; };
 		A1C8EAE21A13A6BA006AE0B3 /* ZbarScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */; };
-		A1C8EAE41A13A8C9006AE0B3 /* MutiLanguage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */; };
+		A1E7D7DD1A1DE0D300211132 /* MutiLanguage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */; };
+		A1E7D7E81A1DE63900211132 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1E7D7EA1A1DE63900211132 /* Localizable.strings */; };
 		A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E318CEAD05008E6F57 /* TSAccountController.m */; };
 		A1E838E718CEAD1C008E6F57 /* FSUtilSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */; };
 		A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */; };
@@ -187,7 +188,6 @@
 		A1AE450E19EF7657004B328B /* TSSignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSignupController.h; sourceTree = "<group>"; };
 		A1AE450F19EF7657004B328B /* TSSignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSignupController.m; sourceTree = "<group>"; };
 		A1AF396E1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
-		A1AF396F1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1AF39701A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1AF39761A19ACA6006F26F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		A1AF39771A19ACFC006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Account.strings; sourceTree = "<group>"; };
@@ -220,8 +220,11 @@
 		A1C8EADD1A13A670006AE0B3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		A1C8EAE01A13A6BA006AE0B3 /* ZbarScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZbarScannerController.h; sourceTree = "<group>"; };
 		A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZbarScannerController.m; sourceTree = "<group>"; };
-		A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MutiLanguage.storyboard; sourceTree = "<group>"; };
 		A1D3B2E919EC4CCC00B45FFE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A1E7D7E01A1DE0D900211132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MutiLanguage.storyboard; sourceTree = "<group>"; };
+		A1E7D7E31A1DE0F000211132 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/MutiLanguage.strings; sourceTree = "<group>"; };
+		A1E7D7EB1A1DE72500211132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1E7D7EC1A1DE8CC00211132 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1E838E218CEAD05008E6F57 /* TSAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAccountController.h; sourceTree = "<group>"; };
 		A1E838E318CEAD05008E6F57 /* TSAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAccountController.m; sourceTree = "<group>"; };
 		A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSUtilSettings.h; path = MalmooTests/FSUtilSettings.h; sourceTree = SOURCE_ROOT; };
@@ -416,7 +419,7 @@
 				A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */,
 				A171E17E18C6D186003113ED /* Main.storyboard */,
 				A1AF39731A19AC91006F26F5 /* Account.storyboard */,
-				A1C8EAE31A13A8C9006AE0B3 /* MutiLanguage.storyboard */,
+				A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */,
 				A171E18418C6D186003113ED /* Images.xcassets */,
 				A1BDDDE71998FBC30041B0A1 /* Controller */,
 				A10EDCA718D07F980048EA02 /* View */,
@@ -430,6 +433,7 @@
 		A171E17318C6D186003113ED /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A1E7D7EA1A1DE63900211132 /* Localizable.strings */,
 				A171E17418C6D186003113ED /* Malmoo-Info.plist */,
 				A171E17518C6D186003113ED /* InfoPlist.strings */,
 				A171E17818C6D186003113ED /* main.m */,
@@ -715,7 +719,8 @@
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
 				A171E18018C6D186003113ED /* Main.storyboard in Resources */,
-				A1C8EAE41A13A8C9006AE0B3 /* MutiLanguage.storyboard in Resources */,
+				A1E7D7DD1A1DE0D300211132 /* MutiLanguage.storyboard in Resources */,
+				A1E7D7E81A1DE63900211132 /* Localizable.strings in Resources */,
 				A1830B6318DB4F530053DE81 /* JDMenuViewController.xib in Resources */,
 				A1C8EAD41A139EFB006AE0B3 /* SVProgressHUD.bundle in Resources */,
 			);
@@ -849,7 +854,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A171E17618C6D186003113ED /* en */,
-				A1AF396F1A199A3F006F26F5 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -879,6 +883,24 @@
 				A1AF39771A19ACFC006F26F5 /* sv */,
 			);
 			name = Account.storyboard;
+			sourceTree = "<group>";
+		};
+		A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1E7D7E01A1DE0D900211132 /* Base */,
+				A1E7D7E31A1DE0F000211132 /* sv */,
+			);
+			name = MutiLanguage.storyboard;
+			sourceTree = "<group>";
+		};
+		A1E7D7EA1A1DE63900211132 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1E7D7EB1A1DE72500211132 /* Base */,
+				A1E7D7EC1A1DE8CC00211132 /* sv */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

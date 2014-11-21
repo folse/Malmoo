@@ -1,0 +1,33 @@
+
+/* Class = "IBUILabel"; text = "main"; ObjectID = "0ft-ak-dPb"; */
+"0ft-ak-dPb.text" = "main";
+
+/* Class = "IBUILabel"; text = "starter"; ObjectID = "3ZS-IY-ttm"; */
+"3ZS-IY-ttm.text" = "starter";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Main Dish"; ObjectID = "6WN-MY-xBQ"; */
+"6WN-MY-xBQ.headerTitle" = "Main Dish";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Starter"; ObjectID = "7jo-BU-2hE"; */
+"7jo-BU-2hE.headerTitle" = "Starter";
+
+/* Class = "IBUILabel"; text = "starter"; ObjectID = "AP0-Jh-Ysx"; */
+"AP0-Jh-Ysx.text" = "starter";
+
+/* Class = "IBUINavigationItem"; title = "Larry's Menu"; ObjectID = "FCh-wH-knP"; */
+"FCh-wH-knP.title" = "Larry's Menu";
+
+/* Class = "IBUISegmentedControl"; Tod-yN-j8g.segmentTitles[0] = "English"; ObjectID = "Tod-yN-j8g"; */
+"Tod-yN-j8g.segmentTitles[0]" = "English";
+
+/* Class = "IBUISegmentedControl"; Tod-yN-j8g.segmentTitles[1] = "Chinese"; ObjectID = "Tod-yN-j8g"; */
+"Tod-yN-j8g.segmentTitles[1]" = "Chinese";
+
+/* Class = "IBUILabel"; text = "main"; ObjectID = "U0Q-S5-7Yr"; */
+"U0Q-S5-7Yr.text" = "main";
+
+/* Class = "IBUILabel"; text = "starter"; ObjectID = "fab-BC-w2i"; */
+"fab-BC-w2i.text" = "starter";
+
+/* Class = "IBUILabel"; text = "main"; ObjectID = "vqX-62-WGH"; */
+"vqX-62-WGH.text" = "main";

@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Malmoo
+
+  Created by folse on 11/20/14.
+  Copyright (c) 2014 Folse. All rights reserved.
+*/
+
+
+"Opps" = "Opps";
+"OK" = "OK";
+"Please input the username and password" = "Please input the username and password";
+"Error" = "Error";
+"Please check your location settings" = "Please check your location settings";
+"Maybe network issues" = "Maybe network issues";
+"Report Data Error" = "Report Data Error";
+"No location data" = "No location data";
+"If you can make this address more particular, please 'report' us. Thanks~" = "If you can make this address more particular, please 'report' us. Thanks~";
+"I find an information error at:  , it should be: " = "I find an information error at:  , it should be: ";
+"Open Hour" = "Open Hour";
+"Can't get current location" = "Can't get current location";
+"Please check your location settings" = "Please check your location settings";

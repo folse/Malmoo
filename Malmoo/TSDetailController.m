@@ -455,7 +455,7 @@
         [self performSegueWithIdentifier:@"MapController" sender:self];
         
     }else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No location info" message:@"If you can make this address more particular, please 'report' us. Thanks~" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No location data",nil) message:NSLocalizedString(@"If you can make this address more particular, please 'report' us. Thanks~",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
 }
@@ -508,13 +508,13 @@
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     [picker.navigationBar setTintColor:[UIColor whiteColor]];
-    [picker setSubject:@"Report Data Error"];
+    [picker setSubject:NSLocalizedString(@"Report Data Error",nil)];
     
     // Set up recipients
     NSArray *toRecipients = [NSArray arrayWithObject:@"feedback@mtscandic.com"];
     
     [picker setToRecipients:toRecipients];
-    [picker setMessageBody:@"I find an information error at:  , it should be: " isHTML:NO];
+    [picker setMessageBody:NSLocalizedString(@"I find an information error at:  , it should be: ",nil) isHTML:NO];
     
     NSData *myData = UIImageJPEGRepresentation(viewImage, 1.0);
     [picker addAttachmentData:myData mimeType:@"image/png" fileName:@""];
@@ -575,7 +575,7 @@
 
 -(void)openHourButtonAction
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Open Hour" message:_place.openHours delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Open Hour",nil) message:_place.openHours delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
     [alertView show];
 }
 

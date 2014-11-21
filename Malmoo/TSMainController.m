@@ -141,9 +141,6 @@
     //
     //[self clearData];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", @"") message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alertView show];
-    
 }
 
 -(void)removeNavigationBarShadow
@@ -215,14 +212,6 @@
         
         [query whereKey:@"location" nearGeoPoint:locationPoint];
         [self findObjects:query];
-        
-        //        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        //            if (!error) {
-        //
-        //                [query whereKey:@"location" nearGeoPoint:geoPoint];
-        //                [self findObjects:query];
-        //            }
-        //        }];
     }
 }
 
