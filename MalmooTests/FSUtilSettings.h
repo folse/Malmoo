@@ -27,6 +27,7 @@
 #define USER_ID [USER valueForKey:@"userId"]
 #define USER_NAME [USER valueForKey:@"userName"]
 #define USER_LOGIN [USER boolForKey:@"userLogined"]
+#define USER_SKIP_LOGIN [USER boolForKey:@"userSkipLogine"]
 #define APP_COLOR [UIColor colorWithRed:18.0/255.0 green:168.0/255.0 blue:255.0/255.0 alpha:1.0]
 //#define APP_COLOR [UIColor colorWithRed:54.0/255.0 green:159.0/255.0 blue:220.0/255.0 alpha:1.0]
 
@@ -45,6 +46,9 @@
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
+#define VIEW_WIDTH self.view.frame.size.width
+#define VIEW_HEIGHT self.view.frame.size.height
 
 #define HUD_Define \
 HUD = [[MBProgressHUD alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];\

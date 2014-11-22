@@ -110,7 +110,7 @@
     
     //sleep(3);
     
-    if (USER_LOGIN) {
+    if (USER_LOGIN || USER_SKIP_LOGIN) {
         
         HUD_Define
         [HUD show:YES];

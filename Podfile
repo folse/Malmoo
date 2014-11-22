@@ -1,4 +1,4 @@
-platform:ios, '8.0'
+platform:ios, '7.0'
 pod 'BlocksKit', '2.2.5'
 pod 'AFNetworking', '2.2.0'
 pod 'EAIntroView', '2.6.0'

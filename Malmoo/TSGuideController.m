@@ -18,12 +18,19 @@
 
 @implementation TSGuideController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
     if (USER_LOGIN) {
         [self dismissViewControllerAnimated:YES completion:nil];
+        
     }
 }
 
@@ -31,14 +38,20 @@
 {
     [super viewDidLoad];
     
-    [self showBgAnimation];
+    [_firstBgImageView setFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT+20)];
+
+    [_secondBgImageView setFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT)];
+    
+    [_firstBgImageView setImage:[UIImage imageNamed:@"bg_start_1"]];
+    
+    [self performSelector:@selector(showBgAnimation) withObject:nil afterDelay:1];
 }
 
 -(void)showBgAnimation
 {
-    [UIView animateWithDuration:4.5 animations:^{
+    [UIView animateWithDuration:1.5 animations:^{
         
-        [_firstBgImageView setFrame:CGRectMake(-_firstBgImageView.image.size.width+210, 10, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
+        //[_firstBgImageView setFrame:CGRectMake(-30, 0, VIEW_WIDTH, VIEW_HEIGHT)];
         
     } completion:^(BOOL finished) {
         
@@ -48,9 +61,11 @@
             
         } completion:^(BOOL finished) {
             
-            [UIView animateWithDuration:4.5 animations:^{
+            [_thirdBgImageView setFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT)];
+            
+            [UIView animateWithDuration:2.5 animations:^{
                 
-                [_secondBgImageView setFrame:CGRectMake(102, -60, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
+                //[_secondBgImageView setFrame:CGRectMake(80, 0, VIEW_WIDTH, VIEW_HEIGHT)];
                 
             } completion:^(BOOL finished) {
                 
@@ -60,25 +75,25 @@
                     
                 } completion:^(BOOL finished) {
                     
-                    [UIView animateWithDuration:4.5 animations:^{
+                    [UIView animateWithDuration:2.5 animations:^{
                         
-                        [_thirdBgImageView setFrame:CGRectMake(20, 0, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
+                        //[_thirdBgImageView setFrame:CGRectMake(-20, 0, VIEW_WIDTH, VIEW_HEIGHT)];
                         
                     } completion:^(BOOL finished) {
                         
-                        [UIView animateWithDuration:1.0 animations:^{
-                            
-                            [_firstBgImageView setAlpha:1];
-                            
-                        } completion:^(BOOL finished) {
-                            
-                            [UIView animateWithDuration:3.8 animations:^{
-                                
-                                [_firstBgImageView setFrame:CGRectMake(-38, -30, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
-                                
-                            } completion:nil];
-                            
-                        }];
+//                        [UIView animateWithDuration:1.0 animations:^{
+//                            
+//                            [_firstBgImageView setAlpha:1];
+//                            
+//                        } completion:^(BOOL finished) {
+//                            
+//                            [UIView animateWithDuration:3.8 animations:^{
+//                                
+//                                [_firstBgImageView setFrame:CGRectMake(-38, -30, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
+//                                
+//                            } completion:nil];
+//                            
+//                        }];
                     }];
                 }];
             }];
@@ -93,7 +108,9 @@
 
 - (IBAction)dismissPageAction:(id)sender
 {
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [USER setBool:YES forKey:@"userSkipLogin"];
+    }];
 }
 
 /*

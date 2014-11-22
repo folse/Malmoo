@@ -69,8 +69,16 @@
         
         s(data)
         
-        UINavigationController *navController = [MUTILANGUAGE_STORYBOARD instantiateViewControllerWithIdentifier:@"mutiLanguageMenuNav"];
-        [self.sideMenuController setContentController:navController animated:YES];
+        if ([data isEqualToString:@"test"]) {
+            
+            UINavigationController *navController = [MUTILANGUAGE_STORYBOARD instantiateViewControllerWithIdentifier:@"mutiLanguageMenuNav"];
+            [self.sideMenuController setContentController:navController animated:YES];
+            
+        }else{
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Can't find this" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
     }];
     [self presentViewController:scannerController animated:YES completion:nil];
 }
