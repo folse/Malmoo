@@ -51,12 +51,12 @@
             if (!error) {
 
                 [USER setBool:YES forKey:@"userLogined"];
-
-                [USER setBool:YES forKey:@"needContinueFavorite"];
                 
                 [SVProgressHUD showSuccessWithStatus:@"Success"];
                 
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"afterLogin" object:nil];
+                }];
                 
             }else{
                 

@@ -49,18 +49,12 @@
 {
     [super viewWillAppear:animated];
     
-    _place.favourited = NO;
-    
     [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if ([USER boolForKey:@"needContinueFavorite"] && USER_LOGIN) {
-        [self favoriteButtonAction];
-    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -87,7 +81,6 @@
     [detailView.addressButton setTitle:_place.address forState:UIControlStateNormal];
     [detailView.addressButton.titleLabel setNumberOfLines:3];
     [detailView.descriptionLabel setText:_place.descriptions];
-    
     
     if (!_place.parking) {
         [detailView.parkingLabel setAlpha:0.2];
@@ -122,11 +115,6 @@
         [detailView.phoneButton setEnabled:NO];
     }
     
-    if (_place.favourited) {
-        
-        [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
-    }
-    
     _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
     [self.tableView addSubview:_glassScrollView];
@@ -146,6 +134,32 @@
     [detailView.phoneButton addTarget:self action:@selector(phoneButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     [detailView.openHourButton addTarget:self action:@selector(openHourButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self getFavorite];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(favoriteButtonAction) name:@"afterLogin" object:nil];
+    
+     [self removeNavigationBarShadow];
+}
+
+-(void)getFavorite
+{
+    if (USER_LOGIN) {
+        PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
+        [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+        [favoriteQuery whereKey:@"place" equalTo:_place.parseObject];
+        [favoriteQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+            if(number > 0){
+                
+                _place.favourited = YES;
+                [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
+            }
+        }];
+        
+        if (_place.favourited){
+            [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
+        }
+    }
 }
 
 -(void)addFavorite

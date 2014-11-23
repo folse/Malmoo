@@ -30,7 +30,6 @@
     
     if (USER_LOGIN) {
         [self dismissViewControllerAnimated:YES completion:nil];
-        
     }
 }
 

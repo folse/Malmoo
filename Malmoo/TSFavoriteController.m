@@ -19,10 +19,12 @@
     int pageId;
     int PAGE_COUNT;
     int PAGE_NUM;
+    int skipCount;
     NSInteger lastDataCount;
     NSInteger selectedId;
     MJRefreshFooterView *_footer;
     PFGeoPoint *currentGeoPoint;
+    PFQuery *favoriteQuery;
 }
 
 @end
@@ -51,11 +53,46 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (USER_LOGIN && placeArray.count == 0) {
+    [super viewDidAppear:animated];
+    
+    if (USER_LOGIN) {
         
-        HUD_SHOW
+        favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
+        
+        NSInteger rows = [self.tableView numberOfRowsInSection:0];
+        
+        if(rows == 0){
+            
+            HUD_SHOW
+            
+            PAGE_NUM = 0;
+            PAGE_COUNT = 15;
+            
+            placeArray = [NSMutableArray new];
+            placeObjectArray = [NSMutableArray new];
+            
+            favoriteQuery.limit = PAGE_COUNT;
+            favoriteQuery.skip = PAGE_NUM*PAGE_COUNT;
+            
+        }else{
+            
+            [placeArray removeAllObjects];
+            favoriteQuery.limit = rows;
+        }
         
         [self getDataFromServer];
+    }
+}
+
+-(void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    if (USER_LOGIN) {
+        
+        [self removeNavigationBarShadow];
+        
+        [self addFooter];
         
     }else{
         
@@ -64,20 +101,6 @@
             
         }];
     }
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self removeNavigationBarShadow];
-    
-    PAGE_NUM = 0;
-    PAGE_COUNT = 15;
-    
-    placeArray = [NSMutableArray new];
-    placeObjectArray = [NSMutableArray new];
-    
-    [self addFooter];
 }
 
 -(void)getDataFromServer
@@ -89,27 +112,32 @@
             
             currentGeoPoint = geoPoint;
             
-            PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
             [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-            i(PAGE_COUNT)
-            i(PAGE_COUNT*PAGE_NUM)
-            favoriteQuery.limit = PAGE_COUNT;
-            favoriteQuery.skip = PAGE_NUM*PAGE_COUNT;
-            for(PFObject *favorite in [favoriteQuery findObjects]){
-                
-                PFObject *place = favorite[@"place"];
-                [self findPlace:place.objectId];
-            }
             
-            if(placeObjectArray.count > 0){
+            [favoriteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 
-                [self getTableViewData];
-            }
-            
-            if (PAGE_NUM > 0) {
-                lastDataCount = placeObjectArray.count;
-                [self doneLoadMore];
-            }
+                i(objects.count)
+                
+                for(PFObject *favorite in objects){
+                    
+                    PFObject *place = favorite[@"place"];
+                    [self findPlace:place.objectId];
+                }
+                
+                if(placeObjectArray.count > 0){
+                    
+                    [self getTableViewData];
+                }
+                
+                HUD_DISMISS
+                [self.tableView reloadData];
+                [self.tableView setHidden:NO];
+                
+                if (PAGE_NUM > 0) {
+                    lastDataCount = placeObjectArray.count;
+                    [self doneLoadMore];
+                }
+            }];
             
         }else{
             
@@ -145,6 +173,7 @@
         place.delivery = [object[@"delivery"] boolValue];
         place.reservation = [object[@"phone_reservation"] boolValue];
         place.parseObject = object;
+        place.favourited = YES;
         //place.tags = object[@"tag"];
         
         PFGeoPoint *location = object[@"location"];
@@ -165,10 +194,6 @@
         
         [placeArray addObject:place];
     }
-    
-    HUD_DISMISS
-    [self.tableView reloadData];
-    [self.tableView setHidden:NO];
 }
 
 - (void)addFooter
@@ -178,6 +203,9 @@
     footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
         
         PAGE_NUM += 1;
+        
+        favoriteQuery.limit = PAGE_COUNT;
+        favoriteQuery.skip = PAGE_NUM*PAGE_COUNT;
         
         [self getDataFromServer];
         

@@ -77,7 +77,7 @@
             
         }else{
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Can't find this" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't find this place", nil) message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alertView show];
         }
     }];
