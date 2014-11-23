@@ -49,8 +49,9 @@
             HUD_DISMISS
             
             if (!error) {
-                
+
                 [USER setBool:YES forKey:@"userLogined"];
+
                 [USER setBool:YES forKey:@"needContinueFavorite"];
                 
                 [SVProgressHUD showSuccessWithStatus:@"Success"];

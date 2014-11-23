@@ -161,9 +161,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s24-Y0-NrV" id="vTh-zS-5Vb">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6E-f6-amX">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6E-f6-amX">
                                                     <rect key="frame" x="30" y="7" width="260" height="30"/>
-                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -175,9 +175,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fIC-Nj-YHM" id="ch4-PF-Bp2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w1l-EV-tUA">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w1l-EV-tUA">
                                                     <rect key="frame" x="30" y="7" width="260" height="30"/>
-                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
@@ -272,7 +272,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rmr-oJ-zfl">
                                                     <rect key="frame" x="30" y="7" width="260" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -285,7 +285,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qj7-5v-E24">
                                                     <rect key="frame" x="30" y="7" width="260" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
@@ -298,7 +298,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vyy-Ui-Lmu">
                                                     <rect key="frame" x="30" y="7" width="260" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>

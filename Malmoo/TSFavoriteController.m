@@ -45,28 +45,26 @@
     [super viewWillAppear:animated];
     
     [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    
+    HUD_DISMISS
 }
 
-//-(void)viewDidAppear:(BOOL)animated
-//{
-  //  [self viewDidAppear:animated];
-    
-//    if (USER_LOGIN) {
-//        
-//        HUD_SHOW
-//        
-//        PAGE_NUM = 0;
-//        
-//        [[[NSThread alloc] initWithTarget:self selector:@selector(getData) object:nil] start];
-//        
-//    }else{
-//        
-//        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
-//        [self presentViewController:guideController animated:YES completion:^{
-//            
-//        }];
-//    }
-//}
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (USER_LOGIN && placeArray.count == 0) {
+        
+        HUD_SHOW
+        
+        [self getDataFromServer];
+        
+    }else{
+        
+        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+        [self presentViewController:guideController animated:YES completion:^{
+            
+        }];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -80,43 +78,42 @@
     placeObjectArray = [NSMutableArray new];
     
     [self addFooter];
-    
-    if (USER_LOGIN) {
-        
-        HUD_SHOW
-        
-        [[[NSThread alloc] initWithTarget:self selector:@selector(getData) object:nil] start];
-        
-    }else{
-        
-        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
-        [self presentViewController:guideController animated:YES completion:^{
-            
-        }];
-    }
 }
 
--(void)getData
+-(void)getDataFromServer
 {
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
+            
+            [placeObjectArray removeAllObjects];
             
             currentGeoPoint = geoPoint;
             
             PFQuery *favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
             [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+            i(PAGE_COUNT)
+            i(PAGE_COUNT*PAGE_NUM)
             favoriteQuery.limit = PAGE_COUNT;
             favoriteQuery.skip = PAGE_NUM*PAGE_COUNT;
-            s(favoriteQuery)
             for(PFObject *favorite in [favoriteQuery findObjects]){
                 
                 PFObject *place = favorite[@"place"];
                 [self findPlace:place.objectId];
             }
             
-            [self getTableViewData];
+            if(placeObjectArray.count > 0){
+                
+                [self getTableViewData];
+            }
+            
+            if (PAGE_NUM > 0) {
+                lastDataCount = placeObjectArray.count;
+                [self doneLoadMore];
+            }
             
         }else{
+            
+            HUD_DISMISS
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Please check your location settings",nil) message:NSLocalizedString(@"Maybe network issues",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
             [alertView show];
@@ -172,11 +169,6 @@
     HUD_DISMISS
     [self.tableView reloadData];
     [self.tableView setHidden:NO];
-    
-    lastDataCount = placeObjectArray.count;
-    if (PAGE_NUM > 0) {
-        [self doneLoadMore];
-    }
 }
 
 - (void)addFooter
@@ -187,7 +179,7 @@
         
         PAGE_NUM += 1;
         
-        [self getData];
+        [self getDataFromServer];
         
     };
     _footer = footer;

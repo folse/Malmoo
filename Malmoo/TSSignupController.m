@@ -58,11 +58,7 @@
             if (!error) {
                 
                 [USER setBool:YES forKey:@"userLogined"];
-                
-                if (user.isAuthenticated) {
-                    s(@"logined");
-                    s([PFUser currentUser])
-                }
+                                
                 [USER setBool:YES forKey:@"needContinueFavorite"];
                 
                 [SVProgressHUD showSuccessWithStatus:@"Success"];

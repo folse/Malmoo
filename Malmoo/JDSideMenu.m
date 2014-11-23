@@ -20,6 +20,7 @@ const CGFloat JDSideMenuDefaultCloseAnimationTime = 0.4;
 @interface JDSideMenu ()
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) UIPanGestureRecognizer *tapRecognizer;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @end
 
@@ -61,6 +62,9 @@ const CGFloat JDSideMenuDefaultCloseAnimationTime = 0.4;
     [self.view addSubview:_containerView];
     
     // setup gesture recognizers
+    
+    self.tapRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+    [self.containerView addGestureRecognizer:self.tapRecognizer];
     
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
     [self.containerView addGestureRecognizer:self.panRecognizer];
@@ -125,20 +129,12 @@ const CGFloat JDSideMenuDefaultCloseAnimationTime = 0.4;
     
     if ([self isMenuVisible]) {
         [self hideMenuAnimated:YES];
-            } else {
-        [self showMenuAnimated:YES];
     }
 }
 
 - (void)panRecognized:(UIPanGestureRecognizer*)recognizer
 {
     if (!self.panGestureEnabled) return;
-    
-    if ([self isMenuVisible]) {
-        [self hideMenuAnimated:YES];
-    } else {
-        [self showMenuAnimated:YES];
-    }
     
     CGPoint translation = [recognizer translationInView:recognizer.view];
     CGPoint velocity = [recognizer velocityInView:recognizer.view];
