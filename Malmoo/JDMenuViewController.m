@@ -7,8 +7,8 @@
 //
 
 #import "UIViewController+JDSideMenu.h"
-
 #import "JDMenuViewController.h"
+#import "UMFeedback.h"
 
 @interface JDMenuViewController ()
 
@@ -83,5 +83,10 @@
     [self presentViewController:scannerController animated:YES completion:nil];
 }
 
+- (IBAction)feedbackButtonAction:(id)sender
+{
+    UINavigationController *navController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"feedbackNav"];
+    [self.sideMenuController setContentController:navController animated:YES];
+}
 
 @end

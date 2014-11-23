@@ -34,8 +34,7 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - Bolts (1.1.3)
-  - EAIntroView (2.6.0)
-  - Facebook-iOS-SDK (3.19.0):
+  - Facebook-iOS-SDK (3.20.0):
     - Bolts (~> 1.0)
   - Parse (1.2.20):
     - Facebook-iOS-SDK (~> 3.11)
@@ -45,27 +44,28 @@ PODS:
     - SDWebImage (~> 3.0)
   - SDWebImage/Core (3.7.1)
   - UMengAnalytics (3.1.8)
+  - UMengFeedback (2.0)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
   - AFNetworking (= 2.2.0)
   - BlocksKit (= 2.2.5)
-  - EAIntroView (= 2.6.0)
   - Parse (= 1.2.20)
   - SDWebImage-ProgressView (= 0.3.1)
   - UMengAnalytics (= 3.1.8)
+  - UMengFeedback (= 2.0)
   - ZBarSDK (= 1.3.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5f2538aa2d150b71d4e6cca3a420d796e1e1c374
   BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
-  EAIntroView: 1223ef380aef3e2285508016a083d70e80c48a30
-  Facebook-iOS-SDK: cb7d74759d0b1ba546e6e6f1dde407b0d4e448d6
+  Facebook-iOS-SDK: 5854404b4b651f612a8ef79ca06d766858f4cb8e
   Parse: 28c0dc54f30201a369d29a2f76c09fa43b2add16
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SDWebImage-ProgressView: 7b7a9512cbf22d0d6e3d20d9aa8b03e1940d164f
   UMengAnalytics: c263b4e0f27e91551b7e79eacdf812f1bae0e256
+  UMengFeedback: 459e807bb22812f6169ea150e4f0458049fad2d5
   ZBarSDK: 3ed560856963f765b66d834f464590bd6ba13b44
 
 COCOAPODS: 0.34.4

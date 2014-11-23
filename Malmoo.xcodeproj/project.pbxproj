@@ -55,6 +55,7 @@
 		A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6C18DB604E0053DE81 /* TSCategoryController.m */; };
 		A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830BA218DBF5340053DE81 /* TSPlaceMark.m */; };
 		A18AA9591A13BA7F00D931E6 /* TSMutiLanguageMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18AA9581A13BA7F00D931E6 /* TSMutiLanguageMenuController.m */; };
+		A1A4B7941A219A9200B0D1A8 /* TSFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A4B7931A219A9200B0D1A8 /* TSFeedbackController.m */; };
 		A1AE450C19EF75C4004B328B /* TSLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450B19EF75C4004B328B /* TSLoginController.m */; };
 		A1AE451019EF7657004B328B /* TSSignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AE450F19EF7657004B328B /* TSSignupController.m */; };
 		A1AF39711A19AC91006F26F5 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1AF39731A19AC91006F26F5 /* Account.storyboard */; };
@@ -183,6 +184,8 @@
 		A1830BA218DBF5340053DE81 /* TSPlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPlaceMark.m; sourceTree = "<group>"; };
 		A18AA9571A13BA7F00D931E6 /* TSMutiLanguageMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMutiLanguageMenuController.h; sourceTree = "<group>"; };
 		A18AA9581A13BA7F00D931E6 /* TSMutiLanguageMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMutiLanguageMenuController.m; sourceTree = "<group>"; };
+		A1A4B7921A219A9200B0D1A8 /* TSFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFeedbackController.h; sourceTree = "<group>"; };
+		A1A4B7931A219A9200B0D1A8 /* TSFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFeedbackController.m; sourceTree = "<group>"; };
 		A1AE450A19EF75C4004B328B /* TSLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLoginController.h; sourceTree = "<group>"; };
 		A1AE450B19EF75C4004B328B /* TSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLoginController.m; sourceTree = "<group>"; };
 		A1AE450E19EF7657004B328B /* TSSignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSignupController.h; sourceTree = "<group>"; };
@@ -520,6 +523,8 @@
 				A1AE450F19EF7657004B328B /* TSSignupController.m */,
 				A150B78F1A105B8F0044A1BE /* TSFavoriteController.h */,
 				A150B7901A105B8F0044A1BE /* TSFavoriteController.m */,
+				A1A4B7921A219A9200B0D1A8 /* TSFeedbackController.h */,
+				A1A4B7931A219A9200B0D1A8 /* TSFeedbackController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -819,6 +824,7 @@
 				A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */,
 				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
 				A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */,
+				A1A4B7941A219A9200B0D1A8 /* TSFeedbackController.m in Sources */,
 				A18AA9591A13BA7F00D931E6 /* TSMutiLanguageMenuController.m in Sources */,
 				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
@@ -982,8 +988,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: feng zhu (9EJXYJ953W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: feng zhu (9EJXYJ953W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1014,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1031,7 +1037,7 @@
 					/Users/folse/Desktop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0ffbef0e-4600-44f3-81a4-943b1521219e";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

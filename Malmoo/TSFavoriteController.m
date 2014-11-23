@@ -107,6 +107,7 @@
             [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
             favoriteQuery.limit = PAGE_COUNT;
             favoriteQuery.skip = PAGE_NUM*PAGE_COUNT;
+            s(favoriteQuery)
             for(PFObject *favorite in [favoriteQuery findObjects]){
                 
                 PFObject *place = favorite[@"place"];

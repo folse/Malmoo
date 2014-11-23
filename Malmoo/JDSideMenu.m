@@ -123,16 +123,22 @@ const CGFloat JDSideMenuDefaultCloseAnimationTime = 0.4;
 {
     if (!self.tapGestureEnabled) return;
     
-    if (![self isMenuVisible]) {
-        [self showMenuAnimated:YES];
-    } else {
+    if ([self isMenuVisible]) {
         [self hideMenuAnimated:YES];
+            } else {
+        [self showMenuAnimated:YES];
     }
 }
 
 - (void)panRecognized:(UIPanGestureRecognizer*)recognizer
 {
     if (!self.panGestureEnabled) return;
+    
+    if ([self isMenuVisible]) {
+        [self hideMenuAnimated:YES];
+    } else {
+        [self showMenuAnimated:YES];
+    }
     
     CGPoint translation = [recognizer translationInView:recognizer.view];
     CGPoint velocity = [recognizer velocityInView:recognizer.view];

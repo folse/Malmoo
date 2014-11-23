@@ -57,7 +57,10 @@
 - (IBAction)logoutButtonAction:(id)sender
 {
     [USER setBool:NO forKey:@"userLogined"];
+    [USER setBool:NO forKey:@"userSkipLogin"];
     
+    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]];
     [SVProgressHUD showSuccessWithStatus:@"Success"];
 }
 

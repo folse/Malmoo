@@ -21,7 +21,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -38,66 +38,29 @@
 {
     [super viewDidLoad];
     
-    [_firstBgImageView setFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT+20)];
-
-    [_secondBgImageView setFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT)];
-    
-    [_firstBgImageView setImage:[UIImage imageNamed:@"bg_start_1"]];
-    
-    [self performSelector:@selector(showBgAnimation) withObject:nil afterDelay:1];
+    [self performSelector:@selector(showBg1Animation) withObject:nil afterDelay:3];
 }
 
--(void)showBgAnimation
+-(void)showBg1Animation
 {
-    [UIView animateWithDuration:1.5 animations:^{
-        
-        //[_firstBgImageView setFrame:CGRectMake(-30, 0, VIEW_WIDTH, VIEW_HEIGHT)];
+    [UIView animateWithDuration:3 animations:^{
+                
+        [_firstBgImageView setAlpha:0];
         
     } completion:^(BOOL finished) {
         
-        [UIView animateWithDuration:1.0 animations:^{
-            
-            [_firstBgImageView setAlpha:0];
-            
-        } completion:^(BOOL finished) {
-            
-            [_thirdBgImageView setFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_HEIGHT)];
-            
-            [UIView animateWithDuration:2.5 animations:^{
-                
-                //[_secondBgImageView setFrame:CGRectMake(80, 0, VIEW_WIDTH, VIEW_HEIGHT)];
-                
-            } completion:^(BOOL finished) {
-                
-                [UIView animateWithDuration:1.0 animations:^{
-                    
-                    [_secondBgImageView setAlpha:0];
-                    
-                } completion:^(BOOL finished) {
-                    
-                    [UIView animateWithDuration:2.5 animations:^{
-                        
-                        //[_thirdBgImageView setFrame:CGRectMake(-20, 0, VIEW_WIDTH, VIEW_HEIGHT)];
-                        
-                    } completion:^(BOOL finished) {
-                        
-//                        [UIView animateWithDuration:1.0 animations:^{
-//                            
-//                            [_firstBgImageView setAlpha:1];
-//                            
-//                        } completion:^(BOOL finished) {
-//                            
-//                            [UIView animateWithDuration:3.8 animations:^{
-//                                
-//                                [_firstBgImageView setFrame:CGRectMake(-38, -30, _firstBgImageView.frame.size.width, _firstBgImageView.frame.size.height)];
-//                                
-//                            } completion:nil];
-//                            
-//                        }];
-                    }];
-                }];
-            }];
-        }];
+        [self performSelector:@selector(showBg2Animation) withObject:nil afterDelay:3];
+    }];
+}
+
+-(void)showBg2Animation
+{
+    [UIView animateWithDuration:3 animations:^{
+        
+        [_secondBgImageView setAlpha:0];
+        
+    } completion:^(BOOL finished) {
+        
     }];
 }
 

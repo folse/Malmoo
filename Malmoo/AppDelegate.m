@@ -10,6 +10,7 @@
 #import "TSMainController.h"
 #import "TSAccountController.h"
 #import "JDMenuViewController.h"
+#import "UMFeedback.h"
 
 @implementation AppDelegate
 
@@ -24,6 +25,9 @@
 
     [Parse setApplicationId:@"MQRrReTdb9c82PETy0BfUoL0ck6xGpwaZqelPWX5" clientKey:@"tocPd69YNtJQkzpuSY73pWA3O0f9HxA6K57mgubS"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [UMFeedback setAppkey:UMENG_APP_KEY];
+    [UMFeedback setLogEnabled:YES];
     [MobClick startWithAppkey:UMENG_APP_KEY reportPolicy:SEND_INTERVAL channelId:@"AppStore"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

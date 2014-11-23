@@ -27,7 +27,7 @@
 #define USER_ID [USER valueForKey:@"userId"]
 #define USER_NAME [USER valueForKey:@"userName"]
 #define USER_LOGIN [USER boolForKey:@"userLogined"]
-#define USER_SKIP_LOGIN [USER boolForKey:@"userSkipLogine"]
+#define USER_SKIP_LOGIN [USER boolForKey:@"userSkipLogin"]
 #define APP_COLOR [UIColor colorWithRed:18.0/255.0 green:168.0/255.0 blue:255.0/255.0 alpha:1.0]
 //#define APP_COLOR [UIColor colorWithRed:54.0/255.0 green:159.0/255.0 blue:220.0/255.0 alpha:1.0]
 
@@ -39,6 +39,13 @@
 #define MUTILANGUAGE_STORYBOARD [UIStoryboard storyboardWithName:@"MutiLanguage" bundle:nil]
 
 #define e(content) [MobClick event:content];
+
+#define AppVersionShort [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define AppVersionBuild [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+
+#define OS_Version [[UIDevice currentDevice] systemVersion]
+
+#define Device_Model [[UIDevice currentDevice] model]
 
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
