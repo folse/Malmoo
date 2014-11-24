@@ -7,8 +7,10 @@
 //
 
 #import "TSMoreController.h"
+#import "TSGuideController.h"
 
 @interface TSMoreController ()
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @end
 
@@ -28,6 +30,12 @@
     [super viewWillAppear:animated];
     
     [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+    
+    if (USER_LOGIN) {
+        [_logoutButton setTitle:NSLocalizedString(@"LOGOUT", @"") forState:UIControlStateNormal];
+    }else{
+        [_logoutButton setTitle:NSLocalizedString(@"LOGIN / SIGNUP", @"") forState:UIControlStateNormal];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -40,12 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,12 +60,34 @@
 
 - (IBAction)logoutButtonAction:(id)sender
 {
-    [USER setBool:NO forKey:@"userLogined"];
-    [USER setBool:NO forKey:@"userSkipLogin"];
-    
-    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]];
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]];
-    [SVProgressHUD showSuccessWithStatus:@"Success"];
+    if (USER_LOGIN) {
+        
+        [USER setBool:NO forKey:@"userLogined"];
+        [USER setBool:NO forKey:@"userSkipLogin"];
+        
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]];
+        [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]];
+        [SVProgressHUD showSuccessWithStatus:@"Success"];
+        
+        [_logoutButton setTitle:NSLocalizedString(@"LOGIN / SIGNUP", @"") forState:UIControlStateNormal];
+        
+        [self resetUserDefaults];
+        
+    }else{
+        
+        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+        [self presentViewController:guideController animated:YES completion:nil];
+    }
+}
+
+- (void)resetUserDefaults
+{
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dict = [defs dictionaryRepresentation];
+    for (id key in dict) {
+        [defs removeObjectForKey:key];
+    }
+    [defs synchronize];
 }
 
 - (IBAction)menuBtnAction:(id)sender

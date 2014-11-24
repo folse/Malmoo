@@ -271,7 +271,9 @@
                     
                     place.distance = [NSString stringWithFormat:@"%dm",(int)meters];
                     
-                    if (meters > 1000) {
+                    if (meters > 1000000) {
+                        place.distance = @"";
+                    }else if (meters > 1000) {
                         place.distance = [NSString stringWithFormat:@"%.01fkm",meters/1000];
                     }
                 }
@@ -347,7 +349,7 @@
     [cell.addressLabel setText:cellPlace.address];
     [cell.distanceLabel setText:cellPlace.distance];
     
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x130a0a80",cellPlace.avatarUrl];
     
     avatarUrl = [avatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[[UIImage imageNamed:@"img_empty"] unsharpen]];

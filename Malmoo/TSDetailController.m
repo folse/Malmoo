@@ -220,7 +220,7 @@
     if (_place.avatarUrl != nil) {
         
         NSString *bgHdImageUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/x%f/gravity/center/crop/%fx%f/quality/70",_place.avatarUrl,SCREEN_HEIGHT*2,SCREEN_WIDTH*2,SCREEN_HEIGHT*2];
-        s(bgHdImageUrl)
+
         bgHdImageUrl = [bgHdImageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         NSURL *hdImageURL = [NSURL URLWithString:bgHdImageUrl];

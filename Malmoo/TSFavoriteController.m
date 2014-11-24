@@ -115,9 +115,7 @@
             [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
             
             [favoriteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                
-                i(objects.count)
-                
+                            
                 for(PFObject *favorite in objects){
                     
                     PFObject *place = favorite[@"place"];
@@ -158,7 +156,6 @@
 -(void)getTableViewData
 {
     for (PFObject *object in placeObjectArray) {
-        //NSLog(@"%@", object);
         
         TSPlace *place = [TSPlace new];
         place.name = object[@"name"];
@@ -187,8 +184,10 @@
         CLLocationDistance meters = [placeLocation distanceFromLocation:currentLocation];
         
         place.distance = [NSString stringWithFormat:@"%dm",(int)meters];
-        
-        if (meters > 1000) {
+       
+        if (meters > 1000000) {
+            place.distance = @"";
+        }else if (meters > 1000) {
             place.distance = [NSString stringWithFormat:@"%.01fkm",meters/1000];
         }
         
