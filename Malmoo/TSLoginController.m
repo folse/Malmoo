@@ -40,7 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    e(@"loginController")
 }
 
 - (void)didReceiveMemoryWarning {

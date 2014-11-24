@@ -137,12 +137,16 @@
                 }
             }];
             
+            e(@"getFavoriteSuccess")
+            
         }else{
             
             HUD_DISMISS
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Please check your location settings",nil) message:NSLocalizedString(@"Maybe network issues",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
             [alertView show];
+            
+            e(@"getFavoriteFailed")
         }
     }];
 }

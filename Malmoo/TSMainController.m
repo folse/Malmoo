@@ -140,7 +140,6 @@
     //    [webView setDelegate:self];
     //
     //[self clearData];
-    
 }
 
 -(void)removeNavigationBarShadow

@@ -140,8 +140,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(favoriteButtonAction) name:@"afterLogin" object:nil];
     
     [self removeNavigationBarShadow];
-    
-    e(@"DetailController")
 }
 
 -(void)getFavorite
@@ -151,11 +149,20 @@
         [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
         [favoriteQuery whereKey:@"place" equalTo:_place.parseObject];
         [favoriteQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-            if(number > 0){
+
+            if (!error) {
+                if(number > 0){
+                    
+                    _place.favourited = YES;
+                    [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
+                }
+                e(@"getDetailFavoriteSuccess")
                 
-                _place.favourited = YES;
-                [detailView.favoriteButton setImage:[UIImage imageNamed:@"icon_star_pressed"] forState:UIControlStateNormal];
+            }else{
+                
+                e(@"getDetailFavoriteFailed")
             }
+            
         }];
         
         if (_place.favourited){

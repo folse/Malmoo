@@ -50,8 +50,6 @@
     _feedback = [UMFeedback sharedInstance];
     _feedback.delegate = self;
     [_feedback get];
-    
-    e(@"FeedbackController")
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
