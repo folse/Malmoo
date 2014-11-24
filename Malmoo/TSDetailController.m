@@ -139,7 +139,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(favoriteButtonAction) name:@"afterLogin" object:nil];
     
-     [self removeNavigationBarShadow];
+    [self removeNavigationBarShadow];
+    
+    e(@"DetailController")
 }
 
 -(void)getFavorite

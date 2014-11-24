@@ -23,9 +23,18 @@
 
 @implementation TSFeedbackController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewWillAppear:animated];
+    
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
     
     [self.view endEditing:YES];
 }
@@ -41,6 +50,8 @@
     _feedback = [UMFeedback sharedInstance];
     _feedback.delegate = self;
     [_feedback get];
+    
+    e(@"FeedbackController")
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
@@ -66,6 +77,8 @@
         [feedbackDictionary setObject:contentString forKey:@"content"];
         
         [_feedback post:feedbackDictionary];
+        
+        e(@"SendFeedback")
     }
 }
 
@@ -73,6 +86,8 @@
 {
     if (error != nil) {
         NSLog(@"%@", error);
+        e(@"getFeedbackFailed")
+        
     } else {
         [self.view endEditing:YES];
         
@@ -83,10 +98,20 @@
 
 - (void)postFinishedWithError:(NSError *)error
 {
-    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]];
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]];
-    [SVProgressHUD showSuccessWithStatus:@"Success"];
-    [_feedback get];
+    if (error != nil) {
+        e(@"postFeedbackFailed")
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", nil) message:NSLocalizedString(@"Maybe the network is slow, please try later", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil];
+        [alertView show];
+        
+    }else {
+        
+        [SVProgressHUD setForegroundColor:[UIColor colorWithRed:18/255.0 green:168/255.0 blue:245/255.0 alpha:1]];
+        [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8]];
+        [SVProgressHUD showSuccessWithStatus:@"Success"];
+        [_feedback get];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {

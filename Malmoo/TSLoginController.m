@@ -23,9 +23,24 @@
     NSString *passwordString;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    e(@"loginController")
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,12 +71,15 @@
                 
                 [self dismissViewControllerAnimated:YES completion:^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"afterLogin" object:nil];
+                    e(@"loginSuccess")
                 }];
                 
             }else{
                 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opps", @"") message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                 [alertView show];
+                
+                e(@"loginFailed")
                 
             }
         }];
@@ -75,7 +93,9 @@
 
 - (IBAction)dismissPage:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        e(@"loginExit")
+    }];
 }
 
 /*

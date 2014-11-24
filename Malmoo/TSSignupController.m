@@ -23,9 +23,22 @@
 
 @implementation TSSignupController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick beginLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
 }
 
@@ -63,12 +76,15 @@
                 
                 [self dismissViewControllerAnimated:YES completion:^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"afterLogin" object:nil];
+                    e(@"signupSuccess")
                 }];
                 
             } else {
                 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[NSString stringWithFormat:@"%@",[error userInfo]] delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
                 [alertView show];
+                
+                e(@"signupFailed")
             }
         }];
         
@@ -86,7 +102,9 @@
 
 - (IBAction)dismissPage:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        e(@"signupExit")
+    }];
 }
 
 /*
