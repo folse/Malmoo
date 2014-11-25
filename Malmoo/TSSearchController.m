@@ -176,6 +176,8 @@
         } else {
             
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+            e(@"searchGetResultFailed")
         }
     }];
 }

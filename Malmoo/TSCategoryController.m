@@ -102,6 +102,8 @@
         } else {
             
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+            e(@"categoryGetCategoryDataFailed")
         }
     }];
 }
@@ -158,6 +160,7 @@
     
     if (categoryArray.count > 0) {
         [self performSegueWithIdentifier:@"MainController" sender:self];
+        e(@"categorySelectedCategory")
     }
 }
 

@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "TSMainController.h"
-#import "TSAccountController.h"
 #import "JDMenuViewController.h"
 #import "UMFeedback.h"
 

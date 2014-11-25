@@ -37,17 +37,11 @@
 
 - (IBAction)segmentValueChanged:(id)sender
 {
-        
     if (_languageSegmentedControl.selectedSegmentIndex == 0) {
         
         
-        
-  
-        
     }else if (_languageSegmentedControl.selectedSegmentIndex == 1){
         
-        
-
     }
 }
 

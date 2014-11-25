@@ -73,10 +73,14 @@
         
         [self resetUserDefaults];
         
+        e(@"logout")
+        
     }else{
         
         TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
-        [self presentViewController:guideController animated:YES completion:nil];
+        [self presentViewController:guideController animated:YES completion:^{
+            e(@"moreLoginButton")
+        }];
     }
 }
 

@@ -67,11 +67,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)getLocation
-{
-    
-}
-
 /*
  #pragma mark - Navigation
  

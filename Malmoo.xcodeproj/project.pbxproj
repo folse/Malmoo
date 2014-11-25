@@ -79,7 +79,6 @@
 		A1C8EAE21A13A6BA006AE0B3 /* ZbarScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */; };
 		A1E7D7DD1A1DE0D300211132 /* MutiLanguage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */; };
 		A1E7D7E81A1DE63900211132 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1E7D7EA1A1DE63900211132 /* Localizable.strings */; };
-		A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E318CEAD05008E6F57 /* TSAccountController.m */; };
 		A1E838E718CEAD1C008E6F57 /* FSUtilSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */; };
 		A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */; };
 		A1E95B43191F1DD6009BE585 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3B191F1DD6009BE585 /* MJRefreshBaseView.m */; };
@@ -228,8 +227,6 @@
 		A1E7D7E31A1DE0F000211132 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/MutiLanguage.strings; sourceTree = "<group>"; };
 		A1E7D7EB1A1DE72500211132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1E7D7EC1A1DE8CC00211132 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A1E838E218CEAD05008E6F57 /* TSAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAccountController.h; sourceTree = "<group>"; };
-		A1E838E318CEAD05008E6F57 /* TSAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAccountController.m; sourceTree = "<group>"; };
 		A1E838E518CEAD1C008E6F57 /* FSUtilSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSUtilSettings.h; path = MalmooTests/FSUtilSettings.h; sourceTree = SOURCE_ROOT; };
 		A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSUtilSettings.m; path = MalmooTests/FSUtilSettings.m; sourceTree = SOURCE_ROOT; };
 		A1E95B38191F1DD6009BE585 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
@@ -557,8 +554,6 @@
 				A1830B6C18DB604E0053DE81 /* TSCategoryController.m */,
 				A1830B6818DB5C460053DE81 /* TSMoreController.h */,
 				A1830B6918DB5C460053DE81 /* TSMoreController.m */,
-				A1E838E218CEAD05008E6F57 /* TSAccountController.h */,
-				A1E838E318CEAD05008E6F57 /* TSAccountController.m */,
 				A11316EF191E81E800EC96B6 /* TSPromotionController.h */,
 				A11316F0191E81E800EC96B6 /* TSPromotionController.m */,
 				A16E678419BEB596005EE27B /* TSSearchController.h */,
@@ -683,7 +678,7 @@
 				ORGANIZATIONNAME = Folse;
 				TargetAttributes = {
 					A171E16818C6D186003113ED = {
-						DevelopmentTeam = 6XX8659PN2;
+						DevelopmentTeam = V68CP8VT5Z;
 					};
 					A171E18918C6D186003113ED = {
 						TestTargetID = A171E16818C6D186003113ED;
@@ -821,7 +816,6 @@
 				A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */,
 				A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */,
 				A1830B6A18DB5C460053DE81 /* TSMoreController.m in Sources */,
-				A1E838E418CEAD05008E6F57 /* TSAccountController.m in Sources */,
 				A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */,
 				A10BC27618D05C40002999F6 /* YSpinKitView.m in Sources */,
 				A1A4B7941A219A9200B0D1A8 /* TSFeedbackController.m in Sources */,
@@ -1019,7 +1013,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Qfpay Technology Company Limited";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -54,8 +54,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)mentBtnAction:(id)sender {
-    
+- (IBAction)mentBtnAction:(id)sender
+{
     JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
     
     if (sideMenu.isMenuVisible) {

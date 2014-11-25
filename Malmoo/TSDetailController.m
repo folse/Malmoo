@@ -264,7 +264,13 @@
                     
                 } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                     
-                    [self setBgImage:[image unsharpen] withHdImageURL:hdImageURL];
+                    if (!error) {
+                        
+                        [self setBgImage:[image unsharpen] withHdImageURL:hdImageURL];
+
+                    }else{
+                        e(@"getDetailHDPhotoFailed")
+                    }
                 }];
             }
         }
@@ -312,6 +318,8 @@
         } else {
             
             s(error)
+            
+            e(@"getDetailGetPhotosFailed")
         }
     }];
 }
@@ -469,6 +477,8 @@
     NSString *telUrl = [NSString stringWithFormat:@"telprompt:%@",[_place.phone stringByReplacingOccurrencesOfString:@" " withString:@""]];
     NSURL *url = [[NSURL alloc] initWithString:telUrl];
     [[UIApplication sharedApplication] openURL:url];
+    
+    e(@"detailPhoneButton")
 }
 
 -(void)mapButtonAction
@@ -477,9 +487,12 @@
         
         [self performSegueWithIdentifier:@"MapController" sender:self];
         
+        e(@"detailMapButton")
+        
     }else{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No location data",nil) message:NSLocalizedString(@"If you can make this address more particular, please 'report' us. Thanks~",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
+        e(@"detailMapButtonNoLocation")
     }
 }
 
@@ -488,6 +501,8 @@
     clickedPhotoType = @"product";
     
     [self performSegueWithIdentifier:@"PhotoCollectionController" sender:self];
+    
+    e(@"detailPhotoButton")
 }
 
 - (IBAction)menuButtonAction:(id)sender
@@ -495,6 +510,8 @@
     clickedPhotoType = @"menu";
     
     [self performSegueWithIdentifier:@"PhotoCollectionController" sender:self];
+    
+    e(@"detailMenuButton")
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -544,7 +561,9 @@
     
     // Fill out the email body text
     
-    [self presentViewController:picker animated:YES completion:nil];
+    [self presentViewController:picker animated:YES completion:^{
+        e(@"detailReportButton")
+    }];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
@@ -567,7 +586,9 @@
     UIActivityViewController *activityVC = [[UIActivityViewController alloc]
                                             initWithActivityItems: arrayOfActivityItems applicationActivities:nil];
     
-    [self.navigationController presentViewController:activityVC animated:YES completion:nil];
+    [self.navigationController presentViewController:activityVC animated:YES completion:^{
+        e(@"detailShareButton")
+    }];
 }
 
 -(void)favoriteButtonAction
@@ -594,12 +615,16 @@
             
         }];
     }
+    
+    e(@"detailFavoriteButton")
 }
 
 -(void)openHourButtonAction
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Open Hour",nil) message:_place.openHours delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
     [alertView show];
+    
+    e(@"detailOpenHourButton")
 }
 
 @end

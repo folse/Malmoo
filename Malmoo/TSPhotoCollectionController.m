@@ -96,6 +96,8 @@
         } else {
             
             s(error)
+            
+            e(@"photoCollectionGetPhotosFailed")
         }
     }];
 }
