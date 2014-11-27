@@ -138,8 +138,8 @@
     
     //    webView = [[UIWebView alloc] init];
     //    [webView setDelegate:self];
-    //
-    //[self clearData];
+    
+    [self clearData];
 }
 
 -(void)removeNavigationBarShadow
@@ -551,7 +551,7 @@
 
 -(void)clearData
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
     query.skip = pageId * 100;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -622,25 +622,60 @@
     }];
 }
 
+//-(void)findDuplicateData:(PFObject *)eachObject
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
+//    [query whereKey:@"name" equalTo:eachObject[@"name"]];
+//    [query whereKey:@"formatted_address" equalTo:eachObject[@"formatted_address"]];
+//    [query whereKey:@"place_id" equalTo:eachObject[@"place_id"]];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//
+//        if (!error) {
+//
+//            for (int i = 0; i < objects.count - 1; i++) {
+//
+//                [objects[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                    if (succeeded) {
+//                        s(@"Delete Successful")
+//                    }
+//                }];
+//            }
+//
+//            clearId += 1;
+//
+//            if(clearId != 100){
+//                [self findDuplicateData:clearArray[clearId]];
+//            }else{
+//                clearId = 0;
+//                pageId += 1;
+//                i(pageId)
+//                [self clearData];
+//            }
+//
+//        } else {
+//
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
+//
+//    i(clearId)
+//}
+
 -(void)findDuplicateData:(PFObject *)eachObject
 {
-    NSString *name = eachObject[@"name"];
-    NSString *address = eachObject[@"formatted_address"];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    [query whereKey:@"name" equalTo:name];
-    [query whereKey:@"formatted_address" equalTo:address];
+    PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
+    [query whereKey:@"name" equalTo:eachObject[@"name"]];
+    [query whereKey:@"formatted_address" equalTo:eachObject[@"formatted_address"]];
+    [query whereKey:@"place_id" equalTo:eachObject[@"place_id"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (!error) {
             
             for (int i = 0; i < objects.count - 1; i++) {
                 
-                [objects[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (succeeded) {
-                        s(@"Delete Successful")
-                    }
-                }];
+                if ([objects[i] delete]) {
+                    s(@"Delete Successful")
+                }
             }
             
             clearId += 1;
