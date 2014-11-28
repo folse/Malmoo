@@ -31,6 +31,7 @@
     NSArray *resultArray;
     NSArray *clearArray;
     int clearId;
+    int photoArrayId;
     int pageId;
     int PAGE_COUNT;
     int PAGE_NUM;
@@ -42,6 +43,7 @@
     CLLocation *currentLocation;
     CLLocation *lastMapCenterLocation;
     CLLocationManager *locationManager;
+    NSArray *photoArray;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -98,9 +100,9 @@
         [locationManager requestAlwaysAuthorization];
     }
     
-    [locationManager startUpdatingLocation];
+    //[locationManager startUpdatingLocation];
     
-    //apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
+    apiKey = @"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY";
     
     PAGE_COUNT = 15;
     
@@ -553,6 +555,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
     query.skip = pageId * 100;
+    query.limit = 100;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
@@ -560,7 +563,9 @@
             
             //[self findDuplicateData:clearArray[clearId]];
             
-            [self copyPhotoData:clearArray[clearId]];
+            //[self copyPhotoData:clearArray[clearId]];
+            
+            [self addPhotoToParse:clearArray[clearId]];
             
             //[self replaceLocationData:clearArray[clearId]];
             
@@ -573,81 +578,138 @@
 
 -(void)addPhotoToParse:(PFObject *)eachObject
 {
-    NSArray *photoArray = eachObject[@"google_photos"];
+    s(eachObject[@"name"])
+    
+    NSString *googlePhotoDataString = [NSString stringWithFormat:@"%@",eachObject[@"google_photos"]];
+    googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"u'" withString:@"'"];
+    googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+    
+    s(googlePhotoDataString)
+    
+    photoArray = [NSJSONSerialization JSONObjectWithData:[googlePhotoDataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+    s(photoArray)
+    i(photoArray.count)
     
     if (photoArray.count > 0){
-    
-    PFRelation *relation = [eachObject relationForKey:@"photos"];
-    PFQuery *productPhotoQuery = [relation query];
-    productPhotoQuery.limit = 1;
-    [productPhotoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         
-        if (number > 0) {
-            
-            for (NSDictionary *photo in photoArray) {
-                
-                NSString *photoReference = photo[@"photo_reference"];
-                
-                currentObject = eachObject;
-                
-                [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
-            }
-        }
-    }];
-    
+        [self getPhotoUrl:photoArray[0]];
+        
+//        PFRelation *relation = [eachObject relationForKey:@"photos"];
+//        PFQuery *productPhotoQuery = [relation query];
+//        productPhotoQuery.limit = 1;
+//        [productPhotoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+//            
+//            if (!error && number == 0) {
+//                
+//                [self getPhotoUrl:photoArray[0]];
+//            }
+//        }];
+        
+    }else{
+        
+        [self goNextPhoto];
     }
 }
 
--(void)copyPhotoData:(PFObject *)eachObject
+-(void)getPhotoUrl:(PFObject *)eachObject
 {
-    NSString *photoUrl = eachObject[@"photo"];
-    NSArray *photoArray = eachObject[@"photos"];
+    NSString *photoReference = eachObject[@"photo_reference"];
     
-    if (photoArray.count > 0 && !photoUrl.length > 0) {
-        
-        s(@"hasPhoto")
-        
-        NSString *photoReference = eachObject[@"photos"][0][@"photo_reference"];
-        
-        currentObject = eachObject;
-        
-        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
-        
-    }else {
-        
-        clearId += 1;
-        
-        if(clearId != 100){
-            NSLog(@"cIearArrayId:%d",clearId);
-            [self copyPhotoData:clearArray[clearId]];
-        }else{
-            clearId = 0;
-            pageId += 1;
-            i(pageId)
-            [self clearData];
-        }
-    }
+    currentObject = eachObject;
+    
+    [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
 }
+
+//-(void)copyPhotoData:(PFObject *)eachObject
+//{
+//    NSString *photoUrl = eachObject[@"photo"];
+//    NSArray *photoArray = eachObject[@"photos"];
+//    
+//    if (photoArray.count > 0 && !photoUrl.length > 0) {
+//        
+//        s(@"hasPhoto")
+//        
+//        NSString *photoReference = eachObject[@"photos"][0][@"photo_reference"];
+//        
+//        currentObject = eachObject;
+//        
+//        [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
+//        
+//    }else {
+//        
+//        clearId += 1;
+//        
+//        if(clearId != 100){
+//            NSLog(@"cIearArrayId:%d",clearId);
+//            [self copyPhotoData:clearArray[clearId]];
+//        }else{
+//            clearId = 0;
+//            pageId += 1;
+//            i(pageId)
+//            [self clearData];
+//        }
+//    }
+//}
 
 -(void)savePhotoUrl:(PFObject *)object withUrl:(NSString *)photoUrl
 {
-    object[@"photo"] = photoUrl;
+    PFObject *photoObject = [PFObject objectWithClassName:@"Photo"];
+    photoObject[@"url"] = photoUrl;
+    
+    PFRelation *photoRelation = [object relationForKey:@"photos"];
+    [photoRelation addObject:photoObject];
     
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
-        clearId += 1;
+        photoArrayId += 1;
         
-        if(clearId != 100){
-            NSLog(@"cIearArrayId:%d",clearId);
-            [self copyPhotoData:clearArray[clearId]];
+        if (photoArray.count > photoArrayId) {
+            
+            [self getPhotoUrl:photoArray[photoArrayId]];
+            
         }else{
-            clearId = 0;
-            pageId += 1;
-            i(pageId)
-            [self clearData];
+            
+            [self goNextPhoto];
         }
     }];
 }
+
+-(void)goNextPhoto
+{
+    photoArrayId = 0;
+    
+    clearId += 1;
+    
+    if(clearId != 100){
+        NSLog(@"clearArrayId:%d",clearId);
+        [self addPhotoToParse:clearArray[clearId]];
+    }else{
+        clearId = 0;
+        pageId += 1;
+        i(pageId)
+        [self clearData];
+    }
+}
+
+//-(void)savePhotoUrl:(PFObject *)object withUrl:(NSString *)photoUrl
+//{
+//    object[@"photo"] = photoUrl;
+//    
+//    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        
+//        clearId += 1;
+//        
+//        if(clearId != 100){
+//            NSLog(@"cIearArrayId:%d",clearId);
+//            //[self copyPhotoData:clearArray[clearId]];
+//        }else{
+//            clearId = 0;
+//            pageId += 1;
+//            i(pageId)
+//            [self clearData];
+//        }
+//    }];
+//}
 
 //-(void)findDuplicateData:(PFObject *)eachObject
 //{
@@ -769,7 +831,8 @@
         
         if(clearId != 100){
             NSLog(@"cIearArrayId:%d",clearId);
-            [self copyPhotoData:clearArray[clearId]];
+            //[self copyPhotoData:clearArray[clearId]];
+            [self addPhotoToParse:clearArray[clearId]];
         }else{
             clearId = 0;
             pageId += 1;
