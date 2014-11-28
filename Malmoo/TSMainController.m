@@ -136,8 +136,8 @@
         
     }
     
-    //    webView = [[UIWebView alloc] init];
-    //    [webView setDelegate:self];
+    webView = [[UIWebView alloc] init];
+    [webView setDelegate:self];
     
     [self clearData];
 }
@@ -558,9 +558,9 @@
             
             clearArray = objects;
             
-            [self findDuplicateData:clearArray[clearId]];
+            //[self findDuplicateData:clearArray[clearId]];
             
-            //[self copyPhotoData:clearArray[clearId]];
+            [self copyPhotoData:clearArray[clearId]];
             
             //[self replaceLocationData:clearArray[clearId]];
             
@@ -569,6 +569,33 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+-(void)addPhotoToParse:(PFObject *)eachObject
+{
+    NSArray *photoArray = eachObject[@"google_photos"];
+    
+    if (photoArray.count > 0){
+    
+    PFRelation *relation = [eachObject relationForKey:@"photos"];
+    PFQuery *productPhotoQuery = [relation query];
+    productPhotoQuery.limit = 1;
+    [productPhotoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        
+        if (number > 0) {
+            
+            for (NSDictionary *photo in photoArray) {
+                
+                NSString *photoReference = photo[@"photo_reference"];
+                
+                currentObject = eachObject;
+                
+                [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
+            }
+        }
+    }];
+    
+    }
 }
 
 -(void)copyPhotoData:(PFObject *)eachObject
@@ -665,7 +692,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
     [query whereKey:@"name" equalTo:eachObject[@"name"]];
-    [query whereKey:@"formatted_address" equalTo:eachObject[@"formatted_address"]];
+    [query whereKey:@"address" equalTo:eachObject[@"address"]];
     [query whereKey:@"place_id" equalTo:eachObject[@"place_id"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
