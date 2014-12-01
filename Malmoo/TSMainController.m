@@ -138,10 +138,22 @@
         
     }
     
-    photoWebView = [[UIWebView alloc] init];
-    [photoWebView setDelegate:self];
+    PFQuery *menuQuery = [PFQuery queryWithClassName:@"Menu"];
+    [menuQuery whereKey:@"place" equalTo:[PFObject objectWithoutDataWithClassName:@"Place" objectId:@"LtzWpH6I6K"]];
+    [menuQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            
+            s(objects)
+            
+        }
+        
+    }];
     
-    [self clearData];
+//    photoWebView = [[UIWebView alloc] init];
+//    [photoWebView setDelegate:self];
+//    
+//    [self clearData];
 }
 
 -(void)removeNavigationBarShadow

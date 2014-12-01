@@ -7,8 +7,14 @@
 //
 
 #import "TSMutiLanguageMenuController.h"
+#import "TSMenuCell.h"
 
 @interface TSMutiLanguageMenuController ()
+{
+    BOOL hasSwedishMenu;
+    BOOL hasEnglishMenu;
+    BOOL hasChineseMenu;
+}
 @property (weak, nonatomic) IBOutlet UISegmentedControl *languageSegmentedControl;
 
 @end
@@ -29,9 +35,22 @@
     [MobClick endLogPageView:[NSString stringWithFormat:@"%@",[self class]]];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    //_languageSegmentedControl
+    
+    PFQuery *menuQuery = [PFQuery queryWithClassName:@"Menu"];
+    [menuQuery whereKey:@"place" equalTo:[PFObject objectWithoutDataWithClassName:@"Place" objectId:@"LtzWpH6I6K"]];
+    [menuQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+       
+        if (!error) {
+            
+            s(objects)
+            
+        }
+        
+    }];
+    
 
 }
 
@@ -63,27 +82,28 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 0;
+}
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    // Configure the cell...
+    TSMenuCell *cell = (TSMenuCell *)[tableView dequeueReusableCellWithIdentifier:@"menuCell" forIndexPath:indexPath];
+    [cell.nameLabel setText:@""];
+    [cell.priceLabel setText:@""];
+    [cell.descriptionLabel setText:@""];
+    
+    
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
