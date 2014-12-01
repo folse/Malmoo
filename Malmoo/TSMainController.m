@@ -563,11 +563,7 @@
             
             //[self findDuplicateData:clearArray[clearId]];
             
-            //[self copyPhotoData:clearArray[clearId]];
-            
             [self addPhotoToParse:clearArray[clearId]];
-            
-            //[self replaceLocationData:clearArray[clearId]];
             
         } else {
             
@@ -581,11 +577,13 @@
     if (eachObject && eachObject[@"name"]) {
         s(eachObject[@"name"])
         
-        NSString *googlePhotoDataString = [NSString stringWithFormat:@"%@",eachObject[@"google_photos"]];
-        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"u'" withString:@"'"];
-        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
-        s(googlePhotoDataString)
-        photoArray = [NSJSONSerialization JSONObjectWithData:[googlePhotoDataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+//        NSString *googlePhotoDataString = [NSString stringWithFormat:@"%@",eachObject[@"google_photos"]];
+//        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"u'" withString:@"'"];
+//        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+//        s(googlePhotoDataString)
+//        photoArray = [NSJSONSerialization JSONObjectWithData:[googlePhotoDataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        
+        photoArray = eachObject[@"g_photos"];
         
         if (photoArray.count > 0){
             
@@ -715,59 +713,59 @@
     i(clearId)
 }
 
--(void)replaceLocationData:(PFObject *)eachObject
-{
-    PFGeoPoint *location = eachObject[@"location"];
-    
-    if (!location) {
-        
-        NSString *lat = eachObject[@"geometry"][@"location"][@"lat"];
-        NSString *lng = eachObject[@"geometry"][@"location"][@"lng"];
-        
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
-        
-        eachObject[@"location"] = geoPoint;
-        
-        [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            
-            clearId += 1;
-            
-            if(clearId != 100){
-                
-                NSLog(@"cIearArrayId:%d",clearId);
-                
-                /* by folse
-                 Change this method name
-                 */
-                
-                //[self copyPhotoData:clearArray[clearId]];
-                [self replaceLocationData:clearArray[clearId]];
-                
-            }else{
-                
-                clearId = 0;
-                pageId += 1;
-                i(pageId)
-                [self clearData];
-                
-            }
-        }];
-        
-    }else {
-        
-        clearId += 1;
-        
-        if(clearId != 100){
-            NSLog(@"cIearArrayId:%d",clearId);
-            //[self copyPhotoData:clearArray[clearId]];
-            [self addPhotoToParse:clearArray[clearId]];
-        }else{
-            clearId = 0;
-            pageId += 1;
-            i(pageId)
-            [self clearData];
-        }
-    }
-}
+//-(void)replaceLocationData:(PFObject *)eachObject
+//{
+//    PFGeoPoint *location = eachObject[@"location"];
+//    
+//    if (!location) {
+//        
+//        NSString *lat = eachObject[@"geometry"][@"location"][@"lat"];
+//        NSString *lng = eachObject[@"geometry"][@"location"][@"lng"];
+//        
+//        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
+//        
+//        eachObject[@"location"] = geoPoint;
+//        
+//        [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            
+//            clearId += 1;
+//            
+//            if(clearId != 100){
+//                
+//                NSLog(@"cIearArrayId:%d",clearId);
+//                
+//                /* by folse
+//                 Change this method name
+//                 */
+//                
+//                //[self copyPhotoData:clearArray[clearId]];
+//                [self replaceLocationData:clearArray[clearId]];
+//                
+//            }else{
+//                
+//                clearId = 0;
+//                pageId += 1;
+//                i(pageId)
+//                [self clearData];
+//                
+//            }
+//        }];
+//        
+//    }else {
+//        
+//        clearId += 1;
+//        
+//        if(clearId != 100){
+//            NSLog(@"cIearArrayId:%d",clearId);
+//            //[self copyPhotoData:clearArray[clearId]];
+//            [self addPhotoToParse:clearArray[clearId]];
+//        }else{
+//            clearId = 0;
+//            pageId += 1;
+//            i(pageId)
+//            [self clearData];
+//        }
+//    }
+//}
 
 @end
