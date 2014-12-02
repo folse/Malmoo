@@ -374,25 +374,6 @@
                         <sections>
                             <tableViewSection id="AQ6-B3-gf4">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pCr-GA-n6C">
-                                        <rect key="frame" x="0.0" y="99" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pCr-GA-n6C" id="elP-Yo-VJz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-Rl-6x6">
-                                                    <rect key="frame" x="20" y="12" width="201" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="txH-QP-Wh8" kind="push" id="goC-6W-nCL"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RVE-Ed-jlN">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -658,7 +639,7 @@ please feel free to contact us at  xxxxx@xxx.se </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbF-vf-RiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="1973"/>
+            <point key="canvasLocation" x="1142" y="-847"/>
         </scene>
         <!--About Us-->
         <scene sceneID="Rui-kg-5f6">
@@ -756,6 +737,24 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
             </objects>
             <point key="canvasLocation" x="674" y="-177"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="M0e-zg-xZf">
+            <objects>
+                <navigationController storyboardIdentifier="favoritesNav" automaticallyAdjustsScrollViewInsets="NO" id="A5A-cZ-vNY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l6W-aY-4Mb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="txH-QP-Wh8" kind="relationship" relationship="rootViewController" id="j6h-pZ-kTn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85I-kY-e2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="-847"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg_cell_cover" width="320" height="65"/>
@@ -771,7 +770,7 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="bBj-Fg-8Li"/>
-        <segue reference="LAc-TF-0jY"/>
+        <segue reference="O4n-Tc-VCa"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.21176470589999999" green="0.62352941179999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

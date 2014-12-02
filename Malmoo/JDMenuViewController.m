@@ -85,6 +85,12 @@
     [self presentViewController:scannerController animated:YES completion:nil];
 }
 
+- (IBAction)favoriteButtonAction:(id)sender
+{
+     UINavigationController *navController = [MAIN_STORYBOARD instantiateViewControllerWithIdentifier:@"favoritesNav"];
+    [self.sideMenuController setContentController:navController animated:YES];
+}
+
 - (IBAction)feedbackButtonAction:(id)sender
 {
     UINavigationController *navController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"feedbackNav"];

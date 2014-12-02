@@ -77,12 +77,12 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="  SETTINGS" image="icon_settings">
+                            <state key="normal" title="  FAVORITES" image="icon_menu_star">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="moreBtnAction:" destination="-1" eventType="touchUpInside" id="leo-or-kKI"/>
+                                <action selector="favoriteButtonAction:" destination="-1" eventType="touchUpInside" id="kxi-Tv-mZD"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iIi-wf-hxC">
@@ -98,11 +98,25 @@
                                 <action selector="feedbackButtonAction:" destination="-1" eventType="touchUpInside" id="Qne-x2-dx2"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rHt-vY-Fig">
+                            <rect key="frame" x="34" y="472" width="211" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="  SETTINGS" image="icon_settings">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="moreBtnAction:" destination="-1" eventType="touchUpInside" id="gny-xf-64v"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
@@ -110,6 +124,7 @@
         <image name="icon_feedback" width="24" height="24"/>
         <image name="icon_home" width="23" height="23"/>
         <image name="icon_menu_scan" width="23" height="22"/>
+        <image name="icon_menu_star" width="23" height="22"/>
         <image name="icon_prize" width="23" height="22"/>
         <image name="icon_settings" width="21" height="21"/>
     </resources>
