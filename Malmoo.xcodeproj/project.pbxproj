@@ -24,6 +24,7 @@
 		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
 		A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546C19E94F290032AE03 /* UIImage+vImage.m */; };
 		A15FC10D1A2C0E5800AE708C /* TSMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15FC10C1A2C0E5800AE708C /* TSMenuCell.m */; };
+		A15FC1101A2D4A7300AE708C /* TSMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A15FC10F1A2D4A7300AE708C /* TSMenu.m */; };
 		A169DCA619E46B5B003D4846 /* FSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A169DCA519E46B5B003D4846 /* FSTableViewController.m */; };
 		A16E678619BEB596005EE27B /* TSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678519BEB596005EE27B /* TSSearchController.m */; };
 		A16E678919BEB5A4005EE27B /* TSDirectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E678819BEB5A4005EE27B /* TSDirectionController.m */; };
@@ -132,6 +133,8 @@
 		A154546C19E94F290032AE03 /* UIImage+vImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+vImage.m"; sourceTree = "<group>"; };
 		A15FC10B1A2C0E5800AE708C /* TSMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMenuCell.h; sourceTree = "<group>"; };
 		A15FC10C1A2C0E5800AE708C /* TSMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMenuCell.m; sourceTree = "<group>"; };
+		A15FC10E1A2D4A7300AE708C /* TSMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMenu.h; sourceTree = "<group>"; };
+		A15FC10F1A2D4A7300AE708C /* TSMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMenu.m; sourceTree = "<group>"; };
 		A169DCA419E46B5B003D4846 /* FSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTableViewController.h; sourceTree = "<group>"; };
 		A169DCA519E46B5B003D4846 /* FSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTableViewController.m; sourceTree = "<group>"; };
 		A16E678419BEB596005EE27B /* TSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSearchController.h; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 			children = (
 				A10BC27818D0713B002999F6 /* TSPlace.h */,
 				A10BC27918D0713B002999F6 /* TSPlace.m */,
+				A15FC10E1A2D4A7300AE708C /* TSMenu.h */,
+				A15FC10F1A2D4A7300AE708C /* TSMenu.m */,
 				A1165CB018F69D8300213808 /* TSPlaceCategory.h */,
 				A1165CB118F69D8300213808 /* TSPlaceCategory.m */,
 			);
@@ -781,6 +786,7 @@
 			files = (
 				A108B50618DC81D1004DDA65 /* FSUtilSettings.m in Sources */,
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
+				A15FC1101A2D4A7300AE708C /* TSMenu.m in Sources */,
 				A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */,
 				A12A9EA71A09C2880084376C /* TSGuideController.m in Sources */,
 				A171E17D18C6D186003113ED /* AppDelegate.m in Sources */,

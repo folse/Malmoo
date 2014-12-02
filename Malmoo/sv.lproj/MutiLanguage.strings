@@ -14,8 +14,8 @@
 /* Class = "IBUILabel"; text = "starter"; ObjectID = "AP0-Jh-Ysx"; */
 "AP0-Jh-Ysx.text" = "starter";
 
-/* Class = "IBUINavigationItem"; title = "Larry's Menu"; ObjectID = "FCh-wH-knP"; */
-"FCh-wH-knP.title" = "Larry's Menu";
+/* Class = "IBUINavigationItem"; title = "North East's Menu"; ObjectID = "FCh-wH-knP"; */
+"FCh-wH-knP.title" = "North East's Menu";
 
 /* Class = "IBUISegmentedControl"; Tod-yN-j8g.segmentTitles[0] = "English"; ObjectID = "Tod-yN-j8g"; */
 "Tod-yN-j8g.segmentTitles[0]" = "English";

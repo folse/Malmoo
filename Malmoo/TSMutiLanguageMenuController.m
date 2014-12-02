@@ -8,13 +8,14 @@
 
 #import "TSMutiLanguageMenuController.h"
 #import "TSMenuCell.h"
+#import "TSMenu.h"
 
 @interface TSMutiLanguageMenuController ()
 {
-    BOOL hasSwedishMenu;
-    BOOL hasEnglishMenu;
-    BOOL hasChineseMenu;
+    NSMutableArray *menuCategoryArray;
+    NSMutableDictionary *menuDictionary;
 }
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *languageSegmentedControl;
 
 @end
@@ -39,29 +40,95 @@
 {
     [super viewDidLoad];
     
+    menuCategoryArray = [NSMutableArray new];
+    
+    menuDictionary = [NSMutableDictionary new];
+    
+    [self getMenuData];
+}
+
+-(void)getMenuData
+{
     PFQuery *menuQuery = [PFQuery queryWithClassName:@"Menu"];
-    [menuQuery whereKey:@"place" equalTo:[PFObject objectWithoutDataWithClassName:@"Place" objectId:@"LtzWpH6I6K"]];
+    [menuQuery whereKey:@"place" equalTo:[PFObject objectWithoutDataWithClassName:@"Place" objectId:@"IdWVThJCuX"]];
     [menuQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-       
+        
         if (!error) {
             
-            s(objects)
+            //{"abc":["a","b","c"],"xyz":["x":"y","z"]}
             
+            for (PFObject *object in objects) {
+                
+                s(object)
+                NSMutableArray *menuArray;
+                PFObject *menuPhoto = object[@"photo"];
+                PFObject *category = object[@"category"];
+                
+                TSMenu *menu = [TSMenu new];
+                menu.englishName = object[@"English_name"];
+                menu.chineseName = object[@"Chinese_name"];
+                menu.swedishName = object[@"Swedish_name"];
+                menu.englishDescription = object[@"English_description"];
+                menu.chineseDescription = object[@"Chinese_description"];
+                menu.swedishDescription = object[@"Swedish_description"];
+                menu.price = [self convertPrice:object[@"price"]];
+                menu.avatarUrl = [PFQuery getObjectOfClass:@"Photo" objectId:menuPhoto.objectId][@"url"];
+                
+                if ([[menuDictionary allKeys] containsObject:category.objectId]) {
+                    
+                    menuArray = [menuDictionary objectForKey:category.objectId];
+                    
+                }else{
+                    
+                    menuArray = [NSMutableArray new];
+                }
+                
+                [menuArray addObject:menu];
+                
+                [menuDictionary setObject:menuArray forKey:category.objectId];
+            }
+            
+            [self getMenuCategory];
         }
-        
     }];
-    
+}
 
+-(void)getMenuCategory
+{
+    for (NSString *objectId in [menuDictionary allKeys]) {
+        
+        PFObject *menuCategory = [PFQuery getObjectOfClass:@"Category_Menu" objectId:objectId];
+        
+        [menuCategoryArray addObject:menuCategory];
+    }
+    
+    [self.tableView reloadData];
+}
+
+-(NSString *)convertPrice:(NSNumber *)priceNumber
+{
+    NSString *price = @"";
+    float fixPrice = [priceNumber floatValue] - [priceNumber intValue];
+    if (fixPrice > 0) {
+        price = [NSString stringWithFormat:@"%.2fkr",priceNumber.floatValue];
+    }else{
+        price = [NSString stringWithFormat:@"%dkr",priceNumber.intValue];
+    }
+    
+    return price;
 }
 
 - (IBAction)segmentValueChanged:(id)sender
 {
-    if (_languageSegmentedControl.selectedSegmentIndex == 0) {
-        
-        
-    }else if (_languageSegmentedControl.selectedSegmentIndex == 1){
-        
-    }
+//    if (_languageSegmentedControl.selectedSegmentIndex == 0) {
+//        
+//        
+//    }else if (_languageSegmentedControl.selectedSegmentIndex == 1){
+//        
+//        
+//    }
+    
+    [self.tableView reloadData];
 }
 
 - (IBAction)dismissPageAction:(id)sender
@@ -82,27 +149,100 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     // Return the number of sections.
-    return 0;
+    return menuDictionary.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
-    return 0;
+    
+    NSString *key = [menuDictionary allKeys][section];
+    
+    NSArray *menuArray = [menuDictionary objectForKey:key];
+    
+    return menuArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger row = indexPath.row;
     
-    TSMenuCell *cell = (TSMenuCell *)[tableView dequeueReusableCellWithIdentifier:@"menuCell" forIndexPath:indexPath];
-    [cell.nameLabel setText:@""];
-    [cell.priceLabel setText:@""];
-    [cell.descriptionLabel setText:@""];
+    NSString *key = [menuDictionary allKeys][indexPath.section];
     
+    NSArray *menuArray = [menuDictionary objectForKey:key];
     
+    PFObject *menu = menuArray[row];
+    
+    TSMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
+    
+    if (!cell) {
+        cell = [[TSMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menuCell"];
+    }
+    
+    switch (_languageSegmentedControl.selectedSegmentIndex) {
+            
+        case 0:
+                        
+            [cell.nameLabel setText:menu[@"English_name"]];
+            [cell.descriptionLabel setText:menu[@"English_description"]];
+            
+            break;
+            
+        case 1:
+            
+            [cell.nameLabel setText:menu[@"Chinese_name"]];
+            [cell.descriptionLabel setText:menu[@"Chinese_description"]];
+            
+            break;
+            
+        case 2:
+            
+            [cell.nameLabel setText:menu[@"Swedish_name"]];
+            [cell.descriptionLabel setText:menu[@"Swedish_description"]];
+            
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:menu[@"avatarUrl"]] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (_languageSegmentedControl.selectedSegmentIndex) {
+            
+        case 0:
+            
+            return menuCategoryArray[section][@"English_name"];
+            
+            break;
+            
+        case 1:
+            
+            return menuCategoryArray[section][@"Chinese_name"];
+            
+            break;
+            
+        case 2:
+            
+            return menuCategoryArray[section][@"Swedish_name"];
+            
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+    return @" ";
 }
 
 /*

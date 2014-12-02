@@ -81,7 +81,12 @@
             [alertView show];
         }
     }];
-    [self presentViewController:scannerController animated:YES completion:nil];
+    
+    
+    UINavigationController *navController = [MUTILANGUAGE_STORYBOARD instantiateViewControllerWithIdentifier:@"mutiLanguageMenuNav"];
+    [self.sideMenuController setContentController:navController animated:YES];
+    
+    //[self presentViewController:scannerController animated:YES completion:nil];
 }
 
 - (IBAction)feedbackButtonAction:(id)sender
