@@ -45,6 +45,8 @@
     menuDictionary = [NSMutableDictionary new];
     
     [self getMenuData];
+    
+    HUD_SHOW
 }
 
 -(void)getMenuData
@@ -65,12 +67,12 @@
                 PFObject *category = object[@"category"];
                 
                 TSMenu *menu = [TSMenu new];
-                menu.englishName = object[@"English_name"];
-                menu.chineseName = object[@"Chinese_name"];
-                menu.swedishName = object[@"Swedish_name"];
-                menu.englishDescription = object[@"English_description"];
-                menu.chineseDescription = object[@"Chinese_description"];
-                menu.swedishDescription = object[@"Swedish_description"];
+                menu.englishName = object[@"english_name"];
+                menu.chineseName = object[@"chinese_name"];
+                menu.swedishName = object[@"swedish_name"];
+                menu.englishDescription = object[@"english_description"];
+                menu.chineseDescription = object[@"chinese_description"];
+                menu.swedishDescription = object[@"swedish_description"];
                 menu.price = [self convertPrice:object[@"price"]];
                 menu.avatarUrl = [PFQuery getObjectOfClass:@"Photo" objectId:menuPhoto.objectId][@"url"];
                 
@@ -98,11 +100,66 @@
     for (NSString *objectId in [menuDictionary allKeys]) {
         
         PFObject *menuCategory = [PFQuery getObjectOfClass:@"Category_Menu" objectId:objectId];
-        
+        s(menuCategoryArray)
         [menuCategoryArray addObject:menuCategory];
     }
+    NSArray *keyArray = [menuDictionary allKeys];
     
+    keyArray = [NSMutableArray arrayWithArray:[keyArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        
+        int rank1;
+        int rank2;
+        
+        if ([obj1 isEqualToString:@"enLnt3oX27"]) {
+            rank1 = 1;
+        }else if ([obj1 isEqualToString:@"uEYQlF9B4u"]) {
+            rank1 = 2;
+        }else if ([obj1 isEqualToString:@"scjnGzPDr6"]) {
+            rank1 = 3;
+        }else if ([obj1 isEqualToString:@"M6jl9n2aVB"]) {
+            rank1 = 4;
+        }
+        
+        if ([obj2 isEqualToString:@"enLnt3oX27"]) {
+            rank2 = 1;
+        }else if ([obj2 isEqualToString:@"uEYQlF9B4u"]) {
+            rank2 = 2;
+        }else if ([obj2 isEqualToString:@"scjnGzPDr6"]) {
+            rank2 = 3;
+        }else if ([obj2 isEqualToString:@"M6jl9n2aVB"]) {
+            rank2 = 4;
+        }
+        
+        if (rank1 > rank2) {
+            
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        if (rank1 < rank2) {
+            
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        
+        return (NSComparisonResult)NSOrderedSame;
+    }]];
+    
+    NSMutableArray *newMenuCategoryArray = [NSMutableArray new];
+    
+    for(NSString *key in keyArray){
+        
+        for (PFObject *menuObject in menuCategoryArray) {
+
+            if ([key isEqualToString:menuObject.objectId]) {
+                [newMenuCategoryArray addObject:menuObject];
+            }
+        }
+    }
+    
+    menuCategoryArray = newMenuCategoryArray;
+
     [self.tableView reloadData];
+    
+    HUD_DISMISS
 }
 
 -(NSString *)convertPrice:(NSNumber *)priceNumber
@@ -120,14 +177,6 @@
 
 - (IBAction)segmentValueChanged:(id)sender
 {
-//    if (_languageSegmentedControl.selectedSegmentIndex == 0) {
-//        
-//        
-//    }else if (_languageSegmentedControl.selectedSegmentIndex == 1){
-//        
-//        
-//    }
-    
     [self.tableView reloadData];
 }
 
@@ -159,9 +208,8 @@
 {
     // Return the number of rows in the section.
     
-    NSString *key = [menuDictionary allKeys][section];
-    
-    NSArray *menuArray = [menuDictionary objectForKey:key];
+    PFObject *menuObject = menuCategoryArray[section];
+    NSArray *menuArray = [menuDictionary objectForKey:menuObject.objectId];
     
     return menuArray.count;
 }
@@ -170,11 +218,10 @@
 {
     NSInteger row = indexPath.row;
     
-    NSString *key = [menuDictionary allKeys][indexPath.section];
-    
-    NSArray *menuArray = [menuDictionary objectForKey:key];
-    
-    PFObject *menu = menuArray[row];
+    PFObject *menuObject = menuCategoryArray[indexPath.section];
+    NSArray *menuArray = [menuDictionary objectForKey:menuObject.objectId];
+
+    TSMenu *menu = menuArray[row];
     
     TSMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
     
@@ -182,26 +229,28 @@
         cell = [[TSMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menuCell"];
     }
     
+    [cell.priceLabel setText:menu.price];
+    
     switch (_languageSegmentedControl.selectedSegmentIndex) {
             
         case 0:
                         
-            [cell.nameLabel setText:menu[@"English_name"]];
-            [cell.descriptionLabel setText:menu[@"English_description"]];
+            [cell.nameLabel setText:menu.englishName];
+            [cell.descriptionLabel setText:menu.englishDescription];
             
             break;
             
         case 1:
             
-            [cell.nameLabel setText:menu[@"Chinese_name"]];
-            [cell.descriptionLabel setText:menu[@"Chinese_description"]];
+            [cell.nameLabel setText:menu.chineseName];
+            [cell.descriptionLabel setText:menu.chineseDescription];
             
             break;
             
         case 2:
             
-            [cell.nameLabel setText:menu[@"Swedish_name"]];
-            [cell.descriptionLabel setText:menu[@"Swedish_description"]];
+            [cell.nameLabel setText:menu.swedishName];
+            [cell.descriptionLabel setText:menu.swedishDescription];
             
             break;
             
@@ -210,7 +259,7 @@
             break;
     }
     
-    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:menu[@"avatarUrl"]] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:menu.avatarUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
     
     return cell;
 }
@@ -221,19 +270,19 @@
             
         case 0:
             
-            return menuCategoryArray[section][@"English_name"];
+            return menuCategoryArray[section][@"english_name"];
             
             break;
             
         case 1:
             
-            return menuCategoryArray[section][@"Chinese_name"];
+            return menuCategoryArray[section][@"chinese_name"];
             
             break;
             
         case 2:
             
-            return menuCategoryArray[section][@"Swedish_name"];
+            return menuCategoryArray[section][@"swedish_name"];
             
             break;
             

@@ -402,20 +402,20 @@
     if (lastMapCenterLocation != nil) {
         if (mapView.region.center.latitude != lastMapCenterLocation.coordinate.latitude || mapView.region.center.longitude != lastMapCenterLocation.coordinate.longitude) {
             
-//            [HUD hide:YES];
-//            
-//            isRefreshFromMap = YES;
-//            
-//            [_activityIndicatiorView setHidden:NO];
-//            [_activityIndicatiorView startAnimating];
-//            
-//            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
-//            
-//            PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-//            query.limit = PAGE_COUNT;
-//            query.skip = PAGE_NUM*PAGE_COUNT;
-//            [query whereKey:@"location" nearGeoPoint:geoPoint];
-//            [self findObjects:query];
+            [HUD hide:YES];
+            
+            isRefreshFromMap = YES;
+            
+            [_activityIndicatiorView setHidden:NO];
+            [_activityIndicatiorView startAnimating];
+            
+            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+            query.limit = PAGE_COUNT;
+            query.skip = PAGE_NUM*PAGE_COUNT;
+            [query whereKey:@"location" nearGeoPoint:geoPoint];
+            [self findObjects:query];
         }
     }
     
