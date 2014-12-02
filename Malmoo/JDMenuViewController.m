@@ -81,6 +81,7 @@
             [alertView show];
         }
     }];
+    
     [self presentViewController:scannerController animated:YES completion:nil];
 }
 

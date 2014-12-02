@@ -12,6 +12,8 @@
 
 @interface TSMutiLanguageMenuController ()
 {
+    UIView *fullScreenView;
+    UIImageView *menuImageView;
     NSMutableArray *menuCategoryArray;
     NSMutableDictionary *menuDictionary;
 }
@@ -49,6 +51,39 @@
     HUD_SHOW
 }
 
+- (void)showFullScreenPhoto:(UIImage *)image withDescription:(NSString *)descriptionString
+{
+    fullScreenView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    [fullScreenView setBackgroundColor:[UIColor darkGrayColor]];
+    [fullScreenView setAlpha:0.96];
+        
+    menuImageView = [[UIImageView alloc] initWithImage:image];
+    [menuImageView setFrame:CGRectMake(14, 10, image.size.width/2, image.size.height/2)];
+    menuImageView.center = fullScreenView.center;
+    [fullScreenView addSubview:menuImageView];
+    
+    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, SCREEN_HEIGHT - 70 - 30, SCREEN_WIDTH - 20, 70)];
+    [descriptionLabel setNumberOfLines:3];
+    [descriptionLabel setFont:[UIFont systemFontOfSize:15]];
+    [descriptionLabel setTextColor:[UIColor whiteColor]];
+    [descriptionLabel setShadowColor:[UIColor darkGrayColor]];
+    [descriptionLabel setShadowOffset:CGSizeMake(2.0f, 1.0f)];
+    [descriptionLabel setText:descriptionString];
+    [fullScreenView addSubview:descriptionLabel];
+    
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideFullScreenImageView)];
+    [fullScreenView setUserInteractionEnabled:YES];
+    [fullScreenView addGestureRecognizer:imageTap];
+    
+    [[[UIApplication sharedApplication] keyWindow] addSubview:fullScreenView];
+}
+
+-(void)hideFullScreenImageView
+{
+    [fullScreenView removeFromSuperview];
+    [menuImageView removeFromSuperview];
+}
+
 -(void)getMenuData
 {
     PFQuery *menuQuery = [PFQuery queryWithClassName:@"Menu"];
@@ -74,7 +109,7 @@
                 menu.chineseDescription = object[@"chinese_description"];
                 menu.swedishDescription = object[@"swedish_description"];
                 menu.price = [self convertPrice:object[@"price"]];
-                menu.avatarUrl = [PFQuery getObjectOfClass:@"Photo" objectId:menuPhoto.objectId][@"url"];
+                menu.avatarUrl = [NSString stringWithFormat:@"%@?imageMogr2/thumbnail/640",[PFQuery getObjectOfClass:@"Photo" objectId:menuPhoto.objectId][@"url"]];;
                 
                 if ([[menuDictionary allKeys] containsObject:category.objectId]) {
                     
@@ -292,6 +327,13 @@
     }
     
     return @" ";
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TSMenuCell *cell = (TSMenuCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    [self showFullScreenPhoto:cell.avatarImageView.image withDescription:cell.descriptionLabel.text];
 }
 
 /*
