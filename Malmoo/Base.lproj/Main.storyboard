@@ -40,10 +40,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDw-XR-lN5">
-                                            <rect key="frame" x="0.0" y="2" width="320" height="128"/>
+                                            <rect key="frame" x="0.0" y="2" width="320" height="130"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_cell_cover" translatesAutoresizingMaskIntoConstraints="NO" id="VIj-68-Wtd">
-                                            <rect key="frame" x="0.0" y="74" width="320" height="55"/>
+                                            <rect key="frame" x="0.0" y="72" width="320" height="55"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="J26-oJ-mV9">
                                             <rect key="frame" x="12" y="58" width="300" height="50"/>
@@ -632,7 +632,13 @@ please feel free to contact us at  xxxxx@xxx.se </string>
                             <outlet property="delegate" destination="txH-QP-Wh8" id="0MS-I6-J9N"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="XkU-Ap-unC"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="XkU-Ap-unC">
+                        <barButtonItem key="leftBarButtonItem" image="btn_menu" id="crb-Mg-sJd">
+                            <connections>
+                                <action selector="menuBtnAction:" destination="txH-QP-Wh8" id="2UV-1V-gdR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="RnT-s3-ol0" kind="push" identifier="DetailController" id="O4n-Tc-VCa"/>
                     </connections>
@@ -769,8 +775,8 @@ Our price is 150 SEK / month for unlimited times of customizing your page. </str
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="soD-16-rmZ"/>
         <segue reference="bBj-Fg-8Li"/>
-        <segue reference="O4n-Tc-VCa"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.21176470589999999" green="0.62352941179999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -349,10 +349,10 @@
     [cell.addressLabel setText:cellPlace.address];
     [cell.distanceLabel setText:cellPlace.distance];
     
-    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/400x/crop/!400x130a0a80",cellPlace.avatarUrl];
+    NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/460x/crop/!460x170a0a90",cellPlace.avatarUrl];
     
     avatarUrl = [avatarUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[[UIImage imageNamed:@"bg_cell_main"] unsharpen]];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:[UIImage imageNamed:@"bg_cell_main"]];
     
     return cell;
 }

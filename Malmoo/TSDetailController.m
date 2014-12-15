@@ -115,7 +115,7 @@
         [detailView.phoneButton setEnabled:NO];
     }
     
-    _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:nil blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
+    _glassScrollView = [[BTGlassScrollView alloc] initWithFrame:self.view.frame BackgroundImage:[UIImage imageNamed:@"bg_detail_placeholder"] blurredImage:nil viewDistanceFromBottom:200 foregroundView:detailView];
     
     [self.tableView addSubview:_glassScrollView];
     
@@ -386,7 +386,7 @@
 
         thumbnailUrl = [thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(72*i+28*i+26, 198, 72, 72)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(72*i+28*i+26, 196, 72, 72)];
         [imageView sd_setImageWithURL:[NSURL URLWithString:thumbnailUrl] placeholderImage:[UIImage imageNamed:@"default_shop_photo"]];
         [imageView setContentMode:UIViewContentModeScaleAspectFit];
         [imageView setUserInteractionEnabled:YES];
@@ -538,32 +538,34 @@
 
 -(void)reportButtonAction
 {
-    // Attach an image to the email
-    UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
-    UIGraphicsBeginImageContext(screenWindow.frame.size);//全屏截图，包括window
-    [screenWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-    picker.mailComposeDelegate = self;
-    [picker.navigationBar setTintColor:[UIColor whiteColor]];
-    [picker setSubject:NSLocalizedString(@"Report Data Error",nil)];
-    
-    // Set up recipients
-    NSArray *toRecipients = [NSArray arrayWithObject:@"feedback@mtscandic.com"];
-    
-    [picker setToRecipients:toRecipients];
-    [picker setMessageBody:NSLocalizedString(@"I find an information error at:  , it should be: ",nil) isHTML:NO];
-    
-    NSData *myData = UIImageJPEGRepresentation(viewImage, 1.0);
-    [picker addAttachmentData:myData mimeType:@"image/png" fileName:@""];
-    
-    // Fill out the email body text
-    
-    [self presentViewController:picker animated:YES completion:^{
-        e(@"detailReportButton")
-    }];
+    if ([MFMailComposeViewController canSendMail]) {
+        // Attach an image to the email
+        UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
+        UIGraphicsBeginImageContext(screenWindow.frame.size);//全屏截图，包括window
+        [screenWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        picker.mailComposeDelegate = self;
+        [picker.navigationBar setTintColor:[UIColor whiteColor]];
+        [picker setSubject:NSLocalizedString(@"Report Data Error",nil)];
+        
+        // Set up recipients
+        NSArray *toRecipients = [NSArray arrayWithObject:@"hi@mtscandic.com"];
+        
+        [picker setToRecipients:toRecipients];
+        [picker setMessageBody:NSLocalizedString(@"I find an information error at:  , it should be: ",nil) isHTML:NO];
+        
+        NSData *myData = UIImageJPEGRepresentation(viewImage, 1.0);
+        [picker addAttachmentData:myData mimeType:@"image/png" fileName:@""];
+        
+        // Fill out the email body text
+        
+        [self presentViewController:picker animated:YES completion:^{
+            e(@"detailReportButton")
+        }];
+    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error

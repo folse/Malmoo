@@ -115,7 +115,7 @@
             [favoriteQuery whereKey:@"user" equalTo:[PFUser currentUser]];
             
             [favoriteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                            
+                
                 for(PFObject *favorite in objects){
                     
                     PFObject *place = favorite[@"place"];
@@ -188,7 +188,7 @@
         CLLocationDistance meters = [placeLocation distanceFromLocation:currentLocation];
         
         place.distance = [NSString stringWithFormat:@"%dm",(int)meters];
-       
+        
         if (meters > 1000000) {
             place.distance = @"";
         }else if (meters > 1000) {
@@ -225,6 +225,17 @@
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
         
         [_footer endRefreshing];
+    }
+}
+
+- (IBAction)menuBtnAction:(id)sender
+{
+    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+    
+    if (sideMenu.isMenuVisible) {
+        [sideMenu hideMenuAnimated:YES];
+    }else{
+        [sideMenu showMenuAnimated:YES];
     }
 }
 
