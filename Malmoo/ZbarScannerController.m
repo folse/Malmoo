@@ -120,7 +120,7 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     [self.view addSubview:_loadingBackgroundView];
     
     _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    _loadingView.frame = CGRectMake(size.width/2-20, size.height/2-84, 40, 40);
+    _loadingView.frame = CGRectMake(size.width/2-10, size.height/2-84, 40, 40);
     [_loadingView startAnimating];
     [_loadingView setHidesWhenStopped:YES];
     [_loadingBackgroundView addSubview:_loadingView];
