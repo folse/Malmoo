@@ -8,7 +8,7 @@
 
 #import "TSDirectionController.h"
 
-@interface TSDirectionController ()
+@interface TSDirectionController ()<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
@@ -45,11 +45,34 @@
     
     s(_currentLat)
     
+    HUD_SHOW
+    
+    [_webView setDelegate:self];
+    
     NSString *mapUrl = [NSString stringWithFormat:@"https://maps.google.com/maps?saddr=%@,%@&daddr=%@,%@&mode=driving",_currentLat,_currentLng,_destinationLat,_destinationLng];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:mapUrl]];
     
     [_webView loadRequest:request];
+    
+    [self performSelector:@selector(dismissHUD) withObject:nil afterDelay:3];
+}
+
+-(void)dismissHUD
+{
+    HUD_DISMISS
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    HUD_DISMISS
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)didReceiveMemoryWarning

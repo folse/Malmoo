@@ -25,6 +25,8 @@
     MJRefreshFooterView *_footer;
     PFGeoPoint *currentGeoPoint;
     PFQuery *favoriteQuery;
+    UIButton *loginButton;
+    UILabel *guideLabel;
 }
 
 @end
@@ -56,6 +58,11 @@
     [super viewDidAppear:animated];
     
     if (USER_LOGIN) {
+        
+        if (guideLabel && loginButton) {
+            [guideLabel removeFromSuperview];
+            [loginButton removeFromSuperview];
+        }
         
         favoriteQuery = [PFQuery queryWithClassName:@"Favorite"];
         
@@ -96,11 +103,27 @@
         
     }else{
         
-        TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
-        [self presentViewController:guideController animated:YES completion:^{
-            
-        }];
+        guideLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 150, 280, 38)];
+        guideLabel.center = CGPointMake(self.view.center.x,150);
+        [guideLabel setTextAlignment:NSTextAlignmentCenter];
+        [guideLabel setTextColor:[UIColor darkGrayColor]];
+        [guideLabel setText:@"Get Your Favorites After Login"];
+        [self.view addSubview:guideLabel];
+        
+        loginButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 208, 180, 38)];
+        loginButton.center = CGPointMake(self.view.center.x,208);
+        [loginButton setTitle:@"Login / Signup" forState:UIControlStateNormal];
+        [loginButton setTitleColor:APP_COLOR forState:UIControlStateNormal];
+        [loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:loginButton];
+        
     }
+}
+
+-(void)loginButtonAction
+{
+    TSGuideController *guideController = [ACCOUNT_STORYBOARD instantiateViewControllerWithIdentifier:@"GuideController"];
+    [self presentViewController:guideController animated:YES completion:nil];
 }
 
 -(void)getDataFromServer
@@ -175,7 +198,6 @@
         place.reservation = [object[@"phone_reservation"] boolValue];
         place.parseObject = object;
         place.favourited = YES;
-        //place.tags = object[@"tag"];
         
         PFGeoPoint *location = object[@"location"];
         place.latitude = [NSString stringWithFormat:@"%f",location.latitude];
@@ -263,6 +285,7 @@
     TSPlace *cellPlace = placeArray[row];
     [cell.titleLabel setText:cellPlace.name];
     [cell.addressLabel setText:cellPlace.address];
+    [cell.distanceLabel setText:cellPlace.distance];
     
     NSString *avatarUrl = [NSString stringWithFormat:@"%@?imageView2/1/format/jpg|imageMogr2/thumbnail/330x/crop/!330x120a0a80",cellPlace.avatarUrl];
     

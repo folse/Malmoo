@@ -11,6 +11,7 @@
 
 @interface TSMoreController ()
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UISwitch *couponNotificationSwitcher;
 
 @end
 
@@ -49,7 +50,11 @@
 {
     [super viewDidLoad];
 
-    
+    [_couponNotificationSwitcher setOn:[USER boolForKey:@"acceptCouponNotification"]];
+}
+- (IBAction)couponNotificationSwitcherAction:(id)sender
+{
+    [USER setBool:_couponNotificationSwitcher.on forKey:@"acceptCouponNotification"];
 }
 
 - (void)didReceiveMemoryWarning

@@ -67,7 +67,6 @@
 - (IBAction)scanBtnAction:(id)sender
 {
     ZbarScannerController *scannerController = [ZbarScannerController scanSuccess:^(NSString *data) {
-        
         s(data)
         
         if ([data isEqualToString:@"test"]) {
@@ -77,8 +76,11 @@
             
         }else{
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't find this place", nil) message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alertView show];
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't find this place", nil) message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//            [alertView show];
+            
+            NSURL* url = [[NSURL alloc] initWithString:data];
+            [[ UIApplication sharedApplication]openURL:url];
         }
     }];
     

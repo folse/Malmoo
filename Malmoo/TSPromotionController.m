@@ -9,6 +9,7 @@
 #import "TSPromotionController.h"
 
 @interface TSPromotionController ()
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
 @end
 

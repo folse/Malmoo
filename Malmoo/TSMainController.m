@@ -138,10 +138,23 @@
         
     }
     
-//    photoWebView = [[UIWebView alloc] init];
-//    [photoWebView setDelegate:self];
-//    
-//    [self clearData];
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMenu)];
+    [_mapView setUserInteractionEnabled:YES];
+    [_mapView addGestureRecognizer:imageTap];
+    
+    //    photoWebView = [[UIWebView alloc] init];
+    //    [photoWebView setDelegate:self];
+    //
+    //    [self clearData];
+}
+
+-(void)hideMenu
+{
+    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+    if (sideMenu.isMenuVisible) {
+        
+        [sideMenu hideMenuAnimated:YES];
+    }
 }
 
 -(void)removeNavigationBarShadow
@@ -361,7 +374,15 @@
 {
     selectedId = indexPath.row;
     
-    [self performSegueWithIdentifier:@"DetailController" sender:self];
+    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+    if (sideMenu.isMenuVisible) {
+        
+        [sideMenu hideMenuAnimated:YES];
+        
+    }else{
+        
+        [self performSegueWithIdentifier:@"DetailController" sender:self];
+    }
 }
 
 #pragma mark - Navigation
@@ -396,30 +417,35 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    f(mapView.region.center.latitude)
-    f(mapView.region.center.longitude)
-    
-    if (lastMapCenterLocation != nil) {
-        if (mapView.region.center.latitude != lastMapCenterLocation.coordinate.latitude || mapView.region.center.longitude != lastMapCenterLocation.coordinate.longitude) {
-            
-            [HUD hide:YES];
-            
-            isRefreshFromMap = YES;
-            
-            [_activityIndicatiorView setHidden:NO];
-            [_activityIndicatiorView startAnimating];
-            
-            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
-            
-            PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-            query.limit = PAGE_COUNT;
-            query.skip = PAGE_NUM*PAGE_COUNT;
-            [query whereKey:@"location" nearGeoPoint:geoPoint];
-            [self findObjects:query];
+    JDSideMenu *sideMenu = (JDSideMenu *)self.navigationController.parentViewController;
+    if (sideMenu.isMenuVisible) {
+        
+        [sideMenu hideMenuAnimated:YES];
+        
+    }else{
+        
+        if (lastMapCenterLocation != nil) {
+            if (mapView.region.center.latitude != lastMapCenterLocation.coordinate.latitude || mapView.region.center.longitude != lastMapCenterLocation.coordinate.longitude) {
+                
+                [HUD hide:YES];
+                
+                isRefreshFromMap = YES;
+                
+                [_activityIndicatiorView setHidden:NO];
+                [_activityIndicatiorView startAnimating];
+                
+                PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
+                
+                PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+                query.limit = PAGE_COUNT;
+                query.skip = PAGE_NUM*PAGE_COUNT;
+                [query whereKey:@"location" nearGeoPoint:geoPoint];
+                [self findObjects:query];
+            }
         }
+        
+        lastMapCenterLocation = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
     }
-    
-    lastMapCenterLocation = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
 }
 
 - (void)markPlace
@@ -456,9 +482,9 @@
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MKUserLocation class]])
-    {
+        {
         return nil;
-    }
+        }
     
     if ([annotation isKindOfClass:[TSPlaceMark class]]) {
         static NSString *annotationIdentifier = @"annotationIdentifier";
@@ -577,11 +603,11 @@
     if (eachObject && eachObject[@"name"]) {
         s(eachObject[@"name"])
         
-//        NSString *googlePhotoDataString = [NSString stringWithFormat:@"%@",eachObject[@"google_photos"]];
-//        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"u'" withString:@"'"];
-//        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
-//        s(googlePhotoDataString)
-//        photoArray = [NSJSONSerialization JSONObjectWithData:[googlePhotoDataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        //        NSString *googlePhotoDataString = [NSString stringWithFormat:@"%@",eachObject[@"google_photos"]];
+        //        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"u'" withString:@"'"];
+        //        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
+        //        s(googlePhotoDataString)
+        //        photoArray = [NSJSONSerialization JSONObjectWithData:[googlePhotoDataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
         
         photoArray = eachObject[@"g_photos"];
         
@@ -617,7 +643,7 @@
             
             [self goNextPhoto];
         }
-    
+        
     }else{
         
         s(@"eachObject is nil")
@@ -716,45 +742,45 @@
 //-(void)replaceLocationData:(PFObject *)eachObject
 //{
 //    PFGeoPoint *location = eachObject[@"location"];
-//    
+//
 //    if (!location) {
-//        
+//
 //        NSString *lat = eachObject[@"geometry"][@"location"][@"lat"];
 //        NSString *lng = eachObject[@"geometry"][@"location"][@"lng"];
-//        
+//
 //        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat doubleValue] longitude:[lng doubleValue]];
-//        
+//
 //        eachObject[@"location"] = geoPoint;
-//        
+//
 //        [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            
+//
 //            clearId += 1;
-//            
+//
 //            if(clearId != 100){
-//                
+//
 //                NSLog(@"cIearArrayId:%d",clearId);
-//                
+//
 //                /* by folse
 //                 Change this method name
 //                 */
-//                
+//
 //                //[self copyPhotoData:clearArray[clearId]];
 //                [self replaceLocationData:clearArray[clearId]];
-//                
+//
 //            }else{
-//                
+//
 //                clearId = 0;
 //                pageId += 1;
 //                i(pageId)
 //                [self clearData];
-//                
+//
 //            }
 //        }];
-//        
+//
 //    }else {
-//        
+//
 //        clearId += 1;
-//        
+//
 //        if(clearId != 100){
 //            NSLog(@"cIearArrayId:%d",clearId);
 //            //[self copyPhotoData:clearArray[clearId]];

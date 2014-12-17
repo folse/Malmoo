@@ -47,6 +47,7 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
 
 
 @interface ZbarScannerController ()<ZBarReaderViewDelegate>
+
 @property (nonatomic, retain, readonly) ZBarReaderView *readView;
 @property (nonatomic, retain, readonly) ZBarImageScanner *imageScanner;
 @property (nonatomic, retain) UIView *cameraOverlayView;
@@ -107,7 +108,9 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     _readView.readerDelegate = self;
     _readView.frame = CGRectMake(0, 0, size.width, size.height);
     _readView.backgroundColor = [UIColor blackColor];
+    _readView.torchMode = 0;
     [self.view addSubview: _readView];
+    
     
     self.cameraOverlayView = [[ZbarCameraOverlayView alloc] initWithFrame:CGRectMake(0, barHeight, size.width, size.height - barHeight )];
     [self.view addSubview:_cameraOverlayView];
@@ -124,10 +127,17 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     
   //[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(12, 44, 90, 38)];
-    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 24, 90, 38)];
+    [closeButton setTitle:@"X" forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(cancleButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 44, 120, 38)];
+    titleLabel.center = CGPointMake(self.view.center.x,44);
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setText:@"Scan Barcode"];
+    [self.view addSubview:titleLabel];
     
 //    CGFloat duration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
 //    [UIView beginAnimations:nil context:nil];

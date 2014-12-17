@@ -60,7 +60,7 @@
         
     }else{
         
-        //HUD_SHOW
+        HUD_SHOW
     }
     
     [self getPlaceCategory];
@@ -70,6 +70,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Category_Place"];
     [query whereKey:@"hidden" equalTo:@NO];
+    [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         HUD_DISMISS

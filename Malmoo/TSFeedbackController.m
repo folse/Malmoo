@@ -50,6 +50,8 @@
     _feedback = [UMFeedback sharedInstance];
     _feedback.delegate = self;
     [_feedback get];
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
@@ -90,7 +92,13 @@
         [self.view endEditing:YES];
         
         NSLog(@"%@", _feedback.topicAndReplies);
-        [self.tableView reloadData];
+        
+        if (_feedback.topicAndReplies.count > 0) {
+            
+            [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+            
+            [self.tableView reloadData];
+        }
     }
 }
 
