@@ -56,7 +56,6 @@
     if (categoryArray != nil && categoryArray.count > 0) {
         
         [self.tableView reloadData];
-        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
         
     }else{
         
