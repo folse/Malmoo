@@ -142,10 +142,10 @@
     [_mapView setUserInteractionEnabled:YES];
     [_mapView addGestureRecognizer:imageTap];
     
-    //    photoWebView = [[UIWebView alloc] init];
-    //    [photoWebView setDelegate:self];
-    //
-    //    [self clearData];
+        photoWebView = [[UIWebView alloc] init];
+        [photoWebView setDelegate:self];
+    
+        [self clearData];
 }
 
 -(void)hideMenu
@@ -184,24 +184,6 @@
     UIGraphicsEndImageContext();
     
     return image;
-}
-
--(void)getRealImageUrl:(NSString *)url
-{
-    [photoWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    s(@"load")
-    s(request.URL.absoluteString)
-    
-    if ([request.URL.absoluteString rangeOfString:@"googleusercontent.com"].length > 0) {
-        
-        [self savePhotoUrl:currentObject withUrl:request.URL.absoluteString];
-    }
-    
-    return YES;
 }
 
 -(void)getData:(NSString *)keyWords
@@ -700,6 +682,24 @@
         i(pageId)
         [self clearData];
     }
+}
+
+-(void)getRealImageUrl:(NSString *)url
+{
+    [photoWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    s(@"load")
+    s(request.URL.absoluteString)
+    
+    if ([request.URL.absoluteString rangeOfString:@"googleusercontent.com"].length > 0) {
+        
+        [self savePhotoUrl:currentObject withUrl:request.URL.absoluteString];
+    }
+    
+    return YES;
 }
 
 -(void)findDuplicateData:(PFObject *)eachObject
