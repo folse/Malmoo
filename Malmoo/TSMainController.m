@@ -595,9 +595,9 @@
 
         if (objects.count > 0) {
             
-            currentObject[@"avatar"] = objects[0][@"url"];
+            eachObject[@"avatar"] = objects[0][@"url"];
             
-            [currentObject save];
+            [eachObject save];
         }
     }
     
