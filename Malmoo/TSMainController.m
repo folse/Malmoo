@@ -142,10 +142,10 @@
     [_mapView setUserInteractionEnabled:YES];
     [_mapView addGestureRecognizer:imageTap];
     
-        photoWebView = [[UIWebView alloc] init];
-        [photoWebView setDelegate:self];
+    photoWebView = [[UIWebView alloc] init];
+    [photoWebView setDelegate:self];
     
-        [self clearData];
+    [self clearData];
 }
 
 -(void)hideMenu
@@ -571,7 +571,9 @@
             
             //[self findDuplicateData:clearArray[clearId]];
             
-            [self addPhotoToParse:clearArray[clearId]];
+            //[self addPhotoToParse:clearArray[clearId]];
+            
+            [self addAvatarToParse:clearArray[clearId]];
             
         } else {
             
@@ -580,56 +582,51 @@
     }];
 }
 
+-(void)addAvatarToParse:(PFObject *)eachObject
+{
+    if (eachObject){
+        
+        PFRelation *relation = [eachObject relationForKey:@"photos"];
+        PFQuery *productPhotoQuery = [relation query];
+        productPhotoQuery.limit = 1;
+        
+        NSArray *objects = [productPhotoQuery findObjects];
+
+        if (objects.count > 0) {
+            
+            currentObject[@"avatar"] = objects[0][@"url"];
+            
+            [currentObject save];
+        }
+    }
+    
+    [self goNextPhoto];
+}
+
 -(void)addPhotoToParse:(PFObject *)eachObject
 {
-    if (eachObject && eachObject[@"name"]) {
-        s(eachObject[@"name"])
+    if (eachObject && [NSArray arrayWithArray:eachObject[@"g_photos"]].count > 0){
         
-        //        NSString *googlePhotoDataString = [NSString stringWithFormat:@"%@",eachObject[@"google_photos"]];
-        //        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"u'" withString:@"'"];
-        //        googlePhotoDataString = [googlePhotoDataString stringByReplacingOccurrencesOfString:@"'" withString:@"\""];
-        //        s(googlePhotoDataString)
-        //        photoArray = [NSJSONSerialization JSONObjectWithData:[googlePhotoDataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        currentObject = eachObject;
         
-        photoArray = eachObject[@"g_photos"];
-        
-        if (photoArray.count > 0){
-            
-            [eachObject setObject:photoArray forKey:@"g_photos"];
-            [eachObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    currentObject = eachObject;
-                    
-                    PFRelation *relation = [eachObject relationForKey:@"photos"];
-                    PFQuery *productPhotoQuery = [relation query];
-                    productPhotoQuery.limit = 1;
-                    [productPhotoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-                        
-                        if (!error && number == 0) {
-                            
-                            [self getPhotoUrl:photoArray[0]];
-                            
-                        }else{
-                            
-                            [self goNextPhoto];
-                        }
-                    }];
-                    
-                }else{
-                    
-                    [self goNextPhoto];
-                }
-            }];
-            
-        }else{
-            
-            [self goNextPhoto];
-        }
+        PFRelation *relation = [eachObject relationForKey:@"photos"];
+        PFQuery *productPhotoQuery = [relation query];
+        productPhotoQuery.limit = 1;
+        [productPhotoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+            //if the 'photos' has no photo relations, it should be the first time to add photo
+            if (!error && number == 0) {
+                
+                [self getPhotoUrl:photoArray[0]];
+                
+            }else{
+                
+                [self goNextPhoto];
+            }
+        }];
         
     }else{
         
         s(@"eachObject is nil")
-        s(eachObject)
         [self goNextPhoto];
     }
 }
@@ -675,7 +672,8 @@
     
     if(clearId != 100){
         NSLog(@"clearArrayId:%d",clearId+pageId*100);
-        [self addPhotoToParse:clearArray[clearId]];
+        //[self addPhotoToParse:clearArray[clearId]];
+        [self addAvatarToParse:clearArray[clearId]];
     }else{
         clearId = 0;
         pageId += 1;
