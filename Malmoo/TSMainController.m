@@ -31,6 +31,7 @@
     NSArray *resultArray;
     NSArray *clearArray;
     int clearId;
+    int apiKeyId;
     int photoArrayId;
     int pageId;
     int PAGE_COUNT;
@@ -38,12 +39,12 @@
     NSInteger lastDataCount;
     MJRefreshFooterView *_footer;
     UIWebView *photoWebView;
-    NSString *apiKey;
     PFObject *currentObject;
     CLLocation *currentLocation;
     CLLocation *lastMapCenterLocation;
     CLLocationManager *locationManager;
     NSArray *photoArray;
+    NSArray *apiKeyArray;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
@@ -102,7 +103,7 @@
     
     [locationManager startUpdatingLocation];
     
-    apiKey = @"AIzaSyD3n3ptmtGkuI36_Sp61dDtWVJpJ1J7XwU";
+    apiKeyArray = [NSArray arrayWithObjects:@"AIzaSyD3n3ptmtGkuI36_Sp61dDtWVJpJ1J7XwU", nil];
     
     PAGE_COUNT = 15;
     
@@ -572,9 +573,9 @@
             
             //[self findDuplicateData:clearArray[clearId]];
             
-            //[self addPhotoToParse:clearArray[clearId]];
+            [self addPhotoToParse:clearArray[clearId]];
             
-            [self addAvatarToParse:clearArray[clearId]];
+            //[self addAvatarToParse:clearArray[clearId]];
             
         } else {
             
@@ -699,6 +700,14 @@
     }
     
     return YES;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    if (error.code == 403) {
+        apiKeyId += 1;
+        [self getPhotoUrl:photoArray[photoArrayId]];
+    }
 }
 
 -(void)findDuplicateData:(PFObject *)eachObject
