@@ -176,7 +176,7 @@
 
 -(void)findPlace:(NSString *)placeObjectId
 {
-    PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
+    PFQuery *placeQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
     [placeObjectArray addObject:[placeQuery getObjectWithId:placeObjectId]];
 }
 

@@ -341,6 +341,21 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		A11248601A480BAD006F89A3 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				A1830B6B18DB604E0053DE81 /* TSCategoryController.h */,
+				A1830B6C18DB604E0053DE81 /* TSCategoryController.m */,
+				A1830B6818DB5C460053DE81 /* TSMoreController.h */,
+				A1830B6918DB5C460053DE81 /* TSMoreController.m */,
+				A11316EF191E81E800EC96B6 /* TSPromotionController.h */,
+				A11316F0191E81E800EC96B6 /* TSPromotionController.m */,
+				A16E678419BEB596005EE27B /* TSSearchController.h */,
+				A16E678519BEB596005EE27B /* TSSearchController.m */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
 		A12A9EA81A0FB8470084376C /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,15 +575,8 @@
 				A10BC25818CF1F97002999F6 /* TSMainController.m */,
 				A1AE450D19EF761E004B328B /* Account */,
 				A1BDDDE51998FB890041B0A1 /* Detail */,
-				A1830B6B18DB604E0053DE81 /* TSCategoryController.h */,
-				A1830B6C18DB604E0053DE81 /* TSCategoryController.m */,
-				A1830B6818DB5C460053DE81 /* TSMoreController.h */,
-				A1830B6918DB5C460053DE81 /* TSMoreController.m */,
-				A11316EF191E81E800EC96B6 /* TSPromotionController.h */,
-				A11316F0191E81E800EC96B6 /* TSPromotionController.m */,
-				A16E678419BEB596005EE27B /* TSSearchController.h */,
-				A16E678519BEB596005EE27B /* TSSearchController.m */,
 				A18AA95A1A13BA8300D931E6 /* TSMutiLanguageMenu */,
+				A11248601A480BAD006F89A3 /* More */,
 				A1830B6418DB4F570053DE81 /* Menu */,
 			);
 			name = Controller;

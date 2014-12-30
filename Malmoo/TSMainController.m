@@ -142,6 +142,7 @@
     [_mapView setUserInteractionEnabled:YES];
     [_mapView addGestureRecognizer:imageTap];
     
+
     photoWebView = [[UIWebView alloc] init];
     [photoWebView setDelegate:self];
     
@@ -188,7 +189,7 @@
 
 -(void)getData:(NSString *)keyWords
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
     query.limit = PAGE_COUNT;
     query.skip = PAGE_NUM*PAGE_COUNT;
     
@@ -217,7 +218,7 @@
     PFQuery *placeCategoryQuery = [PFQuery queryWithClassName:@"Category_Place"];
     PFObject *categoryObject = [placeCategoryQuery getObjectWithId:_categoryObjectId];
     
-    PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
+    PFQuery *placeQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
     [placeQuery whereKey:@"category" containedIn:[NSArray arrayWithObject:categoryObject]];
     placeQuery.limit = PAGE_COUNT;
     placeQuery.skip = PAGE_NUM*PAGE_COUNT;
@@ -418,7 +419,7 @@
                 
                 PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
                 
-                PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+                PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
                 query.limit = PAGE_COUNT;
                 query.skip = PAGE_NUM*PAGE_COUNT;
                 [query whereKey:@"location" nearGeoPoint:geoPoint];

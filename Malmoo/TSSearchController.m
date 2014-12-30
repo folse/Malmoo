@@ -88,7 +88,7 @@
     
     NSMutableArray *tagArray = [NSMutableArray new];
     
-    PFQuery *tagQuery = [PFQuery queryWithClassName:@"Place"];
+    PFQuery *tagQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
     
     NSArray *keywordsArray = [keywords componentsSeparatedByString:@" "];
     
@@ -102,17 +102,17 @@
         }
         
         //Search From Place Name
-        PFQuery *nameQuery = [PFQuery queryWithClassName:@"Place"];
+        PFQuery *nameQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
         [nameQuery whereKey:@"name" containsString:keyword];
         [queryArray addObject:nameQuery];
         
         //Search From Place Description
-        PFQuery *descriptionQuery = [PFQuery queryWithClassName:@"Place"];
+        PFQuery *descriptionQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
         [descriptionQuery whereKey:@"description" containsString:keyword];
         [queryArray addObject:descriptionQuery];
         
         //Search From Place Address
-        PFQuery *addressQuery = [PFQuery queryWithClassName:@"Place"];
+        PFQuery *addressQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
         [addressQuery whereKey:@"address" containsString:keyword];
         [queryArray addObject:addressQuery];
     }
