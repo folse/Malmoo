@@ -29,27 +29,29 @@
     BOOL updatedUserLocation;
     UIButton *mapStretchBtn;
     NSArray *resultArray;
-    NSArray *clearArray;
-    int clearId;
-    int apiKeyId;
-    int photoArrayId;
-    int pageId;
+
     int PAGE_COUNT;
     int PAGE_NUM;
     NSInteger lastDataCount;
     MJRefreshFooterView *_footer;
-    UIWebView *photoWebView;
-    PFObject *currentObject;
+    
     CLLocation *currentLocation;
     CLLocation *lastMapCenterLocation;
     CLLocationManager *locationManager;
+    
+    int pageId;
+    int clearId;
+    int apiKeyId;
+    int photoArrayId;
+    NSArray *clearArray;
     NSArray *photoArray;
     NSArray *apiKeyArray;
+    UIWebView *photoWebView;
+    PFObject *currentObject;
+    NSString *loadingPhotoUrl;
 }
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-
-@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatiorView;
 
@@ -103,7 +105,21 @@
     
     [locationManager startUpdatingLocation];
     
-    apiKeyArray = [NSArray arrayWithObjects:@"AIzaSyD3n3ptmtGkuI36_Sp61dDtWVJpJ1J7XwU", nil];
+    apiKeyArray = [NSArray arrayWithObjects:@"AIzaSyC8IfTEGsA4s8I6SB4SZBgT0b2WJR7mkcY",
+                   @"AIzaSyC5xWawMGqWOi3VJq0xoLsdGKU84Nf8eLk",
+                   @"AIzaSyC6GGSFl-RKY5XgFeGEFNdkLIzC5g5JSpw",
+                   @"AIzaSyBCgh8Bmg43FiPBBAjrMj7bJTDpK5wlLZ4",
+                   @"AIzaSyAqLUgVvQV1qmN1APpndQJqoF8q1MR-Ls0",
+                   @"AIzaSyD7LqPOyd_uwydZgeeWNHIThV3794q2bEY",
+                   @"AIzaSyBvs25RjogtWqPDD13ja_iOvC26ODLvQeM",
+                   @"AIzaSyAcsvwj8u-Lvvm7gCMKzkzP5p33TVHHEeU",
+                   @"AIzaSyCy7uC4Uy974sAyIujoJDKJaIIoVZDtXx4",
+                   @"AIzaSyAsFPk3j65gBZZd1QSm9HaJAxscWg_gKY0",
+                   @"AIzaSyAeHrJ1pTedhijma8bP1GSu8dZVvPGn77s",
+                   @"AIzaSyAKXbdKWEO6xrhe_lk4dk3RTxCtQc8hfVw",
+                   @"AIzaSyA_oc9uDRGeC3dkZWD4awlK5uhygss5seg",
+                   @"AIzaSyDJxa5YEb1cDhNvt8RGaUjPsmTLVwWNbdc",
+                   @"AIzaSyBdwlLFKYF7QbAfMGjtcUS3Lp_-1grDFU0",nil];
     
     PAGE_COUNT = 15;
     
@@ -143,7 +159,7 @@
     [_mapView setUserInteractionEnabled:YES];
     [_mapView addGestureRecognizer:imageTap];
     
-
+    
     photoWebView = [[UIWebView alloc] init];
     [photoWebView setDelegate:self];
     
@@ -607,7 +623,9 @@
 
 -(void)addPhotoToParse:(PFObject *)eachObject
 {
-    if (eachObject && [NSArray arrayWithArray:eachObject[@"g_photos"]].count > 0){
+    photoArray = [NSArray arrayWithArray:eachObject[@"g_photos"]];
+    
+    if (photoArray.count > 0){
         
         currentObject = eachObject;
         
@@ -615,7 +633,7 @@
         PFQuery *productPhotoQuery = [relation query];
         productPhotoQuery.limit = 1;
         [productPhotoQuery countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-            //if the 'photos' has no photo relations, it should be the first time to add photo
+            //if the "photos" has no photo relations, it should be the first time to add photo
             if (!error && number == 0) {
                 
                 [self getPhotoUrl:photoArray[0]];
@@ -628,7 +646,7 @@
         
     }else{
         
-        s(@"eachObject is nil")
+        s(@"g_photos is 0")
         [self goNextPhoto];
     }
 }
@@ -637,7 +655,7 @@
 {
     NSString *photoReference = photoDataDictionary[@"photo_reference"];
     
-    [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=1536&photoreference=%@&sensor=false&key=%@",photoReference,apiKey]];
+    [self getRealImageUrl:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=1536&photoreference=%@&sensor=false&key=%@",photoReference,apiKeyArray[apiKeyId]]];
 }
 
 -(void)savePhotoUrl:(PFObject *)object withUrl:(NSString *)photoUrl
@@ -673,9 +691,9 @@
     clearId += 1;
     
     if(clearId != 100){
-        NSLog(@"clearArrayId:%d",clearId+pageId*100);
-        //[self addPhotoToParse:clearArray[clearId]];
-        [self addAvatarToParse:clearArray[clearId]];
+        NSLog(@"arrayId:%d",clearId+pageId*100);
+        [self addPhotoToParse:clearArray[clearId]];
+        //[self addAvatarToParse:clearArray[clearId]];
     }else{
         clearId = 0;
         pageId += 1;
@@ -691,19 +709,28 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    s(@"load")
     s(request.URL.absoluteString)
     
     if ([request.URL.absoluteString rangeOfString:@"googleusercontent.com"].length > 0) {
         
-        [self savePhotoUrl:currentObject withUrl:request.URL.absoluteString];
+        loadingPhotoUrl = request.URL.absoluteString;
     }
     
     return YES;
 }
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    if (loadingPhotoUrl) {
+        [self savePhotoUrl:currentObject withUrl:loadingPhotoUrl];
+        loadingPhotoUrl = nil;
+    }
+}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    s(@"load error:")
+    s(error)
     if (error.code == 403) {
         apiKeyId += 1;
         [self getPhotoUrl:photoArray[photoArrayId]];
