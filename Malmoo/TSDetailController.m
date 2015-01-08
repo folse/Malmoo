@@ -364,7 +364,7 @@
             break;
     }
     
-    return [openHourString componentsSeparatedByString:@" "][1];
+    return openHourString;
 }
 
 -(NSInteger)getTodayWeekDay

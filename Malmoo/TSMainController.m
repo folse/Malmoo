@@ -172,7 +172,7 @@
 
 -(void)getData:(NSString *)keyWords
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
     query.limit = PAGE_COUNT;
     query.skip = PAGE_NUM*PAGE_COUNT;
     [query whereKey:@"has_photo" equalTo:@YES];
@@ -201,7 +201,7 @@
     PFQuery *placeCategoryQuery = [PFQuery queryWithClassName:@"Category_Place"];
     PFObject *categoryObject = [placeCategoryQuery getObjectWithId:_categoryObjectId];
     
-    PFQuery *placeQuery = [PFQuery queryWithClassName:@"StockholmPlace"];
+    PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
     [placeQuery whereKey:@"category" containedIn:[NSArray arrayWithObject:categoryObject]];
     [placeQuery whereKey:@"has_photo" equalTo:@YES];
     placeQuery.limit = PAGE_COUNT;
@@ -265,7 +265,7 @@
             [self.tableView reloadData];
             [self.tableView setHidden:NO];
             
-            lastDataCount = objects.count;
+            lastDataCount = placeArray.count;
             if (PAGE_NUM > 0) {
                 [self doneLoadMore];
             }else{
@@ -403,11 +403,14 @@
                 
                 PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
                 
-                PFQuery *query = [PFQuery queryWithClassName:@"StockholmPlace"];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"has_photo = true"];
+                PFQuery *query = [PFQuery queryWithClassName:@"Place" predicate:predicate];
+                
+                //                PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+                [query whereKey:@"location" nearGeoPoint:geoPoint];
+                //[query whereKey:@"avatar" hasPrefix:@"h"];
                 query.limit = PAGE_COUNT;
                 query.skip = PAGE_NUM*PAGE_COUNT;
-                [query whereKey:@"has_photo" equalTo:@YES];
-                [query whereKey:@"location" nearGeoPoint:geoPoint];
                 [self findObjects:query];
             }
         }
