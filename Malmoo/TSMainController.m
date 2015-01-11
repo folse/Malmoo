@@ -260,7 +260,7 @@
             [self.tableView reloadData];
             [self.tableView setHidden:NO];
             
-            lastDataCount = placeArray.count;
+            lastDataCount = objects.count;
             if (PAGE_NUM > 0) {
                 [self doneLoadMore];
             }else{
@@ -400,7 +400,6 @@
                 
                 PFQuery *query = [PFQuery queryWithClassName:@"Place"];
                 [query whereKey:@"location" nearGeoPoint:geoPoint];
-                
                 query.limit = PAGE_COUNT;
                 query.skip = PAGE_NUM*PAGE_COUNT;
                 [self findObjects:query];
