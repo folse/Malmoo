@@ -542,7 +542,7 @@
     if ([MFMailComposeViewController canSendMail]) {
         // Attach an image to the email
         UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
-        UIGraphicsBeginImageContext(screenWindow.frame.size);//全屏截图，包括window
+        UIGraphicsBeginImageContext(screenWindow.frame.size);
         [screenWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -562,10 +562,10 @@
         
         // Fill out the email body text
         
-        [self presentViewController:picker animated:YES completion:^{
-            e(@"detailReportButton")
-        }];
+        [self presentViewController:picker animated:YES completion:nil];
     }
+    
+    e(@"detailReportButton")
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error

@@ -88,8 +88,8 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate= self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    if([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        [locationManager requestAlwaysAuthorization];
+    if([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
     }
     
     [locationManager startUpdatingLocation];
@@ -129,7 +129,7 @@
     UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMenu)];
     [_mapView setUserInteractionEnabled:YES];
     [_mapView addGestureRecognizer:imageTap];
-    
+
 }
 
 -(void)hideMenu
@@ -175,7 +175,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
     query.limit = PAGE_COUNT;
     query.skip = PAGE_NUM*PAGE_COUNT;
-    [query whereKey:@"has_photo" equalTo:@YES];
     if (keyWords) {
         
         [query whereKey:@"metatag" containsString:keyWords];
@@ -183,9 +182,6 @@
         [self findObjects:query];
         
     }else{
-        
-        f(lastMapCenterLocation.coordinate.latitude)
-        f(lastMapCenterLocation.coordinate.longitude)
         
         PFGeoPoint *locationPoint = [PFGeoPoint geoPointWithLatitude:lastMapCenterLocation.coordinate.latitude longitude:lastMapCenterLocation.coordinate.longitude];
         
@@ -203,7 +199,6 @@
     
     PFQuery *placeQuery = [PFQuery queryWithClassName:@"Place"];
     [placeQuery whereKey:@"category" containedIn:[NSArray arrayWithObject:categoryObject]];
-    [placeQuery whereKey:@"has_photo" equalTo:@YES];
     placeQuery.limit = PAGE_COUNT;
     placeQuery.skip = PAGE_NUM*PAGE_COUNT;
     [self findObjects:placeQuery];
@@ -403,12 +398,9 @@
                 
                 PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_mapView.region.center.latitude longitude:_mapView.region.center.longitude];
                 
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"has_photo = true"];
-                PFQuery *query = [PFQuery queryWithClassName:@"Place" predicate:predicate];
-                
-                //                PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+                PFQuery *query = [PFQuery queryWithClassName:@"Place"];
                 [query whereKey:@"location" nearGeoPoint:geoPoint];
-                //[query whereKey:@"avatar" hasPrefix:@"h"];
+                
                 query.limit = PAGE_COUNT;
                 query.skip = PAGE_NUM*PAGE_COUNT;
                 [self findObjects:query];

@@ -111,7 +111,6 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     _readView.torchMode = 0;
     [self.view addSubview: _readView];
     
-    
     self.cameraOverlayView = [[ZbarCameraOverlayView alloc] initWithFrame:CGRectMake(0, barHeight, size.width, size.height - barHeight )];
     [self.view addSubview:_cameraOverlayView];
     
@@ -120,14 +119,14 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
     [self.view addSubview:_loadingBackgroundView];
     
     _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    _loadingView.frame = CGRectMake(size.width/2-10, size.height/2-84, 40, 40);
+    _loadingView.frame = CGRectMake(size.width/2-20, size.height/2-84, 40, 40);
     [_loadingView startAnimating];
     [_loadingView setHidesWhenStopped:YES];
     [_loadingBackgroundView addSubview:_loadingView];
     
   //[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 24, 90, 38)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 90, 38)];
     [closeButton setTitle:@"X" forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(cancleButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
@@ -144,6 +143,15 @@ NSString* const ZbarScannerControllerImageMessage = @"ZbarScannerControllerImage
 //    [UIView setAnimationDuration:duration];
     //closeButton.transform = CGAffineTransformMakeRotation(-M_PI * 1.5);
     //[UIView commitAnimations];
+    
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 380, 220, 38)];
+    [tipLabel setNumberOfLines:2];
+    [tipLabel setTextColor:[UIColor whiteColor]];
+    [tipLabel setFont:[UIFont systemFontOfSize:15]];
+    [tipLabel setTextAlignment:NSTextAlignmentCenter];
+    tipLabel.center = CGPointMake(self.view.center.x,380);
+    [tipLabel setText:@"You can scan barcode from the restaurant menu"];
+    [self.view addSubview:tipLabel];
 }
 
 - (void)removeLoadingView{

@@ -145,18 +145,25 @@
                     [self findPlace:place.objectId];
                 }
                 
-                if(placeObjectArray.count > 0){
-                    
-                    [self getTableViewData];
-                }
+                [self getTableViewData];
                 
                 HUD_DISMISS
+                
                 [self.tableView reloadData];
                 [self.tableView setHidden:NO];
                 
                 if (PAGE_NUM > 0) {
                     lastDataCount = placeObjectArray.count;
                     [self doneLoadMore];
+                }
+                
+                if (placeArray.count == 0) {
+                    
+                    MBProgressHUD *tipHUD = [[MBProgressHUD alloc] initWithView:self.view];
+                    [self.view addSubview:tipHUD];
+                    [tipHUD setLabelFont:[UIFont fontWithName:@"Helvetica-Light" size:16.0]];
+                    [tipHUD setLabelText:@"You have no favorites yet"];
+                    [tipHUD show:YES];
                 }
             }];
             
