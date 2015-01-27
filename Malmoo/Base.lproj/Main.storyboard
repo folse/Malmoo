@@ -817,8 +817,8 @@ please feel free to contact us at  xxxxx@xxx.se </string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="LAc-TF-0jY"/>
         <segue reference="bBj-Fg-8Li"/>
-        <segue reference="soD-16-rmZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.21176470589999999" green="0.62352941179999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>
