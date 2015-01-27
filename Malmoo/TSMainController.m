@@ -370,11 +370,24 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    currentLocation = [[CLLocation alloc] initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
+    
     if (!updatedUserLocation) {
         updatedUserLocation = YES;
         [self displayLocation:userLocation];
     }
-    currentLocation = [[CLLocation alloc] initWithLatitude:userLocation.coordinate.latitude longitude:userLocation.coordinate.longitude];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    if ([error code] == kCLErrorDenied)
+        {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Please open the location service" message:@"It will help you to find the great place" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+        }
+    if ([error code] == kCLErrorLocationUnknown) {
+        //Can't get the location
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
