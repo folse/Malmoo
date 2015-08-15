@@ -1,6 +1,6 @@
 
 /* Class = "IBUIButton"; normalTitle = "LOGIN"; ObjectID = "1Tp-4M-nRP"; */
-"1Tp-4M-nRP.normalTitle" = "LOGIN";
+"1Tp-4M-nRP.normalTitle" = "Logga in";
 
 /* Class = "IBUILabel"; text = "live a little better "; ObjectID = "4Uh-qu-Xod"; */
 "4Uh-qu-Xod.text" = "live a little better ";
@@ -9,43 +9,43 @@
 "Ldd-ny-0jg.title" = "  x";
 
 /* Class = "IBUITextField"; placeholder = "password"; ObjectID = "Qj7-5v-E24"; */
-"Qj7-5v-E24.placeholder" = "password";
+"Qj7-5v-E24.placeholder" = "Lösenord";
 
 /* Class = "IBUITextField"; placeholder = "username"; ObjectID = "Rmr-oJ-zfl"; */
-"Rmr-oJ-zfl.placeholder" = "username";
+"Rmr-oJ-zfl.placeholder" = "AnvändarID / Mobilnummer";
 
 /* Class = "IBUITextField"; placeholder = "email"; ObjectID = "Vyy-Ui-Lmu"; */
-"Vyy-Ui-Lmu.placeholder" = "email";
+"Vyy-Ui-Lmu.placeholder" = "E-post";
 
 /* Class = "IBUIButton"; normalTitle = "SIGN UP"; ObjectID = "ZXe-uQ-nYB"; */
-"ZXe-uQ-nYB.normalTitle" = "SIGN UP";
+"ZXe-uQ-nYB.normalTitle" = "Skapa konto";
 
 /* Class = "IBUIButton"; normalTitle = "user terms"; ObjectID = "Zmr-4T-V2d"; */
-"Zmr-4T-V2d.normalTitle" = "user terms";
+"Zmr-4T-V2d.normalTitle" = "användarvillkor";
 
 /* Class = "IBUIButton"; normalTitle = "Sign up"; ObjectID = "cVL-tx-L4W"; */
-"cVL-tx-L4W.normalTitle" = "Sign up";
+"cVL-tx-L4W.normalTitle" = "Skapa konto";
 
-/* Class = "IBUINavigationItem"; title = "TouchSweden"; ObjectID = "ftH-yL-jNe"; */
-"ftH-yL-jNe.title" = "TouchSweden";
+/* Class = "IBUINavigationItem"; title = "Touch Sweden"; ObjectID = "ftH-yL-jNe"; */
+"ftH-yL-jNe.title" = "Touch Sweden";
 
 /* Class = "IBUITextField"; placeholder = "Username"; ObjectID = "k6E-f6-amX"; */
-"k6E-f6-amX.placeholder" = "Username";
+"k6E-f6-amX.placeholder" = "AnvändarID / Mobilnummer";
 
 /* Class = "IBUILabel"; text = "agree with "; ObjectID = "l9d-IN-Vgd"; */
-"l9d-IN-Vgd.text" = "agree with ";
+"l9d-IN-Vgd.text" = "Godkänner våra ";
 
 /* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "msg-Uc-RxY"; */
-"msg-Uc-RxY.normalTitle" = "Login";
+"msg-Uc-RxY.normalTitle" = "Logga in";
 
 /* Class = "IBUINavigationItem"; title = "Join Free"; ObjectID = "nsI-Ln-p9P"; */
-"nsI-Ln-p9P.title" = "Join Free";
+"nsI-Ln-p9P.title" = "Skapa konto";
 
 /* Class = "IBUIButton"; normalTitle = "Later"; ObjectID = "v7a-Cv-ESZ"; */
-"v7a-Cv-ESZ.normalTitle" = "Later";
+"v7a-Cv-ESZ.normalTitle" = "Senare";
 
 /* Class = "IBUITextField"; placeholder = "Password"; ObjectID = "w1l-EV-tUA"; */
-"w1l-EV-tUA.placeholder" = "Password";
+"w1l-EV-tUA.placeholder" = "Lösenord";
 
 /* Class = "IBUIBarButtonItem"; title = "  x"; ObjectID = "zqb-iA-3Lh"; */
 "zqb-iA-3Lh.title" = "  x";

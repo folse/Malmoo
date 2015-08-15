@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "  HOME"; ObjectID = "0Oj-oe-tCH"; */
+"0Oj-oe-tCH.normalTitle" = "  Hem";
+
+/* Class = "UIButton"; normalTitle = "  CATEGORY"; ObjectID = "CuX-Gw-fwS"; */
+"CuX-Gw-fwS.normalTitle" = "  Kategori";
+
+/* Class = "UIButton"; normalTitle = "  FAVORITES"; ObjectID = "GUV-el-yPd"; */
+"GUV-el-yPd.normalTitle" = "  Favoriter";
+
+/* Class = "UIButton"; normalTitle = "  SCAN"; ObjectID = "U1b-6I-fSI"; */
+"U1b-6I-fSI.normalTitle" = "  Skanna";
+
+/* Class = "UIButton"; normalTitle = "  PRIZE"; ObjectID = "eQh-hz-ZsT"; */
+"eQh-hz-ZsT.normalTitle" = "  PRIZE";
+
+/* Class = "UIButton"; normalTitle = "  FEEDBACK"; ObjectID = "iIi-wf-hxC"; */
+"iIi-wf-hxC.normalTitle" = "  Feedback";
+
+/* Class = "UIButton"; normalTitle = "  MORE"; ObjectID = "rHt-vY-Fig"; */
+"rHt-vY-Fig.normalTitle" = "  Mer";

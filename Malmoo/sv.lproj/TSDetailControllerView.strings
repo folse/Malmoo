@@ -1,0 +1,39 @@
+
+/* Class = "UIButton"; normalTitle = "  Favorite"; ObjectID = "24i-yD-kuq"; */
+"24i-yD-kuq.normalTitle" = "  Favorit";
+
+/* Class = "UIButton"; normalTitle = "Address"; ObjectID = "2jf-ds-j9R"; */
+"2jf-ds-j9R.normalTitle" = "Address";
+
+/* Class = "UIButton"; normalTitle = "88899"; ObjectID = "6Z4-O3-Qkj"; */
+"6Z4-O3-Qkj.normalTitle" = "88899";
+
+/* Class = "UILabel"; text = "Shop Name"; ObjectID = "8VN-Gg-cIw"; */
+"8VN-Gg-cIw.text" = "Shop Name";
+
+/* Class = "UIButton"; normalTitle = "  Report"; ObjectID = "JTU-t5-ZsE"; */
+"JTU-t5-ZsE.normalTitle" = "  Synpunkter";
+
+/* Class = "UILabel"; text = "News"; ObjectID = "aFJ-a2-nmO"; */
+"aFJ-a2-nmO.text" = "News";
+
+/* Class = "UILabel"; text = "Delivery"; ObjectID = "amd-RU-2ai"; */
+"amd-RU-2ai.text" = "Leverans";
+
+/* Class = "UILabel"; text = "Parking"; ObjectID = "ckS-Z2-JyU"; */
+"ckS-Z2-JyU.text" = "Parkering";
+
+/* Class = "UIButton"; normalTitle = "  Share"; ObjectID = "iMk-QH-Lp8"; */
+"iMk-QH-Lp8.normalTitle" = "  Dela";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "sse-Hs-5nq"; */
+"sse-Hs-5nq.text" = "Description";
+
+/* Class = "UILabel"; text = "Open Hours"; ObjectID = "vFH-Yw-5Af"; */
+"vFH-Yw-5Af.text" = "Öppettider";
+
+/* Class = "UILabel"; text = "Alcohol"; ObjectID = "xHL-qg-ksC"; */
+"xHL-qg-ksC.text" = "Alkohol";
+
+/* Class = "UILabel"; text = "Wi-Fi"; ObjectID = "yH1-Ie-W5p"; */
+"yH1-Ie-W5p.text" = "Wi-Fi";

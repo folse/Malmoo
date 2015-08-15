@@ -127,7 +127,7 @@
 {
     //selectedPhotoUrl = photoUrlArray[indexPath.row];
     //[self performSegueWithIdentifier:@"photoGalleryController" sender:self];
-    s(photos)
+
     MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
     browser.currentPhotoIndex = indexPath.row;
     browser.photos = photos;

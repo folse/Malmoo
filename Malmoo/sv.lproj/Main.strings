@@ -1,105 +1,108 @@
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "1Jw-Bc-fI0"; */
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "1Jw-Bc-fI0"; */
 "1Jw-Bc-fI0.title" = " ";
 
-/* Class = "IBUILabel"; text = "About Us"; ObjectID = "2Mi-YY-YSC"; */
-"2Mi-YY-YSC.text" = "About Us";
+/* Class = "UILabel"; text = "Membership"; ObjectID = "2Mi-YY-YSC"; */
+"2Mi-YY-YSC.text" = "Medlemskap";
 
-/* Class = "IBUIBarButtonItem"; title = "Direction"; ObjectID = "2wt-T0-Dq2"; */
-"2wt-T0-Dq2.title" = "Direction";
+/* Class = "UIBarButtonItem"; title = "Direction"; ObjectID = "2wt-T0-Dq2"; */
+"2wt-T0-Dq2.title" = "Vägvisning";
 
-/* Class = "IBUIButton"; normalTitle = "LOGOUT"; ObjectID = "65t-Gi-M3k"; */
-"65t-Gi-M3k.normalTitle" = "LOGOUT";
+/* Class = "UIButton"; normalTitle = "LOGOUT"; ObjectID = "65t-Gi-M3k"; */
+"65t-Gi-M3k.normalTitle" = "Logga ut";
 
-/* Class = "IBUINavigationItem"; title = "Menu"; ObjectID = "7Hl-I3-YQg"; */
-"7Hl-I3-YQg.title" = "Menu";
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "7Hl-I3-YQg"; */
+"7Hl-I3-YQg.title" = "Bilder";
 
-/* Class = "IBUINavigationItem"; title = "Menu"; ObjectID = "AkQ-y1-gvi"; */
-"AkQ-y1-gvi.title" = "Menu";
+/* Class = "UINavigationItem"; title = "Membership"; ObjectID = "A0e-A7-gte"; */
+"A0e-A7-gte.title" = "Medlemskap";
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "BDq-ao-h9Y"; */
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "AkQ-y1-gvi"; */
+"AkQ-y1-gvi.title" = "Bilder";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "BDq-ao-h9Y"; */
 "BDq-ao-h9Y.title" = " ";
 
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "DxR-Ud-MWL"; */
+/* Class = "UILabel"; text = "Address"; ObjectID = "DxR-Ud-MWL"; */
 "DxR-Ud-MWL.text" = "Address";
 
-/* Class = "IBUILabel"; text = "Coupon Notification"; ObjectID = "EDC-W5-N4W"; */
-"EDC-W5-N4W.text" = "Coupon Notification";
+/* Class = "UILabel"; text = "Coupon Notification"; ObjectID = "EDC-W5-N4W"; */
+"EDC-W5-N4W.text" = "Meddelande";
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "Fxy-9q-qRg"; */
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "Fxy-9q-qRg"; */
 "Fxy-9q-qRg.title" = " ";
 
-/* Class = "IBUILabel"; text = "Favorites"; ObjectID = "IKa-Rl-6x6"; */
-"IKa-Rl-6x6.text" = "Favorites";
-
-/* Class = "IBUILabel"; text = "Title"; ObjectID = "J26-oJ-mV9"; */
+/* Class = "UILabel"; text = "Title"; ObjectID = "J26-oJ-mV9"; */
 "J26-oJ-mV9.text" = "Title";
 
-/* Class = "IBUINavigationItem"; title = "About Us"; ObjectID = "NCa-Zo-vFy"; */
-"NCa-Zo-vFy.title" = "About Us";
+/* Class = "UILabel"; text = "    We will help more people to  find your lovely shop."; ObjectID = "LDC-VG-HTw"; */
+"LDC-VG-HTw.text" = "    Om du äger en butik, café eller restaurang kan du kontakta oss för mer information på.";
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "Oz4-29-ySo"; */
+/* Class = "UINavigationItem"; title = "Contact Us"; ObjectID = "NCa-Zo-vFy"; */
+"NCa-Zo-vFy.title" = "Kontakta oss";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "Oz4-29-ySo"; */
 "Oz4-29-ySo.title" = " ";
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "T58-nx-uh2"; */
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "T58-nx-uh2"; */
 "T58-nx-uh2.title" = " ";
 
-/* Class = "IBUINavigationItem"; title = "Touch Sweden"; ObjectID = "TpJ-Xt-F1n"; */
+/* Class = "UINavigationItem"; title = "Touch Sweden"; ObjectID = "TpJ-Xt-F1n"; */
 "TpJ-Xt-F1n.title" = "Touch Sweden";
 
-/* Class = "IBUILabel"; text = "Title"; ObjectID = "WoN-oE-EuS"; */
+/* Class = "UILabel"; text = "Title"; ObjectID = "WoN-oE-EuS"; */
 "WoN-oE-EuS.text" = "Title";
 
-/* Class = "IBUINavigationItem"; title = "Favorites"; ObjectID = "XkU-Ap-unC"; */
-"XkU-Ap-unC.title" = "Favorites";
+/* Class = "UINavigationItem"; title = "Favorites"; ObjectID = "XkU-Ap-unC"; */
+"XkU-Ap-unC.title" = "Favoriter";
 
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "Zb7-eL-aR6"; */
+/* Class = "UILabel"; text = "Address"; ObjectID = "Zb7-eL-aR6"; */
 "Zb7-eL-aR6.text" = "Address";
 
-/* Class = "IBUITextView"; text = "Our current services are all free to both users and companies. If you need more updated information about the company you like, we would like to make the company to pay extra service to and for you. The only thing you need to do is introduce us the company. Once they’ve made the payment, you will discover extra information on their pages. To show our grateful and reward of your help, we will pay you 150 SEK per place you recruit.\n\nIf you find your company’s information is missing or not right,\nplease feel free to contact us at  xxxxx@xxx.se "; ObjectID = "aWr-iJ-TTu"; */
-"aWr-iJ-TTu.text" = "Our current services are all free to both users and companies. If you need more updated information about the company you like, we would like to make the company to pay extra service to and for you. The only thing you need to do is introduce us the company. Once they’ve made the payment, you will discover extra information on their pages. To show our grateful and reward of your help, we will pay you 150 SEK per place you recruit.\n\nIf you find your company’s information is missing or not right,\nplease feel free to contact us at  xxxxx@xxx.se ";
+/* Class = "UINavigationItem"; title = "Map"; ObjectID = "b3n-A2-Vzv"; */
+"b3n-A2-Vzv.title" = "Karta";
 
-/* Class = "IBUINavigationItem"; title = "Map"; ObjectID = "b3n-A2-Vzv"; */
-"b3n-A2-Vzv.title" = "Map";
+/* Class = "UILabel"; text = "Title"; ObjectID = "bNc-sD-Qn2"; */
+"bNc-sD-Qn2.text" = "Title";
 
-/* Class = "IBUINavigationItem"; title = "Prize"; ObjectID = "dHZ-3m-kOw"; */
+/* Class = "UILabel"; text = "Contact Us"; ObjectID = "cR3-Ei-ab3"; */
+"cR3-Ei-ab3.text" = "Kontakta oss";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "cub-VW-qwG"; */
+"cub-VW-qwG.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "Prize"; ObjectID = "dHZ-3m-kOw"; */
 "dHZ-3m-kOw.title" = "Prize";
 
-/* Class = "IBUILabel"; text = "500m"; ObjectID = "eLd-N5-f72"; */
-"eLd-N5-f72.text" = "500m";
+/* Class = "UILabel"; text = "    We want make something easy to use. "; ObjectID = "dbE-1O-EJf"; */
+"dbE-1O-EJf.text" = "    Vårt mål är att underlätta för lokala butiker,";
 
-/* Class = "IBUITextView"; text = "We are making things simple for store owners and also for consumers and tourists. \n\nFree service:\n\n Contact\n\n Opening hours\n\n Address\n\n Save as favorite\n\n\nPaying service:\n\n Booking\n\n Menu list\n\n Campaigns\n\n Parking places around\n\nOur price is 150 SEK / month for unlimited times of customizing your page. "; ObjectID = "hFm-7I-5oB"; */
-"hFm-7I-5oB.text" = "We are making things simple for store owners and also for consumers and tourists. \n\nFree service:\n\n Contact\n\n Opening hours\n\n Address\n\n Save as favorite\n\n\nPaying service:\n\n Booking\n\n Menu list\n\n Campaigns\n\n Parking places around\n\nOur price is 150 SEK / month for unlimited times of customizing your page. ";
-
-/* Class = "IBUILabel"; text = "Clear Cache"; ObjectID = "hY5-z2-Fgx"; */
-"hY5-z2-Fgx.text" = "Clear Cache";
-
-/* Class = "IBUILabel"; text = "Title"; ObjectID = "haW-ex-jTI"; */
+/* Class = "UILabel"; text = "Title"; ObjectID = "haW-ex-jTI"; */
 "haW-ex-jTI.text" = "Title";
 
-/* Class = "IBUINavigationItem"; title = "Direction"; ObjectID = "hhV-BB-PYU"; */
-"hhV-BB-PYU.title" = "Direction";
+/* Class = "UINavigationItem"; title = "Direction"; ObjectID = "hhV-BB-PYU"; */
+"hhV-BB-PYU.title" = "Vägvisning";
 
-/* Class = "IBUINavigationItem"; title = "Category"; ObjectID = "jsV-7W-yMo"; */
-"jsV-7W-yMo.title" = "Category";
+/* Class = "UINavigationItem"; title = "Category"; ObjectID = "jsV-7W-yMo"; */
+"jsV-7W-yMo.title" = "Kategori";
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "lcm-Se-U8R"; */
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "lcm-Se-U8R"; */
 "lcm-Se-U8R.title" = " ";
 
-/* Class = "IBUINavigationItem"; title = "Search"; ObjectID = "mev-LA-GfD"; */
-"mev-LA-GfD.title" = "Search";
+/* Class = "UILabel"; text = "    If you are the shopkeeper, please feel free to contact us."; ObjectID = "mBQ-Ws-b1w"; */
+"mBQ-Ws-b1w.text" = "    caféer och restauranger att nå ut till sina lojala kunder och belöna de för deras engagemang och stöd.";
 
-/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "oDx-8X-SvL"; */
+/* Class = "UINavigationItem"; title = "Search"; ObjectID = "mev-LA-GfD"; */
+"mev-LA-GfD.title" = "Sök";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "oDx-8X-SvL"; */
 "oDx-8X-SvL.title" = " ";
 
-/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "tCT-eS-YiO"; */
-"tCT-eS-YiO.title" = "Settings";
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "tCT-eS-YiO"; */
+"tCT-eS-YiO.title" = "Inställningar";
 
-/* Class = "IBUILabel"; text = "500m"; ObjectID = "tZD-al-bGJ"; */
-"tZD-al-bGJ.text" = "500m";
+/* Class = "UINavigationItem"; title = "Detail"; ObjectID = "tey-Pr-Kgc"; */
+"tey-Pr-Kgc.title" = "Detaljer";
 
-/* Class = "IBUINavigationItem"; title = "Detail"; ObjectID = "tey-Pr-Kgc"; */
-"tey-Pr-Kgc.title" = "Detail";
-
-/* Class = "IBUILabel"; text = "Address"; ObjectID = "uJu-e4-ULS"; */
+/* Class = "UILabel"; text = "Address"; ObjectID = "uJu-e4-ULS"; */
 "uJu-e4-ULS.text" = "Address";

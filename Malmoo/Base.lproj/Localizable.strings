@@ -17,7 +17,7 @@
 "No location data" = "No location data";
 "If you can make this address more particular, please 'report' us. Thanks~" = "If you can make this address more particular, please 'report' us. Thanks~";
 "I find an information error at:  , it should be: " = "I find an information error at:  , it should be: ";
-"Open Hour" = "Open Hour";
+"Opening hours" = "Opening hours";
 "Can't get current location" = "Can't get current location";
 "Please check your location settings" = "Please check your location settings";
 "Maybe the network is slow, please try later" = "Maybe the network is slow, please try later";

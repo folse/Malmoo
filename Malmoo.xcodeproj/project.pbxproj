@@ -19,6 +19,9 @@
 		A1165CB218F69D8300213808 /* TSPlaceCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1165CB118F69D8300213808 /* TSPlaceCategory.m */; };
 		A12A9EA71A09C2880084376C /* TSGuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EA61A09C2880084376C /* TSGuideController.m */; };
 		A12A9EAB1A0FB8590084376C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */; };
+		A1412F661B7AE043009E1FF4 /* JDMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1412F681B7AE043009E1FF4 /* JDMenuViewController.xib */; };
+		A14F0A741B710A30000469D8 /* TSMemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F0A731B710A30000469D8 /* TSMemberController.m */; };
+		A14F0A771B719203000469D8 /* TSMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = A14F0A761B719203000469D8 /* TSMembership.m */; };
 		A150B7911A105B8F0044A1BE /* TSFavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = A150B7901A105B8F0044A1BE /* TSFavoriteController.m */; };
 		A154546D19E94F290032AE03 /* UIImage+UIImageExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546819E94F290032AE03 /* UIImage+UIImageExt.m */; };
 		A154546E19E94F290032AE03 /* UIImage+Blend.m in Sources */ = {isa = PBXBuildFile; fileRef = A154546A19E94F290032AE03 /* UIImage+Blend.m */; };
@@ -48,11 +51,12 @@
 		A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487618F13995005B05F1 /* UIView+screenshot.m */; };
 		A178488018F13A39005B05F1 /* SubCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A178487E18F13A39005B05F1 /* SubCateViewController.m */; };
 		A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A178487F18F13A39005B05F1 /* SubCateViewController.xib */; };
+		A17EB96B1AC7E12800A40309 /* TSCheckinController.m in Sources */ = {isa = PBXBuildFile; fileRef = A17EB96A1AC7E12800A40309 /* TSCheckinController.m */; };
+		A17EB96E1AC8396800A40309 /* Checkin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17EB96D1AC8396800A40309 /* Checkin.storyboard */; };
 		A1830B5518DB4D540053DE81 /* TSMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5418DB4D540053DE81 /* TSMapController.m */; };
 		A1830B5C18DB4E4C0053DE81 /* JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5918DB4E4C0053DE81 /* JDSideMenu.m */; };
 		A1830B5D18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B5B18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m */; };
 		A1830B6218DB4F530053DE81 /* JDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6018DB4F530053DE81 /* JDMenuViewController.m */; };
-		A1830B6318DB4F530053DE81 /* JDMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1830B6118DB4F530053DE81 /* JDMenuViewController.xib */; };
 		A1830B6A18DB5C460053DE81 /* TSMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6918DB5C460053DE81 /* TSMoreController.m */; };
 		A1830B6D18DB604E0053DE81 /* TSCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830B6C18DB604E0053DE81 /* TSCategoryController.m */; };
 		A1830BA318DBF5340053DE81 /* TSPlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = A1830BA218DBF5340053DE81 /* TSPlaceMark.m */; };
@@ -79,6 +83,7 @@
 		A1C8EADC1A13A657006AE0B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EADB1A13A657006AE0B3 /* QuartzCore.framework */; };
 		A1C8EADE1A13A670006AE0B3 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C8EADD1A13A670006AE0B3 /* libiconv.dylib */; };
 		A1C8EAE21A13A6BA006AE0B3 /* ZbarScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */; };
+		A1DB3FE81B7C472C00702674 /* TSDetailControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DB3FEA1B7C472C00702674 /* TSDetailControllerView.xib */; };
 		A1E7D7DD1A1DE0D300211132 /* MutiLanguage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */; };
 		A1E7D7E81A1DE63900211132 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1E7D7EA1A1DE63900211132 /* Localizable.strings */; };
 		A1E838E718CEAD1C008E6F57 /* FSUtilSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */; };
@@ -88,7 +93,6 @@
 		A1E95B45191F1DD6009BE585 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B3F191F1DD6009BE585 /* MJRefreshFooterView.m */; };
 		A1E95B46191F1DD6009BE585 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */; };
 		A1FD808219AC1D2200379334 /* TSDetailControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FD808119AC1D2200379334 /* TSDetailControllerView.m */; };
-		A1FD808419AC1D4700379334 /* TSDetailControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FD808319AC1D4700379334 /* TSDetailControllerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,11 @@
 		A12A9EA61A09C2880084376C /* TSGuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGuideController.m; sourceTree = "<group>"; };
 		A12A9EA91A0FB8590084376C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A12A9EAA1A0FB8590084376C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A1412F691B7AE045009E1FF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/JDMenuViewController.xib; sourceTree = "<group>"; };
+		A14F0A721B710A30000469D8 /* TSMemberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMemberController.h; sourceTree = "<group>"; };
+		A14F0A731B710A30000469D8 /* TSMemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMemberController.m; sourceTree = "<group>"; };
+		A14F0A751B719203000469D8 /* TSMembership.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMembership.h; sourceTree = "<group>"; };
+		A14F0A761B719203000469D8 /* TSMembership.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMembership.m; sourceTree = "<group>"; };
 		A150B78F1A105B8F0044A1BE /* TSFavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFavoriteController.h; sourceTree = "<group>"; };
 		A150B7901A105B8F0044A1BE /* TSFavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFavoriteController.m; sourceTree = "<group>"; };
 		A154546719E94F290032AE03 /* UIImage+UIImageExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageExt.h"; sourceTree = "<group>"; };
@@ -171,6 +180,9 @@
 		A178487D18F13A39005B05F1 /* SubCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCateViewController.h; sourceTree = "<group>"; };
 		A178487E18F13A39005B05F1 /* SubCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCateViewController.m; sourceTree = "<group>"; };
 		A178487F18F13A39005B05F1 /* SubCateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCateViewController.xib; sourceTree = "<group>"; };
+		A17EB9691AC7E12800A40309 /* TSCheckinController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCheckinController.h; sourceTree = "<group>"; };
+		A17EB96A1AC7E12800A40309 /* TSCheckinController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCheckinController.m; sourceTree = "<group>"; };
+		A17EB96D1AC8396800A40309 /* Checkin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Checkin.storyboard; sourceTree = "<group>"; };
 		A1830B5318DB4D540053DE81 /* TSMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMapController.h; sourceTree = "<group>"; };
 		A1830B5418DB4D540053DE81 /* TSMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMapController.m; sourceTree = "<group>"; };
 		A1830B5618DB4DF40053DE81 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -180,7 +192,6 @@
 		A1830B5B18DB4E4C0053DE81 /* UIViewController+JDSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JDSideMenu.m"; sourceTree = "<group>"; };
 		A1830B5F18DB4F530053DE81 /* JDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDMenuViewController.h; sourceTree = "<group>"; };
 		A1830B6018DB4F530053DE81 /* JDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDMenuViewController.m; sourceTree = "<group>"; };
-		A1830B6118DB4F530053DE81 /* JDMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JDMenuViewController.xib; sourceTree = "<group>"; };
 		A1830B6818DB5C460053DE81 /* TSMoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMoreController.h; sourceTree = "<group>"; };
 		A1830B6918DB5C460053DE81 /* TSMoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMoreController.m; sourceTree = "<group>"; };
 		A1830B6B18DB604E0053DE81 /* TSCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCategoryController.h; sourceTree = "<group>"; };
@@ -195,7 +206,6 @@
 		A1AE450B19EF75C4004B328B /* TSLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLoginController.m; sourceTree = "<group>"; };
 		A1AE450E19EF7657004B328B /* TSSignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSignupController.h; sourceTree = "<group>"; };
 		A1AE450F19EF7657004B328B /* TSSignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSignupController.m; sourceTree = "<group>"; };
-		A1AF396E1A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
 		A1AF39701A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1AF39761A19ACA6006F26F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		A1AF39771A19ACFC006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Account.strings; sourceTree = "<group>"; };
@@ -229,6 +239,10 @@
 		A1C8EAE01A13A6BA006AE0B3 /* ZbarScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZbarScannerController.h; sourceTree = "<group>"; };
 		A1C8EAE11A13A6BA006AE0B3 /* ZbarScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZbarScannerController.m; sourceTree = "<group>"; };
 		A1D3B2E919EC4CCC00B45FFE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A1DB3FE71B7C428600702674 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		A1DB3FEB1B7C473000702674 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TSDetailControllerView.xib; sourceTree = "<group>"; };
+		A1DB3FEC1B7C473400702674 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/TSDetailControllerView.strings; sourceTree = "<group>"; };
+		A1DB3FEE1B7C496200702674 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/JDMenuViewController.strings; sourceTree = "<group>"; };
 		A1E7D7E01A1DE0D900211132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MutiLanguage.storyboard; sourceTree = "<group>"; };
 		A1E7D7E31A1DE0F000211132 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/MutiLanguage.strings; sourceTree = "<group>"; };
 		A1E7D7EB1A1DE72500211132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -247,7 +261,6 @@
 		A1E95B41191F1DD6009BE585 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		A1FD808019AC1D2200379334 /* TSDetailControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDetailControllerView.h; sourceTree = "<group>"; };
 		A1FD808119AC1D2200379334 /* TSDetailControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDetailControllerView.m; sourceTree = "<group>"; };
-		A1FD808319AC1D4700379334 /* TSDetailControllerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSDetailControllerView.xib; sourceTree = "<group>"; };
 		D6A904064D304A8089D525CC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF89101AFEB4DB39043D668B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,6 +330,8 @@
 				A10BC27918D0713B002999F6 /* TSPlace.m */,
 				A15FC10E1A2D4A7300AE708C /* TSMenu.h */,
 				A15FC10F1A2D4A7300AE708C /* TSMenu.m */,
+				A14F0A751B719203000469D8 /* TSMembership.h */,
+				A14F0A761B719203000469D8 /* TSMembership.m */,
 				A1165CB018F69D8300213808 /* TSPlaceCategory.h */,
 				A1165CB118F69D8300213808 /* TSPlaceCategory.m */,
 			);
@@ -332,7 +347,7 @@
 				A1830BA218DBF5340053DE81 /* TSPlaceMark.m */,
 				A1FD808019AC1D2200379334 /* TSDetailControllerView.h */,
 				A1FD808119AC1D2200379334 /* TSDetailControllerView.m */,
-				A1FD808319AC1D4700379334 /* TSDetailControllerView.xib */,
+				A1DB3FEA1B7C472C00702674 /* TSDetailControllerView.xib */,
 				A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */,
 				A1BDDDF8199917FB0041B0A1 /* TSPhotoCollectionViewCell.m */,
 				A15FC10B1A2C0E5800AE708C /* TSMenuCell.h */,
@@ -344,6 +359,8 @@
 		A11248601A480BAD006F89A3 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				A14F0A721B710A30000469D8 /* TSMemberController.h */,
+				A14F0A731B710A30000469D8 /* TSMemberController.m */,
 				A1830B6B18DB604E0053DE81 /* TSCategoryController.h */,
 				A1830B6C18DB604E0053DE81 /* TSCategoryController.m */,
 				A1830B6818DB5C460053DE81 /* TSMoreController.h */,
@@ -444,6 +461,7 @@
 				A1E838E618CEAD1C008E6F57 /* FSUtilSettings.m */,
 				A171E17E18C6D186003113ED /* Main.storyboard */,
 				A1AF39731A19AC91006F26F5 /* Account.storyboard */,
+				A17EB96D1AC8396800A40309 /* Checkin.storyboard */,
 				A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */,
 				A171E18418C6D186003113ED /* Images.xcassets */,
 				A1BDDDE71998FBC30041B0A1 /* Controller */,
@@ -504,6 +522,15 @@
 			name = ExpandTableViewCell;
 			sourceTree = "<group>";
 		};
+		A17EB96C1AC7E13500A40309 /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				A17EB9691AC7E12800A40309 /* TSCheckinController.h */,
+				A17EB96A1AC7E12800A40309 /* TSCheckinController.m */,
+			);
+			name = CheckIn;
+			sourceTree = "<group>";
+		};
 		A1830B5E18DB4E580053DE81 /* JDSideMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,7 +547,7 @@
 			children = (
 				A1830B5F18DB4F530053DE81 /* JDMenuViewController.h */,
 				A1830B6018DB4F530053DE81 /* JDMenuViewController.m */,
-				A1830B6118DB4F530053DE81 /* JDMenuViewController.xib */,
+				A1412F681B7AE043009E1FF4 /* JDMenuViewController.xib */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -537,6 +564,7 @@
 		A1AE450D19EF761E004B328B /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				A17EB96C1AC7E13500A40309 /* CheckIn */,
 				A12A9EA51A09C2880084376C /* TSGuideController.h */,
 				A12A9EA61A09C2880084376C /* TSGuideController.m */,
 				A1AE450A19EF75C4004B328B /* TSLoginController.h */,
@@ -696,7 +724,7 @@
 				ORGANIZATIONNAME = Folse;
 				TargetAttributes = {
 					A171E16818C6D186003113ED = {
-						DevelopmentTeam = 9779KDPXN6;
+						DevelopmentTeam = V68CP8VT5Z;
 					};
 					A171E18918C6D186003113ED = {
 						TestTargetID = A171E16818C6D186003113ED;
@@ -730,16 +758,17 @@
 			files = (
 				A171E18518C6D186003113ED /* Images.xcassets in Resources */,
 				A178487818F13995005B05F1 /* Cell.xib in Resources */,
+				A17EB96E1AC8396800A40309 /* Checkin.storyboard in Resources */,
 				A1BDDE0B199A825B0041B0A1 /* MJPhotoBrowser.bundle in Resources */,
-				A1FD808419AC1D4700379334 /* TSDetailControllerView.xib in Resources */,
+				A1DB3FE81B7C472C00702674 /* TSDetailControllerView.xib in Resources */,
 				A1AF39711A19AC91006F26F5 /* Account.storyboard in Resources */,
 				A1E95B42191F1DD6009BE585 /* MJRefresh.bundle in Resources */,
 				A178488118F13A39005B05F1 /* SubCateViewController.xib in Resources */,
 				A171E17718C6D186003113ED /* InfoPlist.strings in Resources */,
 				A171E18018C6D186003113ED /* Main.storyboard in Resources */,
 				A1E7D7DD1A1DE0D300211132 /* MutiLanguage.storyboard in Resources */,
+				A1412F661B7AE043009E1FF4 /* JDMenuViewController.xib in Resources */,
 				A1E7D7E81A1DE63900211132 /* Localizable.strings in Resources */,
-				A1830B6318DB4F530053DE81 /* JDMenuViewController.xib in Resources */,
 				A1C8EAD41A139EFB006AE0B3 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,6 +821,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17EB96B1AC7E12800A40309 /* TSCheckinController.m in Sources */,
 				A108B50618DC81D1004DDA65 /* FSUtilSettings.m in Sources */,
 				A10BC27A18D0713B002999F6 /* TSPlace.m in Sources */,
 				A15FC1101A2D4A7300AE708C /* TSMenu.m in Sources */,
@@ -841,11 +871,13 @@
 				A1A4B7941A219A9200B0D1A8 /* TSFeedbackController.m in Sources */,
 				A18AA9591A13BA7F00D931E6 /* TSMutiLanguageMenuController.m in Sources */,
 				A1BDDE0E199A825B0041B0A1 /* MJPhotoProgressView.m in Sources */,
+				A14F0A771B719203000469D8 /* TSMembership.m in Sources */,
 				A11316F1191E81E800EC96B6 /* TSPromotionController.m in Sources */,
 				A154546F19E94F290032AE03 /* UIImage+vImage.m in Sources */,
 				A1AE450C19EF75C4004B328B /* TSLoginController.m in Sources */,
 				A1BDDE0C199A825B0041B0A1 /* MJPhotoBrowser.m in Sources */,
 				A178487B18F13995005B05F1 /* UIView+screenshot.m in Sources */,
+				A14F0A741B710A30000469D8 /* TSMemberController.m in Sources */,
 				A1BDDE0D199A825B0041B0A1 /* MJPhotoLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,6 +902,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A1412F681B7AE043009E1FF4 /* JDMenuViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1412F691B7AE045009E1FF4 /* Base */,
+				A1DB3FEE1B7C496200702674 /* sv */,
+			);
+			name = JDMenuViewController.xib;
+			sourceTree = "<group>";
+		};
 		A171E17518C6D186003113ED /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -882,7 +923,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A171E17F18C6D186003113ED /* Base */,
-				A1AF396E1A199A3F006F26F5 /* sv */,
+				A1DB3FE71B7C428600702674 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -903,6 +944,15 @@
 				A1AF39771A19ACFC006F26F5 /* sv */,
 			);
 			name = Account.storyboard;
+			sourceTree = "<group>";
+		};
+		A1DB3FEA1B7C472C00702674 /* TSDetailControllerView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1DB3FEB1B7C473000702674 /* Base */,
+				A1DB3FEC1B7C473400702674 /* sv */,
+			);
+			name = TSDetailControllerView.xib;
 			sourceTree = "<group>";
 		};
 		A1E7D7DF1A1DE0D300211132 /* MutiLanguage.storyboard */ = {
@@ -1033,8 +1083,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Motion Touch Scandinavia AB (9779KDPXN6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Motion Touch Scandinavia AB (9779KDPXN6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1051,7 +1101,7 @@
 					/Users/folse/Desktop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb69b6ed-6ddd-44e3-89eb-a98f44e99409";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

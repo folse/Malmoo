@@ -71,6 +71,7 @@
             if (!error) {
                 
                 [USER setBool:YES forKey:@"userLogined"];
+                [USER setObject:usernameString forKey:@"userName"];
                                 
                 [SVProgressHUD showSuccessWithStatus:@"Success"];
                 

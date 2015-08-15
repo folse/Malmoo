@@ -107,12 +107,12 @@
         guideLabel.center = CGPointMake(self.view.center.x,150);
         [guideLabel setTextAlignment:NSTextAlignmentCenter];
         [guideLabel setTextColor:[UIColor darkGrayColor]];
-        [guideLabel setText:@"Get Your Favorites After Login"];
+        [guideLabel setText:NSLocalizedString(@"Get your favorites after login", nil)];
         [self.view addSubview:guideLabel];
         
-        loginButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 208, 180, 38)];
+        loginButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 208, 280, 38)];
         loginButton.center = CGPointMake(self.view.center.x,208);
-        [loginButton setTitle:@"Login / Signup" forState:UIControlStateNormal];
+        [loginButton setTitle:NSLocalizedString(@"Login / Signup", nil) forState:UIControlStateNormal];
         [loginButton setTitleColor:APP_COLOR forState:UIControlStateNormal];
         [loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:loginButton];

@@ -78,10 +78,13 @@ HUD.customView = [[YSpinKitView alloc] initWithStyle:YSpinKitViewStyleBounce col
 #define TEST FALSE
 
 #if TEST
-#define API_BASE_URL @"http://0.api.com"
+#define API_BASE_URL @"http://127.0.0.1/api"
 #else
-#define API_BASE_URL @"http://api.com"
+#define API_BASE_URL @"http://member.mtscandic.com/api"
 #endif
+
+//开始上课
+#define MEMBERSHIP [NSString stringWithFormat:@"%@/membership_customer",API_BASE_URL]
 
 #define UMENG_APP_KEY @"536ef5ee56240b0a790f4074"
 

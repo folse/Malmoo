@@ -623,7 +623,7 @@
 
 -(void)openHourButtonAction
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Open Hour",nil) message:_place.openHours delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opening hours",nil) message:_place.openHours delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
     [alertView show];
     
     e(@"detailOpenHourButton")

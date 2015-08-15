@@ -43,7 +43,7 @@
     [super viewDidLoad];
     
     placeHolderString = NSLocalizedString(@"Tell us your feeling~", nil);
-    
+
     _feedbackTextView.text = placeHolderString;
     [_feedbackTextView setDelegate:self];
     

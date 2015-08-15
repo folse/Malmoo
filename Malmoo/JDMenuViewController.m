@@ -11,8 +11,14 @@
 #import "UMFeedback.h"
 
 @interface JDMenuViewController ()
+{
+    UIImageView *guideImageView;
+    UIImage *qrcodeImage;
+    UIView *guideBgView;
+}
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *qrCodeImageView;
 
 @end
 
@@ -38,6 +44,60 @@
     self.scrollView.contentSize = CGRectInset(self.scrollView.bounds, 0, -1).size;
     self.sideMenuController.tapGestureEnabled = YES;
     self.sideMenuController.panGestureEnabled = YES;
+    
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    
+    NSString *qrcodeUrl = [NSString stringWithFormat:@"http://qr.liantu.com/api.php?&bg=2a5392&fg=8cacdb&w=280&m=10&text=%@",userName];
+    
+    [_qrCodeImageView sd_setImageWithURL:[NSURL URLWithString:qrcodeUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        qrcodeImage = image;
+        
+    }];
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showQRcode)];
+    [_qrCodeImageView setUserInteractionEnabled:YES];
+    [_qrCodeImageView addGestureRecognizer:imageTap];
+}
+
+- (void)showQRcode
+{
+    if (qrcodeImage) {
+        guideBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [guideBgView setBackgroundColor:[UIColor colorWithRed:42/255.0 green:83/255.0 blue:146/255.0 alpha:0.95]];
+        [guideBgView setAlpha:0];
+        
+        guideImageView = [[UIImageView alloc] initWithImage:qrcodeImage];
+        [guideImageView setFrame:CGRectMake(50, 170, 140, 140)];
+        [guideBgView addSubview:guideImageView];
+        [self.view addSubview:guideBgView];
+        
+        UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideGuideImageView)];
+        [guideImageView setUserInteractionEnabled:YES];
+        [guideImageView addGestureRecognizer:imageTap];
+        [guideBgView addGestureRecognizer:imageTap];
+        
+        [UIView animateWithDuration:1 animations:^{
+            [guideBgView setAlpha:1];
+
+            [guideImageView setAlpha:1];
+            
+        } completion:nil];
+
+    }
+}
+
+-(void)hideGuideImageView
+{
+    [UIView animateWithDuration:0.6 animations:^{
+        
+        [guideBgView setAlpha:0];
+        [guideImageView setAlpha:0];
+        
+    } completion:^(BOOL finished) {
+        
+        [guideBgView removeFromSuperview];
+        [guideImageView removeFromSuperview];
+    }];
 }
 
 - (IBAction)HomeBtnAction:(id)sender
@@ -75,10 +135,7 @@
             [self.sideMenuController setContentController:navController animated:YES];
             
         }else{
-            
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Can't find this place", nil) message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//            [alertView show];
-            
+
             NSURL* url = [[NSURL alloc] initWithString:data];
             [[ UIApplication sharedApplication]openURL:url];
         }
