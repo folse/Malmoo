@@ -100,7 +100,7 @@
     
     TSMembership *membership = membershipArray[row];
 
-    NSString *membershipDetailString = [NSString stringWithFormat:@"Vaild %@, Punched %@",[NSNumber numberWithInteger:membership.vaildQuantity],[NSNumber numberWithInteger:membership.punchedQuantity]];
+    NSString *membershipDetailString = [NSString stringWithFormat:NSLocalizedString(@"Prepaid %@, Points %@",@""),[NSNumber numberWithInteger:membership.vaildQuantity],[NSNumber numberWithInteger:membership.punchedQuantity]];
     
     [cell.textLabel setText:membership.shopName];
     [cell.detailTextLabel setText:membershipDetailString];

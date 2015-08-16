@@ -1,4 +1,7 @@
 
+/* Class = "UITextField"; placeholder = "  Contact"; ObjectID = "AMW-YR-U4c"; */
+"AMW-YR-U4c.placeholder" = "  Din e-post";
+
 /* Class = "IBUIButton"; normalTitle = "LOGIN"; ObjectID = "1Tp-4M-nRP"; */
 "1Tp-4M-nRP.normalTitle" = "Logga in";
 
@@ -12,7 +15,7 @@
 "Qj7-5v-E24.placeholder" = "Lösenord";
 
 /* Class = "IBUITextField"; placeholder = "username"; ObjectID = "Rmr-oJ-zfl"; */
-"Rmr-oJ-zfl.placeholder" = "AnvändarID / Mobilnummer";
+"Rmr-oJ-zfl.placeholder" = "Mobilnummer";
 
 /* Class = "IBUITextField"; placeholder = "email"; ObjectID = "Vyy-Ui-Lmu"; */
 "Vyy-Ui-Lmu.placeholder" = "E-post";
@@ -30,7 +33,7 @@
 "ftH-yL-jNe.title" = "Touch Sweden";
 
 /* Class = "IBUITextField"; placeholder = "Username"; ObjectID = "k6E-f6-amX"; */
-"k6E-f6-amX.placeholder" = "AnvändarID / Mobilnummer";
+"k6E-f6-amX.placeholder" = "Mobilnummer";
 
 /* Class = "IBUILabel"; text = "agree with "; ObjectID = "l9d-IN-Vgd"; */
 "l9d-IN-Vgd.text" = "Godkänner våra ";
@@ -49,3 +52,6 @@
 
 /* Class = "IBUIBarButtonItem"; title = "  x"; ObjectID = "zqb-iA-3Lh"; */
 "zqb-iA-3Lh.title" = "  x";
+
+/* Class = "UIBarButtonItem"; title = "Send"; ObjectID = "fVZ-so-hpS"; */
+"fVZ-so-hpS.title" = "Skicka";

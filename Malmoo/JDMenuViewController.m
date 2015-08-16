@@ -57,6 +57,11 @@
     UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showQRcode)];
     [_qrCodeImageView setUserInteractionEnabled:YES];
     [_qrCodeImageView addGestureRecognizer:imageTap];
+    
+    f(self.view.bounds.size.height)
+    if (self.view.bounds.size.height == 480) {
+        [_qrCodeImageView setFrame:CGRectMake(174, 422, 42, 42)];
+    }
 }
 
 - (void)showQRcode

@@ -214,14 +214,40 @@
 {
     if (_place.openHours != nil && _place.openHours.length > 0) {
         
-        NSString *openHour = [NSString stringWithFormat:@"Today %@",[self getOpenHours:_place.openHours]];
-        
+        NSString *openHour = [NSString stringWithFormat:NSLocalizedString(@"Today %@",nil),[self getOpenHours:_place.openHours]];
+            
         [detailView.openHourLabel setText:openHour];
         
     }else{
         
         [detailView.openHourLabel setHidden:YES];
     }
+}
+
+- (BOOL)isCurrentLanguageIsSwedish
+{
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    NSLog(@"Language: %@" , currentLanguage);
+    
+    if ([currentLanguage isEqualToString:@"sv"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(NSString *)replaceDayLanguage:(NSString *)content
+{
+    content = [content stringByReplacingOccurrencesOfString:@"Mon" withString:@"Mån"];
+    content = [content stringByReplacingOccurrencesOfString:@"Tue" withString:@"Tis"];
+    content = [content stringByReplacingOccurrencesOfString:@"Wed" withString:@"Ons"];
+    content = [content stringByReplacingOccurrencesOfString:@"Thu" withString:@"Tor"];
+    content = [content stringByReplacingOccurrencesOfString:@"Fri" withString:@"Fre"];
+    content = [content stringByReplacingOccurrencesOfString:@"Sat" withString:@"Lör"];
+    content = [content stringByReplacingOccurrencesOfString:@"Sun" withString:@"Sön"];
+    
+    return content;
 }
 
 -(void)setHeaderImage
@@ -623,7 +649,14 @@
 
 -(void)openHourButtonAction
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opening hours",nil) message:_place.openHours delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
+    NSString *openHourString = _place.openHours;
+    
+    if ([self isCurrentLanguageIsSwedish]) {
+        
+        openHourString = [self replaceDayLanguage:openHourString];
+    }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Opening hours",nil) message:openHourString delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
     [alertView show];
     
     e(@"detailOpenHourButton")

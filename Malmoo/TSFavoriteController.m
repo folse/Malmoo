@@ -112,7 +112,7 @@
         
         loginButton = [[UIButton alloc] initWithFrame:CGRectMake(2, 208, 280, 38)];
         loginButton.center = CGPointMake(self.view.center.x,208);
-        [loginButton setTitle:NSLocalizedString(@"Login / Signup", nil) forState:UIControlStateNormal];
+        [loginButton setTitle:NSLocalizedString(@"LOGIN / SIGNUP", nil) forState:UIControlStateNormal];
         [loginButton setTitleColor:APP_COLOR forState:UIControlStateNormal];
         [loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:loginButton];
@@ -162,7 +162,7 @@
                     MBProgressHUD *tipHUD = [[MBProgressHUD alloc] initWithView:self.view];
                     [self.view addSubview:tipHUD];
                     [tipHUD setLabelFont:[UIFont fontWithName:@"Helvetica-Light" size:16.0]];
-                    [tipHUD setLabelText:@"You have no favorites yet"];
+                    [tipHUD setLabelText:NSLocalizedString(@"You have no favorites yet",nil)];
                     [tipHUD show:YES];
                 }
             }];

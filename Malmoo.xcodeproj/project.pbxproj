@@ -208,7 +208,6 @@
 		A1AE450F19EF7657004B328B /* TSSignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSignupController.m; sourceTree = "<group>"; };
 		A1AF39701A199A3F006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1AF39761A19ACA6006F26F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
-		A1AF39771A19ACFC006F26F5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Account.strings; sourceTree = "<group>"; };
 		A1BDDDE21998FB830041B0A1 /* TSPhotoCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSPhotoCollectionController.h; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.h; sourceTree = "<group>"; };
 		A1BDDDE31998FB830041B0A1 /* TSPhotoCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSPhotoCollectionController.m; path = ../../../Github/Malmoo/Malmoo/TSPhotoCollectionController.m; sourceTree = "<group>"; };
 		A1BDDDF7199917FB0041B0A1 /* TSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -228,6 +227,7 @@
 		A1BDDE07199A825B0041B0A1 /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
 		A1BDDE08199A825B0041B0A1 /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
 		A1BDDE09199A825B0041B0A1 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		A1BF87F41B7F7AFA007DFF0B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Account.strings; sourceTree = "<group>"; };
 		A1C8EAD01A139EFB006AE0B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		A1C8EAD11A139EFB006AE0B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		A1C8EAD21A139EFB006AE0B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -941,7 +941,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A1AF39761A19ACA6006F26F5 /* Base */,
-				A1AF39771A19ACFC006F26F5 /* sv */,
+				A1BF87F41B7F7AFA007DFF0B /* sv */,
 			);
 			name = Account.storyboard;
 			sourceTree = "<group>";
